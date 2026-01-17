@@ -3745,7 +3745,7 @@ const SUBJECTS = {
 const DB_FILE = 'ranking_db.json';
 if (!fs.existsSync(DB_FILE)) fs.writeFileSync(DB_FILE, JSON.stringify({ users: {} }));
 
-const TIME_LIMIT = 20;
+const TIME_LIMIT = 60;
 const timers = {};
 
 // YORDAMCHI FUNKSIYALAR
