@@ -5333,21 +5333,40 @@ bot.hears(["⚡️ Blitz (25)", "📝 To'liq test"], async (ctx) => {
 
 // --- CALLBACK ACTIONS ---
 bot.action(/^ans_(\d+)$/, async (ctx) => {
-    const s = ctx.session;
-    if (timers[ctx.from.id]) clearTimeout(timers[ctx.from.id]);
-    const selIdx = parseInt(ctx.match[1]);
-    const currentQ = s.activeList[s.index];
+    try {
+        const s = ctx.session;
+        
+        // 1. Sessiya yoki kerakli ma'lumotlar mavjudligini tekshirish
+        if (!s || !s.activeList || s.index === undefined || !s.activeList[s.index]) {
+            await ctx.answerCbQuery("❌ Sessiya muddati tugagan yoki xatolik. Iltimos, testni qayta boshlang.", { show_alert: true });
+            return showSubjectMenu(ctx);
+        }
 
-    if (s.currentOptions[selIdx] === currentQ.a) {
-        s.score++;
-        await ctx.answerCbQuery("✅");
-    } else {
-        s.wrongs.push(currentQ);
-        s.activeList.push(currentQ);
-        await ctx.answerCbQuery(`❌ To'g'ri: ${currentQ.a}`, { show_alert: true });
+        if (timers[ctx.from.id]) clearTimeout(timers[ctx.from.id]);
+
+        const selIdx = parseInt(ctx.match[1]);
+        const currentQ = s.activeList[s.index];
+
+        // 2. Tanlangan javob va joriy variantlar borligini tekshirish
+        if (!s.currentOptions || s.currentOptions[selIdx] === undefined) {
+            return ctx.answerCbQuery("Xatolik: Javob topilmadi.");
+        }
+
+        if (s.currentOptions[selIdx] === currentQ.a) {
+            s.score++;
+            await ctx.answerCbQuery("✅ To'g'ri!").catch(() => {});
+        } else {
+            s.wrongs.push(currentQ);
+            s.activeList.push(currentQ);
+            await ctx.answerCbQuery(`❌ Xato! To'g'ri: ${currentQ.a}`, { show_alert: true }).catch(() => {});
+        }
+
+        s.index++;
+        sendQuestion(ctx);
+    } catch (error) {
+        console.error("Answer action error:", error);
+        await ctx.answerCbQuery("Kutilmagan xatolik yuz berdi.");
     }
-    s.index++;
-    sendQuestion(ctx);
 });
 
 bot.action('stop_test', async (ctx) => {
