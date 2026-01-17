@@ -5,6 +5,18 @@ const fs = require('fs');
 const ADMIN_ID = parseInt(process.env.ADMIN_ID); 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
+function getDb() {
+    try {
+        if (fs.existsSync(DB_FILE)) {
+            const data = fs.readFileSync(DB_FILE, 'utf8');
+            return JSON.parse(data);
+        }
+    } catch (e) {
+        console.error("Baza o'qishda xato:", e);
+    }
+    return { users: {} }; // Agar xato bo'lsa yoki fayl bo'lmasa, bo'sh obyekt qaytaradi
+}
+
 // --- MA'LUMOTLAR BAZASI VA REJIMLAR ---
 let isBotPaidMode = false;
 let vipUsers = [];
@@ -5192,36 +5204,17 @@ function updateGlobalScore(userId, name, score) {
 }
 
 function getLeaderboard() {
-    try {
-        // Fayl borligini tekshirish
-        if (!fs.existsSync(DB_FILE)) {
-            return "Hozircha hech kim test topshirmadi.";
-        }
+    const db = getDb(); // getDb funksiyasidan foydalanamiz
+    const usersArray = Object.values(db.users || {});
+    
+    if (usersArray.length === 0) return "Hozircha hech kim test topshirmadi.";
 
-        const data = fs.readFileSync(DB_FILE, 'utf8');
-        const db = JSON.parse(data);
-
-        // Foydalanuvchilar ro'yxatini olish
-        const usersArray = Object.values(db.users || {});
-
-        if (usersArray.length === 0) {
-            return "Hozircha hech kim test topshirmadi.";
-        }
-
-        // Ballar bo'yicha saralash va matn ko'rinishiga keltirish
-        const sorted = usersArray
-            .sort((a, b) => (b.score || 0) - (a.score || 0))
-            .slice(0, 10);
-
-        return sorted.map((u, i) => {
-            let icon = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : "👤";
-            return `${icon} ${u.name || 'Nomalum'} — ${u.score.toFixed(1)} ball`;
-        }).join('\n');
-
-    } catch (error) {
-        console.error("Reyting xatosi:", error);
-        return "Reytingni yuklashda xatolik yuz berdi.";
-    }
+    const sorted = usersArray.sort((a, b) => (b.score || 0) - (a.score || 0)).slice(0, 10);
+    
+    return sorted.map((u, i) => {
+        const medal = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : "👤";
+        return `${medal} ${u.name || 'Noma\'lum'} — ${(u.score || 0).toFixed(1)} ball`;
+    }).join('\n');
 }
 
 function showSubjectMenu(ctx) {
