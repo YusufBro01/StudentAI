@@ -5491,26 +5491,45 @@ bot.command('stats', async (ctx) => {
 bot.command('sendall', async (ctx) => {
     if (ctx.from.id !== ADMIN_ID) return;
     
-    // Xabar formati: /sendall Salom hammaga!
-    const msg = ctx.message.text.split('/sendall ')[1];
-    if (!msg) return ctx.reply("❌ Xabar matnini yozing. Masalan: /sendall Testlar yangilandi!");
+    // Admin xabar yuborish rejimini yoqamiz
+    ctx.session.waitingForBroadcast = true;
+    return ctx.reply("📣 Barcha foydalanuvchilarga yubormoqchi bo'lgan xabaringizni yozing (Matn, rasm yoki reklama):", 
+        Markup.keyboard([['🚫 Bekor qilish']]).resize());
+});
 
-    const db = getDb();
-    const userIds = Object.keys(db.users);
-    let count = 0;
-
-    ctx.reply(`📣 Xabar yuborish boshlandi: ${userIds.length} ta foydalanuvchiga...`);
-
-    for (const id of userIds) {
-        try {
-            await ctx.telegram.sendMessage(id, `📢 **ADMIN XABARI:**\n\n${msg}`, { parse_mode: 'Markdown' });
-            count++;
-        } catch (e) {
-            console.log(`${id} ga xabar yuborib bo'lmadi.`);
+// Xabar tarqatish mantiqi
+bot.on(['text', 'photo', 'video', 'document'], async (ctx, next) => {
+    if (ctx.from.id === ADMIN_ID && ctx.session.waitingForBroadcast) {
+        if (ctx.message.text === '🚫 Bekor qilish') {
+            ctx.session.waitingForBroadcast = false;
+            return showSubjectMenu(ctx);
         }
-    }
 
-    ctx.reply(`✅ Xabar muvaffaqiyatli yuborildi! Jami: ${count} ta foydalanuvchi qabul qildi.`);
+        ctx.session.waitingForBroadcast = false;
+        const db = getDb();
+        const userIds = Object.keys(db.users);
+        let successCount = 0;
+        let failCount = 0;
+
+        const statusMsg = await ctx.reply(`🚀 Xabar tarqatish boshlandi (Jami: ${userIds.length} kishi)...`);
+
+        for (const id of userIds) {
+            try {
+                // copyMessage — xabarni rasm/video/matni bilan birga ko'chirib beradi
+                await ctx.telegram.copyMessage(id, ctx.from.id, ctx.message.message_id);
+                successCount++;
+            } catch (e) {
+                failCount++;
+                console.log(`ID: ${id} ga xabar bormadi (Botni bloklagan bo'lishi mumkin).`);
+            }
+        }
+
+        await ctx.telegram.editMessageText(ctx.chat.id, statusMsg.message_id, null, 
+            `✅ Tarqatish yakunlandi!\n\n🟢 Yuborildi: ${successCount}\n🔴 Yuborilmadi: ${failCount}`);
+        
+        return showSubjectMenu(ctx);
+    }
+    return next();
 });
 
 
