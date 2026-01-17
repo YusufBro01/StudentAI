@@ -5321,10 +5321,35 @@ bot.command('admin', (ctx) => {
 
 
 bot.hears('📊 Statistika', async (ctx) => {
-    if (ctx.from.id === ADMIN_ID) {
-        // statistika kodini bu yerga ham chaqirib qo'ysa bo'ladi
-        ctx.reply("Siz statistika tugmasini bostingiz!"); 
-    }
+    if (ctx.from.id !== ADMIN_ID) return;
+
+    const db = getDb();
+    const users = Object.entries(db.users || {});
+    const totalUsers = users.length;
+    
+    // Bugungi sanani olish (YYYY-MM-DD formatida)
+    const today = new Date().toISOString().split('T')[0];
+    
+    // Bugun aktiv bo'lganlarni hisoblash
+    const dailyActive = users.filter(([id, data]) => {
+        return data.date && data.date.startsWith(today);
+    }).length;
+
+    const vips = (vipUsers || []).length;
+
+    // Oxirgi 10 ta foydalanuvchini chiroyli ro'yxat qilish
+    let userList = users.slice(-10).map(([id, data]) => {
+        return `👤 ${data.name || 'Noma\'lum'} (ID: \`${id}\`)`;
+    }).join('\n');
+
+    let statsMsg = `📊 **BOT STATISTIKASI**\n\n`;
+    statsMsg += `👥 Jami foydalanuvchilar: **${totalUsers}** ta\n`;
+    statsMsg += `📅 Bugun aktiv: **${dailyActive}** ta\n`;
+    statsMsg += `💎 VIP foydalanuvchilar: **${vips}** ta\n\n`;
+    statsMsg += `📝 **Oxirgi qo'shilganlar:**\n${userList || "Hozircha ro'yxat bo'sh"}\n\n`;
+    statsMsg += `💾 Baza: \`ranking_db.json\``;
+
+    await ctx.replyWithMarkdown(statsMsg);
 });
 
 bot.hears('💰 Pullik versiyani yoqish', (ctx) => {
