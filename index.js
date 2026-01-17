@@ -3,6 +3,8 @@ const LocalSession = require('telegraf-session-local');
 const fs = require('fs');
 const XLSX = require('xlsx');
 const QUESTIONS_FILE = '/data/custom_questions.json'; // Savollarni saqlash uchun
+const path = require('path');
+const DATA_DIR = '/data';
 
 const ADMIN_ID = parseInt(process.env.ADMIN_ID); 
 const bot = new Telegraf(process.env.BOT_TOKEN);
@@ -17,6 +19,15 @@ function getDb() {
         console.error("Baza o'qishda xato:", e);
     }
     return { users: {} }; // Agar xato bo'lsa yoki fayl bo'lmasa, bo'sh obyekt qaytaradi
+}
+
+if (!fs.existsSync(DATA_DIR)) {
+    try {
+        fs.mkdirSync(DATA_DIR, { recursive: true });
+        console.log("✅ /data papkasi yaratildi");
+    } catch (err) {
+        console.error("❌ Papka yaratishda xato (ehtimol mahalliy kompyuterda):", err.message);
+    }
 }
 
 // --- MA'LUMOTLAR BAZASI VA REJIMLAR ---
@@ -5167,7 +5178,10 @@ if (fs.existsSync(QUESTIONS_FILE)) {
     try {
         const saved = JSON.parse(fs.readFileSync(QUESTIONS_FILE, 'utf8'));
         SUBJECTS = saved;
-    } catch (e) { console.error("Savollarni yuklashda xato:", e); }
+        console.log("✅ Saqlangan savollar yuklandi");
+    } catch (e) {
+        console.error("❌ Savollarni o'qishda xato:", e);
+    }
 }
 
 const DB_FILE = 'ranking_db.json';
