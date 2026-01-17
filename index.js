@@ -3876,38 +3876,58 @@ bot.hears(["⚡️ Blitz (25)", "📝 To'liq test"], async (ctx) => {
 
 // ACTIONLAR
 bot.action(/^ans_(\d+)$/, async (ctx) => {
-    const s = ctx.session;
-    if (timers[ctx.from.id]) clearTimeout(timers[ctx.from.id]);
+    try {
+        const s = ctx.session;
+        if (timers[ctx.from.id]) clearTimeout(timers[ctx.from.id]);
+        const selIdx = parseInt(ctx.match[1]);
+        const currentQ = s.activeList[s.index];
 
-    const selIdx = parseInt(ctx.match[1]);
-    const currentQ = s.activeList[s.index];
-
-    if (s.currentOptions[selIdx] === currentQ.a) {
-        s.score++;
-        await ctx.answerCbQuery("✅ To'g'ri!");
-    } else {
-        s.wrongs.push(currentQ);
-        s.activeList.push(currentQ);
-        await ctx.answerCbQuery(`❌ Xato! To'g'ri javob: ${currentQ.a}`, { show_alert: true });
+        if (s.currentOptions[selIdx] === currentQ.a) {
+            s.score++;
+            await ctx.answerCbQuery("✅ To'g'ri!").catch(() => {});
+        } else {
+            s.wrongs.push(currentQ);
+            s.activeList.push(currentQ);
+            await ctx.answerCbQuery(`❌ Xato! To'g'ri: ${currentQ.a}`, { show_alert: true }).catch(() => {});
+        }
+        s.index++;
+        sendQuestion(ctx);
+    } catch (error) {
+        console.error("Answer action error:", error);
     }
-
-    s.index++;
-    sendQuestion(ctx);
 });
 
 bot.action('stop_test', async (ctx) => {
-    if (timers[ctx.from.id]) clearTimeout(timers[ctx.from.id]);
-    ctx.session.index = 9999;
-    await ctx.answerCbQuery("Test to'xtatildi");
-    showSubjectMenu(ctx);
+    try {
+        if (timers[ctx.from.id]) clearTimeout(timers[ctx.from.id]);
+        ctx.session.index = 9999;
+        
+        // answerCbQuery xato berishi mumkin, shuning uchun uni catch ichiga olamiz
+        await ctx.answerCbQuery("Test to'xtatildi").catch(e => console.log("Cb Error ignore"));
+        
+        showSubjectMenu(ctx);
+    } catch (error) {
+        console.error("Stop test error:", error);
+    }
 });
 
-bot.launch();
 
+// 1. Botni ishga tushirish
+bot.launch().then(() => console.log("Bot ishga tushdi!"));
 
-
+// 2. Render uchun HTTP server (uyquga ketmasligi uchun)
 const http = require('http');
 http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.end('Bot ishlayapti!');
 }).listen(process.env.PORT || 3000);
+
+// 3. Xatolarni ushlab qoluvchi "Qorovul" kod (ENG OXIRIDA)
+process.on('uncaughtException', (err) => {
+    console.error('Kutilmagan xato:', err);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
