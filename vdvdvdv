@@ -1,0 +1,1372 @@
+const QUESTIONS = [
+  {
+    "q": "Yozuvchilar, shoirlar, olimlar tomonidan ishlangan, qat’iy me’yorlarga ega bo‘lgan nutq ko‘rinishini to‘g‘ri toping.",
+    "options": ["Publitsistik nutq", "Ilmiy nutq", "Badiiy nutq", "Adabiy nutq"],
+    "a": "Ilmiy nutq"
+  },
+  {
+    "q": "Ommaviy axborot vositalarida va anjumanlarda qo‘llaniladigan nutq uslubi qanday?",
+    "options": ["Badiiy uslub", "Ommabop-publitsistik uslub", "Rasmiy-idoraviy uslub", "Ilmiy uslub"],
+    "a": "Ommabop-publitsistik uslub"
+  },
+  {
+    "q": "Daliliy munosabatlarga tayanuvchi, aniq va mantiqiy uslub qaysi?",
+    "options": ["So‘zlashuv uslubi", "Ilmiy uslub", "Badiiy uslub", "Rasmiy-idoraviy uslub"],
+    "a": "Ilmiy uslub"
+  },
+  {
+    "q": "Akustik hodisalar haqida berilgan matn qaysi uslubga tegishli?",
+    "options": ["Publitsistik uslub", "Ilmiy uslub", "Badiiy uslub", "Rasmiy-idoraviy uslub"],
+    "a": "Ilmiy uslub"
+  },
+  {
+    "q": "Kishilar o‘rtasidagi faoliyat ehtiyojlaridan kelib chiqadigan bog‘lanishlar jarayoni nima?",
+    "options": ["Dialog", "Kommunikatsiya", "Muloqot", "Suhbat"],
+    "a": "Muloqot"
+  },
+  {
+    "q": "“Kommunikatsiya” so‘zi qanday ma’noni bildiradi?",
+    "options": ["Bo‘lishmoq", "Xabar bermoq", "Aloqa", "Qatnashmoq"],
+    "a": "Aloqa"
+  },
+  {
+    "q": "O‘zaro tushunishni rivojlantiradigan jarayon nima?",
+    "options": ["Individual suhbat", "Kommunikativ muloqot", "Kommunikativ aloqa", "Muloqot jarayoni"],
+    "a": "Kommunikativ muloqot"
+  },
+  {
+    "q": "Muloqot texnikasining zaruriy sharti nima?",
+    "options": [
+      "Doimiy izlanish",
+      "E’tiborni boshqara olish",
+      "Fahm-farosat",
+      "To‘g‘ri javob yo‘q"
+    ],
+    "a": "E’tiborni boshqara olish"
+  },
+  {
+    "q": "Muloqot texnikasida nechta kamchilik mavjud?",
+    "options": ["4 ta", "8 ta", "7 ta", "3 ta"],
+    "a": "7 ta"
+  },
+  {
+    "q": "Muloqot madaniyati, mimik pantomima va hissiy holat bu nima?",
+    "options": [
+      "Talablar",
+      "Muloqot texnikasining tarkibiy qismlari",
+      "Kamchiliklar",
+      "To‘g‘ri javob yo‘q"
+    ],
+    "a": "Muloqot texnikasining tarkibiy qismlari"
+  },
+  {
+    "q": "Savodli gapirish va fikrni ta’sirchan ifodalash nima?",
+    "options": ["Hissiy holat", "Muloqot madaniyati", "Mimik pantomima", "To‘g‘ri javob yo‘q"],
+    "a": "Muloqot madaniyati"
+  },
+  {
+    "q": "Aniq imo-ishora va ma’noli qarash nima?",
+    "options": ["Muloqot madaniyati", "Hissiy holat", "Mimik pantomima", "To‘g‘ri javob yo‘q"],
+    "a": "Mimik pantomima"
+  },
+  {
+    "q": "Akademik yozuv bu nima?",
+    "options": [
+      "Ilmiy aloqalar",
+      "Ilmiy matn orqali fikrni asoslash",
+      "Ta’lim jarayoni",
+      "To‘g‘ri javob yo‘q"
+    ],
+    "a": "Ilmiy matn orqali fikrni asoslash"
+  },
+  {
+    "q": "Akademik yozuv tizimini rivojlantirgan mamlakatlar qaysi?",
+    "options": ["Italiya", "Ingliz tilida so‘zlashuvchi mamlakatlar", "Germaniya", "Fransiya"],
+    "a": "Ingliz tilida so‘zlashuvchi mamlakatlar"
+  },
+  {
+    "q": "Akademik yozuv qanday janrlarga bo‘linadi?",
+    "options": ["Ilmiy", "Publitsistik", "Birlamchi va ikkilamchi", "Adabiy"],
+    "a": "Birlamchi va ikkilamchi"
+  },
+  {
+    "q": "Akademik yozuvning birlamchi janriga nimalar kiradi?",
+    "options": [
+      "Ilmiy diskussiya, loyiha tavsifi",
+      "Ilmiy maqola, dissertatsiya, taqriz, monografiya",
+      "Annotatsiya va tezislar",
+      "Ensiklopedik maqola"
+    ],
+    "a": "Ilmiy maqola, dissertatsiya, taqriz, monografiya"
+  },
+  {
+    "q": "Akademik yozuvning ikkilamchi janriga qaysilar kiradi?",
+    "options": [
+      "Ilmiy maqola va dissertatsiya",
+      "Ilmiy diskussiya, tezis, avtoreferat, annotatsiya",
+      "Monografiya va taqriz",
+      "Ilmiy maqola va ilmiy loyiha"
+    ],
+    "a": "Ilmiy diskussiya, tezis, avtoreferat, annotatsiya"
+  },
+  {
+    "q": "Ilmiy maqolada nima amalga oshiriladi?",
+    "options": [
+      "Ilmiy matn tanqidiy baholanadi",
+      "Muallif tadqiqot natijalarini taqdim etadi",
+      "Magistratura uchun tayyorgarlik ko‘riladi",
+      "Ilmiy materiallar yig‘iladi"
+    ],
+    "a": "Muallif tadqiqot natijalarini taqdim etadi"
+  },
+  {
+    "q": "Dissertatsiya bu nima?",
+    "options": [
+      "Ilmiy matn tahlili",
+      "Magistratura yoki ilmiy darajani olishga tayyorgarlik",
+      "Tadqiqot natijalarini qisqa bayon qilish",
+      "Tanqidiy baho berish"
+    ],
+    "a": "Magistratura yoki ilmiy darajani olishga tayyorgarlik"
+  },
+  {
+    "q": "Taqriz bu nima?",
+    "options": [
+      "Ilmiy matn tahlili va tanqidiy bahosi",
+      "Tadqiqot natijalarini taqdim etish",
+      "Ilmiy loyiha tavsifi",
+      "Ilmiy materiallar yig‘indisi"
+    ],
+    "a": "Ilmiy matn tahlili va tanqidiy bahosi"
+  },
+  {
+    "q": "Monografiya bu nima?",
+    "options": [
+      "Tanqidiy baho berilgan ilmiy ish",
+      "Muallif natijalarini taqdim etuvchi maqola",
+      "Bir mavzuga bag‘ishlangan ilmiy tadqiqot",
+      "Ilmiy diskussiya shakli"
+    ],
+    "a": "Bir mavzuga bag‘ishlangan ilmiy tadqiqot"
+  },
+  {
+    "q": "Annotatsiya bu nima?",
+    "options": [
+      "Tadqiqot natijalarining batafsil tahlili",
+      "Asosiy manbaning qisqacha mazmuni",
+      "Ilmiy ishni tanqid qilish",
+      "Muallif fikrlarini keng yoritish"
+    ],
+    "a": "Asosiy manbaning qisqacha mazmuni"
+  },
+  {
+    "q": "Referat bu nima?",
+    "options": [
+      "Ilmiy baholash matni",
+      "Asosiy matnning qayta ishlangan taqdimoti",
+      "Dissertatsiya rejasi",
+      "Ilmiy loyiha bayoni"
+    ],
+    "a": "Asosiy matnning qayta ishlangan taqdimoti"
+  },
+  {
+    "q": "Ilmiy munozara nima?",
+    "options": [
+      "Tadqiqot natijalarini e’lon qilish",
+      "Ilmiy muammolarni muhokama qilish",
+      "Matnni qisqartirish",
+      "Annotatsiya tuzish"
+    ],
+    "a": "Ilmiy muammolarni muhokama qilish"
+  },
+  {
+    "q": "Akademik yozuv uslubining asosiy xususiyati qaysi?",
+    "options": [
+      "Faqat hissiylik",
+      "Oddiy tuzilma: kirish, asosiy qism, xulosa",
+      "Badiiy tasvirlarga boylik",
+      "Dialog shaklida yozish"
+    ],
+    "a": "Oddiy tuzilma: kirish, asosiy qism, xulosa"
+  },
+  {
+    "q": "Kirish qismi nima vazifani bajaradi?",
+    "options": [
+      "Xulosalar chiqaradi",
+      "Mavzuni qisqacha ochib beradi",
+      "Natijalarni tahlil qiladi",
+      "Bahs-munozara olib boradi"
+    ],
+    "a": "Mavzuni qisqacha ochib beradi"
+  },
+  {
+    "q": "Asosiy qismda nima amalga oshiriladi?",
+    "options": [
+      "Xulosalar beriladi",
+      "Mavzu bo‘yicha ilmiy qarashlar bayon etiladi",
+      "Mavzu qisqacha tanishtiriladi",
+      "Sarlavha aniqlanadi"
+    ],
+    "a": "Mavzu bo‘yicha ilmiy qarashlar bayon etiladi"
+  },
+  {
+    "q": "Xulosa qismi nima uchun xizmat qiladi?",
+    "options": [
+      "Muammo qo‘yish uchun",
+      "Xulosalar va istiqbollarni ko‘rsatish uchun",
+      "Manbalarni sanab o‘tish uchun",
+      "Asosiy qismni kengaytirish uchun"
+    ],
+    "a": "Xulosalar va istiqbollarni ko‘rsatish uchun"
+  },
+  {
+    "q": "Akademik yozuvda muhim bo‘lgan jihat qaysi?",
+    "options": [
+      "Hissiy bo‘yoqlar",
+      "Aniqlik va lo‘ndalik",
+      "Og‘zaki uslub",
+      "Shevaga xos so‘zlar"
+    ],
+    "a": "Aniqlik va lo‘ndalik"
+  },
+  {
+    "q": "Akademik yozish nimani o‘z ichiga oladi?",
+    "options": [
+      "Faqat kirish va xulosa",
+      "Kirish, asosiy qism va xulosa",
+      "Faqat asosiy qism",
+      "Dialog va bahs"
+    ],
+    "a": "Kirish, asosiy qism va xulosa"
+  },
+  {
+    "q": "Akademik yozuvni to‘g‘ri yozish uchun nima talab etiladi?",
+    "options": [
+      "So‘zlashuv uslubi",
+      "Ilmiy uslubga rioya qilish va manbalarga havola",
+      "Hissiy ifodalar",
+      "Jargonlardan foydalanish"
+    ],
+    "a": "Ilmiy uslubga rioya qilish va manbalarga havola"
+  },
+  {
+    "q": "Akademik yozuv nima uchun kerak?",
+    "options": [
+      "Badiiy ijod uchun",
+      "Ilmiy fikrni aniq ifodalash uchun",
+      "Og‘zaki nutqni rivojlantirish uchun",
+      "She’riyatni rivojlantirish uchun"
+    ],
+    "a": "Ilmiy fikrni aniq ifodalash uchun"
+  },
+  {
+    "q": "Akademik matnlar haqida qaysi fikr to‘g‘ri?",
+    "options": [
+      "Faqat olimlar yozadi",
+      "Talabalar va olimlar tomonidan yoziladi",
+      "Faqat publitsistik bo‘ladi",
+      "Faqat badiiy bo‘ladi"
+    ],
+    "a": "Talabalar va olimlar tomonidan yoziladi"
+  },
+  {
+    "q": "Nutq madaniyati nima?",
+    "options": [
+      "Badiiy ijod",
+      "Til me’yorlari va qoidalariga rioya qilish",
+      "She’r yozish san’ati",
+      "Akademik fan"
+    ],
+    "a": "Til me’yorlari va qoidalariga rioya qilish"
+  },
+  {
+    "q": "Til qoidalariga oid qaysi fikr to‘g‘ri?",
+    "options": [
+      "Ilmiy matnda qoidalar muhim emas",
+      "Akademik yozishda qoidalar muhim",
+      "Qoidalar faqat jurnalistlarga kerak",
+      "Qoidalar faqat og‘zaki nutqda ishlatiladi"
+    ],
+    "a": "Akademik yozishda qoidalar muhim"
+  },
+  {
+    "q": "Publitsistik va ilmiy matn o‘rtasidagi farq nima?",
+    "options": [
+      "Publitsistik matn bibliografiyani talab qilmaydi",
+      "Publitsistik matn keng ommaga, ilmiy matn esa mutaxassislarga mo‘ljallangan",
+      "Ilmiy matn hissiy ifodalarni o‘z ichiga oladi",
+      "Publitsistik matn faqat faktlarga asoslanadi"
+    ],
+    "a": "Publitsistik matn keng ommaga, ilmiy matn esa mutaxassislarga mo‘ljallangan"
+  },
+  {
+    "q": "Publitsistikada ilmiy matnga nisbatan qaysi usul qo‘llaniladi?",
+    "options": [
+      "Faqat bibliografik asoslar",
+      "Subyektiv tajribalardan foydalanish",
+      "Faqat statistik ma’lumotlar",
+      "Manbalarni umuman keltirmaslik"
+    ],
+    "a": "Subyektiv tajribalardan foydalanish"
+  },
+  {
+    "q": "Ilmiy matnning maqsadiga oid qaysi gap to‘g‘ri?",
+    "options": [
+      "Matnning adabiy qiymatini oshirish",
+      "Aniq va tasdiqlangan ma’lumotlarni taqdim etish",
+      "Hissiy fon yaratish",
+      "Keng omma uchun soddalashtirish"
+    ],
+    "a": "Aniq va tasdiqlangan ma’lumotlarni taqdim etish"
+  },
+  {
+    "q": "Ilmiy matnda ma’lumotlarga ko‘ra nima ko‘rsatilishi kerak?",
+    "options": [
+      "Shiorlar va e’tiqodlar",
+      "Emotsional bahslar",
+      "Ishonchli va obyektiv manbalarga havolalar",
+      "Subyektiv fikrlar"
+    ],
+    "a": "Ishonchli va obyektiv manbalarga havolalar"
+  },
+  {
+    "q": "Ilmiy matnda axborot qanday rol o‘ynaydi?",
+    "options": [
+      "Faqat batafsil bo‘lishi kerak",
+      "Qimmatli, to‘liq va ishonchli bo‘lishi kerak",
+      "Faqat raqamli shaklda bo‘lishi kerak",
+      "Analog shaklda taqdim etiladi"
+    ],
+    "a": "Qimmatli, to‘liq va ishonchli bo‘lishi kerak"
+  },
+  {
+    "q": "Matnga ko‘ra ma’lumotlarning qaysi turlari ko‘proq tarqalgan?",
+    "options": [
+      "Hissiy va mantiqiy",
+      "Foydali va foydasiz",
+      "Sifat va miqdoriy",
+      "Analog va diskret"
+    ],
+    "a": "Sifat va miqdoriy"
+  },
+  {
+    "q": "Akademik yozuvda triadani tashkil etishning o‘ziga xos xususiyati nimada?",
+    "options": [
+      "Emotsional argumentlar yaratish",
+      "Signalli so‘zlardan foydalanish",
+      "Shaxsiy e’tiqodni ifodalash",
+      "Subyektiv tajriba hosil qilish"
+    ],
+    "a": "Signalli so‘zlardan foydalanish"
+  },
+  {
+    "q": "Ilmiy matn muallifi o‘quvchini qanday ishontiradi?",
+    "options": [
+      "Shaxsiy qarashlarni singdirish orqali",
+      "Emotsional murojaatlar bilan",
+      "Dalilning mantiqiyligi va izchilligi orqali",
+      "Manipulyatsiya yordamida"
+    ],
+    "a": "Dalilning mantiqiyligi va izchilligi orqali"
+  },
+  {
+    "q": "Matnga ko‘ra nutq madaniyati nima?",
+    "options": [
+      "Yangi nutq standartlarini yaratish",
+      "Til me’yor va qoidalarini saqlash",
+      "Shevalarni o‘rganish",
+      "Chet tillarni moslashtirish"
+    ],
+    "a": "Til me’yor va qoidalarini saqlash"
+  },
+  {
+    "q": "Matnga ko‘ra akademik yozishda muhokama qanday rol o‘ynaydi?",
+    "options": [
+      "Muallif va muharrir o‘rtasida ziddiyat keltiradi",
+      "Emotsional bo‘yoq hosil qiladi",
+      "Ilmiy aloqa uchun asos bo‘lib xizmat qiladi",
+      "Muallif fikrini cheklaydi"
+    ],
+    "a": "Ilmiy aloqa uchun asos bo‘lib xizmat qiladi"
+  },
+  {
+    "q": "Matnga ko‘ra maktab yoki universitetda qaysi ko‘nikmalar odatda o‘qitilmaydi?",
+    "options": [
+      "Tilshunoslik nazariyasi asoslari",
+      "Badiiy matn yaratish texnologiyalari",
+      "Metallingvistik yozish malakasi",
+      "Til shevalari bilan ishlash"
+    ],
+    "a": "Metallingvistik yozish malakasi"
+  },
+  {
+    "q": "Ma’lumotlarga ko‘ra, qaysi gap badiiy matnga mos keladi?",
+    "options": [
+      "Tasdiqlangan fakt va dalillarga asoslanadi",
+      "Tilning qat’iy me’yorlariga bo‘ysunadi",
+      "Unda subyektiv kechinmalar va xayoliy g‘oyalar bo‘lishi mumkin",
+      "Faqat ilmiy atamalardan foydalaniladi"
+    ],
+    "a": "Unda subyektiv kechinmalar va xayoliy g‘oyalar bo‘lishi mumkin"
+  },
+  {
+    "q": "Muallifning badiiy adabiyot o‘qishga munosabati qanday?",
+    "options": [
+      "Matnlar qat’iy nazorat qilinishi kerak",
+      "O‘qishda tanlash erkinligi va individual didni qo‘llab-quvvatlaydi",
+      "Faqat klassik asarlar o‘qilishi lozim",
+      "Mazmun qat’iy baholanadi"
+    ],
+    "a": "O‘qishda tanlash erkinligi va individual didni qo‘llab-quvvatlaydi"
+  },
+  {
+    "q": "Ilmiy matnni qaysi xususiyatlar xarakterlaydi?",
+    "options": [
+      "O‘qish vaqti minimal bo‘lishi",
+      "Tuyg‘ularning yetishmasligi",
+      "Axborot mazmuni va xolisligi",
+      "Faqat mutaxassislar uchun yozilishi"
+    ],
+    "a": "Axborot mazmuni va xolisligi"
+  },
+  {
+    "q": "Matnga ko‘ra akademik yozuvdan maqsad nima?",
+    "options": [
+      "Til me’yorlarini asrash",
+      "O‘z fikrlarini ifoda etish va asoslashni o‘rganish",
+      "Ijtimoiy muammolarga e’tibor qaratish",
+      "Badiiy nutqni rivojlantirish"
+    ],
+    "a": "O‘z fikrlarini ifoda etish va asoslashni o‘rganish"
+  },
+  {
+    "q": "Publitsistik matn ilmiy matndan qanday farq qiladi?",
+    "options": [
+      "Faqat faktlarga asoslanadi",
+      "Mutaxassislar uchun yoziladi",
+      "Umumiy o‘quvchiga qaratilgan va muallifning emotsional pozitsiyasini ifodalaydi",
+      "Bibliografiyani talab qiladi"
+    ],
+    "a": "Umumiy o‘quvchiga qaratilgan va muallifning emotsional pozitsiyasini ifodalaydi"
+  },
+  {
+    "q": "Badiiy adabiyotga xos bo‘lgan xususiyat qaysi?",
+    "options": [
+      "Mutaxassislar uchun axborot berish",
+      "Estetik ehtiyojlarni qondirish",
+      "Ish uchun ma’lumot taqdim etish",
+      "Faqat faktlarga asoslanish"
+    ],
+    "a": "Estetik ehtiyojlarni qondirish"
+  },
+  {
+    "q": "Ilmiy matnda ma’lumotlarga ko‘ra nima ko‘rsatilishi kerak?",
+    "options": [
+      "Emotsional bahslar",
+      "Shiorlar va e’tiqodlar",
+      "Ishonchli va obyektiv manbalarga havolalar",
+      "Subyektiv fikrlar"
+    ],
+    "a": "Ishonchli va obyektiv manbalarga havolalar"
+  },
+  {
+    "q": "Ilmiy matnda axborot qanday bo‘lishi kerak?",
+    "options": [
+      "Faqat batafsil",
+      "Raqamli shaklda",
+      "Qimmatli, to‘liq va ishonchli",
+      "Analog shaklda"
+    ],
+    "a": "Qimmatli, to‘liq va ishonchli"
+  },
+  {
+    "q": "Matnga ko‘ra axborotning qaysi turlari ko‘proq uchraydi?",
+    "options": [
+      "Foydali va foydasiz",
+      "Analog va diskret",
+      "Hissiy va mantiqiy",
+      "Sifat va miqdoriy"
+    ],
+    "a": "Sifat va miqdoriy"
+  },
+  {
+    "q": "Akademik yozuvda triadani tashkil etishning o‘ziga xos xususiyati nimada?",
+    "options": [
+      "Emotsional argumentlar yaratish",
+      "Muallifning shaxsiy e’tiqodini ifodalash",
+      "Matnga yangi elementlarni kiritish uchun signalli so‘zlardan foydalanish",
+      "Subyektiv tajriba hosil qilish"
+    ],
+    "a": "Matnga yangi elementlarni kiritish uchun signalli so‘zlardan foydalanish"
+  },
+  {
+    "q": "Qaysi turdagi matn maksimal hajmga ega va yozma nutqning shakli hisoblanadi?",
+    "options": [
+      "Argumentativ matn",
+      "Mikromatn",
+      "Makromatn",
+      "Texnik tavsiflovchi matn"
+    ],
+    "a": "Makromatn"
+  },
+  {
+    "q": "Qaysi turdagi matn obyektlarni tavsiflaydi va texnik yoki badiiy bo‘lishi mumkin?",
+    "options": [
+      "Hikoya matni",
+      "Izohlovchi matn",
+      "Ta’riflovchi matn",
+      "Argumentativ matn"
+    ],
+    "a": "Ta’riflovchi matn"
+  },
+  {
+    "q": "Muallifning shaxsiy fikrini bildirmasdan tushuntirishni maqsad qilgan matn turi qaysi?",
+    "options": [
+      "Makromatn",
+      "Texnik tavsiflovchi matn",
+      "Izohlovchi matn",
+      "Mikromatn"
+    ],
+    "a": "Izohlovchi matn"
+  },
+  {
+    "q": "O‘quvchini ma’lum bir pozitsiya tarafdori yoki unga qarshi ko‘ndirish uchun mo‘ljallangan matn turi qaysi?",
+    "options": [
+      "Hikoya matni",
+      "Ta’riflovchi matn",
+      "Izohlovchi matn",
+      "Argumentativ matn"
+    ],
+    "a": "Argumentativ matn"
+  },
+  {
+    "q": "Voqea va faktlar dinamik fe’llar yordamida tasvirlangan matn turi qaysi?",
+    "options": [
+      "Izohlovchi matn",
+      "Texnik tavsiflovchi matn",
+      "Hikoya matni",
+      "Ta’riflovchi matn"
+    ],
+    "a": "Hikoya matni"
+  },
+  {
+    "q": "Faoliyatni rivojlantirish yoki maqsadga erishish yo‘llarini tushuntiruvchi matn qaysi?",
+    "options": [
+      "Ilmiy matn",
+      "Huquqiy matn",
+      "Ma’muriy matn",
+      "Direktiv matn"
+    ],
+    "a": "Direktiv matn"
+  },
+  {
+    "q": "Juda ko‘p texnik detallar va rasmiy tilga ega bo‘lgan matnlar qaysi?",
+    "options": [
+      "Gumanistik matnlar",
+      "Badiiy matnlar",
+      "Direktiv matnlar",
+      "Huquqiy matnlar"
+    ],
+    "a": "Huquqiy matnlar"
+  },
+  {
+    "q": "Katta adabiy estetika, majoziy til va boy hissiyotlar qaysi matn turiga xos?",
+    "options": [
+      "Gazeta matnlari",
+      "Badiiy matnlar",
+      "Raqamli matnlar",
+      "Reklama matnlari"
+    ],
+    "a": "Badiiy matnlar"
+  },
+  {
+    "q": "O‘quvchini mahsulot sotib olishga yoki xizmatdan foydalanishga undovchi matnlar qaysi?",
+    "options": [
+      "Gazeta matnlari",
+      "Gumanistik matnlar",
+      "Raqamli matnlar",
+      "Reklama matnlari"
+    ],
+    "a": "Reklama matnlari"
+  },
+  {
+    "q": "Raqamli texnologiyalar ta’sirida paydo bo‘lgan matn turi qaysi?",
+    "options": [
+      "Gazeta matni",
+      "Raqamli matn",
+      "Badiiy matn",
+      "Huquqiy matn"
+    ],
+    "a": "Raqamli matn"
+  },
+  {
+    "q": "Gazeta va jurnallarda chop etiladigan matnlar qaysi turga kiradi?",
+    "options": [
+      "Badiiy matnlar",
+      "Ilmiy matnlar",
+      "Gazeta matnlari",
+      "Direktiv matnlar"
+    ],
+    "a": "Gazeta matnlari"
+  },
+  {
+    "q": "Internet va ijtimoiy tarmoqlarda tarqaladigan qisqa matnlar qanday ataladi?",
+    "options": [
+      "Makromatn",
+      "Texnik matn",
+      "Mikromatn",
+      "Ilmiy matn"
+    ],
+    "a": "Mikromatn"
+  },
+  {
+    "q": "Mikromatnning asosiy xususiyati nima?",
+    "options": [
+      "Katta hajmga egaligi",
+      "Mavzuni keng tahlil qilishi",
+      "Qisqa va lo‘nda bo‘lishi",
+      "Rasmiy uslubda yozilishi"
+    ],
+    "a": "Qisqa va lo‘nda bo‘lishi"
+  },
+  {
+    "q": "Mikromatnlarga qaysi misol mos keladi?",
+    "options": [
+      "Dissertatsiya",
+      "Ilmiy maqola",
+      "Reklama shiori",
+      "Monografiya"
+    ],
+    "a": "Reklama shiori"
+  },
+  {
+    "q": "Raqamli matnlarga qaysi misol kiradi?",
+    "options": [
+      "Ilmiy dissertatsiya",
+      "Qonun hujjati",
+      "Blog posti yoki tvit",
+      "Darslik"
+    ],
+    "a": "Blog posti yoki tvit"
+  },
+  {
+    "q": "Gazeta matnlarining asosiy vazifasi nima?",
+    "options": [
+      "Estetik zavq berish",
+      "O‘quvchini ko‘ndirish",
+      "Axborot yetkazish",
+      "Ilmiy xulosa chiqarish"
+    ],
+    "a": "Axborot yetkazish"
+  },
+  {
+    "q": "Reklama matnlarida ko‘proq qaysi usul qo‘llaniladi?",
+    "options": [
+      "Mantiqiy tahlil",
+      "Hissiy ta’sir",
+      "Statistik dalillar",
+      "Ilmiy isbot"
+    ],
+    "a": "Hissiy ta’sir"
+  },
+  {
+    "q": "Direktiv matnlarning asosiy vazifasi nima?",
+    "options": [
+      "Axborot berish",
+      "Ko‘rsatma va buyruq berish",
+      "Bahs yuritish",
+      "Estetik ta’sir ko‘rsatish"
+    ],
+    "a": "Ko‘rsatma va buyruq berish"
+  },
+  {
+    "q": "Huquqiy matnlar qanday til bilan ajralib turadi?",
+    "options": [
+      "Badiiy va obrazli",
+      "Oddiy va so‘zlashuv",
+      "Rasmiy va qat’iy",
+      "Emotsional va ta’sirchan"
+    ],
+    "a": "Rasmiy va qat’iy"
+  },
+  {
+    "q": "Akademik yozuvda bibliografiya nima uchun kerak?",
+    "options": [
+      "Matn hajmini oshirish uchun",
+      "Manbalarni ko‘rsatish va ishonchlilikni ta’minlash uchun",
+      "O‘quvchini chalg‘itish uchun",
+      "Faqat rasmiy talab sifatida"
+    ],
+    "a": "Manbalarni ko‘rsatish va ishonchlilikni ta’minlash uchun"
+  },
+  {
+    "q": "Plagiat nima?",
+    "options": [
+      "Ilmiy manbani to‘g‘ri keltirish",
+      "Boshqa muallif fikrini o‘zlashtirib, manba ko‘rsatmaslik",
+      "O‘z fikrini qayta yozish",
+      "Manbani qisqartirib berish"
+    ],
+    "a": "Boshqa muallif fikrini o‘zlashtirib, manba ko‘rsatmaslik"
+  },
+  {
+    "q": "Akademik halollik nimani anglatadi?",
+    "options": [
+      "Faqat yuqori baho olish",
+      "Manbalarga to‘g‘ri havola berish va plagiatdan qochish",
+      "Ko‘p matn yozish",
+      "Faqat o‘qituvchi fikriga tayanish"
+    ],
+    "a": "Manbalarga to‘g‘ri havola berish va plagiatdan qochish"
+  },
+  {
+    "q": "Parafraz qilish nima?",
+    "options": [
+      "Matnni so‘zma-so‘z ko‘chirish",
+      "Matnni o‘zgartirmasdan tarjima qilish",
+      "Asl ma’noni saqlagan holda qayta ifodalash",
+      "Matnni qisqartirib tashlash"
+    ],
+    "a": "Asl ma’noni saqlagan holda qayta ifodalash"
+  },
+  {
+    "q": "Iqtibos (quote) qanday hollarda ishlatiladi?",
+    "options": [
+      "Har doim, manbasiz",
+      "Faqat badiiy matnda",
+      "Muallif fikrini aynan keltirish zarur bo‘lganda",
+      "Faqat uzun matnlarda"
+    ],
+    "a": "Muallif fikrini aynan keltirish zarur bo‘lganda"
+  },
+  {
+    "q": "Akademik yozuvda iqtibos berilganda nima qilish shart?",
+    "options": [
+      "Iqtibosni o‘zgartirish",
+      "Manbani ko‘rsatish",
+      "Faqat kurs nomini yozish",
+      "Iqtibosni qisqartirish"
+    ],
+    "a": "Manbani ko‘rsatish"
+  },
+  {
+    "q": "Akademik yozuvda xulosa qismida nima bo‘lishi kerak?",
+    "options": [
+      "Yangi dalillar",
+      "Asosiy fikrlarning umumlashtirilishi",
+      "Batafsil statistika",
+      "Muallif tarjimai holi"
+    ],
+    "a": "Asosiy fikrlarning umumlashtirilishi"
+  },
+  {
+    "q": "Ilmiy matnda shaxsiy his-tuyg‘ular qanday baholanadi?",
+    "options": [
+      "Asosiy omil hisoblanadi",
+      "Qisman ruxsat etiladi",
+      "Imkon qadar cheklanishi kerak",
+      "Majburiy bo‘lishi kerak"
+    ],
+    "a": "Imkon qadar cheklanishi kerak"
+  },
+  {
+    "q": "Akademik yozuvda qaysi shaxs shakli ko‘proq qo‘llaniladi?",
+    "options": [
+      "Ikkinchi shaxs",
+      "Birinchi shaxs ko‘plik yoki passiv shakl",
+      "Faqat birinchi shaxs birlik",
+      "Uchinchi shaxs og‘zaki shakl"
+    ],
+    "a": "Birinchi shaxs ko‘plik yoki passiv shakl"
+  },
+  {
+    "q": "Akademik matnda til qanday bo‘lishi kerak?",
+    "options": [
+      "Oddiy va so‘zlashuv",
+      "Badiiy va obrazli",
+      "Aniq, rasmiy va xolis",
+      "Emotsional va ta’sirchan"
+    ],
+    "a": "Aniq, rasmiy va xolis"
+  },
+  {
+    "q": "Akademik yozuvda reja tuzish nima uchun muhim?",
+    "options": [
+      "Faqat vaqtni to‘ldirish uchun",
+      "Matnni mantiqiy va izchil qurish uchun",
+      "So‘z sonini oshirish uchun",
+      "Faqat rasmiy talab sifatida"
+    ],
+    "a": "Matnni mantiqiy va izchil qurish uchun"
+  },
+  {
+    "q": "Ilmiy ishda kirish qismi nimani o‘z ichiga oladi?",
+    "options": [
+      "Natijalar va jadval",
+      "Mavzuning dolzarbligi va maqsadi",
+      "Xulosa va tavsiyalar",
+      "Bibliografiya"
+    ],
+    "a": "Mavzuning dolzarbligi va maqsadi"
+  },
+  {
+    "q": "Asosiy qismning vazifasi nima?",
+    "options": [
+      "Muammoni chuqur tahlil qilish",
+      "Faqat mavzuni tanishtirish",
+      "Qisqa xulosa berish",
+      "Manbalarni sanab o‘tish"
+    ],
+    "a": "Muammoni chuqur tahlil qilish"
+  },
+  {
+    "q": "Ilmiy ishda natijalar qayerda beriladi?",
+    "options": [
+      "Kirish qismida",
+      "Xulosa qismida",
+      "Asosiy qismda",
+      "Bibliografiyada"
+    ],
+    "a": "Asosiy qismda"
+  },
+  {
+    "q": "Xulosa qismida qaysi ma’lumot bo‘lmasligi kerak?",
+    "options": [
+      "Umumlashtirilgan fikrlar",
+      "Yangi tadqiqot ma’lumotlari",
+      "Asosiy natijalar",
+      "Tavsiyalar"
+    ],
+    "a": "Yangi tadqiqot ma’lumotlari"
+  },
+  {
+    "q": "Akademik yozuvda jadval va diagrammalar nima uchun ishlatiladi?",
+    "options": [
+      "Matnni bezash uchun",
+      "Ma’lumotni aniq va tushunarli ko‘rsatish uchun",
+      "Faqat sahifani to‘ldirish uchun",
+      "O‘quvchini chalg‘itish uchun"
+    ],
+    "a": "Ma’lumotni aniq va tushunarli ko‘rsatish uchun"
+  },
+  {
+    "q": "Ilmiy ishda manbalar ro‘yxati qayerda beriladi?",
+    "options": [
+      "Kirish qismida",
+      "Asosiy qismda",
+      "Xulosa oldidan",
+      "Oxirida"
+    ],
+    "a": "Oxirida"
+  },
+  {
+    "q": "Akademik yozuvda tahrirlash nima uchun zarur?",
+    "options": [
+      "So‘z sonini kamaytirish uchun",
+      "Grammatik va mantiqiy xatolarni tuzatish uchun",
+      "Faqat dizaynni o‘zgartirish uchun",
+      "Faqat rasmiy talab sifatida"
+    ],
+    "a": "Grammatik va mantiqiy xatolarni tuzatish uchun"
+  },
+  {
+    "q": "Akademik yozuvda qayta ko‘rib chiqish (revision) nimani anglatadi?",
+    "options": [
+      "Faqat imlo xatolarini tuzatish",
+      "Matn mazmunini, tuzilishini va dalillarni yaxshilash",
+      "Matnni qisqartirish",
+      "Manbalarni olib tashlash"
+    ],
+    "a": "Matn mazmunini, tuzilishini va dalillarni yaxshilash"
+  },
+  {
+    "q": "Akademik yozuvni baholashda qaysi mezon muhim?",
+    "options": [
+      "Matn uzunligi",
+      "Aniqlik, mantiqiylik va manbalarga tayanish",
+      "Faqat dizayn",
+      "Muallif yoshi"
+    ],
+    "a": "Aniqlik, mantiqiylik va manbalarga tayanish"
+  },
+  {
+    "q": "Akademik yozuvda muammo bayoni nimani anglatadi?",
+    "options": [
+      "Natijalarni taqdim etish",
+      "Tadqiqot savolini aniq qo‘yish",
+      "Manbalarni sanab o‘tish",
+      "Xulosani yozish"
+    ],
+    "a": "Tadqiqot savolini aniq qo‘yish"
+  },
+  {
+    "q": "Tadqiqot savoli qanday bo‘lishi kerak?",
+    "options": [
+      "Noaniq va keng",
+      "Aniq, o‘lchanadigan va tekshiriladigan",
+      "Faqat taxminiy",
+      "Javobsiz"
+    ],
+    "a": "Aniq, o‘lchanadigan va tekshiriladigan"
+  },
+  {
+    "q": "Akademik yozuvda gipoteza nima?",
+    "options": [
+      "Tadqiqot natijalari",
+      "Oldindan ilgari surilgan taxmin",
+      "Bibliografiya qismi",
+      "Xulosa"
+    ],
+    "a": "Oldindan ilgari surilgan taxmin"
+  },
+  {
+    "q": "Gipoteza qachon tekshiriladi?",
+    "options": [
+      "Kirish qismida",
+      "Tadqiqot jarayonida",
+      "Bibliografiyada",
+      "Xulosadan oldin"
+    ],
+    "a": "Tadqiqot jarayonida"
+  },
+  {
+    "q": "Akademik yozuvda metodologiya nimani bildiradi?",
+    "options": [
+      "Tadqiqotda qo‘llanilgan usullar majmui",
+      "Natijalar ro‘yxati",
+      "Mavzuning dolzarbligi",
+      "Muallif xulosasi"
+    ],
+    "a": "Tadqiqotda qo‘llanilgan usullar majmui"
+  },
+  {
+    "q": "Ilmiy tadqiqotda empirik ma’lumotlar nima?",
+    "options": [
+      "Nazariy taxminlar",
+      "Amaliy kuzatuv va tajriba natijalari",
+      "Adabiy tahlil",
+      "Shaxsiy fikrlar"
+    ],
+    "a": "Amaliy kuzatuv va tajriba natijalari"
+  },
+  {
+    "q": "Nazariy ma’lumotlar nimaga asoslanadi?",
+    "options": [
+      "Kuzatuv va tajribaga",
+      "Oldingi tadqiqotlar va konsepsiyalarga",
+      "Shaxsiy tajribaga",
+      "Intervyularga"
+    ],
+    "a": "Oldingi tadqiqotlar va konsepsiyalarga"
+  },
+  {
+    "q": "Akademik yozuvda adabiyotlar tahlili nima uchun kerak?",
+    "options": [
+      "Mavzuni bezash uchun",
+      "Oldingi tadqiqotlarni tahlil qilish va bo‘shliqlarni aniqlash uchun",
+      "Faqat manbalarni sanash uchun",
+      "Natijalarni qisqartirish uchun"
+    ],
+    "a": "Oldingi tadqiqotlarni tahlil qilish va bo‘shliqlarni aniqlash uchun"
+  },
+  {
+    "q": "Ilmiy ishda dalil nima bilan mustahkamlanadi?",
+    "options": [
+      "Hissiy ifodalar bilan",
+      "Statistik ma’lumotlar va manbalar bilan",
+      "Taxminlar bilan",
+      "Reklama misollari bilan"
+    ],
+    "a": "Statistik ma’lumotlar va manbalar bilan"
+  },
+  {
+    "q": "Akademik yozuvda izchillik nimani anglatadi?",
+    "options": [
+      "Mavzudan chetga chiqish",
+      "Fikrlarning mantiqiy ketma-ketligi",
+      "Matnni qisqartirish",
+      "So‘zlarni ko‘paytirish"
+    ],
+    "a": "Fikrlarning mantiqiy ketma-ketligi"
+  },
+  {
+    "q": "Akademik yozuvda bog‘lovchi (linking) so‘zlar nima uchun ishlatiladi?",
+    "options": [
+      "Matnni bezash uchun",
+      "Fikrlar orasidagi mantiqiy aloqani ko‘rsatish uchun",
+      "Hissiy ta’sir berish uchun",
+      "Matn hajmini oshirish uchun"
+    ],
+    "a": "Fikrlar orasidagi mantiqiy aloqani ko‘rsatish uchun"
+  },
+  {
+    "q": "Quyidagilardan qaysi biri akademik bog‘lovchi so‘zlarga misol?",
+    "options": [
+      "Lekin",
+      "Biroq",
+      "Shuningdek",
+      "Yuqoridagilarning barchasi"
+    ],
+    "a": "Yuqoridagilarning barchasi"
+  },
+  {
+    "q": "Akademik yozuvda ob’ektivlik nimani bildiradi?",
+    "options": [
+      "Shaxsiy fikrni ustun qo‘yish",
+      "Dalil va faktlarga tayanish",
+      "Emotsional yondashuv",
+      "Subyektiv baholash"
+    ],
+    "a": "Dalil va faktlarga tayanish"
+  },
+  {
+    "q": "Akademik yozuvda subyektivlik qachon cheklanadi?",
+    "options": [
+      "Ilmiy dalillar berilganda",
+      "Badiiy matn yozilganda",
+      "Reklama matnida",
+      "Og‘zaki nutqda"
+    ],
+    "a": "Ilmiy dalillar berilganda"
+  },
+  {
+    "q": "Akademik yozuvda terminlar qanday qo‘llanilishi kerak?",
+    "options": [
+      "Tasodifiy",
+      "Aniq va izchil",
+      "Faqat sinonimlar bilan",
+      "Qisqartirib"
+    ],
+    "a": "Aniq va izchil"
+  },
+  {
+    "q": "Akademik matnda qisqartmalar qanday beriladi?",
+    "options": [
+      "Izohsiz",
+      "Birinchi marta to‘liq yozilib, keyin qisqartma bilan",
+      "Faqat jadvalda",
+      "Xulosada"
+    ],
+    "a": "Birinchi marta to‘liq yozilib, keyin qisqartma bilan"
+  },
+  {
+    "q": "Akademik yozuvda grafik va jadvalga qanday talab qo‘yiladi?",
+    "options": [
+      "Faqat bezak bo‘lishi",
+      "Izoh va sarlavhaga ega bo‘lishi",
+      "Faqat rangli bo‘lishi",
+      "Manbasiz berilishi"
+    ],
+    "a": "Izoh va sarlavhaga ega bo‘lishi"
+  },
+  {
+    "q": "Ilmiy ishda muhokama (discussion) qismi nimani bajaradi?",
+    "options": [
+      "Natijalarni sharhlash va talqin qilish",
+      "Kirishni yozish",
+      "Manbalarni sanash",
+      "Metodlarni tavsiflash"
+    ],
+    "a": "Natijalarni sharhlash va talqin qilish"
+  },
+  {
+    "q": "Akademik yozuvda cheklovlar (limitations) nima uchun ko‘rsatiladi?",
+    "options": [
+      "Tadqiqotni tanqid qilish uchun",
+      "Tadqiqot doirasini va chegaralarini aniqlash uchun",
+      "Natijalarni inkor etish uchun",
+      "Xulosani cho‘zish uchun"
+    ],
+    "a": "Tadqiqot doirasini va chegaralarini aniqlash uchun"
+  },
+  {
+    "q": "Akademik yozuvda tavsiyalar qayerda beriladi?",
+    "options": [
+      "Kirish qismida",
+      "Asosiy qismda",
+      "Xulosa yoki muhokama qismida",
+      "Bibliografiyada"
+    ],
+    "a": "Xulosa yoki muhokama qismida"
+  },
+  {
+    "q": "Akademik yozuvda etik talablar nimani o‘z ichiga oladi?",
+    "options": [
+      "Plagiatdan qochish va halollik",
+      "Faqat dizayn talablarini",
+      "Matn hajmini",
+      "Faqat manbalar sonini"
+    ],
+    "a": "Plagiatdan qochish va halollik"
+  },
+  {
+    "q": "Ilmiy ishni topshirishdan oldin qaysi bosqich muhim?",
+    "options": [
+      "Faqat chop etish",
+      "Tahrirlash va tekshirish",
+      "Faqat sarlavha qo‘yish",
+      "Manbalarni olib tashlash"
+    ],
+    "a": "Tahrirlash va tekshirish"
+  },
+  {
+    "q": "Akademik yozuvda formatlash nimani anglatadi?",
+    "options": [
+      "Matn mazmunini o‘zgartirish",
+      "Shrift, interval va sahifa talablariga rioya qilish",
+      "Faqat rasm qo‘shish",
+      "So‘zlarni ko‘paytirish"
+    ],
+    "a": "Shrift, interval va sahifa talablariga rioya qilish"
+  },
+  {
+    "q": "Akademik yozuvda sarlavha qanday bo‘lishi kerak?",
+    "options": [
+      "Juda uzun va murakkab",
+      "Aniq, qisqa va mazmunni aks ettiruvchi",
+      "Hissiy va obrazli",
+      "Savolsiz"
+    ],
+    "a": "Aniq, qisqa va mazmunni aks ettiruvchi"
+  },
+  {
+    "q": "Ilmiy ishda annotatsiya nima vazifani bajaradi?",
+    "options": [
+      "Butun ishni batafsil tushuntiradi",
+      "Ish mazmunini qisqacha bayon qiladi",
+      "Faqat xulosani beradi",
+      "Manbalarni sanaydi"
+    ],
+    "a": "Ish mazmunini qisqacha bayon qiladi"
+  },
+  {
+    "q": "Akademik yozuvda kalit so‘zlar (keywords) nima uchun beriladi?",
+    "options": [
+      "Matnni bezash uchun",
+      "Qidirish va mavzuni aniqlashni osonlashtirish uchun",
+      "So‘z sonini oshirish uchun",
+      "Faqat rasmiy talab sifatida"
+    ],
+    "a": "Qidirish va mavzuni aniqlashni osonlashtirish uchun"
+  },
+  {
+    "q": "Akademik yozuvda abstrakt til nimani bildiradi?",
+    "options": [
+      "Badiiy ifodalar",
+      "Umumlashtirilgan va nazariy tushunchalar",
+      "So‘zlashuv iboralari",
+      "Reklama shiorlari"
+    ],
+    "a": "Umumlashtirilgan va nazariy tushunchalar"
+  },
+  {
+    "q": "Akademik yozuvda aniq misollar nima uchun keltiriladi?",
+    "options": [
+      "Matnni cho‘zish uchun",
+      "Nazariy fikrlarni tushuntirish va isbotlash uchun",
+      "Faqat bezak uchun",
+      "Hissiy ta’sir berish uchun"
+    ],
+    "a": "Nazariy fikrlarni tushuntirish va isbotlash uchun"
+  },
+  {
+    "q": "Akademik yozuvda izoh (footnote/endnote) qachon qo‘llaniladi?",
+    "options": [
+      "Har doim",
+      "Qo‘shimcha tushuntirish yoki manba berish zarur bo‘lganda",
+      "Faqat xulosada",
+      "Faqat kirishda"
+    ],
+    "a": "Qo‘shimcha tushuntirish yoki manba berish zarur bo‘lganda"
+  },
+  {
+    "q": "Akademik yozuvda mantiqiy bog‘lanish nima uchun muhim?",
+    "options": [
+      "Matnni bezash uchun",
+      "Fikrlarning tushunarli va izchil bo‘lishi uchun",
+      "So‘z sonini oshirish uchun",
+      "Faqat rasmiy talab sifatida"
+    ],
+    "a": "Fikrlarning tushunarli va izchil bo‘lishi uchun"
+  },
+  {
+    "q": "Akademik yozuvda paragrafning asosiy vazifasi nima?",
+    "options": [
+      "Bir nechta mavzuni aralashtirish",
+      "Bitta asosiy fikrni rivojlantirish",
+      "Faqat misollar berish",
+      "Matnni cho‘zish"
+    ],
+    "a": "Bitta asosiy fikrni rivojlantirish"
+  },
+  {
+    "q": "Paragrafning topic sentence qaysi vazifani bajaradi?",
+    "options": [
+      "Paragrafni yakunlaydi",
+      "Asosiy fikrni bildiradi",
+      "Misollarni sanaydi",
+      "Xulosani beradi"
+    ],
+    "a": "Asosiy fikrni bildiradi"
+  },
+  {
+    "q": "Akademik yozuvda supporting sentence nima?",
+    "options": [
+      "Asosiy fikrni isbotlovchi dalillar",
+      "Xulosa jumlasi",
+      "Sarlavha",
+      "Kirish jumlasi"
+    ],
+    "a": "Asosiy fikrni isbotlovchi dalillar"
+  },
+  {
+    "q": "Paragrafda concluding sentence nima vazifani bajaradi?",
+    "options": [
+      "Yangi mavzu ochadi",
+      "Asosiy fikrni umumlashtiradi",
+      "Dalillar keltiradi",
+      "Misollar beradi"
+    ],
+    "a": "Asosiy fikrni umumlashtiradi"
+  },
+  {
+    "q": "Akademik yozuvda coherence nimani anglatadi?",
+    "options": [
+      "Matn uzunligini",
+      "Fikrlarning o‘zaro bog‘liqligini",
+      "So‘z boyligini",
+      "Hissiy ta’sirni"
+    ],
+    "a": "Fikrlarning o‘zaro bog‘liqligini"
+  },
+  {
+    "q": "Akademik yozuvda cohesion nimani bildiradi?",
+    "options": [
+      "Bog‘lovchi vositalar orqali matnni birlashtirish",
+      "Matnni qisqartirish",
+      "Faqat grammatikani tekshirish",
+      "Badiiy ifodalarni ko‘paytirish"
+    ],
+    "a": "Bog‘lovchi vositalar orqali matnni birlashtirish"
+  },
+  {
+    "q": "Akademik yozuvda qayta yozish (rewriting) nima uchun kerak?",
+    "options": [
+      "Plagiat qilish uchun",
+      "Matnni tushunarli va mukammal qilish uchun",
+      "So‘zlarni ko‘paytirish uchun",
+      "Faqat vaqtni o‘tkazish uchun"
+    ],
+    "a": "Matnni tushunarli va mukammal qilish uchun"
+  },
+  {
+    "q": "Akademik yozuvda proofreading nimani anglatadi?",
+    "options": [
+      "Mazmunni o‘zgartirish",
+      "Grammatik va imlo xatolarini tekshirish",
+      "Manbalarni olib tashlash",
+      "Matnni qisqartirish"
+    ],
+    "a": "Grammatik va imlo xatolarini tekshirish"
+  },
+  {
+    "q": "Akademik yozuvda peer review nima?",
+    "options": [
+      "Muallifning o‘zini baholashi",
+      "Hamkasblar tomonidan ilmiy ishni baholash",
+      "Faqat o‘qituvchi tekshiruvi",
+      "Avtomatik tekshiruv"
+    ],
+    "a": "Hamkasblar tomonidan ilmiy ishni baholash"
+  },
+  {
+    "q": "Akademik yozuvda feedback nima uchun muhim?",
+    "options": [
+      "Muallifni tanqid qilish uchun",
+      "Ish sifatini yaxshilash uchun",
+      "Bahoni pasaytirish uchun",
+      "Faqat rasmiy talab sifatida"
+    ],
+    "a": "Ish sifatini yaxshilash uchun"
+  },
+  {
+    "q": "Akademik yozuvda argument kuchli bo‘lishi uchun nima zarur?",
+    "options": [
+      "Hissiy murojaatlar",
+      "Dalillar va mantiqiy asos",
+      "Ko‘p so‘z ishlatish",
+      "Reklama misollari"
+    ],
+    "a": "Dalillar va mantiqiy asos"
+  },
+  {
+    "q": "Akademik yozuvda qarama-qarshi fikrlar (counterargument) nima uchun keltiriladi?",
+    "options": [
+      "Muallif fikrini inkor etish uchun",
+      "Bahsni murakkablashtirish uchun",
+      "Asosiy argumentni kuchaytirish uchun",
+      "Mavzudan chetga chiqish uchun"
+    ],
+    "a": "Asosiy argumentni kuchaytirish uchun"
+  },
+  {
+    "q": "Akademik yozuvda xolis ohang nimani anglatadi?",
+    "options": [
+      "Shaxsiy fikrni ustun qo‘yish",
+      "Dalillarga asoslangan betaraf uslub",
+      "Hissiy yondashuv",
+      "Reklama ohangi"
+    ],
+    "a": "Dalillarga asoslangan betaraf uslub"
+  },
+  {
+    "q": "Akademik yozuvda yakuniy baholash nima uchun kerak?",
+    "options": [
+      "Faqat baho qo‘yish uchun",
+      "Ishning umumiy sifatini aniqlash uchun",
+      "Manbalarni kamaytirish uchun",
+      "So‘z sonini hisoblash uchun"
+    ],
+    "a": "Ishning umumiy sifatini aniqlash uchun"
+  },
+  {
+    "q": "Akademik yozuvni rivojlantirish uchun eng muhim omil qaysi?",
+    "options": [
+      "Doimiy mashq va tahlil",
+      "Faqat nazariya o‘rganish",
+      "Ko‘p nusxa ko‘chirish",
+      "Faqat texnik talablar"
+    ],
+    "a": "Doimiy mashq va tahlil"
+  },
+  {
+    "q": "Akademik yozuvda mustaqil fikrlash nimani anglatadi?",
+    "options": [
+      "Faqat manbalardan nusxa olish",
+      "O‘z xulosasini dalillar asosida chiqarish",
+      "Faqat o‘qituvchi fikriga tayanish",
+      "Bahsdan qochish"
+    ],
+    "a": "O‘z xulosasini dalillar asosida chiqarish"
+  },
+  {
+    "q": "Akademik yozuvda muvaffaqiyatga erishish nimaga bog‘liq?",
+    "options": [
+      "Faqat bahoga",
+      "Tuzilma, mantiq va halollikka",
+      "Matn uzunligiga",
+      "Dizayniga"
+    ],
+    "a": "Tuzilma, mantiq va halollikka"
+  },
+  {
+    "q": "Akademik yozuvni o‘rganishning yakuniy maqsadi nima?",
+    "options": [
+      "Ko‘p matn yozish",
+      "Ilmiy fikrni aniq va asosli ifodalash",
+      "Faqat imtihondan o‘tish",
+      "Badiiy ijod qilish"
+    ],
+    "a": "Ilmiy fikrni aniq va asosli ifodalash"
+  },
+]
