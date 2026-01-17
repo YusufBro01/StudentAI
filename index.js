@@ -5262,14 +5262,14 @@ async function sendQuestion(ctx, isNew = false) {
     }
 
     timers[userId] = setTimeout(async () => {
-        if (ctx.session && ctx.session.index === s.index) {
-            ctx.session.wrongs.push(qData);
-            ctx.session.activeList.push(qData);
-            ctx.session.index++;
-            await ctx.reply(`⏰ **VAQT TUGADI!**\nSavol oxiriga o'tkazildi.`);
-            sendQuestion(ctx, true);
-        }
-    }, TIME_LIMIT * 1000);
+    if (ctx.session && ctx.session.index === s.index) {
+        ctx.session.wrongs.push(qData);
+        // BU YERDAN HAM: ctx.session.activeList.push(qData) ni olib tashlang!
+        ctx.session.index++; 
+        await ctx.reply(`⏰ **VAQT TUGADI!**`);
+        sendQuestion(ctx, true);
+    }
+}, TIME_LIMIT * 1000);
 }
 
 // --- ADMIN PANEL VA VIP LOGIKA ---
@@ -5361,6 +5361,40 @@ bot.hears(["📝 Akademik yozuv", "📜 Tarix", "➕ Matematika"], async (ctx) =
 bot.hears("📊 Reyting", (ctx) => ctx.reply(`🏆 **LIDERLAR**\n\n${getLeaderboard()}`, { parse_mode: 'Markdown' }));
 bot.hears("⬅️ Orqaga (Fanlar)", (ctx) => showSubjectMenu(ctx));
 
+
+
+bot.hears("👤 Profil", async (ctx) => {
+    const db = getDb(); // Boyagi funksiyamiz
+    const user = db.users[ctx.from.id] || { score: 0, totalTests: 0 };
+    const isVip = vipUsers.includes(ctx.from.id) ? "✅ Faol" : "❌ Faol emas";
+    
+    let msg = `👤 **Sizning profilingiz:**\n\n`;
+    msg += `🆔 ID: \`${ctx.from.id}\`\n`;
+    msg += `👤 Ism: ${ctx.from.first_name}\n`;
+    msg += `🏆 Eng yuqori ball: ${user.score.toFixed(1)}\n`;
+    msg += `💎 VIP status: ${isVip}\n`;
+    
+    await ctx.replyWithMarkdown(msg);
+});
+
+
+bot.command('stats', async (ctx) => {
+    if (ctx.from.id !== ADMIN_ID) return; // ADMIN_ID o'zgaruvchisi tepadagi bilan bir xilligini tekshiring
+
+    const db = getDb();
+    const totalUsers = Object.keys(db.users || {}).length; // db.users bo'sh bo'lsa xato bermasligi uchun || {} qo'shildi
+    const vips = (vipUsers || []).length;
+    
+    let stats = `📊 **Bot statistikasi:**\n\n`;
+    stats += `👥 Bazadagi foydalanuvchilar: ${totalUsers} ta\n`;
+    stats += `💎 VIP foydalanuvchilar: ${vips} ta\n`;
+    stats += `💾 Xotira holati: /data volume faol`;
+
+    await ctx.replyWithMarkdown(stats);
+});
+
+
+
 bot.hears(["⚡️ Blitz (25)", "📝 To'liq test"], async (ctx) => {
     const userId = ctx.from.id;
     if (isBotPaidMode && !vipUsers.includes(userId)) {
@@ -5380,34 +5414,52 @@ bot.hears(["⚡️ Blitz (25)", "📝 To'liq test"], async (ctx) => {
 bot.action(/^ans_(\d+)$/, async (ctx) => {
     try {
         const s = ctx.session;
+        const userId = ctx.from.id;
         
-        // 1. Sessiya yoki kerakli ma'lumotlar mavjudligini tekshirish
+        // 1. Sessiya yoki ma'lumotlar borligini tekshirish
         if (!s || !s.activeList || s.index === undefined || !s.activeList[s.index]) {
-            await ctx.answerCbQuery("❌ Sessiya muddati tugagan yoki xatolik. Iltimos, testni qayta boshlang.", { show_alert: true });
+            await ctx.answerCbQuery("❌ Sessiya muddati tugagan.", { show_alert: true });
             return showSubjectMenu(ctx);
         }
 
-        if (timers[ctx.from.id]) clearTimeout(timers[ctx.from.id]);
+        // Taymerni to'xtatish
+        if (timers[userId]) clearTimeout(timers[userId]);
 
         const selIdx = parseInt(ctx.match[1]);
         const currentQ = s.activeList[s.index];
 
-        // 2. Tanlangan javob va joriy variantlar borligini tekshirish
-        if (!s.currentOptions || s.currentOptions[selIdx] === undefined) {
-            return ctx.answerCbQuery("Xatolik: Javob topilmadi.");
-        }
-
+        // 2. Javobni tekshirish
         if (s.currentOptions[selIdx] === currentQ.a) {
             s.score++;
-            await ctx.answerCbQuery("✅ To'g'ri!").catch(() => {});
+            await ctx.answerCbQuery("✅ To'g'ri!");
         } else {
+            // Xatolar ro'yxatiga qo'shamiz, lekin activeList-ga qayta qo'shmaymiz!
+            // Shunda 25 talik test 25 taligicha qoladi.
             s.wrongs.push(currentQ);
-            s.activeList.push(currentQ);
-            await ctx.answerCbQuery(`❌ Xato! To'g'ri: ${currentQ.a}`, { show_alert: true }).catch(() => {});
+            await ctx.answerCbQuery(`❌ Xato! To'g'ri: ${currentQ.a}`, { show_alert: true });
         }
 
+        // Indeksni oshiramiz
         s.index++;
+
+        // 3. Test tugaganligini tekshirish
+        if (s.index >= s.activeList.length) {
+            // REYTINGNI SAQLASH (Aynan shu yerda bazaga yoziladi)
+            updateGlobalScore(userId, s.userName, s.score);
+            
+            let finishMsg = `🏁 **Test yakunlandi, ${s.userName}!**\n\n` +
+                            `✅ Natija: ${s.score.toFixed(1)} ball\n` +
+                            `❌ Xatolar: ${s.wrongs.length} ta.`;
+            
+            return ctx.reply(finishMsg, Markup.keyboard([
+                ["⚡️ Blitz (25)", "📝 To'liq test"], 
+                ["📊 Reyting", "⬅️ Orqaga (Fanlar)"]
+            ]).resize());
+        }
+
+        // Keyingi savolga o'tish
         sendQuestion(ctx);
+
     } catch (error) {
         console.error("Answer action error:", error);
         await ctx.answerCbQuery("Kutilmagan xatolik yuz berdi.");
