@@ -5404,24 +5404,48 @@ bot.action('buy_vip', (ctx) => {
 
 // --- BOT ASOSIY BUYRUQLARI ---
 bot.start((ctx) => {
-    if (!ctx.session.userName) return ctx.reply("Assalomu alaykum! Ismingizni kiriting:");
-    showSubjectMenu(ctx);
-    // Bu kodni foydalanuvchi ismini kiritgan joyga qo'shing
-const userId = ctx.from.id;
-let db = getDb();
+    const userId = ctx.from.id;
+    let db = getDb();
 
-if (db.users[userId]) {
-    db.users[userId].date = new Date().toISOString(); // Oxirgi kirgan vaqtini yangilash
-    db.users[userId].name = ctx.session.userName || ctx.from.first_name; // Ismini yangilash
-    fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2));
-}
+    // 1. Agar foydalanuvchi bazada bo'lsa, ismini sessionga yuklaymiz va menyuni ko'rsatamiz
+    if (db.users[userId]) {
+        ctx.session.userName = db.users[userId].name;
+        db.users[userId].date = new Date().toISOString(); // Kirgan vaqtini yangilash
+        fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2));
+        return showSubjectMenu(ctx);
+    }
+
+    // 2. Agar foydalanuvchi yangi bo'lsa
+    ctx.session.waitingForName = true; // Ism kutayotganimizni belgilaymiz
+    return ctx.reply(`Assalomu alaykum ${ctx.from.first_name}! \nBotdan foydalanish uchun ismingizni kiriting:`);
 });
 
 bot.on('text', async (ctx, next) => {
-    if (!ctx.session.userName && !ctx.message.text.startsWith('/')) {
-        ctx.session.userName = ctx.message.text;
+    // Agar bu admin komandasi bo'lsa (masalan /stats), keyingi funksiyaga o'tkazvor
+    if (ctx.message.text.startsWith('/')) return next();
+
+    // Faqat ism kutayotgan bo'lsakgina ishlaydi
+    if (ctx.session.waitingForName) {
+        const inputName = ctx.message.text;
+        const userId = ctx.from.id;
+
+        // Ismni session va bazaga saqlash
+        ctx.session.userName = inputName;
+        ctx.session.waitingForName = false;
+
+        let db = getDb();
+        db.users[userId] = {
+            name: inputName,
+            score: 0,
+            totalTests: 0,
+            date: new Date().toISOString()
+        };
+        fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2));
+
+        ctx.reply(`Rahmat, ${inputName}! Ro'yxatdan o'tdingiz.`);
         return showSubjectMenu(ctx);
     }
+
     return next();
 });
 
