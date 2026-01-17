@@ -5462,30 +5462,24 @@ bot.command('stats', async (ctx) => {
     const db = getDb();
     const users = Object.entries(db.users || {});
     const totalUsers = users.length;
-    
-    // Bugungi sanani olish (YYYY-MM-DD formatida)
     const today = new Date().toISOString().split('T')[0];
-    
-    // Bugun aktiv bo'lganlarni hisoblash
-    const dailyActive = users.filter(([id, data]) => {
-        return data.date && data.date.startsWith(today);
-    }).length;
+    const dailyActive = users.filter(([id, data]) => data.date && data.date.startsWith(today)).length;
 
-    const vips = (vipUsers || []).length;
+    // Ismlardagi maxsus belgilarni tozalash funksiyasi
+    const escapeHTML = (str) => str.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#039;"}[m]));
 
-    // Foydalanuvchilar ro'yxatini shakllantirish (oxirgi 10 tasi)
     let userList = users.slice(-10).map(([id, data]) => {
-        return `👤 ${data.name || 'Noma\'lum'} (ID: ${id})`;
+        return `👤 ${escapeHTML(data.name || 'Noma\'lum')} (ID: <code>${id}</code>)`;
     }).join('\n');
 
-    let statsMsg = `📊 **BOT STATISTIKASI**\n\n`;
-    statsMsg += `👥 Jami foydalanuvchilar: **${totalUsers}** ta\n`;
-    statsMsg += `📅 Bugun aktiv: **${dailyActive}** ta\n`;
-    statsMsg += `💎 VIP foydalanuvchilar: **${vips}** ta\n\n`;
-    statsMsg += `📝 **Oxirgi qo'shilganlar:**\n${userList || "Hozircha bo'sh"}\n\n`;
-    statsMsg += `💾 Baza holati: /data/ranking_db.json faol`;
+    let statsMsg = `<b>📊 BOT STATISTIKASI</b>\n\n`;
+    statsMsg += `👥 Jami foydalanuvchilar: <b>${totalUsers}</b> ta\n`;
+    statsMsg += `📅 Bugun aktiv: <b>${dailyActive}</b> ta\n\n`;
+    statsMsg += `📝 <b>Oxirgi qo'shilganlar:</b>\n${userList || "Bo'sh"}\n\n`;
+    statsMsg += `💾 Baza: <code>ranking_db.json</code>`;
 
-    await ctx.replyWithMarkdown(statsMsg);
+    // Markdown o'rniga HTML ishlatamiz
+    await ctx.reply(statsMsg, { parse_mode: 'HTML' });
 });
 
 bot.command('sendall', async (ctx) => {
