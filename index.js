@@ -2,8 +2,8 @@ const { Telegraf, Markup } = require('telegraf');
 const LocalSession = require('telegraf-session-local');
 const fs = require('fs');
 
-const ADMIN_ID = 8210915073; 
-const bot = new Telegraf('8577708732:AAGkqZmmLk4bsqI_U71DLLCQHXuywSTsLPk');
+const ADMIN_ID = parseInt(process.env.ADMIN_ID); 
+const bot = new Telegraf(process.env.BOT_TOKEN);
 
 // --- MA'LUMOTLAR BAZASI VA REJIMLAR ---
 let isBotPaidMode = false;
@@ -5285,7 +5285,7 @@ bot.action(/^deny_(\d+)$/, async (ctx) => {
 
 bot.action('buy_vip', (ctx) => {
     ctx.session.waitingForCheck = true;
-    return ctx.reply("💳 Karta: `8600000000000000`\n💰 Summa: 10,000 so'm\n\nChekni rasm ko'rinishida yuboring.");
+    return ctx.reply("💳 Karta: `4073420058363577`\n M.M\n 💰 Summa: 5.000 so'm\n\nChekni rasm ko'rinishida yuboring.");
 });
 
 // --- BOT ASOSIY BUYRUQLARI ---
