@@ -1,6 +1,8 @@
 const { Telegraf, Markup } = require('telegraf');
 const LocalSession = require('telegraf-session-local');
 const fs = require('fs');
+const XLSX = require('xlsx');
+const QUESTIONS_FILE = '/data/custom_questions.json'; // Savollarni saqlash uchun
 
 const ADMIN_ID = parseInt(process.env.ADMIN_ID); 
 const bot = new Telegraf(process.env.BOT_TOKEN);
@@ -5161,6 +5163,13 @@ const SUBJECTS = {
   }
 };
 
+if (fs.existsSync(QUESTIONS_FILE)) {
+    try {
+        const saved = JSON.parse(fs.readFileSync(QUESTIONS_FILE, 'utf8'));
+        SUBJECTS = saved;
+    } catch (e) { console.error("Savollarni yuklashda xato:", e); }
+}
+
 const DB_FILE = 'ranking_db.json';
 if (!fs.existsSync(DB_FILE)) fs.writeFileSync(DB_FILE, JSON.stringify({ users: {} }));
 
@@ -5178,28 +5187,38 @@ function getProgressBar(current, total) {
 
 function updateGlobalScore(userId, name, score) {
     try {
-        let db = { users: {} };
-        
-        // Agar fayl bo'lsa, uni o'qiymiz
-        if (fs.existsSync(DB_FILE)) {
-            const data = fs.readFileSync(DB_FILE, 'utf8');
-            db = JSON.parse(data);
-        }
+        // Har safar funksiya chaqirilganda bazani yangidan o'qiymiz
+        let db = getDb(); 
 
-        // Agar bu foydalanuvchi oldin bo'lsa va yangi bali eski balidan baland bo'lsa yoki birinchi marta bo'lsa
-        if (!db.users[userId] || score > db.users[userId].score) {
+        // 1. Agar foydalanuvchi bazada bo'lmasa, yangi obyekt yaratamiz
+        if (!db.users[userId]) {
             db.users[userId] = { 
-                name: name, 
-                score: score, 
+                name: name || "Foydalanuvchi", 
+                score: 0, 
+                totalTests: 0, 
+                referralCount: 0, // Referallar soni uchun
                 date: new Date().toISOString() 
             };
-            
-            // Faylga yozish
-            fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2));
-            console.log(`Ball saqlandi: ${name} - ${score}`);
         }
+
+        // 2. Jami yechilgan testlar sonini 1 taga oshiramiz
+        db.users[userId].totalTests = (db.users[userId].totalTests || 0) + 1;
+
+        // 3. Rekord ballni yangilaymiz (agar yangi ball yuqori bo'lsa)
+        if (score > (db.users[userId].score || 0)) {
+            db.users[userId].score = score;
+            db.users[userId].date = new Date().toISOString();
+        }
+        
+        // 4. Ismni yangilab qo'yamiz (agar foydalanuvchi ismini o'zgartirgan bo'lsa)
+        db.users[userId].name = name;
+
+        // 5. Faylga yozish
+        fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2));
+        console.log(`✅ Ma'lumot yangilandi: ${name} - Ball: ${score}, Jami test: ${db.users[userId].totalTests}`);
+
     } catch (error) {
-        console.error("Bazaga yozishda xato:", error);
+        console.error("❌ Bazaga yozishda xato:", error);
     }
 }
 
@@ -5464,6 +5483,50 @@ bot.action('stop_test', async (ctx) => {
     ctx.session.index = 9999;
     await ctx.answerCbQuery("To'xtatildi");
     showSubjectMenu(ctx);
+});
+
+
+bot.on('document', async (ctx) => {
+    if (ctx.from.id !== ADMIN_ID) return;
+
+    try {
+        const fileId = ctx.message.document.file_id;
+        const fileName = ctx.message.document.file_name;
+
+        // Faqat .xlsx fayllarni qabul qilish
+        if (!fileName.endsWith('.xlsx')) {
+            return ctx.reply("❌ Iltimos, faqat .xlsx formatidagi Excel fayl yuboring.");
+        }
+
+        const fileUrl = await ctx.telegram.getFileLink(fileId);
+        const response = await fetch(fileUrl);
+        const arrayBuffer = await response.arrayBuffer();
+        const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: 'array' });
+        
+        const sheetName = workbook.SheetNames[0];
+        const excelData = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
+
+        // Excel formatini tekshirish (Ustunlar nomi: question, a, b, c, d, correct, subject)
+        // subject ustunida: academic, history yoki math bo'lishi kerak
+        
+        excelData.forEach(row => {
+            if (SUBJECTS[row.subject]) {
+                SUBJECTS[row.subject].questions.push({
+                    q: row.question,
+                    options: [row.a, row.b, row.c, row.d],
+                    a: row.correct
+                });
+            }
+        });
+
+        // Yangilangan savollarni xotiraga saqlab qo'yamiz
+        fs.writeFileSync(QUESTIONS_FILE, JSON.stringify(SUBJECTS, null, 2));
+
+        ctx.reply(`✅ Excel muvaffaqiyatli o'qildi!\n📊 Jami yuklangan savollar: ${excelData.length} ta.`);
+    } catch (error) {
+        console.error("Excel Error:", error);
+        ctx.reply("❌ Faylni o'qishda xatolik yuz berdi. Formatni tekshiring.");
+    }
 });
 
 bot.launch().then(() => console.log("Bot running..."));
