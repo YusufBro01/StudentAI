@@ -5165,18 +5165,63 @@ function getProgressBar(current, total) {
 }
 
 function updateGlobalScore(userId, name, score) {
-    const db = JSON.parse(fs.readFileSync(DB_FILE));
-    if (!db.users[userId] || score > db.users[userId].score) {
-        db.users[userId] = { name: name, score: score, date: new Date().toLocaleDateString() };
-        fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2));
+    try {
+        let db = { users: {} };
+        
+        // Agar fayl bo'lsa, uni o'qiymiz
+        if (fs.existsSync(DB_FILE)) {
+            const data = fs.readFileSync(DB_FILE, 'utf8');
+            db = JSON.parse(data);
+        }
+
+        // Agar bu foydalanuvchi oldin bo'lsa va yangi bali eski balidan baland bo'lsa yoki birinchi marta bo'lsa
+        if (!db.users[userId] || score > db.users[userId].score) {
+            db.users[userId] = { 
+                name: name, 
+                score: score, 
+                date: new Date().toISOString() 
+            };
+            
+            // Faylga yozish
+            fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2));
+            console.log(`Ball saqlandi: ${name} - ${score}`);
+        }
+    } catch (error) {
+        console.error("Bazaga yozishda xato:", error);
     }
 }
 
 function getLeaderboard() {
-    const db = JSON.parse(fs.readFileSync(DB_FILE));
-    const sorted = Object.values(db.users).sort((a, b) => b.score - a.score).slice(0, 10);
-    if (sorted.length === 0) return "Hozircha hech kim test topshirmadi.";
-    return sorted.map((u, i) => `${i + 1}. 🏆 ${u.name} — ${u.score.toFixed(1)} ball`).join('\n');
+    try {
+        // Fayl borligini tekshirish
+        if (!fs.existsSync(DB_FILE)) {
+            return "Hozircha hech kim test topshirmadi.";
+        }
+
+        const data = fs.readFileSync(DB_FILE, 'utf8');
+        const db = JSON.parse(data);
+
+        // Foydalanuvchilar ro'yxatini olish
+        const usersArray = Object.values(db.users || {});
+
+        if (usersArray.length === 0) {
+            return "Hozircha hech kim test topshirmadi.";
+        }
+
+        // Ballar bo'yicha saralash va matn ko'rinishiga keltirish
+        const sorted = usersArray
+            .sort((a, b) => (b.score || 0) - (a.score || 0))
+            .slice(0, 10);
+
+        return sorted.map((u, i) => {
+            let icon = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : "👤";
+            return `${icon} ${u.name || 'Nomalum'} — ${u.score.toFixed(1)} ball`;
+        }).join('\n');
+
+    } catch (error) {
+        console.error("Reyting xatosi:", error);
+        return "Reytingni yuklashda xatolik yuz berdi.";
+    }
 }
 
 function showSubjectMenu(ctx) {
