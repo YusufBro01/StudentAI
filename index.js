@@ -3,30 +3,22 @@ const LocalSession = require('telegraf-session-local');
 const fs = require('fs');
 const XLSX = require('xlsx');
 const QUESTIONS_FILE = '/data/custom_questions.json'; // Savollarni saqlash uchun
+const fs = require('fs');
 const path = require('path');
-const DATA_DIR = '/data';
 
-const ADMIN_ID = parseInt(process.env.ADMIN_ID); 
-const bot = new Telegraf(process.env.BOT_TOKEN);
+// 1. Avval DATA_DIR ni aniqlaymiz
+const DATA_DIR = '/data'; 
 
-function getDb() {
-    try {
-        if (fs.existsSync(DB_FILE)) {
-            const data = fs.readFileSync(DB_FILE, 'utf8');
-            return JSON.parse(data);
-        }
-    } catch (e) {
-        console.error("Baza o'qishda xato:", e);
-    }
-    return { users: {} }; // Agar xato bo'lsa yoki fayl bo'lmasa, bo'sh obyekt qaytaradi
-}
+// 2. Keyin DB_FILE ni DATA_DIR orqali yasaymiz
+const DB_FILE = path.join(DATA_DIR, 'ranking_db.json');
 
+// 3. Papka borligini tekshiramiz
 if (!fs.existsSync(DATA_DIR)) {
     try {
         fs.mkdirSync(DATA_DIR, { recursive: true });
         console.log("✅ /data papkasi yaratildi");
     } catch (err) {
-        console.error("❌ Papka yaratishda xato (ehtimol mahalliy kompyuterda):", err.message);
+        console.error("❌ Papka yaratishda xato:", err.message);
     }
 }
 
@@ -5184,7 +5176,7 @@ if (fs.existsSync(QUESTIONS_FILE)) {
     }
 }
 
-const DB_FILE = 'ranking_db.json';
+// const DB_FILE = 'ranking_db.json';
 if (!fs.existsSync(DB_FILE)) fs.writeFileSync(DB_FILE, JSON.stringify({ users: {} }));
 
 const TIME_LIMIT = 60;
@@ -5678,9 +5670,11 @@ bot.launch().then(() => console.log("Bot running..."));
 
 // 2. Render uchun HTTP server (uyquga ketmasligi uchun)
 const http = require('http');
+
+// Railway uchun oddiy server
 http.createServer((req, res) => {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Bot ishlayapti!');
+    res.writeHead(200);
+    res.end('Bot is running...');
 }).listen(process.env.PORT || 3000);
 
 // 3. Xatolarni ushlab qoluvchi "Qorovul" kod (ENG OXIRIDA)
