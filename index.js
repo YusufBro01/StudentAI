@@ -5300,12 +5300,30 @@ async function sendQuestion(ctx, isNew = false) {
 
 // --- ADMIN PANEL VA VIP LOGIKA ---
 bot.command('admin', (ctx) => {
+    // 1. Faqat admin ekanligingizni tekshiradi
     if (ctx.from.id === ADMIN_ID) {
         const status = isBotPaidMode ? "🔴 PULLIK" : "🟢 BEPUL";
-        return ctx.reply(`🛠 **Admin Panel**\nHozirgi holat: ${status}`, Markup.keyboard([
-            ['💰 Pullik versiyani yoqish', '🆓 Bepul versiyani yoqish'],
-            ['⬅️ Orqaga (Fanlar)']
-        ]).resize());
+        
+        // 2. Reply bilan birga klaviaturani yuboradi
+        return ctx.reply(`🛠 **Admin Panel**\nHozirgi holat: ${status}`, 
+            Markup.keyboard([
+                ['💰 Pullik versiyani yoqish', '🆓 Bepul versiyani yoqish'],
+                ['➕ Yangi fan qoshish'], 
+                ['📊 Statistika', '📣 Xabar tarqatish'], // Qo'shimcha qulaylik uchun
+                ['⬅️ Orqaga (Fanlar)']
+            ]).resize() // Tugmalarni chiroyli o'lchamga keltiradi
+        );
+    } else {
+        // Agar begona odam yozsa
+        ctx.reply("❌ Kechirasiz, bu buyruq faqat adminlar uchun.");
+    }
+});
+
+
+bot.hears('📊 Statistika', async (ctx) => {
+    if (ctx.from.id === ADMIN_ID) {
+        // statistika kodini bu yerga ham chaqirib qo'ysa bo'ladi
+        ctx.reply("Siz statistika tugmasini bostingiz!"); 
     }
 });
 
@@ -5363,6 +5381,15 @@ bot.action('buy_vip', (ctx) => {
 bot.start((ctx) => {
     if (!ctx.session.userName) return ctx.reply("Assalomu alaykum! Ismingizni kiriting:");
     showSubjectMenu(ctx);
+    // Bu kodni foydalanuvchi ismini kiritgan joyga qo'shing
+const userId = ctx.from.id;
+let db = getDb();
+
+if (db.users[userId]) {
+    db.users[userId].date = new Date().toISOString(); // Oxirgi kirgan vaqtini yangilash
+    db.users[userId].name = ctx.session.userName || ctx.from.first_name; // Ismini yangilash
+    fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2));
+}
 });
 
 bot.on('text', async (ctx, next) => {
@@ -5405,18 +5432,60 @@ bot.hears("👤 Profil", async (ctx) => {
 
 
 bot.command('stats', async (ctx) => {
-    if (ctx.from.id !== ADMIN_ID) return; // ADMIN_ID o'zgaruvchisi tepadagi bilan bir xilligini tekshiring
+    if (ctx.from.id !== ADMIN_ID) return;
 
     const db = getDb();
-    const totalUsers = Object.keys(db.users || {}).length; // db.users bo'sh bo'lsa xato bermasligi uchun || {} qo'shildi
-    const vips = (vipUsers || []).length;
+    const users = Object.entries(db.users || {});
+    const totalUsers = users.length;
     
-    let stats = `📊 **Bot statistikasi:**\n\n`;
-    stats += `👥 Bazadagi foydalanuvchilar: ${totalUsers} ta\n`;
-    stats += `💎 VIP foydalanuvchilar: ${vips} ta\n`;
-    stats += `💾 Xotira holati: /data volume faol`;
+    // Bugungi sanani olish (YYYY-MM-DD formatida)
+    const today = new Date().toISOString().split('T')[0];
+    
+    // Bugun aktiv bo'lganlarni hisoblash
+    const dailyActive = users.filter(([id, data]) => {
+        return data.date && data.date.startsWith(today);
+    }).length;
 
-    await ctx.replyWithMarkdown(stats);
+    const vips = (vipUsers || []).length;
+
+    // Foydalanuvchilar ro'yxatini shakllantirish (oxirgi 10 tasi)
+    let userList = users.slice(-10).map(([id, data]) => {
+        return `👤 ${data.name || 'Noma\'lum'} (ID: ${id})`;
+    }).join('\n');
+
+    let statsMsg = `📊 **BOT STATISTIKASI**\n\n`;
+    statsMsg += `👥 Jami foydalanuvchilar: **${totalUsers}** ta\n`;
+    statsMsg += `📅 Bugun aktiv: **${dailyActive}** ta\n`;
+    statsMsg += `💎 VIP foydalanuvchilar: **${vips}** ta\n\n`;
+    statsMsg += `📝 **Oxirgi qo'shilganlar:**\n${userList || "Hozircha bo'sh"}\n\n`;
+    statsMsg += `💾 Baza holati: /data/ranking_db.json faol`;
+
+    await ctx.replyWithMarkdown(statsMsg);
+});
+
+bot.command('sendall', async (ctx) => {
+    if (ctx.from.id !== ADMIN_ID) return;
+    
+    // Xabar formati: /sendall Salom hammaga!
+    const msg = ctx.message.text.split('/sendall ')[1];
+    if (!msg) return ctx.reply("❌ Xabar matnini yozing. Masalan: /sendall Testlar yangilandi!");
+
+    const db = getDb();
+    const userIds = Object.keys(db.users);
+    let count = 0;
+
+    ctx.reply(`📣 Xabar yuborish boshlandi: ${userIds.length} ta foydalanuvchiga...`);
+
+    for (const id of userIds) {
+        try {
+            await ctx.telegram.sendMessage(id, `📢 **ADMIN XABARI:**\n\n${msg}`, { parse_mode: 'Markdown' });
+            count++;
+        } catch (e) {
+            console.log(`${id} ga xabar yuborib bo'lmadi.`);
+        }
+    }
+
+    ctx.reply(`✅ Xabar muvaffaqiyatli yuborildi! Jami: ${count} ta foydalanuvchi qabul qildi.`);
 });
 
 
