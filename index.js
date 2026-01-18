@@ -5465,18 +5465,30 @@ bot.hears("⬅️ Orqaga (Fanlar)", (ctx) => showSubjectMenu(ctx));
 
 
 
-bot.hears("👤 Profil", async (ctx) => {
-    const db = getDb(); // Boyagi funksiyamiz
-    const user = db.users[ctx.from.id] || { score: 0, totalTests: 0 };
-    const isVip = vipUsers.includes(ctx.from.id) ? "✅ Faol" : "❌ Faol emas";
-    
-    let msg = `👤 **Sizning profilingiz:**\n\n`;
-    msg += `🆔 ID: \`${ctx.from.id}\`\n`;
-    msg += `👤 Ism: ${ctx.from.first_name}\n`;
-    msg += `🏆 Eng yuqori ball: ${user.score.toFixed(1)}\n`;
-    msg += `💎 VIP status: ${isVip}\n`;
-    
-    await ctx.replyWithMarkdown(msg);
+// Ismlardagi belgilarni xavfsiz qilish uchun funksiya
+const escapeHTML = (str) => {
+    if (!str) return 'Noma\'lum';
+    return str.replace(/[&<>"']/g, m => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    }[m]));
+};
+
+bot.hears('👤 Profil', async (ctx) => {
+    const userId = ctx.from.id;
+    const db = getDb();
+    const user = db.users[userId] || {};
+
+    let profileMsg = `<b>👤 Sizning profilingiz:</b>\n\n`;
+    profileMsg += `🆔 ID: <code>${userId}</code>\n`;
+    profileMsg += `👤 Ism: <b>${escapeHTML(user.name || ctx.from.first_name)}</b>\n`;
+    profileMsg += `🏆 Eng yuqori ball: <b>${user.score || 0}</b>\n`;
+    profileMsg += `💎 VIP status: <b>${user.isVip ? '✅ Faol' : '❌ Faol emas'}</b>\n`;
+
+    await ctx.reply(profileMsg, { parse_mode: 'HTML' });
 });
 
 
