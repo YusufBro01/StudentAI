@@ -6023,10 +6023,12 @@ async function sendQuestion(ctx, isNew = false) {
     const userId = ctx.from.id;
     if (timers[userId]) clearTimeout(timers[userId]);
 
+    // Test tugashi
     if (s.index >= s.activeList.length) {
-        // Bu yerda ctx.from.username ni ham qo'shib yuboramiz (avvalgi kelishuvga ko'ra)
         updateGlobalScore(userId, s.userName, ctx.from.username, s.score);
-        let finishMsg = `🏁 <b>Test yakunlandi, ${s.userName}!</b>\n\n✅ Natija: <b>${s.score.toFixed(1)} ball</b>\n❌ Xatolar: <b>${s.wrongs.length} ta</b>.`;
+        let finishMsg = `🏁 <b>Test yakunlandi, ${s.userName}!</b>\n\n` +
+                        `✅ Natija: <b>${s.score.toFixed(1)} ball</b>\n` +
+                        `❌ Xatolar: <b>${s.wrongs.length} ta</b>.`;
         return ctx.replyWithHTML(finishMsg, Markup.keyboard([["⚡️ Blitz (25)", "📝 To'liq test"], ["⬅️ Orqaga (Fanlar)"]]).resize());
     }
 
@@ -6037,8 +6039,7 @@ async function sendQuestion(ctx, isNew = false) {
 
     const progress = getProgressBar(s.index + 1, s.activeList.length);
     
-    // Markdown o'rniga HTML ishlatamiz (<b> va <i> xavfsizroq)
-    // escapeHTML funksiyasi savol ichidagi < va > belgilarini zararsizlantiradi
+    // SAVOL MATNINI TOZALASH (MUHIM!)
     const safeQuestion = escapeHTML(qData.q);
     
     const text = `📊 Progress: [${progress}]\n` +
@@ -6048,15 +6049,18 @@ async function sendQuestion(ctx, isNew = false) {
 
     try {
         if (isNew) {
+            // Markdown O'RNIGA HTML ISHLATILMOQDA
             await ctx.replyWithHTML(text, Markup.inlineKeyboard(buttons));
         } else {
+            // EDIT QILGANDA HAM HTML
             await ctx.editMessageText(text, { parse_mode: 'HTML', ...Markup.inlineKeyboard(buttons) });
         }
     } catch (e) {
-        // Agar editMessage xato bersa (masalan, matn o'zgarmagan bo'lsa), yangi xabar yuboradi
+        // Agar xabar tahrirlashda xato bo'lsa, yangi xabar yuboradi
         await ctx.replyWithHTML(text, Markup.inlineKeyboard(buttons));
     }
 
+    // Taymerni o'rnatish
     timers[userId] = setTimeout(async () => {
         if (ctx.session && ctx.session.index === s.index) {
             ctx.session.wrongs.push(qData);
@@ -6232,3 +6236,17 @@ bot.launch().then(() => console.log("Bot running..."));
 // Portni Railway talab qilgani uchun ochamiz
 const PORT = process.env.PORT || 3000;
 http.createServer((req, res) => { res.end('Bot is running'); }).listen(PORT);
+
+
+function escapeHTML(str) {
+    if (!str) return "";
+    return str.replace(/[&<>"']/g, function(m) {
+        return {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#039;'
+        }[m];
+    });
+}
