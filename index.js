@@ -6130,6 +6130,20 @@ bot.hears('📣 Xabar tarqatish', (ctx) => {
         Markup.keyboard([['🚫 Bekor qilish']]).resize());
 });
 
+// 1. Pullik versiyani yoqish
+bot.hears('💰 Pullik versiya', (ctx) => {
+    if (ctx.from.id !== ADMIN_ID) return;
+    isBotPaidMode = true; // Botni pullik rejimga o'tkazamiz
+    return ctx.reply("✅ Bot PULLIK REJIMGA o'tkazildi. Endi faqat VIP foydalanuvchilar test topshira oladi.");
+});
+
+// 2. Bepul versiyani yoqish
+bot.hears('🆓 Bepul versiya', (ctx) => {
+    if (ctx.from.id !== ADMIN_ID) return;
+    isBotPaidMode = false; // Botni bepul rejimga o'tkazamiz
+    return ctx.reply("✅ Bot BEPUL REJIMGA o'tkazildi. Hamma test topshirishi mumkin.");
+});
+
 // 2. Kelgan xabarni hamma foydalanuvchilarga tarqatish
 bot.on(['text', 'photo', 'video', 'animation', 'document'], async (ctx, next) => {
     // Agar matn bo'lsa matnni, rasm ostida yozilgan bo'lsa captionni oladi
@@ -6148,6 +6162,22 @@ bot.on(['text', 'photo', 'video', 'animation', 'document'], async (ctx, next) =>
         ctx.session.waitingForSubjectQuestions = false;
         ctx.session.waitingForName = false;
         return showSubjectMenu(ctx);
+    }
+
+    
+    if (ctx.session.waitingForReceipt && ctx.message.photo) {
+        ctx.session.waitingForReceipt = false;
+        const userId = ctx.from.id;
+        
+        await ctx.telegram.sendPhoto(ADMIN_ID, ctx.message.photo[0].file_id, {
+            caption: `🔔 <b>Yangi to'lov!</b>\n👤 Foydalanuvchi: ${ctx.from.first_name}\n🆔 ID: <code>${userId}</code>`,
+            parse_mode: 'HTML',
+            ...Markup.inlineKeyboard([
+                [Markup.button.callback("✅ Tasdiqlash", `approve_${userId}`)],
+                [Markup.button.callback("❌ Rad etish", `reject_${userId}`)]
+            ])
+        });
+        return ctx.reply("✅ Chekingiz adminga yuborildi. Tasdiqlangach sizga xabar boradi.");
     }
 
     // 2. ADMIN: Xabar tarqatish (Media va Matn uchun)
@@ -6249,12 +6279,31 @@ bot.hears(["📝 Akademik yozuv", "📜 Tarix", "➕ Matematika", "💻 Dasturla
 
 bot.hears(["⚡️ Blitz (25)", "📝 To'liq test"], async (ctx) => {
     const s = ctx.session;
+    const userId = ctx.from.id;
+
+    // 1. PULLIK REJIM TEKSHIRUVI
+    // Agar bot pullik rejimda bo'lsa VA foydalanuvchi VIP bo'lmasa VA admin bo'lmasa
+    if (isBotPaidMode && !vipUsers.includes(userId) && userId !== ADMIN_ID) {
+        return ctx.reply(
+            "⚠️ Kechirasiz, bot hozirda pullik rejimda.\nTest topshirish uchun VIP statusini sotib olishingiz kerak.", 
+            Markup.inlineKeyboard([
+                [Markup.button.callback("💎 VIP sotib olish", "buy_vip")]
+            ])
+        );
+    }
+
+    // 2. FAN VA SAVOLLAR TEKSHIRUVI
     if (!s.currentSubject || !SUBJECTS[s.currentSubject]) return showSubjectMenu(ctx);
+    
     const questions = SUBJECTS[s.currentSubject].questions;
     if (!questions || questions.length === 0) return ctx.reply("Bu fanda savollar yo'q.");
     
+    // 3. TESTNI BOSHLASH
     s.activeList = ctx.message.text.includes("25") ? shuffle(questions).slice(0, 25) : shuffle(questions);
-    s.index = 0; s.score = 0; s.wrongs = [];
+    s.index = 0; 
+    s.score = 0; 
+    s.wrongs = [];
+    
     sendQuestion(ctx, true);
 });
 
@@ -6298,6 +6347,40 @@ bot.action('stop_test', (ctx) => {
     if (timers[ctx.from.id]) clearTimeout(timers[ctx.from.id]);
     ctx.session.index = 999;
     showSubjectMenu(ctx);
+});
+
+bot.action('buy_vip', (ctx) => {
+    ctx.session.waitingForReceipt = true; // Bot chek kutish rejimiga o'tadi
+    return ctx.replyWithHTML(
+        `💎 <b>VIP STATUS SOTIB OLISH</b>\n\n` +
+        `💳 Karta: <code>8600123456789012</code>\n` +
+        `👤 Egasi: Ism Familiya\n` +
+        `💰 Summa: 10,000 so'm\n\n` +
+        `📸 To'lovni amalga oshirgach, <b>chekni (rasm ko'rinishida)</b> shu yerga yuboring.`
+    );
+});
+
+
+
+// Admin "Tasdiqlash" tugmasini bosganda
+bot.action(/^approve_(\d+)$/, async (ctx) => {
+    const targetId = parseInt(ctx.match[1]);
+    
+    if (!vipUsers.includes(targetId)) {
+        vipUsers.push(targetId);
+        // VIP foydalanuvchilarni faylga saqlash (Bot o'chsa ham qolishi uchun)
+        fs.writeFileSync(VIP_FILE, JSON.stringify(vipUsers));
+    }
+    
+    await ctx.telegram.sendMessage(targetId, "🎉 To'lovingiz tasdiqlandi! Endi barcha testlardan cheksiz foydalanishingiz mumkin.");
+    return ctx.editMessageCaption("✅ Foydalanuvchi VIP ro'yxatiga qo'shildi.");
+});
+
+// Admin "Rad etish" tugmasini bosganda
+bot.action(/^reject_(\d+)$/, async (ctx) => {
+    const targetId = parseInt(ctx.match[1]);
+    await ctx.telegram.sendMessage(targetId, "❌ Kechirasiz, siz yuborgan chek tasdiqlanmadi. Muammo bo'lsa adminga yozing.");
+    return ctx.editMessageCaption("❌ To'lov rad etildi.");
 });
 
 bot.launch().then(() => console.log("Bot running..."));
