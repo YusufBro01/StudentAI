@@ -29,6 +29,8 @@ const QUESTIONS_FILE = path.join(DATA_DIR, 'custom_questions.json');
 const VIP_FILE = path.join(DATA_DIR, 'vip_users.json');
 const SESSION_FILE = path.join(DATA_DIR, 'session.json');
 
+const SUBJECTS_FILE = path.join(__dirname, 'subjects.json');
+
 // 2. Bazalarni tekshirish va funksiyalar
 if (!fs.existsSync(DB_FILE)) fs.writeFileSync(DB_FILE, JSON.stringify({ users: {} }));
 
@@ -66,7 +68,12 @@ try {
 } catch (err) { vipUsers = []; }
 
 // --- FANLAR BAZASI ---
-let SUBJECTS = {
+// Savollarni o'qiymiz
+let SUBJECTS = {};
+if (fs.existsSync(SUBJECTS_FILE)) {
+    SUBJECTS = JSON.parse(fs.readFileSync(SUBJECTS_FILE, 'utf8'));
+} else {
+  SUBJECTS = {
    "academic": {
         "name": "📝 Akademik yozuv",
         "questions": [
@@ -5952,6 +5959,20 @@ let SUBJECTS = {
     ] 
   }
 };
+}
+
+let tournament = {
+    isActive: false,       // Musobaqa ochiqmi?
+    participants: [],      // To'lov qilgan foydalanuvchilar ID-lari
+    results: {},           // { userId: { score: 0, time: 0 } }
+    subject: null          // Musobaqa qaysi fandan bo'ladi?
+};
+
+const TOURNAMENT_FILE = path.join(DATA_DIR, 'tournament_data.json');
+// Eskidan saqlangan musobaqa bo'lsa, yuklaymiz
+if (fs.existsSync(TOURNAMENT_FILE)) {
+    try { tournament = JSON.parse(fs.readFileSync(TOURNAMENT_FILE)); } catch(e) {}
+}
 
 if (fs.existsSync(QUESTIONS_FILE)) {
     try {
@@ -6013,11 +6034,22 @@ function getLeaderboard() {
 }
 
 function showSubjectMenu(ctx) {
-    return ctx.reply("Fanni tanlang:", Markup.keyboard([
+    // Asosiy tugmalar (Har doim ko'rinadigan fanlar)
+    let keyboard = [
         ["📝 Akademik yozuv", "📜 Tarix"],
-        ["➕ Matematika", "💻 Dasturlash 1"],
-        ["📊 Reyting", "👤 Profil"]
-    ]).resize());
+        ["➕ Matematika", "💻 Dasturlash 1"]
+    ];
+
+    // AGAR MUSOBAQA YOQILGAN BO'LSA - Tugmani qo'shamiz
+    if (tournament.isActive) {
+        // Unikal ko'rinishi uchun alohida qatorga va emojilar bilan qo'shamiz
+        keyboard.push(["🏆 Musobaqada qatnashish"]);
+    }
+
+    // Pastki doimiy menyu (Reyting va Profil)
+    keyboard.push(["📊 Reyting", "👤 Profil"]);
+
+    return ctx.reply("Fanni tanlang:", Markup.keyboard(keyboard).resize());
 }
 
 async function sendQuestion(ctx, isNew = false) {
@@ -6105,12 +6137,12 @@ function escapeHTML(str) {
 bot.command('admin', (ctx) => {
     if (ctx.from.id === ADMIN_ID) {
         const currentMin = (botSettings.timeLimit / 60).toFixed(1);
-        return ctx.reply(`🛠 **Admin Panel**\n⏱ Vaqt: ${botSettings.timeLimit}s (${currentMin}m)`, 
+        return ctx.reply(`🛠 **Admin Panel**\n⏱ Oddiy test vaqti: ${botSettings.timeLimit}s\n🏆 Musobaqa holati: ${tournament.isActive ? '✅ YOQILGAN' : '❌ OCHIK'}`, 
             Markup.keyboard([
                 ['💰 Pullik versiya', '🆓 Bepul versiya'],
-                ['➕ Yangi fan qoshish', '⏱ Vaqtni o\'zgartirish'],
-                ['📊 Statistika', '📣 Xabar tarqatish'],
-                ['⬅️ Orqaga (Fanlar)']
+                ['🏆 Musobaqa boshqarish', '➕ Yangi fan qoshish'], // Yangi tugma qo'shildi
+                ['⏱ Vaqtni o\'zgartirish', '📊 Statistika'],
+                ['📣 Xabar tarqatish', '⬅️ Orqaga (Fanlar)']
             ]).resize());
     }
 });
@@ -6148,6 +6180,48 @@ bot.action('check_sub', async (ctx) => {
     }
 });
 
+
+// 1. Musobaqa boshqaruv menyusini ochish
+bot.hears('🏆 Musobaqa boshqarish', (ctx) => {
+    if (ctx.from.id !== ADMIN_ID) return;
+    
+    // Hozirgi holatni aniqlash
+    const status = tournament.isActive ? "✅ YOQILGAN" : "❌ O'CHIRILGAN";
+   
+    return ctx.reply(`🏆 Musobaqa boshqaruv paneli\nHozirgi holat: ${status}`, 
+        Markup.keyboard([
+            ['🟢 Yoqish', '🔴 O\'chirish'],
+            ['📢 Boshlash haqida xabar', '📊 Natijalar'],
+            ['⬅️ Orqaga (Admin)']
+        ]).resize());
+        
+});
+
+// 2. Musobaqani yoqish mantiqi
+bot.hears('🟢 Yoqish', (ctx) => {
+    if (ctx.from.id !== ADMIN_ID) return;
+    
+    tournament.isActive = true;
+    tournament.results = {}; // Yangi musobaqa uchun natijalarni nolga tushiramiz
+    
+    // Ma'lumotni faylga saqlash (Bot o'chib yonsa ham o'zgarmaydi)
+    fs.writeFileSync(TOURNAMENT_FILE, JSON.stringify(tournament));
+    
+    return ctx.reply("✅ Musobaqa rejimi yoqildi! Foydalanuvchilar endi musobaqa testiga kira oladilar.");
+});
+
+// 3. Musobaqani o'chirish mantiqi
+bot.hears('🔴 O\'chirish', (ctx) => {
+    if (ctx.from.id !== ADMIN_ID) return;
+    
+    tournament.isActive = false;
+    fs.writeFileSync(TOURNAMENT_FILE, JSON.stringify(tournament));
+    
+    return ctx.reply("🛑 Musobaqa rejimi o'chirildi. Foydalanuvchilar endi testga kira olmaydi.");
+});
+
+
+
 bot.hears('➕ Yangi fan qoshish', (ctx) => {
     if (ctx.from.id !== ADMIN_ID) return;
     ctx.session.waitingForSubjectName = true;
@@ -6169,6 +6243,16 @@ bot.hears('📊 Statistika', (ctx) => {
     report += `📝 Jami topshirilgan testlar: ${totalTests} ta\n`;
     
     return ctx.reply(report);
+});
+// Musobaqa menyusidan Admin paneliga qaytish
+bot.hears('⬅️ Orqaga (Admin)', (ctx) => {
+    if (ctx.from.id !== ADMIN_ID) return;
+    return ctx.reply("Admin paneli:", Markup.keyboard([
+        ['💰 Pullik versiya', '🆓 Bepul versiya'],
+        ['🏆 Musobaqa boshqarish', '➕ Yangi fan qoshish'],
+        ['⏱ Vaqtni o\'zgartirish', '📊 Statistika'],
+        ['📣 Xabar tarqatish', '⬅️ Orqaga (Fanlar)']
+    ]).resize());
 });
 
 // 1. Admin xabar yuborish tugmasini bosganda
@@ -6415,14 +6499,20 @@ bot.action('buy_vip', (ctx) => {
 bot.action(/^approve_(\d+)$/, async (ctx) => {
     const targetId = parseInt(ctx.match[1]);
     
+    // VIP qilingani
     if (!vipUsers.includes(targetId)) {
         vipUsers.push(targetId);
-        // VIP foydalanuvchilarni faylga saqlash (Bot o'chsa ham qolishi uchun)
         fs.writeFileSync(VIP_FILE, JSON.stringify(vipUsers));
     }
     
-    await ctx.telegram.sendMessage(targetId, "🎉 To'lovingiz tasdiqlandi! Endi barcha testlardan cheksiz foydalanishingiz mumkin.");
-    return ctx.editMessageCaption("✅ Foydalanuvchi VIP ro'yxatiga qo'shildi.");
+    // MUSOBAQA ro'yxatiga ham qo'shamiz
+    if (!tournament.participants.includes(targetId)) {
+        tournament.participants.push(targetId);
+        fs.writeFileSync(TOURNAMENT_FILE, JSON.stringify(tournament));
+    }
+    
+    await ctx.telegram.sendMessage(targetId, "🎉 To'lovingiz tasdiqlandi! Endi barcha testlar va 🏆 Musobaqada qatnashishingiz mumkin.");
+    return ctx.editMessageCaption("✅ Tasdiqlandi: VIP va Musobaqaga qo'shildi.");
 });
 
 // Admin "Rad etish" tugmasini bosganda
