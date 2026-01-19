@@ -5966,11 +5966,17 @@ function getProgressBar(current, total) {
     return "█".repeat(progress) + "░".repeat(size - progress);
 }
 
-function updateGlobalScore(userId, name, score) {
+function updateGlobalScore(userId, name, username, score) {
     try {
-        let db = getDb(); 
+        let db = getDb();
         if (!db.users[userId]) {
-            db.users[userId] = { name: name || "Foydalanuvchi", score: 0, totalTests: 0, date: new Date().toISOString() };
+            db.users[userId] = { 
+                name: name || "Foydalanuvchi", 
+                username: username ? `@${username}` : "Lichka yopiq", // Username saqlash
+                score: 0, 
+                totalTests: 0, 
+                date: new Date().toISOString() 
+            };
         }
         db.users[userId].totalTests = (db.users[userId].totalTests || 0) + 1;
         if (score > (db.users[userId].score || 0)) {
@@ -5978,6 +5984,7 @@ function updateGlobalScore(userId, name, score) {
             db.users[userId].date = new Date().toISOString();
         }
         db.users[userId].name = name;
+        db.users[userId].username = username ? `@${username}` : "Lichka yopiq";
         fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2));
     } catch (error) { console.error("Bazaga yozishda xato:", error); }
 }
@@ -5986,10 +5993,12 @@ function getLeaderboard() {
     const db = getDb();
     const usersArray = Object.values(db.users || {});
     if (usersArray.length === 0) return "Hozircha hech kim test topshirmadi.";
+    
     const sorted = usersArray.sort((a, b) => (b.score || 0) - (a.score || 0)).slice(0, 10);
-    return sorted.map((u, i) => {
+    
+    return "🏆 **TOP 10 REYTING**\n\n" + sorted.map((u, i) => {
         const medal = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : "👤";
-        return `${medal} ${u.name || 'Noma\'lum'} — ${(u.score || 0).toFixed(1)} ball`;
+        return `${medal} ${u.name} (${u.username}) — ${(u.score || 0).toFixed(1)} ball`;
     }).join('\n');
 }
 
@@ -6060,10 +6069,11 @@ bot.hears('⏱ Vaqtni o\'zgartirish', (ctx) => {
 bot.on('text', async (ctx, next) => {
     const text = ctx.message.text;
     const userId = ctx.from.id;
+    const username = ctx.from.username || "Lichka yopiq"; // Username'ni olamiz
 
     if (text.startsWith('/')) return next();
 
-    // Vaqtni o'zgartirish mantiqi
+    // ADMIN uchun vaqtni o'zgartirish qismi (o'zgarishsiz qoldi)
     if (userId === ADMIN_ID && ctx.session.waitingForTime) {
         if (text === '🚫 Bekor qilish') {
             ctx.session.waitingForTime = false;
@@ -6077,14 +6087,26 @@ bot.on('text', async (ctx, next) => {
         return ctx.reply(`✅ Yangilandi: ${newTime} soniya.`);
     }
 
-    // Ism qabul qilish
+    // Ism qabul qilish (YANGILANGAN)
     if (ctx.session.waitingForName) {
+        if (text.length < 3) return ctx.reply("❌ Ism juda qisqa! Iltimos, to'liq ismingizni yozing:");
+
         ctx.session.userName = text;
         ctx.session.waitingForName = false;
+        
         let db = getDb();
-        db.users[userId] = { name: text, score: 0, totalTests: 0, date: new Date().toISOString() };
+        // Foydalanuvchi ma'lumotlarini to'liqroq saqlaymiz
+        db.users[userId] = { 
+            name: text, 
+            username: username !== "Lichka yopiq" ? `@${username}` : username,
+            score: db.users[userId]?.score || 0, // Agar eski skori bo'lsa saqlab qolamiz
+            totalTests: db.users[userId]?.totalTests || 0,
+            date: new Date().toISOString() 
+        };
+        
         fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2));
-        ctx.reply(`Rahmat, ${text}!`);
+        
+        await ctx.reply(`✅ Rahmat, ${text}! Ma'lumotlaringiz saqlandi.`);
         return showSubjectMenu(ctx);
     }
 
@@ -6097,6 +6119,7 @@ bot.hears(["📝 Akademik yozuv", "📜 Tarix", "➕ Matematika", "💻 Dasturla
     if (text.includes("Akademik")) ctx.session.currentSubject = "academic";
     else if (text.includes("Tarix")) ctx.session.currentSubject = "history";
     else if (text.includes("Matematika")) ctx.session.currentSubject = "math";
+    else if (text.includes("Dasturlash")) ctx.session.currentSubject = "dasturlash"; // Shu joyi aniq bo'lishi kerak
     ctx.reply(`Tayyormisiz?`, Markup.keyboard([["⚡️ Blitz (25)", "📝 To'liq test"], ["⬅️ Orqaga (Fanlar)"]]).resize());
 });
 
@@ -6116,12 +6139,15 @@ bot.hears("⬅️ Orqaga (Fanlar)", (ctx) => showSubjectMenu(ctx));
 
 bot.start((ctx) => {
     const db = getDb();
-    if (db.users[ctx.from.id]) {
-        ctx.session.userName = db.users[ctx.from.id].name;
+    const userId = ctx.from.id;
+
+    if (db.users[userId] && db.users[userId].name) {
+        ctx.session.userName = db.users[userId].name;
         return showSubjectMenu(ctx);
     }
+
     ctx.session.waitingForName = true;
-    return ctx.reply("Ismingizni kiriting:");
+    return ctx.reply("Assalomu alaykum! Test simulyatoriga xush kelibsiz.\n\nIltimos, ismingizni kiriting (Reyting uchun):");
 });
 
 // --- CALLBACKLAR ---
