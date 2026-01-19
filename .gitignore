@@ -1,2 +1,17 @@
-/data
+# Kutubxonalar
+node_modules/
+
+# Maxfiy ma'lumotlar (Tokenlar va IDlar)
+.env
+
+# Mahalliy test fayllari (Bular Railway Volume-da saqlanadi)
+/data/*
+session.json
 ranking_db.json
+settings.json
+vip_users.json
+custom_questions.json
+
+# Tizim fayllari
+.DS_Store
+npm-debug.log*
