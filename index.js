@@ -5192,6 +5192,762 @@ let SUBJECTS = {
 
 
     ]
+  },
+  dasturlash: { 
+    name: "💻 Dasturlash 1", 
+    questions: [
+    {
+        q: "Algoritm deganda nima tushuniladi?",
+        options: ["Ma'lum natijaga erishishga qaratilgan amallar ketma-ketligi", "Kompyuterning texnik qurilmalari", "Faqat matematik formulalar to'plami", "Dasturlash tillarining lug'ati"],
+        a: "Ma'lum natijaga erishishga qaratilgan amallar ketma-ketligi"
+    },
+    {
+        q: "“Algoritm” so‘zi qanday ma’noni anglatadi?",
+        options: ["O'rta osiyolik olim Al-Xorazmiy nomining lotincha aytilishi", "Grecha 'tartib' degan ma'noni", "Lotincha 'hisoblash' ma'nosini", "Arabcha 'qoida' degan ma'noni"],
+        a: "O'rta osiyolik olim Al-Xorazmiy nomining lotincha aytilishi"
+    },
+    {
+        q: "Algoritm cheklanganlik xossasi nimani bildiradi?",
+        options: ["Algoritm chekli qadamlardan keyin albatta to'xtashi kerak", "Algoritm faqat cheklangan xotirada ishlashi", "Algoritm qadamlari soni 100 tadan oshmasligi", "Algoritm faqat bitta odamga tushunarli bo'lishi"],
+        a: "Algoritm chekli qadamlardan keyin albatta to'xtashi kerak"
+    },
+    {
+        q: "Algoritm kamida nechta natija berishi kerak?",
+        options: ["1 ta", "0 ta", "2 ta", "Natija berishi shart emas"],
+        a: "1 ta"
+    },
+    {
+        q: "Algoritm dasturlash tiliga bog‘liq bo‘lmasligi nimani anglatadi?",
+        options: ["Algoritm har qanday dasturlash tilida bir xil mantiqda amalga oshirilishi", "Algoritm faqat qog'ozda yozilishi", "Algoritm kompyutersiz ham ishlashi", "Algoritm faqat bitta tilda ishlashi"],
+        a: "Algoritm har qanday dasturlash tilida bir xil mantiqda amalga oshirilishi"
+    },
+    {
+        q: "Algoritm murakkabligi qaysi omillar bilan belgilanadi?",
+        options: ["Vaqt va xotira sarfi bilan", "Dastur kodi qatorlari soni bilan", "Dasturchining tajribasi bilan", "Kompyuterning monitor o'lchami bilan"],
+        a: "Vaqt va xotira sarfi bilan"
+    },
+    {
+        q: "Algoritmni ishlab chiqishda birinchi navbatda nima aniqlanadi?",
+        options: ["Masalaning qo'yilishi va kiruvchi ma'lumotlar", "Dasturlash tili turi", "Kompyuter quvvati", "Dastur narxi"],
+        a: "Masalaning qo'yilishi va kiruvchi ma'lumotlar"
+    },
+    {
+        q: "Chiziqli algoritmning asosiy xususiyati qaysi?",
+        options: ["Amallar qat'iy ketma-ketlikda bir marta bajariladi", "Amallar shartga ko'ra shoxlanadi", "Amallar cheksiz takrorlanadi", "Amallar teskari tartibda bajariladi"],
+        a: "Amallar qat'iy ketma-ketlikda bir marta bajariladi"
+    },
+    {
+        q: "Tarmoqlanuvchi algoritm qachon qo‘llaniladi?",
+        options: ["Jarayon ma'lum bir shartga bog'liq bo'lganda", "Faqat matematik qo'shish amali bo'lganda", "Hech qanday shart bo'lmaganda", "Dastur juda uzun bo'lib ketganda"],
+        a: "Jarayon ma'lum bir shartga bog'liq bo'lganda"
+    },
+    {
+        q: "Quyidagilardan qaysi biri takrorlanuvchi algoritmga misol bo‘ladi?",
+        options: ["1 dan 100 gacha bo'lgan sonlarni chiqarish", "Ikki sonning kattasini topish", "Ismni ekranga bir marta chiqarish", "Doira yuzini hisoblash"],
+        a: "1 dan 100 gacha bo'lgan sonlarni chiqarish"
+    },
+    {
+        q: "Tarmoqlanuvchi algoritmlarda asosan qaysi konstruksiya ishlatiladi?",
+        options: ["If - Else", "For - In", "While - Do", "Def - Return"],
+        a: "If - Else"
+    },
+    {
+        q: "Takrorlanuvchi algoritmning asosiy vazifasi nimadan iborat?",
+        options: ["Bir xil turdagi amallarni ko'p marta bajarish", "Dasturni to'xtatish", "Xatolarni qidirish", "Faqat bir marta hisoblash"],
+        a: "Bir xil turdagi amallarni ko'p marta bajarish"
+    },
+    {
+        q: "Chiziqli algoritm qanday algoritm hisoblanadi?",
+        options: ["Eng sodda, hech qanday shart va takrorlashsiz algoritm", "Murakkab tuzilmali algoritm", "Faqat grafiklar bilan ishlovchi algoritm", "Natijasi doim nol bo'ladigan algoritm"],
+        a: "Eng sodda, hech qanday shart va takrorlashsiz algoritm"
+    },
+    {
+        q: "Tarmoqlanuvchi algoritmning asosiy belgisi nima?",
+        options: ["Mantiqiy shartning mavjudligi", "Amallarning cheksizligi", "Hech qanday natija bermasligi", "Faqat raqamlar bilan ishlashi"],
+        a: "Mantiqiy shartning mavjudligi"
+    },
+    {
+        q: "Takrorlanuvchi algoritm qaysi holatda ishlatiladi?",
+        options: ["Ma'lum qadamlar guruhi bir necha bor bajarilishi kerak bo'lganda", "Shart faqat bir marta tekshirilishi kerak bo'lganda", "Dasturda xatolik bo'lganda", "Faqat matnli ma'lumotlar bilan ishlashda"],
+        a: "Ma'lum qadamlar guruhi bir necha bor bajarilishi kerak bo'lganda"
+    },
+    {
+        q: "Python’da o‘zgaruvchi nima?",
+        options: ["Ma'lumotlarni saqlash uchun xotiradan ajratilgan nomlangan joy", "Faqat raqamlar to'plami", "Dasturning xatolar ro'yxati", "Kompyuter protsessori"],
+        a: "Ma'lumotlarni saqlash uchun xotiradan ajratilgan nomlangan joy"
+    },
+    {
+        q: "Python’da o‘zgaruvchi nomi nimadan boshlanishi mumkin?",
+        options: ["Harf yoki pastki chiziq (_) bilan", "Istalgan raqam bilan", "Maxsus belgilar bilan (&, %, $)", "Bo'sh joy (probel) bilan"],
+        a: "Harf yoki pastki chiziq (_) bilan"
+    },
+    {
+        q: "Quyidagilardan qaysi biri o‘zgaruvchi nomi bo‘la oladi?",
+        options: ["my_variable", "2nd_value", "class", "my-variable"],
+        a: "my_variable"
+    },
+    {
+        q: "Python’da butun sonlar qaysi turga mansub?",
+        options: ["int", "float", "string", "boolean"],
+        a: "int"
+    },
+    {
+        q: "Haqiqiy (o‘nli) sonlar qaysi turda saqlanadi?",
+        options: ["float", "int", "char", "complex"],
+        a: "float"
+    },
+    {
+        q: "Haqiqiy (o‘nli) sonlar Python-da qaysi turda saqlanadi?",
+        options: ["float", "int", "str", "double"],
+        a: "float"
+    },
+    {
+        q: "Mantiqiy qiymatlar (True, False) qaysi turga tegishli?",
+        options: ["bool", "logic", "binary", "int"],
+        a: "bool"
+    },
+    {
+        q: "Python-da o'zgaruvchi turi qachon aniqlanadi?",
+        options: ["Qiymat berilganda (dinamik)", "Dastur boshida", "Kompilyatsiya vaqtida", "Hech qachon"],
+        a: "Qiymat berilganda (dinamik)"
+    },
+    {
+        q: "x = 'Python' ifodasida x ning turi qanday?",
+        options: ["str", "int", "text", "char"],
+        a: "str"
+    },
+    {
+        q: "input() funksiyasi orqali kiritilgan ma'lumotning boshlang'ich turi qanday bo'ladi?",
+        options: ["str", "int", "float", "list"],
+        a: "str"
+    },
+    {
+        q: "Butun son kiritish uchun qaysi ko'rinish to'g'ri?",
+        options: ["int(input())", "float(input())", "input(int)", "str(input())"],
+        a: "int(input())"
+    },
+    {
+        q: "x, y = map(int, input().split()) kodi nima qiladi?",
+        options: ["Bir qatorda ikkita butun sonni kiritadi", "Sonni ikkiga ko'paytiradi", "Xatoni tekshiradi", "Massiv yaratadi"],
+        a: "Bir qatorda ikkita butun sonni kiritadi"
+    },
+    {
+        q: "if x > 0: print('Musbat') else: print('Manfiy') - Bu kod nima qiladi?",
+        options: ["Sonning ishorasini aniqlaydi", "Sonni kvadratga oshiradi", "Xatolik beradi", "Faqat musbat sonni chiqaradi"],
+        a: "Sonning ishorasini aniqlaydi"
+    },
+    {
+        q: "a % 2 == 0 sharti nimani tekshiradi?",
+        options: ["Sonning juftligini", "Sonning toqligini", "Sonning nolligini", "Sonning musbatligini"],
+        a: "Sonning juftligini"
+    },
+    {
+        q: "a, b = b, a ifodasi nima bajaradi?",
+        options: ["Ikkita o'zgaruvchi qiymatini almashtiradi", "Xatolik beradi", "Qiymatlarni o'chiradi", "Qiymatlarni qo'shadi"],
+        a: "Ikkita o'zgaruvchi qiymatini almashtiradi"
+    },
+    {
+        q: "while i <= 5: print(i); i += 1 - Bu sikl nechta son chiqaradi?",
+        options: ["5 ta (1 dan 5 gacha)", "4 ta", "6 ta", "Cheksiz"],
+        a: "5 ta (1 dan 5 gacha)"
+    },
+    {
+        q: "Python-da 'va' (and) mantiqiy operatori qachon True beradi?",
+        options: ["Har ikkala shart to'g'ri bo'lsa", "Bitta shart to'g'ri bo'lsa", "Har ikkala shart xato bo'lsa", "Hech qachon"],
+        a: "Har ikkala shart to'g'ri bo'lsa"
+    },
+    {
+        q: "print(not (5 > 3)) natijasi nima?",
+        options: ["False", "True", "None", "Error"],
+        a: "False"
+    },
+    {
+        q: "Python-da bir qatorda bir nechta buyruq yozish uchun qaysi belgi ishlatiladi?",
+        options: ["; (nuqtali vergul)", ": (ikki nuqta)", ", (vergul)", "/ (slash)"],
+        a: "; (nuqtali vergul)"
+    },
+    {
+        q: "range(5) qanday ketma-ketlikni beradi?",
+        options: ["0, 1, 2, 3, 4", "1, 2, 3, 4, 5", "0, 1, 2, 3, 4, 5", "5, 4, 3, 2, 1"],
+        a: "0, 1, 2, 3, 4"
+    },
+    {
+        q: "range(2, 5) qaysi sonlarni o'z ichiga oladi?",
+        options: ["2, 3, 4", "2, 3, 4, 5", "3, 4, 5", "2, 5"],
+        a: "2, 3, 4"
+    },
+    {
+        q: "x sonining oxirgi raqamini aniqlash formulasi qaysi?",
+        options: ["x % 10", "x // 10", "x / 10", "x ** 10"],
+        a: "x % 10"
+    },
+    {
+        q: "Sikldan darhol chiqib ketish uchun qaysi operator ishlatiladi?",
+        options: ["break", "continue", "stop", "exit"],
+        a: "break"
+    },
+    {
+        q: "Siklni keyingi qadamiga o'tib yuborish uchun qaysi operator ishlatiladi?",
+        options: ["continue", "break", "pass", "next"],
+        a: "continue"
+    },
+    {
+        q: "Python-da funksiya qaysi kalit so'zi bilan boshlanadi?",
+        options: ["def", "function", "func", "define"],
+        a: "def"
+    },
+    {
+        q: "def kvadrat(x): return x * x - kvadrat(4) nimani qaytaradi?",
+        options: ["16", "8", "4", "12"],
+        a: "16"
+    },
+    {
+        q: "Funksiyada natijani qaytarish uchun qaysi operator ishlatiladi?",
+        options: ["return", "print", "send", "get"],
+        a: "return"
+    },
+    {
+        q: "def f(a, b=5): return a + b - f(3) natijasi nima?",
+        options: ["8", "3", "5", "Xatolik"],
+        a: "8"
+    },
+    {
+        q: "Funksiya chaqirilganda unga uzatiladigan qiymat nima deyiladi?",
+        options: ["Argument", "Parametr", "O'zgaruvchi", "Natija"],
+        a: "Argument"
+    },
+    {
+        q: "Python-da modulning kengaytmasi qanday bo'ladi?",
+        options: [".py", ".mod", ".exe", ".txt"],
+        a: ".py"
+    },
+    {
+        q: "Modulni dasturga ulash uchun qaysi kalit so'z ishlatiladi?",
+        options: ["import", "include", "using", "require"],
+        a: "import"
+    },
+    {
+        q: "Barcha funksiyalarni moduldan birdaniga import qilish qaysi ko'rinishda?",
+        options: ["from modul import *", "import all from modul", "include modul", "import modul.all"],
+        a: "from modul import *"
+    },
+    {
+        q: "Python-da 2D massiv (matritsa) qanday ifodalanadi?",
+        options: ["Ro'yxat ichidagi ro'yxat: [[1,2],[3,4]]", "{1,2,3,4}", "(1,2,3,4)", "[1,2,3,4]"],
+        a: "Ro'yxat ichidagi ro'yxat: [[1,2],[3,4]]"
+    },
+    {
+        q: "matrix = [[1,2],[3,4]] kodi berilgan. matrix[0][1] nimaga teng?",
+        options: ["2", "1", "3", "4"],
+        a: "2"
+    },
+    {
+        q: "Ro'yxatga yangi element qo'shish uchun qaysi metod ishlatiladi?",
+        options: ["append()", "add()", "push()", "insert()"],
+        a: "append()"
+    },
+    {
+        q: "len(matrix) funksiyasi 2D massivda nimani qaytaradi?",
+        options: ["Qatorlar sonini", "Barcha elementlar sonini", "Ustunlar sonini", "Xatolik"],
+        a: "Qatorlar sonini"
+    },
+    {
+        q: "NumPy kutubxonasi nima uchun ishlatiladi?",
+        options: ["Katta hajmli massivlar va matematik hisoblar uchun", "Grafik interfeys yaratish uchun", "Sayt yaratish uchun", "Telegram bot yaratish uchun"],
+        a: "Katta hajmli massivlar va matematik hisoblar uchun"
+    },
+    {
+        q: "NumPy-ni import qilishning eng keng tarqalgan usuli qaysi?",
+        options: ["import numpy as np", "import np", "from numpy import all", "include numpy"],
+        a: "import numpy as np"
+    },
+    {
+        q: "np.array([1, 2, 3, 4]) kodi nima yaratadi?",
+        options: ["NumPy massivini", "Oddiy listni", "Tupleni", "Lug'atni"],
+        a: "NumPy massivini"
+    },
+    {
+        q: "3x3 birlik (identity) matritsa yaratish buyrug'i qaysi?",
+        options: ["np.eye(3)", "np.ones(3)", "np.zeros(3)", "np.unit(3)"],
+        a: "np.eye(3)"
+    },
+    {
+        q: "Massiv elementlarining umumiy sonini qaysi xususiyat aniqlaydi?",
+        options: ["arr.size", "arr.length", "arr.shape", "arr.dim"],
+        a: "arr.size"
+    },
+    {
+        q: "Massiv o'lchamini (masalan: 2x3) ko'rsatuvchi xususiyat qaysi?",
+        options: ["arr.shape", "arr.size", "arr.ndim", "arr.type"],
+        a: "arr.shape"
+    },
+    {
+        q: "np.zeros(5) kodi nimani qaytaradi?",
+        options: ["5 ta noldan iborat massiv", "5 raqamini", "Bo'sh massiv", "5 ta birdan iborat massiv"],
+        a: "5 ta noldan iborat massiv"
+    },
+    {
+        q: "arr[2:5] kesmasi qaysi elementlarni oladi?",
+        options: ["2, 3 va 4-indeksdagi elementlarni", "2 dan 5 gacha bo'lgan barcha sonlarni", "Faqat 2 va 5-elementni", "Xatolik beradi"],
+        a: "2, 3 va 4-indeksdagi elementlarni"
+    },
+    {
+        q: "NumPy-da o'rtacha qiymatni hisoblaydigan funksiya qaysi?",
+        options: ["np.mean()", "np.average()", "np.mid()", "np.sum()"],
+        a: "np.mean()"
+    },
+    {
+        q: "a=1; b=2; c=3; a, b, c = b, c, a - print(a, b, c) natijasi nima?",
+        options: ["2 3 1", "1 2 3", "3 2 1", "2 1 3"],
+        a: "2 3 1"
+    },
+    {
+        q: "while x != 0: x -= 2 (agar x=10 bo'lsa) sikl necha marta aylanadi?",
+        options: ["5 marta", "10 marta", "Cheksiz", "4 marta"],
+        a: "5 marta"
+    },
+    {
+        q: "i = 1; while i < 5: print(i) - Bu yerda cheksiz sikl nima uchun yuzaga keladi?",
+        options: ["i ning qiymati o'zgarmayotgani uchun", "Shart xato yozilgani uchun", "i ning qiymati 5 dan katta bo'lgani uchun", "Print funksiyasi xato"],
+        a: "i ning qiymati o'zgarmayotgani uchun"
+    },
+    {
+        q: "a=4; b=3; c=5; t=(a*a+b*b==c*c) natijasi nima?",
+        options: ["True", "False", "None", "Error"],
+        a: "True"
+    },
+    {
+        q: "a=8; b=3; print(a > 5 and b < 5) natijasi nima?",
+        options: ["True", "False", "8 3", "Error"],
+        a: "True"
+    },
+    {
+        q: "x = 10; y = 0; print(x and y) natijasi nima?",
+        options: ["0", "10", "True", "False"],
+        a: "0"
+    },
+    {
+        q: "x = 5; print(not (x > 3 and x < 10)) natijasi nima?",
+        options: ["False", "True", "5", "None"],
+        a: "False"
+    },
+    {
+        q: "x = 0; y = 7; print(x or y) natijasi nima?",
+        options: ["7", "0", "True", "False"],
+        a: "7"
+    },
+    {
+        q: "a = 3; print(a and not a) natijasi nima?",
+        options: ["False", "True", "3", "0"],
+        a: "False"
+    },
+    {
+        q: "Python’da katta-kichik harflar (case sensitivity) qanday ahamiyatga ega?",
+        options: ["Katta va kichik harflar turli o'zgaruvchilar hisoblanadi", "Hech qanday farqi yo'q", "Faqat funksiyalarda farq qiladi", "Faqat satrlarda farq qiladi"],
+        a: "Katta va kichik harflar turli o'zgaruvchilar hisoblanadi"
+    },
+    {
+        q: "print(1, 2, 3, sep='') natijasi nima bo'ladi?",
+        options: ["123", "1 2 3", "1,2,3", "1;2;3"],
+        a: "123"
+    },
+    {
+        q: "s = 0; for i in range(4): s += i - print(s) natijasi?",
+        options: ["6", "10", "4", "3"],
+        a: "6"
+    },
+    {
+        q: "for i in range(2, 6): print(i) - qaysi sonlar chiqadi?",
+        options: ["2, 3, 4, 5", "2, 3, 4, 5, 6", "2, 6", "1, 2, 3, 4, 5"],
+        a: "2, 3, 4, 5"
+    },
+    {
+        q: "s = 1; for i in range(3): s *= 2 - print(s) natijasi?",
+        options: ["8", "6", "4", "16"],
+        a: "8"
+    },
+    {
+        q: "for i in range(1, 6, 2): print(i) - qaysi sonlar chiqadi?",
+        options: ["1, 3, 5", "1, 2, 3, 4, 5", "1, 6, 2", "2, 4, 6"],
+        a: "1, 3, 5"
+    },
+    {
+        q: "for i in range(5, 0, -1): print(i) - qaysi tartibda chiqadi?",
+        options: ["5, 4, 3, 2, 1", "0, 1, 2, 3, 4, 5", "5, 0, -1", "4, 3, 2, 1, 0"],
+        a: "5, 4, 3, 2, 1"
+    },
+    {
+        q: "s = 1; for i in range(4): s += s - print(s) natijasi?",
+        options: ["16", "8", "4", "32"],
+        a: "16"
+    },
+    {
+        q: "k = 0; for i in range(1, 10): if i % 3 == 0: k += 1 - k nechaga teng?",
+        options: ["3", "2", "4", "9"],
+        a: "3"
+    },
+    {
+        q: "def chiqar(): return 5; print(chiqar()) natijasi?",
+        options: ["5", "None", "chiqar", "Xatolik"],
+        a: "5"
+    },
+    {
+        q: "def f(a, b=4): return a*b; print(f(2)) natijasi?",
+        options: ["8", "6", "2", "Xatolik"],
+        a: "8"
+    },
+    {
+        q: "def salom(ism): print('Salom', ism) - salom('Ali') natijasi nima?",
+        options: ["Salom Ali", "Ali", "Salom ism", "Xatolik"],
+        a: "Salom Ali"
+    },
+    {
+        q: "Funksiya nima uchun ishlatiladi?",
+        options: ["Kodni qayta ishlatish va tizimlashtirish uchun", "Faqat matematik hisoblar uchun", "Dasturni tezlashtirish uchun", "Xotirani tozalash uchun"],
+        a: "Kodni qayta ishlatish va tizimlashtirish uchun"
+    },
+    {
+        q: "def f(): return 10 - print(f()) natijasi nima?",
+        options: ["10", "None", "f", "0"],
+        a: "10"
+    },
+    {
+        q: "return operatorining vazifasi nima?",
+        options: ["Funksiya natijasini qaytarish va funksiyani tugatish", "Ma'lumotni ekranga chiqarish", "Siklni to'xtatish", "O'zgaruvchini o'chirish"],
+        a: "Funksiya natijasini qaytarish va funksiyani tugatish"
+    },
+    {
+        q: "Funksiya ichida boshqa funksiyani chaqirish mumkinmi?",
+        options: ["Ha, mumkin", "Yo'q, mumkin emas", "Faqat bir marta mumkin", "Faqat matematik funksiyalarni"],
+        a: "Ha, mumkin"
+    },
+    {
+        q: "def f(x): return x % 2 == 0 - f(4) nimani qaytaradi?",
+        options: ["True", "False", "0", "2"],
+        a: "True"
+    },
+    {
+        q: "Python-da modul nima?",
+        options: ["Funksiya va o'zgaruvchilar saqlangan alohida .py fayl", "Dasturning xatolar ro'yxati", "Kompyuterning qattiq diski", "Faqat tayyor kutubxonalar"],
+        a: "Funksiya va o'zgaruvchilar saqlangan alohida .py fayl"
+    },
+    {
+        q: "Moduldan funksiyani global nomlar maydoniga import qilish buyrug'i qaysi?",
+        options: ["from modul import *", "import modul", "include modul", "get modul"],
+        a: "from modul import *"
+    },
+    {
+        q: "Massiv (list) nima?",
+        options: ["Bir nechta qiymatlarni bitta o'zgaruvchida saqlaydigan tartiblangan to'plam", "Faqat bitta son saqlaydigan joy", "Dastur kodi", "Faqat matnli ma'lumot"],
+        a: "Bir nechta qiymatlarni bitta o'zgaruvchida saqlaydigan tartiblangan to'plam"
+    },
+    {
+        q: "matrix = [[1,2],[3,4]] - matrix[1][0] nimaga teng?",
+        options: ["3", "1", "2", "4"],
+        a: "3"
+    },
+    {
+        q: "2D massivda (matritsa) birinchi indeks nimani bildiradi?",
+        options: ["Qatorni", "Ustunni", "Element qiymatini", "Massiv uzunligini"],
+        a: "Qatorni"
+    },
+    {
+        q: "Massivdan oxirgi elementni olish uchun qaysi indeks ishlatiladi?",
+        options: ["-1", "0", "len(arr)", "last"],
+        a: "-1"
+    },
+    {
+        q: "Massiv elementini o'zgartirish qaysi ko'rinishda bo'ladi?",
+        options: ["arr[indeks] = yangi_qiymat", "arr = yangi_qiymat", "arr.change(indeks)", "arr[indeks] == qiymat"],
+        a: "arr[indeks] = yangi_qiymat"
+    },
+    {
+        q: "Massivni to'liq o'qish uchun odatda nima ishlatiladi?",
+        options: ["for sikli", "if operatori", "print funksiyasi", "while True"],
+        a: "for sikli"
+    },
+    {
+        q: "NumPy kutubxonasidagi asosiy obyekt nomi nima?",
+        options: ["ndarray", "list", "array2d", "numpy_obj"],
+        a: "ndarray"
+    },
+    {
+        q: "Massivni transponirlash nimani bildiradi?",
+        options: ["Qator va ustunlarning o'rnini almashtirish", "Elementlarni o'chirish", "Elementlarni ko'paytirish", "Massivni teskari tartibda yozish"],
+        a: "Qator va ustunlarning o'rnini almashtirish"
+    },
+    {
+        q: "SciPy kutubxonasi qaysi sohada ishlatiladi?",
+        options: ["Ilmiy va muhandislik hisob-kitoblarida", "Sayt yaratishda", "Grafik dizaynda", "Telegram botlarda"],
+        a: "Ilmiy va muhandislik hisob-kitoblarida"
+    },
+    {
+        q: "np.mean(arr) funksiyasi nimani hisoblaydi?",
+        options: ["O'rtacha arifmetik qiymatni", "Eng katta qiymatni", "Yig'indini", "Elementlar sonini"],
+        a: "O'rtacha arifmetik qiymatni"
+    },
+    {
+        q: "NumPy va Pandas birgalikda nima beradi?",
+        options: ["Ma'lumotlar tahlili (Data Science) uchun kuchli asbob", "Faqat chiroyli grafiklar", "Dasturning xavfsizligi", "Internet tezligi"],
+        a: "Ma'lumotlar tahlili (Data Science) uchun kuchli asbob"
+    },
+    {
+        q: "NumPy kutubxonasini o‘rnatish buyrug‘i qaysi?",
+        options: ["pip install numpy", "get numpy", "install numpy", "python numpy"],
+        a: "pip install numpy"
+    },
+    {
+        q: "NumPy massivlari Python listlaridan nimasi bilan farq qiladi?",
+        options: ["Tezroq ishlaydi va xotirani kamroq sarflaydi", "Farqi yo'q", "Faqat sonlarni saqlaydi", "Sekinroq ishlaydi"],
+        a: "Tezroq ishlaydi va xotirani kamroq sarflaydi"
+    },
+    {
+        q: "np.eye(3) funksiyasi nimani yaratadi?",
+        options: ["3x3 birlik matritsa", "Nollardan iborat massiv", "Bo'sh massiv", "3 ta elementli list"],
+        a: "3x3 birlik matritsa"
+    },
+    {
+        q: "arr.ndim xususiyati nimani aniqlaydi?",
+        options: ["Massiv o'lchovlar sonini (necha o'lchamli ekanini)", "Elementlar sonini", "Ma'lumot turini", "Xotira hajmini"],
+        a: "Massiv o'lchovlar sonini (necha o'lchamli ekanini)"
+    },
+    {
+        q: "np.arange(1, 5) natijasi qaysi?",
+        options: ["[1, 2, 3, 4]", "[1, 2, 3, 4, 5]", "[0, 1, 2, 3, 4]", "[1, 5]"],
+        a: "[1, 2, 3, 4]"
+    },
+    {
+        q: "def f(a): return a + 2 - print(f(1) + f(2)) natijasi?",
+        options: ["7", "3", "4", "5"],
+        a: "7"
+    },
+    {
+        q: "Python-da massiv (list) elementlari har xil turda bo'lishi mumkinmi?",
+        options: ["Ha, bo'lishi mumkin", "Yo'q, faqat bir xil turda", "Faqat son va matn bo'lishi mumkin", "Faqat NumPy massivlarida"],
+        a: "Ha, bo'lishi mumkin"
+    },
+    {
+        q: "if __name__ == '__main__': sharti nima uchun ishlatiladi?",
+        options: ["Fayl bevosita ishga tushirilganini yoki import qilinganini tekshirish uchun", "Dasturni tugatish uchun", "Xatoni topish uchun", "Admin panelni ochish uchun"],
+        a: "Fayl bevosita ishga tushirilganini yoki import qilinganini tekshirish uchun"
+    },
+    {
+        q: "arr.shape xususiyati (2, 3) natija bersa, bu nima degani?",
+        options: ["2 ta qator va 3 ta ustun", "3 ta qator va 2 ta ustun", "Jami 6 ta element", "2 o'lchamli 3 ta massiv"],
+        a: "2 ta qator va 3 ta ustun"
+    },
+    {
+        q: "del matrix[0] buyrug'i nima qiladi?",
+        options: ["Birinchi qatorni o'chiradi", "Birinchi ustunni o'chiradi", "Butun massivni o'chiradi", "Xatolik beradi"],
+        a: "Birinchi qatorni o'chiradi"
+    },
+    {
+        q: "def f(x=4): return x + 1 - f() nimaga teng?",
+        options: ["5", "4", "Xatolik", "None"],
+        a: "5"
+    },
+    {
+        q: "NumPy massivining o‘lchamini ko‘rsatuvchi xususiyat qaysi?",
+        options: ["arr.shape", "arr.size", "arr.length", "arr.dim"],
+        a: "arr.shape"
+    },
+    {
+        q: "arr.size NumPy-da nimani bildiradi?",
+        options: ["Massivdagi barcha elementlarning umumiy sonini", "Massiv o'lchamini", "Faqat qatorlar sonini", "Xotira hajmini"],
+        a: "Massivdagi barcha elementlarning umumiy sonini"
+    },
+    {
+        q: "2D massivda elementga murojaat qilish qaysi ko‘rinishda bo'ladi?",
+        options: ["arr[qator, ustun]", "arr(qator;ustun)", "arr{qator}{ustun}", "arr[qator + ustun]"],
+        a: "arr[qator, ustun]"
+    },
+    {
+        q: "arr[::2] NumPy-da nimani bildiradi?",
+        options: ["Massivni 2 qadam bilan qirqib olish", "Faqat birinchi 2 ta elementni olish", "Massivni 2 ga ko'paytirish", "Oxirgi 2 ta elementni o'chirish"],
+        a: "Massivni 2 qadam bilan qirqib olish"
+    },
+    {
+        q: "NumPy-da barcha elementlari 1 ga teng 3x3 massiv qanday yaratiladi?",
+        options: ["np.ones((3, 3))", "np.eye(3)", "np.single(3, 3)", "np.full(1)"],
+        a: "np.ones((3, 3))"
+    },
+    {
+        q: "arr.dtype xususiyati nimani bildiradi?",
+        options: ["Massiv elementlarining ma'lumot turini", "Massiv nomini", "Massiv hajmini", "Massiv yo'nalishini"],
+        a: "Massiv elementlarining ma'lumot turini"
+    },
+    {
+        q: "NumPy-da massiv shaklini o'zgartirish (masalan, 1D dan 2D ga) uchun qaysi metod ishlatiladi?",
+        options: ["reshape()", "resize()", "change()", "format()"],
+        a: "reshape()"
+    },
+    {
+        q: "np.sqrt(arr) funksiyasi nima qiladi?",
+        options: ["Har bir elementdan kvadrat ildiz oladi", "Massiv kvadratini hisoblaydi", "Faqat birinchi element ildizini oladi", "Xatolik beradi"],
+        a: "Har bir elementdan kvadrat ildiz oladi"
+    },
+    {
+        q: "Juft sonni aniqlash sharti qaysi?",
+        options: ["n % 2 == 0", "n / 2 == 0", "n // 2 == 1", "n % 2 != 0"],
+        a: "n % 2 == 0"
+    },
+    {
+        q: "2D massivdagi elementlar yig‘indisi NumPy-da qanday topiladi?",
+        options: ["np.sum(matrix)", "matrix.total()", "sumAll(matrix)", "np.add(matrix)"],
+        a: "np.sum(matrix)"
+    },
+    {
+        q: "NumPy-da ixtiyoriy (random) sonlardan iborat massiv yaratish funksiyasi qaysi?",
+        options: ["np.random.rand()", "np.get_random()", "np.any()", "np.create_random()"],
+        a: "np.random.rand()"
+    },
+    {
+        q: "Massivdagi eng katta elementni topish funksiyasi qaysi?",
+        options: ["np.max()", "np.high()", "np.big()", "np.top()"],
+        a: "np.max()"
+    },
+    {
+        q: "Massivdagi eng kichik elementning indeksini topish funksiyasi qaysi?",
+        options: ["np.argmin()", "np.min_index()", "np.find_min()", "np.low()"],
+        a: "np.argmin()"
+    },
+    {
+        q: "np.dot(a, b) amali nima uchun ishlatiladi?",
+        options: ["Matritsalarni ko'paytirish uchun", "Matritsalarni qo'shish uchun", "Elementlarni bo'lish uchun", "Nolga tekshirish uchun"],
+        a: "Matritsalarni ko'paytirish uchun"
+    },
+    {
+        q: "NumPy-da 'Broadcasting' nima?",
+        options: ["Turli o'lchamdagi massivlar ustida amallar bajarish imkoniyati", "Massivni internetga yuklash", "Elementlarni o'chirish", "Xatolarni tuzatish"],
+        a: "Turli o'lchamdagi massivlar ustida amallar bajarish imkoniyati"
+    },
+    {
+        q: "np.linspace(0, 10, 5) nima qaytaradi?",
+        options: ["0 dan 10 gacha 5 ta bir xil masofadagi sonlar", "0 va 10 orasidagi barcha butun sonlar", "5 ta tasodifiy son", "10 gacha bo'lgan 5 ning karralilari"],
+        a: "0 dan 10 gacha 5 ta bir xil masofadagi sonlar"
+    },
+    {
+        q: "arr.T NumPy-da nimani bildiradi?",
+        options: ["Massivni transponirlash (qator va ustun o'rnini almashtirish)", "Massivni o'chirish", "Massiv turini ko'rish", "Massivni test qilish"],
+        a: "Massivni transponirlash (qator va ustun o'rnini almashtirish)"
+    },
+    {
+        q: "Pandas kutubxonasi asosan nima bilan ishlashga mo'ljallangan?",
+        options: ["Ma'lumotlar jadvallari (DataFrame) bilan", "Faqat murakkab o'yinlar yaratish bilan", "Telegram botlar bilan", "Faqat ovozli fayllar bilan"],
+        a: "Ma'lumotlar jadvallari (DataFrame) bilan"
+    },
+    {
+        q: "NumPy-da mantiqiy filtrlash qanday bo'ladi?",
+        options: ["arr[arr > 5]", "arr(if > 5)", "filter(arr, 5)", "arr.select(5)"],
+        a: "arr[arr > 5]"
+    },
+    {
+        q: "Python-da 'None' nima?",
+        options: ["Qiymat mavjud emasligini bildiruvchi maxsus obyekt", "Nol soni", "Bo'sh satr", "Xatolik turi"],
+        a: "Qiymat mavjud emasligini bildiruvchi maxsus obyekt"
+    },
+    {
+        q: "np.zeros((2, 3)) funksiyasi qanday massiv yaratadi?",
+        options: ["2 qator va 3 ustunli nollar matritsasi", "3 qator va 2 ustunli nollar matritsasi", "6 ta noldan iborat qator", "Xatolik beradi"],
+        a: "2 qator va 3 ustunli nollar matritsasi"
+    },
+    {
+        q: "NumPy-da massiv o‘lchovlar sonini aniqlovchi xususiyat qaysi?",
+        options: ["arr.ndim", "arr.size", "arr.shape", "arr.length"],
+        a: "arr.ndim"
+    },
+    {
+        q: "3×3 birlik (identity) matritsa qaysi funksiya bilan yaratiladi?",
+        options: ["np.eye(3)", "np.ones(3)", "np.identity_matrix(3)", "np.zeros(3)"],
+        a: "np.eye(3)"
+    },
+    {
+        q: "arr = np.array([1, 2, 3]); print(arr * 2) natijasi nima?",
+        options: ["[2, 4, 6]", "[1, 2, 3, 1, 2, 3]", "[2, 2, 2]", "Xatolik"],
+        a: "[2, 4, 6]"
+    },
+    {
+        q: "NumPy-da ikki massivni vertikal birlashtirish funksiyasi qaysi?",
+        options: ["np.vstack()", "np.hstack()", "np.concatenate()", "np.append()"],
+        a: "np.vstack()"
+    },
+    {
+        q: "NumPy-da ikki massivni gorizontal birlashtirish funksiyasi qaysi?",
+        options: ["np.hstack()", "np.vstack()", "np.join()", "np.combine()"],
+        a: "np.hstack()"
+    },
+    {
+        q: "arr.flatten() metodi nima vazifani bajaradi?",
+        options: ["Ko'p o'lchamli massivni bir o'lchamli (tekis) massivga aylantiradi", "Massivni o'chiradi", "Elementlarni saralaydi", "Nollarni olib tashlaydi"],
+        a: "Ko'p o'lchamli massivni bir o'lchamli (tekis) massivga aylantiradi"
+    },
+    {
+        q: "np.full((2, 2), 7) kodi nimani qaytaradi?",
+        options: ["Barcha elementlari 7 ga teng 2x2 matritsa", "2 ta 7 raqamini", "7x7 o'lchamli matritsa", "Xatolik"],
+        a: "Barcha elementlari 7 ga teng 2x2 matritsa"
+    },
+    {
+        q: "Massiv elementlarining ko'paytmasini hisoblovchi funksiya qaysi?",
+        options: ["np.prod()", "np.multiply()", "np.sum()", "np.dot()"],
+        a: "np.prod()"
+    },
+    {
+        q: "arr[arr % 2 != 0] kodi massivdan qaysi elementlarni tanlab oladi?",
+        options: ["Barcha toq sonlarni", "Barcha juft sonlarni", "Faqat nollarni", "Faqat musbat sonlarni"],
+        a: "Barcha toq sonlarni"
+    },
+    {
+        q: "NumPy-da massivning ma'lumot turini o'zgartirish metodi qaysi?",
+        options: ["astype()", "dtype()", "convert()", "type()"],
+        a: "astype()"
+    },
+    {
+        q: "np.linspace(0, 1, 4) natijasi qanday bo'ladi?",
+        options: ["[0. , 0.33333333, 0.66666667, 1.]", "[0, 1, 2, 3, 4]", "[0, 0.25, 0.5, 1]", "Xatolik"],
+        a: "[0. , 0.33333333, 0.66666667, 1.]"
+    },
+    {
+        q: "arr.nbytes xususiyati nimani ko'rsatadi?",
+        options: ["Massiv elementlari egallagan xotira hajmini (baytlarda)", "Elementlar sonini", "Ma'lumot turini", "Massiv nomini"],
+        a: "Massiv elementlari egallagan xotira hajmini (baytlarda)"
+    },
+    {
+        q: "np.unique(arr) funksiyasi nima qiladi?",
+        options: ["Massivdagi takrorlanmas elementlarni qaytaradi", "Massivni tartiblaydi", "Barcha elementlarni birlashtiradi", "Xatolarni o'chiradi"],
+        a: "Massivdagi takrorlanmas elementlarni qaytaradi"
+    },
+    {
+        q: "NumPy-da massiv elementlarini saralash funksiyasi qaysi?",
+        options: ["np.sort()", "np.order()", "np.arrange()", "np.split()"],
+        a: "np.sort()"
+    },
+    {
+        q: "arr.min() va np.min(arr) o'rtasida farq bormi?",
+        options: ["Farqi yo'q, ikkalasi ham eng kichik elementni topadi", "Biri indeksni, biri qiymatni topadi", "Faqat biri 2D massivda ishlaydi", "Ha, biri xatolik beradi"],
+        a: "Farqi yo'q, ikkalasi ham eng kichik elementni topadi"
+    },
+    {
+        q: "np.argpartition() funksiyasi nima uchun ishlatiladi?",
+        options: ["Massivni qisman saralash uchun", "Massivni ikkiga bo'lish uchun", "O'rtacha qiymatni topish uchun", "Elementni o'chirish uchun"],
+        a: "Massivni qisman saralash uchun"
+    },
+    {
+        q: "Python-da 'is' va '==' operatorlari o'rtasidagi farq nima?",
+        options: ["'==' qiymatni, 'is' esa xotiradagi manzilni tekshiradi", "Farqi yo'q", "Biri faqat sonlar uchun", "Biri faqat satrlar uchun"],
+        a: "'==' qiymatni, 'is' esa xotiradagi manzilni tekshiradi"
+    },
+    {
+        q: "NumPy massivlarida 'fancy indexing' nima?",
+        options: ["Indekslar ro'yxati orqali elementlarga murojaat qilish", "Faqat juft indekslarni olish", "Matnli indekslar bilan ishlash", "Xatolik turi"],
+        a: "Indekslar ro'yxati orqali elementlarga murojaat qilish"
+    },
+    {
+        q: "Bot yaratishda ishlatilayotgan Telegraf kutubxonasi qaysi tilga tegishli?",
+        options: ["JavaScript (Node.js)", "Python", "PHP", "Java"],
+        a: "JavaScript (Node.js)"
+    }
+
+    ] 
   }
 };
 
@@ -5240,7 +5996,7 @@ function getLeaderboard() {
 function showSubjectMenu(ctx) {
     return ctx.reply("Fanni tanlang:", Markup.keyboard([
         ["📝 Akademik yozuv", "📜 Tarix"],
-        ["➕ Matematika"],
+        ["➕ Matematika", "💻 Dasturlash 1"],
         ["📊 Reyting", "👤 Profil"]
     ]).resize());
 }
@@ -5336,7 +6092,7 @@ bot.on('text', async (ctx, next) => {
 });
 
 // --- TEST BOSHLASH ---
-bot.hears(["📝 Akademik yozuv", "📜 Tarix", "➕ Matematika"], async (ctx) => {
+bot.hears(["📝 Akademik yozuv", "📜 Tarix", "➕ Matematika", "💻 Dasturlash 1"], async (ctx) => {
     const text = ctx.message.text;
     if (text.includes("Akademik")) ctx.session.currentSubject = "academic";
     else if (text.includes("Tarix")) ctx.session.currentSubject = "history";
