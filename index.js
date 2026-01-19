@@ -3,24 +3,15 @@ const LocalSession = require('telegraf-session-local');
 const fs = require('fs');
 const path = require('path');
 const XLSX = require('xlsx');
+const http = require('http');
 
 // 1. O'zgaruvchilarni tartib bilan e'lon qilish
 const ADMIN_ID = parseInt(process.env.ADMIN_ID); 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
-function getDb() {
-    try {
-        if (fs.existsSync(DB_FILE)) {
-            return JSON.parse(fs.readFileSync(DB_FILE, 'utf8'));
-        }
-    } catch (e) { console.error("Baza o'qishda xato:", e); }
-    return { users: {} };
-}
-
-// Railway uchun doimiy papka
+// Railway uchun doimiy papka (Volume)
 const DATA_DIR = '/data'; 
 
-// Papka borligini tekshirish (faqat bir marta tepada)
 if (!fs.existsSync(DATA_DIR)) {
     try {
         fs.mkdirSync(DATA_DIR, { recursive: true });
@@ -29,23 +20,37 @@ if (!fs.existsSync(DATA_DIR)) {
     }
 }
 
-// Fayl manzillarini aniqlash
+// Fayl manzillari
 const DB_FILE = path.join(DATA_DIR, 'ranking_db.json');
 const SETTINGS_FILE = path.join(DATA_DIR, 'settings.json');
 const QUESTIONS_FILE = path.join(DATA_DIR, 'custom_questions.json');
 const VIP_FILE = path.join(DATA_DIR, 'vip_users.json');
 const SESSION_FILE = path.join(DATA_DIR, 'session.json');
 
-// 2. Bazalarni tekshirish va yaratish
+// 2. Bazalarni tekshirish va funksiyalar
 if (!fs.existsSync(DB_FILE)) fs.writeFileSync(DB_FILE, JSON.stringify({ users: {} }));
+
+function getDb() {
+    try {
+        if (fs.existsSync(DB_FILE)) {
+            const data = fs.readFileSync(DB_FILE, 'utf8');
+            return JSON.parse(data);
+        }
+    } catch (e) {
+        console.error("Baza o'qishda xato:", e);
+    }
+    return { users: {} };
+}
 
 // Bot sozlamalarini yuklash
 let botSettings = { timeLimit: 60 }; 
 if (fs.existsSync(SETTINGS_FILE)) {
-    botSettings = JSON.parse(fs.readFileSync(SETTINGS_FILE, 'utf8'));
+    try {
+        botSettings = JSON.parse(fs.readFileSync(SETTINGS_FILE, 'utf8'));
+    } catch (e) { console.error("Settings o'qishda xato"); }
 }
 
-// 3. Sessiyani ulash (To'g'ri manzil bilan)
+// 3. Sessiyani ulash
 bot.use((new LocalSession({ database: SESSION_FILE })).middleware());
 
 // --- MA'LUMOTLAR BAZASI VA REJIMLAR ---
@@ -53,15 +58,14 @@ let isBotPaidMode = false;
 let vipUsers = [];
 
 try {
-    if (fs.existsSync('vip_users.json')) {
-        vipUsers = JSON.parse(fs.readFileSync('vip_users.json'));
+    if (fs.existsSync(VIP_FILE)) {
+        vipUsers = JSON.parse(fs.readFileSync(VIP_FILE));
     }
 } catch (err) { vipUsers = []; }
 
-
-// --- FANLAR BAZASI (Matematika qo'shildi) ---
-const SUBJECTS = {
-   "academic": {
+// --- FANLAR BAZASI ---
+let SUBJECTS = {
+    "academic": {
         "name": "📝 Akademik yozuv",
         "questions": [
   {
@@ -5193,19 +5197,11 @@ const SUBJECTS = {
 
 if (fs.existsSync(QUESTIONS_FILE)) {
     try {
-        const saved = JSON.parse(fs.readFileSync(QUESTIONS_FILE, 'utf8'));
-        SUBJECTS = saved;
-        console.log("✅ Saqlangan savollar yuklandi");
-      } catch (e) {
-        console.error("❌ Savollarni o'qishda xato:", e);
-      }
-    }
-    
-    
-const TIME_LIMIT = 60;
-const timers = {};
+        SUBJECTS = JSON.parse(fs.readFileSync(QUESTIONS_FILE, 'utf8'));
+    } catch (e) { console.error("Savollarni o'qishda xato"); }
+}
 
-// --- YORDAMCHI FUNKSIYALAR ---
+const timers = {};
 const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
 
 function getProgressBar(current, total) {
@@ -5216,49 +5212,25 @@ function getProgressBar(current, total) {
 
 function updateGlobalScore(userId, name, score) {
     try {
-        // Har safar funksiya chaqirilganda bazani yangidan o'qiymiz
         let db = getDb(); 
-
-        // 1. Agar foydalanuvchi bazada bo'lmasa, yangi obyekt yaratamiz
         if (!db.users[userId]) {
-            db.users[userId] = { 
-                name: name || "Foydalanuvchi", 
-                score: 0, 
-                totalTests: 0, 
-                referralCount: 0, // Referallar soni uchun
-                date: new Date().toISOString() 
-            };
+            db.users[userId] = { name: name || "Foydalanuvchi", score: 0, totalTests: 0, date: new Date().toISOString() };
         }
-
-        // 2. Jami yechilgan testlar sonini 1 taga oshiramiz
         db.users[userId].totalTests = (db.users[userId].totalTests || 0) + 1;
-
-        // 3. Rekord ballni yangilaymiz (agar yangi ball yuqori bo'lsa)
         if (score > (db.users[userId].score || 0)) {
             db.users[userId].score = score;
             db.users[userId].date = new Date().toISOString();
         }
-        
-        // 4. Ismni yangilab qo'yamiz (agar foydalanuvchi ismini o'zgartirgan bo'lsa)
         db.users[userId].name = name;
-
-        // 5. Faylga yozish
         fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2));
-        console.log(`✅ Ma'lumot yangilandi: ${name} - Ball: ${score}, Jami test: ${db.users[userId].totalTests}`);
-
-    } catch (error) {
-        console.error("❌ Bazaga yozishda xato:", error);
-    }
+    } catch (error) { console.error("Bazaga yozishda xato:", error); }
 }
 
 function getLeaderboard() {
-    const db = getDb(); // getDb funksiyasidan foydalanamiz
+    const db = getDb();
     const usersArray = Object.values(db.users || {});
-    
     if (usersArray.length === 0) return "Hozircha hech kim test topshirmadi.";
-
     const sorted = usersArray.sort((a, b) => (b.score || 0) - (a.score || 0)).slice(0, 10);
-    
     return sorted.map((u, i) => {
         const medal = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : "👤";
         return `${medal} ${u.name || 'Noma\'lum'} — ${(u.score || 0).toFixed(1)} ball`;
@@ -5273,11 +5245,9 @@ function showSubjectMenu(ctx) {
     ]).resize());
 }
 
-// --- SAVOL YUBORISH ---
 async function sendQuestion(ctx, isNew = false) {
     const s = ctx.session;
     const userId = ctx.from.id;
-
     if (timers[userId]) clearTimeout(timers[userId]);
 
     if (s.index >= s.activeList.length) {
@@ -5288,7 +5258,6 @@ async function sendQuestion(ctx, isNew = false) {
 
     const qData = s.activeList[s.index];
     s.currentOptions = shuffle([...qData.options]);
-    
     const buttons = s.currentOptions.map((opt, i) => [Markup.button.callback(opt, `ans_${i}`)]);
     buttons.push([Markup.button.callback("🛑 Testni to'xtatish", "stop_test")]);
 
@@ -5303,450 +5272,130 @@ async function sendQuestion(ctx, isNew = false) {
     }
 
     timers[userId] = setTimeout(async () => {
-    if (ctx.session && ctx.session.index === s.index) {
-        ctx.session.wrongs.push(qData);
-        // BU YERDAN HAM: ctx.session.activeList.push(qData) ni olib tashlang!
-        ctx.session.index++; 
-        await ctx.reply(`⏰ **VAQT TUGADI!**`);
-        sendQuestion(ctx, true);
-    }
-}, botSettings.timeLimit * 1000);
+        if (ctx.session && ctx.session.index === s.index) {
+            ctx.session.wrongs.push(qData);
+            ctx.session.index++; 
+            await ctx.reply(`⏰ **VAQT TUGADI!**`);
+            sendQuestion(ctx, true);
+        }
+    }, botSettings.timeLimit * 1000);
 }
 
-// --- ADMIN PANEL VA VIP LOGIKA ---
+// --- ADMIN KOMANDALARI ---
 bot.command('admin', (ctx) => {
-    // 1. Faqat admin ekanligingizni tekshiradi
     if (ctx.from.id === ADMIN_ID) {
-        const status = isBotPaidMode ? "🔴 PULLIK" : "🟢 BEPUL";
         const currentMin = (botSettings.timeLimit / 60).toFixed(1);
-        return ctx.reply(`🛠 **Admin Panel**\n⏱ Hozirgi vaqt: ${botSettings.timeLimit} soniya (${currentMin} daqiqa)`, 
+        return ctx.reply(`🛠 **Admin Panel**\n⏱ Vaqt: ${botSettings.timeLimit}s (${currentMin}m)`, 
             Markup.keyboard([
                 ['💰 Pullik versiya', '🆓 Bepul versiya'],
-                ['➕ Yangi fan qoshish', '⏱ Vaqtni o\'zgartirish'], // Yangi tugma
+                ['➕ Yangi fan qoshish', '⏱ Vaqtni o\'zgartirish'],
                 ['📊 Statistika', '📣 Xabar tarqatish'],
                 ['⬅️ Orqaga (Fanlar)']
-            ]).resize()
-        );
-    } else {
-        // Agar begona odam yozsa
-        ctx.reply("❌ Kechirasiz, bu buyruq faqat adminlar uchun.");
+            ]).resize());
     }
 });
 
 bot.hears('⏱ Vaqtni o\'zgartirish', (ctx) => {
     if (ctx.from.id !== ADMIN_ID) return;
     ctx.session.waitingForTime = true;
-    return ctx.reply("Vaqtni soniyalarda kiriting (masalan: 120):", Markup.keyboard([['🚫 Bekor qilish']]).resize());
-});
-
-bot.hears('📊 Statistika', async (ctx) => {
-    if (ctx.from.id !== ADMIN_ID) return;
-
-    const db = getDb();
-    const users = Object.entries(db.users || {});
-    const totalUsers = users.length;
-    
-    // Bugungi sanani olish (YYYY-MM-DD formatida)
-    const today = new Date().toISOString().split('T')[0];
-    
-    // Bugun aktiv bo'lganlarni hisoblash
-    const dailyActive = users.filter(([id, data]) => {
-        return data.date && data.date.startsWith(today);
-    }).length;
-
-    const vips = (vipUsers || []).length;
-
-    // Oxirgi 10 ta foydalanuvchini chiroyli ro'yxat qilish
-    let userList = users.slice(-10).map(([id, data]) => {
-        return `👤 ${data.name || 'Noma\'lum'} (ID: \`${id}\`)`;
-    }).join('\n');
-
-    let statsMsg = `📊 **BOT STATISTIKASI**\n\n`;
-    statsMsg += `👥 Jami foydalanuvchilar: **${totalUsers}** ta\n`;
-    statsMsg += `📅 Bugun aktiv: **${dailyActive}** ta\n`;
-    statsMsg += `💎 VIP foydalanuvchilar: **${vips}** ta\n\n`;
-    statsMsg += `📝 **Oxirgi qo'shilganlar:**\n${userList || "Hozircha ro'yxat bo'sh"}\n\n`;
-    statsMsg += `💾 Baza: \`ranking_db.json\``;
-
-    await ctx.replyWithMarkdown(statsMsg);
-});
-
-bot.hears('💰 Pullik versiyani yoqish', (ctx) => {
-    if (ctx.from.id === ADMIN_ID) {
-        isBotPaidMode = true;
-        ctx.reply("✅ Bot PULLIK rejimga o'tkazildi.");
-    }
-});
-
-bot.hears('🆓 Bepul versiyani yoqish', (ctx) => {
-    if (ctx.from.id === ADMIN_ID) {
-        isBotPaidMode = false;
-        ctx.reply("✅ Bot BEPUL rejimga o'tkazildi.");
-    }
-});
-
-// To'lov chekini qabul qilish
-bot.on('photo', async (ctx) => {
-    if (ctx.session.waitingForCheck) {
-        ctx.session.waitingForCheck = false;
-        await ctx.reply("⏳ Chek qabul qilindi. Admin tasdiqlashini kuting.");
-        await ctx.telegram.sendPhoto(ADMIN_ID, ctx.message.photo[ctx.message.photo.length - 1].file_id, {
-            caption: `💰 **To'lov so'rovi!**\n👤 Ism: ${ctx.from.first_name}\n🆔 ID: ${ctx.from.id}`,
-            ...Markup.inlineKeyboard([
-                [Markup.button.callback("✅ Ruxsat berish", `allow_${ctx.from.id}`)],
-                [Markup.button.callback("❌ Rad etish", `deny_${ctx.from.id}`)]
-            ])
-        });
-    }
-});
-
-bot.action(/^allow_(\d+)$/, async (ctx) => {
-    const userId = parseInt(ctx.match[1]);
-    if (!vipUsers.includes(userId)) {
-        vipUsers.push(userId);
-        fs.writeFileSync('vip_users.json', JSON.stringify(vipUsers));
-    }
-    await ctx.telegram.sendMessage(userId, "✅ VIP tasdiqlandi! Endi barcha testlar ochiq.");
-    return ctx.editMessageCaption(`✅ ID: ${userId} tasdiqlandi.`);
-});
-
-bot.action(/^deny_(\d+)$/, async (ctx) => {
-    const userId = ctx.match[1];
-    await ctx.telegram.sendMessage(userId, "❌ Chek rad etildi.");
-    return ctx.editMessageCaption(`❌ ID: ${userId} rad etildi.`);
-});
-
-bot.action('buy_vip', (ctx) => {
-    ctx.session.waitingForCheck = true;
-    return ctx.reply("💳 Karta: `4073420058363577`\n M.M\n 💰 Summa: 5.000 so'm\n\nChekni rasm ko'rinishida yuboring.");
-});
-
-// --- BOT ASOSIY BUYRUQLARI ---
-bot.start((ctx) => {
-    const userId = ctx.from.id;
-    let db = getDb();
-
-    // 1. Agar foydalanuvchi bazada bo'lsa, ismini sessionga yuklaymiz va menyuni ko'rsatamiz
-    if (db.users[userId]) {
-        ctx.session.userName = db.users[userId].name;
-        db.users[userId].date = new Date().toISOString(); // Kirgan vaqtini yangilash
-        fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2));
-        return showSubjectMenu(ctx);
-    }
-
-    // 2. Agar foydalanuvchi yangi bo'lsa
-    ctx.session.waitingForName = true; // Ism kutayotganimizni belgilaymiz
-    return ctx.reply(`Assalomu alaykum ${ctx.from.first_name}! \nBotdan foydalanish uchun ismingizni kiriting:`);
+    return ctx.reply("Vaqtni soniyalarda kiriting:", Markup.keyboard([['🚫 Bekor qilish']]).resize());
 });
 
 bot.on('text', async (ctx, next) => {
     const text = ctx.message.text;
     const userId = ctx.from.id;
 
-    // 1. Agar bu admin komandasi bo'lsa (/stats kabi), o'tkazib yuborish
     if (text.startsWith('/')) return next();
 
-    // 2. ADMIN VAQTNI O'ZGARTIRISH (YANGI QISM)
+    // Vaqtni o'zgartirish mantiqi
     if (userId === ADMIN_ID && ctx.session.waitingForTime) {
         if (text === '🚫 Bekor qilish') {
             ctx.session.waitingForTime = false;
-            return ctx.reply("Bekor qilindi.", showSubjectMenu(ctx)); // yoki showSubjectMenu(ctx)
+            return showSubjectMenu(ctx);
         }
-
         const newTime = parseInt(text);
-        if (isNaN(newTime) || newTime < 5) {
-            return ctx.reply("❌ Iltimos, faqat raqam kiriting (kamida 5 soniya)!");
-        }
-
+        if (isNaN(newTime) || newTime < 5) return ctx.reply("❌ Xato raqam!");
         botSettings.timeLimit = newTime;
         fs.writeFileSync(SETTINGS_FILE, JSON.stringify(botSettings));
         ctx.session.waitingForTime = false;
-
-        let timeMsg = `✅ Vaqt yangilandi: ${newTime} soniya.`;
-        if (newTime >= 60) {
-            const min = Math.floor(newTime / 60);
-            const sec = newTime % 60;
-            timeMsg += ` (${min} daqiqa${sec > 0 ? ' ' + sec + ' soniya' : ''})`;
-        }
-        return ctx.reply(timeMsg);
+        return ctx.reply(`✅ Yangilandi: ${newTime} soniya.`);
     }
 
-    // 3. FOYDALANUVCHI ISM KUTAYOTGAN BO'LSA (ESKI KODINGIZ)
+    // Ism qabul qilish
     if (ctx.session.waitingForName) {
-        const inputName = text;
-
-        // Ismni session va bazaga saqlash
-        ctx.session.userName = inputName;
+        ctx.session.userName = text;
         ctx.session.waitingForName = false;
-
         let db = getDb();
-        db.users[userId] = {
-            name: inputName,
-            score: 0,
-            totalTests: 0,
-            date: new Date().toISOString()
-        };
+        db.users[userId] = { name: text, score: 0, totalTests: 0, date: new Date().toISOString() };
         fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2));
-
-        ctx.reply(`Rahmat, ${inputName}! Ro'yxatdan o'tdingiz.`);
+        ctx.reply(`Rahmat, ${text}!`);
         return showSubjectMenu(ctx);
     }
 
     return next();
 });
 
+// --- TEST BOSHLASH ---
 bot.hears(["📝 Akademik yozuv", "📜 Tarix", "➕ Matematika"], async (ctx) => {
     const text = ctx.message.text;
     if (text.includes("Akademik")) ctx.session.currentSubject = "academic";
     else if (text.includes("Tarix")) ctx.session.currentSubject = "history";
     else if (text.includes("Matematika")) ctx.session.currentSubject = "math";
-
-    ctx.reply(`${text} tanlandi. Rejimni tanlang:`, 
-        Markup.keyboard([["⚡️ Blitz (25)", "📝 To'liq test"], ["⬅️ Orqaga (Fanlar)"]]).resize()
-    );
+    ctx.reply(`Tayyormisiz?`, Markup.keyboard([["⚡️ Blitz (25)", "📝 To'liq test"], ["⬅️ Orqaga (Fanlar)"]]).resize());
 });
-
-bot.hears("📊 Reyting", (ctx) => ctx.reply(`🏆 **LIDERLAR**\n\n${getLeaderboard()}`, { parse_mode: 'Markdown' }));
-bot.hears("⬅️ Orqaga (Fanlar)", (ctx) => showSubjectMenu(ctx));
-
-
-
-// Ismlardagi belgilarni xavfsiz qilish uchun funksiya
-const escapeHTML = (str) => {
-    if (!str) return 'Noma\'lum';
-    return str.replace(/[&<>"']/g, m => ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#039;'
-    }[m]));
-};
-
-bot.hears('👤 Profil', async (ctx) => {
-    const userId = ctx.from.id;
-    const db = getDb();
-    const user = db.users[userId] || {};
-
-    let profileMsg = `<b>👤 Sizning profilingiz:</b>\n\n`;
-    profileMsg += `🆔 ID: <code>${userId}</code>\n`;
-    profileMsg += `👤 Ism: <b>${escapeHTML(user.name || ctx.from.first_name)}</b>\n`;
-    profileMsg += `🏆 Eng yuqori ball: <b>${user.score || 0}</b>\n`;
-    profileMsg += `💎 VIP status: <b>${user.isVip ? '✅ Faol' : '❌ Faol emas'}</b>\n`;
-
-    await ctx.reply(profileMsg, { parse_mode: 'HTML' });
-});
-
-
-bot.command('stats', async (ctx) => {
-    if (ctx.from.id !== ADMIN_ID) return;
-
-    const db = getDb();
-    const users = Object.entries(db.users || {});
-    const totalUsers = users.length;
-    const today = new Date().toISOString().split('T')[0];
-    const dailyActive = users.filter(([id, data]) => data.date && data.date.startsWith(today)).length;
-
-    // Ismlardagi maxsus belgilarni tozalash funksiyasi
-    const escapeHTML = (str) => str.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#039;"}[m]));
-
-    let userList = users.slice(-10).map(([id, data]) => {
-        return `👤 ${escapeHTML(data.name || 'Noma\'lum')} (ID: <code>${id}</code>)`;
-    }).join('\n');
-
-    let statsMsg = `<b>📊 BOT STATISTIKASI</b>\n\n`;
-    statsMsg += `👥 Jami foydalanuvchilar: <b>${totalUsers}</b> ta\n`;
-    statsMsg += `📅 Bugun aktiv: <b>${dailyActive}</b> ta\n\n`;
-    statsMsg += `📝 <b>Oxirgi qo'shilganlar:</b>\n${userList || "Bo'sh"}\n\n`;
-    statsMsg += `💾 Baza: <code>ranking_db.json</code>`;
-
-    // Markdown o'rniga HTML ishlatamiz
-    await ctx.reply(statsMsg, { parse_mode: 'HTML' });
-});
-
-bot.command('sendall', async (ctx) => {
-    if (ctx.from.id !== ADMIN_ID) return;
-    
-    // Admin xabar yuborish rejimini yoqamiz
-    ctx.session.waitingForBroadcast = true;
-    return ctx.reply("📣 Barcha foydalanuvchilarga yubormoqchi bo'lgan xabaringizni yozing (Matn, rasm yoki reklama):", 
-        Markup.keyboard([['🚫 Bekor qilish']]).resize());
-});
-
-// Xabar tarqatish mantiqi
-bot.on(['text', 'photo', 'video', 'document'], async (ctx, next) => {
-    if (ctx.from.id === ADMIN_ID && ctx.session.waitingForBroadcast) {
-        if (ctx.message.text === '🚫 Bekor qilish') {
-            ctx.session.waitingForBroadcast = false;
-            return showSubjectMenu(ctx);
-        }
-
-        ctx.session.waitingForBroadcast = false;
-        const db = getDb();
-        const userIds = Object.keys(db.users);
-        let successCount = 0;
-        let failCount = 0;
-
-        const statusMsg = await ctx.reply(`🚀 Xabar tarqatish boshlandi (Jami: ${userIds.length} kishi)...`);
-
-        for (const id of userIds) {
-            try {
-                // copyMessage — xabarni rasm/video/matni bilan birga ko'chirib beradi
-                await ctx.telegram.copyMessage(id, ctx.from.id, ctx.message.message_id);
-                successCount++;
-            } catch (e) {
-                failCount++;
-                console.log(`ID: ${id} ga xabar bormadi (Botni bloklagan bo'lishi mumkin).`);
-            }
-        }
-
-        await ctx.telegram.editMessageText(ctx.chat.id, statusMsg.message_id, null, 
-            `✅ Tarqatish yakunlandi!\n\n🟢 Yuborildi: ${successCount}\n🔴 Yuborilmadi: ${failCount}`);
-        
-        return showSubjectMenu(ctx);
-    }
-    return next();
-});
-
-
 
 bot.hears(["⚡️ Blitz (25)", "📝 To'liq test"], async (ctx) => {
-    const userId = ctx.from.id;
-    if (isBotPaidMode && !vipUsers.includes(userId)) {
-        return ctx.reply("⚠️ Bot pullik rejimda!", Markup.inlineKeyboard([Markup.button.callback("💎 VIP sotib olish", "buy_vip")]));
-    }
-
     const s = ctx.session;
-    if (!s.currentSubject) return showSubjectMenu(ctx);
-    const subjectData = SUBJECTS[s.currentSubject];
-    s.activeList = ctx.message.text.includes("25") ? shuffle(subjectData.questions).slice(0, 25) : [...subjectData.questions];
+    if (!s.currentSubject || !SUBJECTS[s.currentSubject]) return showSubjectMenu(ctx);
+    const questions = SUBJECTS[s.currentSubject].questions;
+    if (!questions || questions.length === 0) return ctx.reply("Bu fanda savollar yo'q.");
+    
+    s.activeList = ctx.message.text.includes("25") ? shuffle(questions).slice(0, 25) : shuffle(questions);
     s.index = 0; s.score = 0; s.wrongs = [];
-    await ctx.reply(`${subjectData.name} test boshlandi!`);
     sendQuestion(ctx, true);
 });
 
-// --- CALLBACK ACTIONS ---
+bot.hears("📊 Reyting", (ctx) => ctx.reply(getLeaderboard()));
+bot.hears("⬅️ Orqaga (Fanlar)", (ctx) => showSubjectMenu(ctx));
+
+bot.start((ctx) => {
+    const db = getDb();
+    if (db.users[ctx.from.id]) {
+        ctx.session.userName = db.users[ctx.from.id].name;
+        return showSubjectMenu(ctx);
+    }
+    ctx.session.waitingForName = true;
+    return ctx.reply("Ismingizni kiriting:");
+});
+
+// --- CALLBACKLAR ---
 bot.action(/^ans_(\d+)$/, async (ctx) => {
-    try {
-        const s = ctx.session;
-        const userId = ctx.from.id;
-        
-        // 1. Sessiya yoki ma'lumotlar borligini tekshirish
-        if (!s || !s.activeList || s.index === undefined || !s.activeList[s.index]) {
-            await ctx.answerCbQuery("❌ Sessiya muddati tugagan.", { show_alert: true });
-            return showSubjectMenu(ctx);
-        }
-
-        // Taymerni to'xtatish
-        if (timers[userId]) clearTimeout(timers[userId]);
-
-        const selIdx = parseInt(ctx.match[1]);
-        const currentQ = s.activeList[s.index];
-
-        // 2. Javobni tekshirish
-        if (s.currentOptions[selIdx] === currentQ.a) {
-            s.score++;
-            await ctx.answerCbQuery("✅ To'g'ri!");
-        } else {
-            // Xatolar ro'yxatiga qo'shamiz, lekin activeList-ga qayta qo'shmaymiz!
-            // Shunda 25 talik test 25 taligicha qoladi.
-            s.wrongs.push(currentQ);
-            await ctx.answerCbQuery(`❌ Xato! To'g'ri: ${currentQ.a}`, { show_alert: true });
-        }
-
-        // Indeksni oshiramiz
-        s.index++;
-
-        // 3. Test tugaganligini tekshirish
-        if (s.index >= s.activeList.length) {
-            // REYTINGNI SAQLASH (Aynan shu yerda bazaga yoziladi)
-            updateGlobalScore(userId, s.userName, s.score);
-            
-            let finishMsg = `🏁 **Test yakunlandi, ${s.userName}!**\n\n` +
-                            `✅ Natija: ${s.score.toFixed(1)} ball\n` +
-                            `❌ Xatolar: ${s.wrongs.length} ta.`;
-            
-            return ctx.reply(finishMsg, Markup.keyboard([
-                ["⚡️ Blitz (25)", "📝 To'liq test"], 
-                ["📊 Reyting", "⬅️ Orqaga (Fanlar)"]
-            ]).resize());
-        }
-
-        // Keyingi savolga o'tish
-        sendQuestion(ctx);
-
-    } catch (error) {
-        console.error("Answer action error:", error);
-        await ctx.answerCbQuery("Kutilmagan xatolik yuz berdi.");
-    }
-});
-
-bot.action('stop_test', async (ctx) => {
+    const s = ctx.session;
+    if (!s.activeList) return;
     if (timers[ctx.from.id]) clearTimeout(timers[ctx.from.id]);
-    ctx.session.index = 9999;
-    await ctx.answerCbQuery("To'xtatildi");
-    showSubjectMenu(ctx);
+
+    const selIdx = parseInt(ctx.match[1]);
+    const currentQ = s.activeList[s.index];
+
+    if (s.currentOptions[selIdx] === currentQ.a) {
+        s.score++;
+        await ctx.answerCbQuery("✅");
+    } else {
+        s.wrongs.push(currentQ);
+        await ctx.answerCbQuery(`❌ To'g'ri: ${currentQ.a}`, { show_alert: true });
+    }
+    s.index++;
+    sendQuestion(ctx);
 });
 
-
-bot.on('document', async (ctx) => {
-    if (ctx.from.id !== ADMIN_ID) return;
-
-    try {
-        const fileId = ctx.message.document.file_id;
-        const fileName = ctx.message.document.file_name;
-
-        // Faqat .xlsx fayllarni qabul qilish
-        if (!fileName.endsWith('.xlsx')) {
-            return ctx.reply("❌ Iltimos, faqat .xlsx formatidagi Excel fayl yuboring.");
-        }
-
-        const fileUrl = await ctx.telegram.getFileLink(fileId);
-        const response = await fetch(fileUrl);
-        const arrayBuffer = await response.arrayBuffer();
-        const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: 'array' });
-        
-        const sheetName = workbook.SheetNames[0];
-        const excelData = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
-
-        // Excel formatini tekshirish (Ustunlar nomi: question, a, b, c, d, correct, subject)
-        // subject ustunida: academic, history yoki math bo'lishi kerak
-        
-        excelData.forEach(row => {
-            if (SUBJECTS[row.subject]) {
-                SUBJECTS[row.subject].questions.push({
-                    q: row.question,
-                    options: [row.a, row.b, row.c, row.d],
-                    a: row.correct
-                });
-            }
-        });
-
-        // Yangilangan savollarni xotiraga saqlab qo'yamiz
-        fs.writeFileSync(QUESTIONS_FILE, JSON.stringify(SUBJECTS, null, 2));
-
-        ctx.reply(`✅ Excel muvaffaqiyatli o'qildi!\n📊 Jami yuklangan savollar: ${excelData.length} ta.`);
-    } catch (error) {
-        console.error("Excel Error:", error);
-        ctx.reply("❌ Faylni o'qishda xatolik yuz berdi. Formatni tekshiring.");
-    }
+bot.action('stop_test', (ctx) => {
+    if (timers[ctx.from.id]) clearTimeout(timers[ctx.from.id]);
+    ctx.session.index = 999;
+    showSubjectMenu(ctx);
 });
 
 bot.launch().then(() => console.log("Bot running..."));
 
-// 2. Render uchun HTTP server (uyquga ketmasligi uchun)
-const http = require('http');
-http.createServer((req, res) => {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Bot ishlayapti!');
-}).listen(process.env.PORT || 3000);
-
-// 3. Xatolarni ushlab qoluvchi "Qorovul" kod (ENG OXIRIDA)
-process.on('uncaughtException', (err) => {
-    console.error('Kutilmagan xato:', err);
-});
-
-process.on('unhandledRejection', (reason, promise) => {
-    console.error('Unhandled Rejection at:', promise, 'reason:', reason);
-});
-
+// Portni Railway talab qilgani uchun ochamiz
+const PORT = process.env.PORT || 3000;
+http.createServer((req, res) => { res.end('Bot is running'); }).listen(PORT);
