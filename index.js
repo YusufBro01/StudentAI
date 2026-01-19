@@ -3810,1392 +3810,1154 @@ if (fs.existsSync(SUBJECTS_FILE)) {
     math: { // Yangi qo'shilgan fan
     name: "Matematika",
     questions: [
-     {
-        q: "Limitni hisoblang: lim x→−5 (x²+4x−5)/(x²+8x+15)",
-        options: ["-3", "-1", "1", "3"],
-        a: "-1"
-      },
       {
-        q: "Aniqmas integralni toping: ∫(5 + sin 2x) dx",
-        options: [
-          "5x − cos2x + C",
-          "5x − (1/2)cos2x + C",
-          "5x + cos2x + C",
-          "5x + (1/2)cos2x + C"
-        ],
-        a: "5x − (1/2)cos2x + C"
-      },
-      {
-        q: "Agar Σ f(ci)Δxi limit mavjud bo‘lsa, u nima deb ataladi?",
-        options: ["Limit", "Hosila", "Integral", "Funksiya qiymati"],
-        a: "Integral"
-      },
-      {
-        q: "Funksiyaning uzilish nuqtalarini toping: f(x) = (3x+7)/(x²−9x+18)",
-        options: ["x = 3 va x = 6", "x = 2 va x = 9", "x = 6", "Uzluksiz"],
-        a: "x = 3 va x = 6"
-      },
-      {
-        q: "Hosilani toping: y = 4ctg(8x)",
-        options: [
-          "−32csc²(8x)",
-          "−4csc²(8x)",
-          "32csc(8x)",
-          "−8ctg(8x)"
-        ],
-        a: "−32csc²(8x)"
-      },
-      {
-        q: "Funksiyaning aniqlanish sohasini toping: y = ⁵√(3x−15)",
-        options: ["x > 5", "x < 5", "x ≥ 5", "(−∞,+∞)"],
-        a: "(−∞,+∞)"
-      },
-      {
-        q: "Limitni hisoblang: lim x→2 (x²+3x−10)/(x²+x−6)",
-        options: ["5", "-5", "1", "3"],
-        a: "5"
-      },
-      {
-        q: "y = (1/3)x³ − x² − 3x + 1 funksiyaning ekstremumlarini toping",
-        options: [
-          "Max x = −1, Min x = 3",
-          "Max x = 1, Min x = −3",
-          "Max x = 3, Min x = −1",
-          "Ekstremum yo‘q"
-        ],
-        a: "Max x = −1, Min x = 3"
-      },
-      {
-        q: "Funksiyaning aniqlanish sohasini toping: y = ⁴√(8x + 48)",
-        options: ["x > −6", "x ≥ −6", "x < −6", "(−∞,+∞)"],
-        a: "x ≥ −6"
-      },
-      {
-        q: "Limitni hisoblang: lim x→−7 (x²+6x−7)/(x²+12x+35)",
-        options: ["1", "-1", "0", "2"],
-        a: "-1"
-      },
-      {
-        "q": "Limitni hisoblang: lim x→5 (x²+8x+15)/(x²+3x−10)",
-        "options": ["-2", "2", "1", "0"],
-        "a": "2"
-      },
-      {
-        "q": "Funksiyaning uzilish nuqtalarini toping: f(x) = (−9x+2)/(x²−4x−5)",
-        "options": ["x = 5 va x = −1", "x = 1 va x = 5", "x = −5 va x = 1", "Uzluksiz"],
-        "a": "x = 5 va x = −1"
-      },
-      {
-        "q": "Funksiyaning uzilish nuqtalarini toping: f(x) = (−9x+2)/(x²−6x+5)",
-        "options": ["x = 1 va x = 5", "x = −1 va x = 5", "x = 3 va x = 5", "Uzluksiz"],
-        "a": "x = 1 va x = 5"
-      },
-      {
-        "q": "y = −(1/3)x³ − 2x² + 12x + 9 funksiyaning ekstremumlarini toping",
-        "options": [
-          "Max x = 2, Min x = −6",
-          "Max x = −2, Min x = 6",
-          "Max x = 6, Min x = −2",
-          "Ekstremum yo‘q"
-        ],
-        "a": "Max x = 2, Min x = −6"
-      },
-      {
-        "q": "Hosilani toping: y = −x² + 4x − 5 + arctg x",
-        "options": [
-          "−2x + 4 + 1/(1+x²)",
-          "−2x − 4 + 1/(1+x²)",
-          "−x + 4 + 1/(1+x²)",
-          "−2x + 4 − 1/(1+x²)"
-        ],
-        "a": "−2x + 4 + 1/(1+x²)"
-      },
-      {
-        "q": "Funksiyaning aniqlanish sohasini toping: y = ∛(31x + 93)",
-        "options": ["x ≥ −3", "x ≤ −3", "(−∞,+∞)", "x > −3"],
-        "a": "(−∞,+∞)"
-      },
-      {
-        "q": "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = x³ + 18x² − 13x + 4",
-        "options": [
-          "x < −6 qavariq, x > −6 botiq",
-          "x > −6 qavariq, x < −6 botiq",
-          "Hamma joyda qavariq",
-          "Hamma joyda botiq"
-        ],
-        "a": "x > −6 qavariq, x < −6 botiq"
-      },
-      {
-        "q": "Qachon E₁ va E₂ to‘plamlar teng deyiladi?",
-        "options": [
-          "Agar E₁ ⊂ E₂ bo‘lsa",
-          "Agar E₂ ⊂ E₁ bo‘lsa",
-          "Agar E₁ va E₂ bir xil elementlardan iborat bo‘lsa",
-          "Agar E₁ bo‘sh bo‘lsa"
-        ],
-        "a": "Agar E₁ va E₂ bir xil elementlardan iborat bo‘lsa"
-      },
-      {
-        "q": "y = −(1/3)x³ + x² + 15x − 11 funksiyaning ekstremumlarini toping",
-        "options": [
-          "Max x = −3, Min x = 5",
-          "Max x = 3, Min x = −5",
-          "Max x = 5, Min x = −3",
-          "Ekstremum yo‘q"
-        ],
-        "a": "Max x = −3, Min x = 5"
-      },
-      {
-        "q": "A va B to‘plamlarning kesishmasi nima deb ataladi?",
-        "options": [
-          "Birlashtma",
-          "Ayirma",
-          "Kesishma",
-          "Komplement"
-        ],
-        "a": "Kesishma"
-      },
-      
-  {
-    "q": "Funksiyaning aniqlanish sohasini toping: y = ⁶√(−8x + 24)",
-    "options": ["x ≤ 3", "x ≥ 3", "(−∞,+∞)", "x < 3"],
-    "a": "x ≤ 3"
-  },
-  {
-    "q": "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = −x³ + 6x² − 3x + 4",
-    "options": [
-      "x < 2 qavariq, x > 2 botiq",
-      "x > 2 qavariq, x < 2 botiq",
-      "Hamma joyda qavariq",
-      "Hamma joyda botiq"
-    ],
-    "a": "x < 2 qavariq, x > 2 botiq"
-  },
-  {
-    "q": "A va B to‘plamlarning ayirmasi nima deb ataladi?",
-    "options": [
-      "Kesishma",
-      "Birlashtma",
-      "Ayirma",
-      "Komplement"
-    ],
-    "a": "Ayirma"
-  },
-  {
-    "q": "Limitni hisoblang: lim x→1 (x² + 6x − 7)/(x² + 4x − 5)",
-    "options": ["1", "2", "3", "4"],
-    "a": "2"
-  },
-  {
-    "q": "Limitni hisoblang: lim x→4 (x² + 9x + 20)/(x² + 3x − 4)",
-    "options": ["4", "5", "6", "7"],
-    "a": "5"
-  },
-  {
-    "q": "Funksiyaning ta’rifini ko‘rsating",
-    "options": [
-      "Bir to‘plamdan ikkinchisiga moslik",
-      "Faqat sonlar to‘plami",
-      "Faqat grafik",
-      "Faqat formula"
-    ],
-    "a": "Bir to‘plamdan ikkinchisiga moslik"
-  },
-  {
-    "q": "y = −(1/3)x³ + 2x² + 12x − 6 funksiyaning ekstremumlarini toping",
-    "options": [
-      "Max x = 6, Min x = −2",
-      "Max x = −6, Min x = 2",
-      "Max x = 2, Min x = −6",
-      "Ekstremum yo‘q"
-    ],
-    "a": "Max x = 2, Min x = −6"
-  },
-  {
-    "q": "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = x³ + 3x² + 5x − 4",
-    "options": [
-      "x < −1 qavariq, x > −1 botiq",
-      "x > −1 qavariq, x < −1 botiq",
-      "Hamma joyda qavariq",
-      "Hamma joyda botiq"
-    ],
-    "a": "x > −1 qavariq, x < −1 botiq"
-  },
-  {
-    "q": "Funksiyaning aniqlanish sohasini toping: y = 1 / ∛(3x − 12)",
-    "options": [
-      "(−∞,4) ∪ (4,+∞)",
-      "(−∞,4]",
-      "[4,+∞)",
-      "(−∞,+∞)"
-    ],
-    "a": "(−∞,4) ∪ (4,+∞)"
-  },
-  {
-    "q": "D to‘plamda aniqlangan y = f(x) funksiya qachon juft deyiladi?",
-    "options": [
-      "f(−x) = −f(x)",
-      "f(−x) = f(x)",
-      "f(x) = 0",
-      "f(x) > 0"
-    ],
-    "a": "f(−x) = f(x)"
-  },
-  {
-    "q": "Funksiyaning aniqlanish sohasini toping: y = √(5 − x)",
-    "options": ["x ≤ 5", "x ≥ 5", "(−∞,+∞)", "x < 5"],
-    "a": "x ≤ 5"
-  },
-  {
-    "q": "y = x² − 4x + 1 funksiyaning minimum qiymati nechaga teng?",
-    "options": ["−3", "−4", "1", "0"],
-    "a": "−3"
-  },
-  {
-    "q": "Funksiya qachon toq deyiladi?",
-    "options": [
-      "f(−x) = −f(x)",
-      "f(−x) = f(x)",
-      "f(x) ≥ 0",
-      "f(x) = 0"
-    ],
-    "a": "f(−x) = −f(x)"
-  },
-  {
-    "q": "Limitni toping: lim x→0 (sin x)/x",
-    "options": ["0", "1", "∞", "−1"],
-    "a": "1"
-  },
-  {
-    "q": "Limitni hisoblang: lim x→∞ (3x² + 5)/(x² − 1)",
-    "options": ["0", "1", "3", "∞"],
-    "a": "3"
-  },
-  {
-    "q": "Hosilaning geometrik ma’nosi nima?",
-    "options": [
-      "Tangensning og‘ish burchagi tangensi",
-      "Funksiyaning qiymati",
-      "Integral osti funksiya",
-      "Grafik yuzasi"
-    ],
-    "a": "Tangensning og‘ish burchagi tangensi"
-  },
-  {
-    "q": "y = 2x³ − 6x² + 4 funksiyaning kritik nuqtalari nechta?",
-    "options": ["0 ta", "1 ta", "2 ta", "3 ta"],
-    "a": "2 ta"
-  },
-  {
-    "q": "y = x³ funksiyaning ikkinchi hosilasi nechaga teng?",
-    "options": ["6x", "3x²", "x²", "6"],
-    "a": "6x"
-  },
-  {
-    "q": "Funksiya o‘suvchi bo‘lishi uchun qanday shart bajarilishi kerak?",
-    "options": [
-      "f′(x) > 0",
-      "f′(x) < 0",
-      "f′(x) = 0",
-      "f(x) = 0"
-    ],
-    "a": "f′(x) > 0"
-  },
-  {
-    "q": "Integralning asosiy vazifasi nima?",
-    "options": [
-      "Yuzani hisoblash",
-      "Hosila topish",
-      "Limitni aniqlash",
-      "Tenglama yechish"
-    ],
-    "a": "Yuzani hisoblash"
-  },
-  {
-    "q": "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = x³ + 3x² + 5x - 4",
-    "options": ["(-∞,-1) qavariq, (-1,∞) botiq", "(-∞,1) botiq, (1,∞) qavariq", "Doimo qavariq", "Doimo botiq"],
-    "a": "(-∞,-1) qavariq, (-1,∞) botiq"
-  },
-  {
-    "q": "Ushbu funksiyaning aniqlanish sohasini toping: y = 1 / ∛(3x-12)",
-    "options": ["x ≠ 4", "x > 4", "x < 4", "(-∞,+∞)"],
-    "a": "x ≠ 4"
-  },
-  {
-    "q": "D to'plamda aniqlangan y = f(x) funksiya qachon juft deyiladi?",
-    "options": ["f(-x) = f(x)", "f(-x) = -f(x)", "f(x+T) = f(x)", "f(x) > 0"],
-    "a": "f(-x) = f(x)"
-  },
-  {
-    "q": "Funksiyaning o'sish, kamayish oraliqlari va ekstremum nuqtalarini toping: y = -1/3x³ + 3x² + 16x - 8",
-    "options": ["Max x=8, Min x=-2", "Max x=2, Min x=-8", "Max x=4, Min x=-4", "Ekstremum yo'q"],
-    "a": "Max x=8, Min x=-2"
-  },
-  {
-    "q": "D to'plamda aniqlangan y = f(x) funksiya qachon o'suvchi deyiladi?",
-    "options": ["x2 > x1 bo'lganda f(x2) > f(x1)", "x2 > x1 bo'lganda f(x2) < f(x1)", "f'(x) < 0 bo'lganda", "f(x) = const bo'lganda"],
-    "a": "x2 > x1 bo'lganda f(x2) > f(x1)"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = 4 arcsin 5x",
-    "options": ["20 / √(1-25x²)", "4 / √(1-25x²)", "-20 / √(1-25x²)", "20 / (1+25x²)"],
-    "a": "20 / √(1-25x²)"
-  },
-  {
-    "q": "Juft funksiyalar qatorini ko'rsating:",
-    "options": ["x², cos x, |x|", "x³, sin x, tg x", "eˣ, ln x", "x+1, x²"],
-    "a": "x², cos x, |x|"
-  },
-  {
-    "q": "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = x³ + 15x² - 9x + 1",
-    "options": ["(-∞,-5) qavariq, (-5,∞) botiq", "(-∞,5) botiq, (5,∞) qavariq", "(-∞,0) qavariq", "Doimo botiq"],
-    "a": "(-∞,-5) qavariq, (-5,∞) botiq"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping f(x) = (3x+12) / (x²+6x-16)",
-    "options": ["x = 2 va x = -8", "x = -2 va x = 8", "x = 4 va x = -4", "x = 0"],
-    "a": "x = 2 va x = -8"
-  },
-  {
-    "q": "Qachon {xn} ketma-ketlik chegaralangan deyiladi?",
-    "options": ["|xn| ≤ M sharti bajarilsa", "xn > 0 bo'lsa", "limitga ega bo'lsa", "xn+1 > xn bo'lsa"],
-    "a": "|xn| ≤ M sharti bajarilsa"
-  },
-  {
-    "q": "Qachon {xn} ketma-ketlik o'suvchi deyiladi?",
-    "options": ["xn+1 > xn", "xn+1 < xn", "xn = c", "xn > 0"],
-    "a": "xn+1 > xn"
-  },
-  {
-    "q": "Funksiyaning o'sish, kamayish oraliqlari va ekstremum nuqtalarini toping: y = -1/3x³ + 4x² + 9x - 4",
-    "options": ["Max x=9, Min x=-1", "Max x=1, Min x=-9", "Max x=3, Min x=-3", "Ekstremum yo'q"],
-    "a": "Max x=9, Min x=-1"
-  },
-  {
-    "q": "lim (n→∞) xn = a yozuv qanday ma'noni anglatadi?",
-    "options": ["Ketma-ketlik limiti a ga teng", "Ketma-ketlik cheksiz", "Ketma-ketlik o'suvchi", "a soni xn dan katta"],
-    "a": "Ketma-ketlik limiti a ga teng"
-  },
-  {
-    "q": "Ikkita funksiya yig'indisining limiti haqidagi teorema:",
-    "options": ["lim(f+g) = lim f + lim g", "lim(f+g) = lim f * lim g", "lim(f+g) = f(a) + g(a)", "Mavjud emas"],
-    "a": "lim(f+g) = lim f + lim g"
-  },
-  {
-    "q": "Ikkinchi ajoyib limitni ko'rsating:",
-    "options": ["lim (1 + 1/n)ⁿ = e", "sin x / x = 1", "lim (1+x) = 1", "eˣ = 1"],
-    "a": "lim (1 + 1/n)ⁿ = e"
-  },
-  {
-    "q": "Qanday nuqtalarni funksiyaning uzilish nuqtalari deb ataymiz?",
-    "options": ["Funksiya aniqlanmagan yoki uzluksizlik sharti buzilgan nuqtalar", "f(x) = 0 bo'lgan nuqtalar", "f'(x) = 0 bo'lgan nuqtalar", "Ekstremum nuqtalar"],
-    "a": "Funksiya aniqlanmagan yoki uzluksizlik sharti buzilgan nuqtalar"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping va turini aniqlang: y = (x-5) / (x+4)",
-    "options": ["x = -4, II-tur uzilish", "x = 4, I-tur uzilish", "x = 5, bartaraf qilinadigan", "Uzilish yo'q"],
-    "a": "x = -4, II-tur uzilish"
-  },
-  {
-    "q": "y = f(x) funksiyaning x nuqtadagi argumentining Δx orttirmasiga mos Δy orttirmasi qanday hisoblanadi?",
-    "options": ["Δy = f(x+Δx) - f(x)", "Δy = f(x) - f(Δx)", "Δy = f'(x)Δx", "Δy = Δx / x"],
-    "a": "Δy = f(x+Δx) - f(x)"
-  },
-  {
-    "q": "y = f(x) funksiyaning x nuqtadagi hosilasining ta'rifini ko'rsating:",
-    "options": ["lim (Δx→0) Δy/Δx", "Δy / Δx", "f(x+Δx)", "f'(x) = 0"],
-    "a": "lim (Δx→0) Δy/Δx"
-  },
-  {
-    "q": "Qachon y = f(x) funksiya (a; b) oraliqda differensiallanuvchi deyiladi?",
-    "options": ["Oraliqning har bir nuqtasida chekli hosilaga ega bo'lsa", "Funksiya uzluksiz bo'lsa", "Funksiya o'suvchi bo'lsa", "f(a) = f(b) bo'lsa"],
-    "a": "Oraliqning har bir nuqtasida chekli hosilaga ega bo'lsa"
-  },
-  {
-    "q": "Funksiyaning o'sish, kamayish oraliqlari va ekstremum nuqtalarini toping: y = 1/3x³ + 3x² + 5x + 2",
-    "options": ["Max x = -5, Min x = -1", "Max x = -1, Min x = -5", "Max x = 5, Min x = 1", "Ekstremum yo'q"],
-    "a": "Max x = -5, Min x = -1"
-  },
-  {
-    "q": "u = u(x) va v = v(x) funksiyalar (a; b) oraliqda differensiallanuvchi bo'lsin. U holda bu funksiyalar yig'indisining hosilasi qanday?",
-    "options": ["(u+v)' = u' + v'", "(u+v)' = u' - v'", "(u+v)' = u'v + uv'", "(u+v)' = u'v'"],
-    "a": "(u+v)' = u' + v'"
-  },
-  {
-    "q": "Ikki funksiya ko'paytmasining hosilasi qaysi formula bilan hisoblanadi?",
-    "options": ["(u·v)' = u'v + uv'", "(u·v)' = u'v'", "(u·v)' = u'v - uv'", "(u·v)' = u' + v'"],
-    "a": "(u·v)' = u'v + uv'"
-  },
-  {
-    "q": "Ikki funksiya nisbatining hosilasi qaysi formula bilan hisoblanadi?",
-    "options": ["(u/v)' = (u'v - uv')/v²", "(u/v)' = u'/v'", "(u/v)' = (u'v + uv')/v²", "(u/v)' = u'v - uv'"],
-    "a": "(u/v)' = (u'v - uv')/v²"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = 4x⁶ + 1/x + 2 sin x",
-    "options": ["24x⁵ - 1/x² + 2 cos x", "24x⁵ + 1/x² + 2 cos x", "4x⁵ - 1/x² - 2 cos x", "24x⁶ - ln x + 2 cos x"],
-    "a": "24x⁵ - 1/x² + 2 cos x"
-  },
-  {
-    "q": "Toq funksiyalar qatorini ko'rsating:",
-    "options": ["x³, sin x, tg x, ctg x", "x², cos x, |x|", "eˣ, ln x", "x+1, x⁴"],
-    "a": "x³, sin x, tg x, ctg x"
-  },
-  {
-    "q": "Aniq integralni hisoblang: ∫(1 dan 2 gacha) 2e²ˣ dx",
-    "options": ["e⁴ - e²", "e² - e", "2e⁴ - 2e²", "e⁴ + e²"],
-    "a": "e⁴ - e²"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = x⁵ + √x + eˣ",
-    "options": ["5x⁴ + 1/(2√x) + eˣ", "5x⁴ + √x + eˣ", "x⁴ + 1/√x + eˣ", "5x⁴ - 1/(2√x) + eˣ"],
-    "a": "5x⁴ + 1/(2√x) + eˣ"
-  },
-  {
-    "q": "Qachon x0 nuqta y = f(x) funksiyaning maksimum nuqtasi deyiladi?",
-    "options": ["f(x) ≤ f(x0)", "f(x) ≥ f(x0)", "f'(x0) = 0", "f''(x0) > 0"],
-    "a": "f(x) ≤ f(x0)"
-  },
-  {
-    "q": "Qachon x0 nuqta y = f(x) funksiyaning minimum nuqtasi deyiladi?",
-    "options": ["f(x) ≥ f(x0)", "f(x) ≤ f(x0)", "f'(x0) = 0", "f''(x0) < 0"],
-    "a": "f(x) ≥ f(x0)"
-  },
-  {
-    "q": "Funksiya ekstremumining zaruriy shartini ko'rsating:",
-    "options": ["f'(x) = 0", "f'(x) > 0", "f''(x) = 0", "f(x) = 0"],
-    "a": "f'(x) = 0"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = eˣ cos x",
-    "options": ["eˣ(cos x - sin x)", "eˣ(cos x + sin x)", "eˣ sin x", "-eˣ cos x"],
-    "a": "eˣ(cos x - sin x)"
-  },
-  {
-    "q": "Funksiya minimumining yetarli shartini toping:",
-    "options": ["f'(x0)=0 va f''(x0)>0", "f'(x0)=0 va f''(x0)<0", "f'(x0)>0", "f(x0)=0"],
-    "a": "f'(x0)=0 va f''(x0)>0"
-  },
-  {
-    "q": "f'(x0)=0 bo'lib, ikkinchi tartibli hosila mavjud va f''(x0) < 0 bo'lsa, x0 nima?",
-    "options": ["Maksimum nuqta", "Minimum nuqta", "Burilish nuqtasi", "Uzlilish nuqtasi"],
-    "a": "Maksimum nuqta"
-  },
-  {
-    "q": "f'(x0)=0 bo'lib, ikkinchi tartibli hosila mavjud va f''(x0) > 0 bo'lsa, x0 nima?",
-    "options": ["Minimum nuqta", "Maksimum nuqta", "Egar nuqta", "Kritik nuqta"],
-    "a": "Minimum nuqta"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→2) (3x + 5)",
-    "options": ["11", "6", "10", "13"],
-    "a": "11"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping: f(x) = (7x+15)/(x²+10x+9)",
-    "options": ["x = -1 va x = -9", "x = 1 va x = 9", "x = 0", "x = -3"],
-    "a": "x = -1 va x = -9"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→0) (-7x+1)/(9x-4)",
-    "options": ["-1/4", "1/4", "7/9", "0"],
-    "a": "-1/4"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→8) (2x-3)/(5x-34)",
-    "options": ["13/6", "2/5", "1", "3"],
-    "a": "13/6"
-  },
-  {
-    "q": "D to'plamda aniqlangan y = f(x) funksiya qachon toq deyiladi?",
-    "options": ["f(-x) = -f(x)", "f(-x) = f(x)", "f(x+T) = f(x)", "f(x) < 0"],
-    "a": "f(-x) = -f(x)"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→3) (3x+8)/(-4x+5)",
-    "options": ["-17/7", "17/7", "11/7", "0"],
-    "a": "-17/7"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = 5x⁴",
-    "options": ["20x³", "5x³", "20x⁴", "x⁵"],
-    "a": "20x³"
-  },
-  {
-    "q": "Agar A = {1,2,3,a,b,c,d} va B = {3,4,5,6,c,d,e} bo'lsa, A ∪ B ni toping:",
-    "options": ["{1,2,3,4,5,6,a,b,c,d,e}", "{3,c,d}", "{1,2,a,b}", "{e}"],
-    "a": "{1,2,3,4,5,6,a,b,c,d,e}"
-  },
-  {
-    "q": "Funksiyaning aniqlanish sohasini toping: y = √(-6x + 12)",
-    "options": ["x ≤ 2", "x ≥ 2", "x < 2", "x > 2"],
-    "a": "x ≤ 2"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→5) (x²-13x+40)/(x²+2x-35)",
-    "options": ["-1/4", "1/4", "3/12", "0"],
-    "a": "-1/4"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = -7x⁴",
-    "options": ["-28x³", "28x³", "-7x³", "x⁴"],
-    "a": "-28x³"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = √x",
-    "options": ["1/(2√x)", "2√x", "1/√x", "-1/x²"],
-    "a": "1/(2√x)"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = 3∛x",
-    "options": ["1/∛x²", "∛x", "3/x", "1/x"],
-    "a": "1/∛x²"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = 5/x",
-    "options": ["-5/x²", "5/x²", "5 ln x", "-5/x"],
-    "a": "-5/x²"
-  },
-  {
-    "q": "Funksiyaning o'sish, kamayish oraliqlarini toping: y = -1/3x³ + x² + 8x - 19",
-    "options": ["Max x=4, Min x=-2", "Max x=2, Min x=-4", "Max x=0", "Ekstremum yo'q"],
-    "a": "Max x=4, Min x=-2"
-  },
-  {
-    "q": "y = 3ˣ funksiyaning hosilasini toping:",
-    "options": ["3ˣ ln 3", "3ˣ / ln 3", "x·3ˣ⁻¹", "3ˣ"],
-    "a": "3ˣ ln 3"
-  },
-  {
-    "q": "y = log₈ x funksiyaning hosilasini toping:",
-    "options": ["1/(x ln 8)", "x / ln 8", "1/x", "ln 8 / x"],
-    "a": "1/(x ln 8)"
-  },
-  {
-    "q": "Funksiya maksimumining yetarli shartini toping:",
-    "options": ["f'(x0)=0 va f''(x0)<0", "f'(x0)=0 va f''(x0)>0", "f'(x0)=0", "f(x0)=0"],
-    "a": "f'(x0)=0 va f''(x0)<0"
-  },
-  {
-    "q": "y = log₆ x funksiyaning hosilasini toping:",
-    "options": ["1/(x ln 6)", "1/x", "6/x", "ln 6 / x"],
-    "a": "1/(x ln 6)"
-  },
-  {
-    "q": "D to'plamda aniqlangan y = f(x) funksiya qachon kamayuvchi deyiladi?",
-    "options": ["x2 > x1 bo'lganda f(x2) < f(x1)", "x2 > x1 bo'lganda f(x2) > f(x1)", "f'(x) > 0", "f(x) = 0"],
-    "a": "x2 > x1 bo'lganda f(x2) < f(x1)"
-  },
-  {
-    "q": "y = ln 3x funksiyaning hosilasini toping:",
-    "options": ["1/x", "3/x", "1/3x", "ln 3"],
-    "a": "1/x"
-  },
-  {
-    "q": "Qachon {xn} ketma-ketlik kamayuvchi deyiladi?",
-    "options": ["xn+1 < xn", "xn+1 > xn", "xn = 0", "xn < 0"],
-    "a": "xn+1 < xn"
-  },
-  {
-    "q": "y = ln 7x funksiyaning hosilasini toping:",
-    "options": ["1/x", "7/x", "1/7x", "ln 7"],
-    "a": "1/x"
-  },
-  {
-    "q": "y = 11 cos 2x funksiyaning hosilasini toping:",
-    "options": ["-22 sin 2x", "22 sin 2x", "-11 sin 2x", "22 cos 2x"],
-    "a": "-22 sin 2x"
-  },
-  {
-    "q": "Aniq integralda o'zgaruvchini almashtirish formulasini ko'rsating:",
-    "options": ["∫ f(x)dx = ∫ f(φ(t))φ'(t)dt", "∫ udv = uv - ∫ vdu", "F(b) - F(a)", "f(b) - f(a)"],
-    "a": "∫ f(x)dx = ∫ f(φ(t))φ'(t)dt"
-  },
-  {
-    "q": "y = 5 cos 3x funksiyaning hosilasini toping:",
-    "options": ["-15 sin 3x", "15 sin 3x", "-5 sin 3x", "15 cos 3x"],
-    "a": "-15 sin 3x"
-  },
-  {
-    "q": "Funksiyaning o'sish, kamayish oraliqlari va ekstremum nuqtalarini toping: y = 1/3x³ + 2x² + 3x - 1",
-    "options": ["Max x=-3, Min x=-1", "Max x=-1, Min x=-3", "Max x=3, Min x=1", "Ekstremum yo'q"],
-    "a": "Max x=-3, Min x=-1"
-  },
-  {
-    "q": "N, Z, Q, R to'plamlar orasidagi munosabatni ko'rsating:",
-    "options": ["N ⊂ Z ⊂ Q ⊂ R", "R ⊂ Q ⊂ Z ⊂ N", "N ⊂ Q ⊂ Z ⊂ R", "Z ⊂ N ⊂ Q ⊂ R"],
-    "a": "N ⊂ Z ⊂ Q ⊂ R"
-  },
-  {
-    "q": "y = 3 tg 6x funksiyaning hosilasini toping:",
-    "options": ["18 / cos² 6x", "3 / cos² 6x", "18 tg 6x", "18 / sin² 6x"],
-    "a": "18 / cos² 6x"
-  },
-  {
-    "q": "Aniq integralni hisoblang: ∫(0 dan 2 gacha) (8x³ + 9x² + 2x - 20) dx",
-    "options": ["14", "10", "20", "0"],
-    "a": "14"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = 5 ctg 6x",
-    "options": ["-30 / sin² 6x", "30 / sin² 6x", "-5 / sin² 6x", "30 ctg 6x"],
-    "a": "-30 / sin² 6x"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = 9 arcsin 2x",
-    "options": ["18 / √(1 - 4x²)", "9 / √(1 - 4x²)", "18 / (1 + 4x²)", "18 / √(1 - x²)"],
-    "a": "18 / √(1 - 4x²)"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→−7) (x² + 2x - 35) / (x² - x - 56)",
-    "options": ["12/15", "4/5", "1", "0"],
-    "a": "4/5"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = 7 arctg 8x",
-    "options": ["56 / (1 + 64x²)", "7 / (1 + 64x²)", "56 / (1 + 8x²)", "56 / √(1 - 64x²)"],
-    "a": "56 / (1 + 64x²)"
-  },
-  {
-    "q": "O'suvchi, kamayuvchi, o'smaydigan va kamaymaydigan funksiyalar umumlashtirilib qanday nomlanadi?",
-    "options": ["Monoton funksiyalar", "Davriy funksiyalar", "Uzluksiz funksiyalar", "Chegaralangan funksiyalar"],
-    "a": "Monoton funksiyalar"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = 11 arcctg 3x",
-    "options": ["-33 / (1 + 9x²)", "33 / (1 + 9x²)", "-11 / (1 + 9x²)", "-33 / √(1 - 9x²)"],
-    "a": "-33 / (1 + 9x²)"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = xeˣ",
-    "options": ["eˣ(x + 1)", "eˣ", "xeˣ", "eˣ(x - 1)"],
-    "a": "eˣ(x + 1)"
-  },
-  {
-    "q": "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = x³ + 12x² - x + 4",
-    "options": ["(-∞,-4) qavariq, (-4,∞) botiq", "(-∞,4) botiq, (4,∞) qavariq", "Doimo botiq", "Doimo qavariq"],
-    "a": "-4,∞) botiq"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = (2x + 1) sin x",
-    "options": ["2 sin x + (2x + 1) cos x", "2 cos x", "2 sin x - cos x", "sin x + 2x cos x"],
-    "a": "2 sin x + (2x + 1) cos x"
-  },
-  {
-    "q": "Differensiallanuvchi funksiya kamayishining zaruriy shartini toping:",
-    "options": ["f'(x) ≤ 0", "f'(x) ≥ 0", "f'(x) = 0", "f''(x) < 0"],
-    "a": "f'(x) ≤ 0"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = (x² + 1) tg x",
-    "options": ["2x tg x + (x² + 1) / cos² x", "2x / cos² x", "2x tg x", "x² / cos² x"],
-    "a": "2x tg x + (x² + 1) / cos² x"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = (3x - 1) arcsin x",
-    "options": ["3 arcsin x + (3x - 1) / √(1 - x²)", "3 / √(1 - x²)", "3 arcsin x", "arcsin x + 3x"],
-    "a": "3 arcsin x + (3x - 1) / √(1 - x²)"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = sin x ln x",
-    "options": ["cos x ln x + sin x / x", "cos x / x", "sin x / x", "cos x + ln x"],
-    "a": "cos x ln x + sin x / x"
-  },
-  {
-    "q": "Funksiyaning aniqlanish sohasini toping: y = ⁶√(-6x + 42)",
-    "options": ["x ≤ 7", "x ≥ 7", "x < 7", "x > 7"],
-    "a": "x ≤ 7"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = (1 + x²) arctg x",
-    "options": ["2x arctg x + 1", "2x arctg x", "1 + x²", "2x / (1 + x²)"],
-    "a": "2x arctg x + 1"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = 6x⁵",
-    "options": ["30x⁴", "6x⁴", "30x⁵", "x⁶"],
-    "a": "30x⁴"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = -x⁴ + sin x",
-    "options": ["-4x³ + cos x", "4x³ + cos x", "-4x³ - cos x", "-x³ + cos x"],
-    "a": "-4x³ + cos x"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = x⁵ - ln x",
-    "options": ["5x⁴ - 1/x", "5x⁴ + 1/x", "x⁴ - 1/x", "5x⁴ - ln x"],
-    "a": "5x⁴ - 1/x"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping f(x) = (x + 2) / (x² + 8x - 9)",
-    "options": ["x = 1 va x = -9", "x = -1 va x = 9", "x = 2", "x = 0"],
-    "a": "x = 1 va x = -9"
-  },
-  {
-    "q": "Qachon F(x) funksiya (a; b) oraliqda f(x) funksiyaning boshlang'ich funksiyasi deb ataladi?",
-    "options": ["F'(x) = f(x)", "f'(x) = F(x)", "∫ F(x) = f(x)", "F(x) = f(x) + C"],
-    "a": "F'(x) = f(x)"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = -3x⁵",
-    "options": ["-15x⁴", "15x⁴", "-3x⁴", "-15x⁵"],
-    "a": "-15x⁴"
-  },
-  {
-    "q": "Aniqmas integralning xossalaridan birini ko'rsating:",
-    "options": ["∫ k f(x) dx = k ∫ f(x) dx", "∫ f(x) dx = f'(x)", "∫ (f+g) = ∫ f · ∫ g", "∫ f dx = F(b) - F(a)"],
-    "a": "∫ k f(x) dx = k ∫ f(x) dx"
-  },
-  {
-    "q": "Funksiyaning aniqlanish sohasini toping: y = ⁸√(5x + 20)",
-    "options": ["x ≥ -4", "x > -4", "x ≤ -4", "(-∞,+∞)"],
-    "a": "x ≥ -4"
-  },
-  {
-    "q": "Aniqmas integralni toping: ∫ (3x² - 5 sin x) dx",
-    "options": ["x³ + 5 cos x + C", "x³ - 5 cos x + C", "6x - 5 cos x + C", "3x³ + 5 cos x + C"],
-    "a": "x³ + 5 cos x + C"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = 5 arcctg 9x",
-    "options": ["-45 / (1 + 81x²)", "45 / (1 + 81x²)", "-5 / (1 + 81x²)", "-45 / √(1 - 81x²)"],
-    "a": "-45 / (1 + 81x²)"
-  },
-  {
-    "q": "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = x³ - 12x² + 7x - 1",
-    "options": ["(-∞,4) qavariq, (4,∞) botiq", "(-∞,-4) botiq, (-4,∞) qavariq", "Doimo qavariq", "Doimo botiq"],
-    "a": "(-∞,4) qavariq, (4,∞) botiq"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→3) (7x - 4)",
-    "options": ["17", "21", "25", "11"],
-    "a": "17"
-  },
-  {
-    "q": "Aniqmas integralni toping: ∫ (3ˣ - 1/cos²x) dx",
-    "options": ["3ˣ/ln3 - tg x + C", "3ˣ ln3 - tg x + C", "3ˣ - tg x + C", "3ˣ/ln3 + tg x + C"],
-    "a": "3ˣ/ln3 - tg x + C"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = 4 sin 9x",
-    "options": ["36 cos 9x", "4 cos 9x", "-36 cos 9x", "36 sin 9x"],
-    "a": "36 cos 9x"
-  },
-  {
-    "q": "Aniqmas integralni toping: ∫ (5ˣ + cos 3x) dx",
-    "options": ["5ˣ/ln5 + (1/3)sin 3x + C", "5ˣ ln5 + sin 3x + C", "5ˣ/ln5 - sin 3x + C", "5ˣ + sin 3x + C"],
-    "a": "5ˣ/ln5 + (1/3)sin 3x + C"
-  },
-  {
-    "q": "Funksiyaning o'sish, kamayish oraliqlarini toping: y = 1/3x³ + 2x² + 3x + 10",
-    "options": ["Max x = -3, Min x = -1", "Max x = -1, Min x = -3", "Max x = 3, Min x = 1", "Ekstremum yo'q"],
-    "a": "Max x = -3, Min x = -1"
-  },
-  {
-    "q": "Funksiyaning aniqlanish sohasini toping: y = ⁶√(-5x - 15)",
-    "options": ["x ≤ -3", "x ≥ -3", "x < -3", "(-∞,+∞)"],
-    "a": "x ≤ -3"
-  },
-  {
-    "q": "Nyuton-Leybnits formulasini ko'rsating:",
-    "options": ["∫ f(x) dx = F(b) - F(a)", "∫ f(x) dx = f(b) - f(a)", "∫ f = F(x) + C", "∫ udv = uv - ∫ vdu"],
-    "a": "∫ f(x) dx = F(b) - F(a)"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→-4) (-2x + 6)",
-    "options": ["14", "-2", "8", "12"],
-    "a": "14"
-  },
-  {
-    "q": "Bo'laklab integrallash formulasini ko'rsating:",
-    "options": ["∫ u dv = uv - ∫ v du", "∫ f(x) dx = F(b) - F(a)", "∫ kf = k∫f", "∫ (f+g) = ∫f + ∫g"],
-    "a": "∫ u dv = uv - ∫ v du"
-  },
-  {
-    "q": "Aniq integralni hisoblang: ∫ (2 dan 4 gacha) (3x² - 4x) dx",
-    "options": ["32", "24", "40", "16"],
-    "a": "32"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = 7 arccos 5x",
-    "options": ["-35 / √(1 - 25x²)", "35 / √(1 - 25x²)", "-7 / √(1 - 25x²)", "-35 / (1 + 25x²)"],
-    "a": "-35 / √(1 - 25x²)"
-  },
-  {
-    "q": "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = x³ + 9x² + 4x - 5",
-    "options": ["(-∞,-3) qavariq, (-3,∞) botiq", "(-∞,3) botiq, (3,∞) qavariq", "Doimo botiq", "Doimo qavariq"],
-    "a": "(-∞,-3) qavariq, (-3,∞) botiq"
-  },
-  {
-    "q": "Aniq integralni hisoblang: ∫ (0 dan 3 gacha) (4x³ - 3x² + 6x) dx",
-    "options": ["81", "72", "90", "64"],
-    "a": "81"
-  },
-  {
-    "q": "y = 1/x funksiyaning hosilasi nimaga teng?",
-    "options": ["-1/x²", "1/x²", "ln x", "1/x"],
-    "a": "-1/x²"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping f(x) = (5x - 1) / (x² + 7x + 10)",
-    "options": ["x = -2 va x = -5", "x = 2 va x = 5", "x = 1/5", "Uzilish yo'q"],
-    "a": "x = -2 va x = -5"
-  },
-  {
-    "q": "Agar A = {1,2,3,a,b,c,d} va B = {3,4,5,6,c,d,e} bo'lsa, A ∩ B ni toping:",
-    "options": ["{3,c,d}", "{1,2,a,b,e}", "{1,2,3,4,5,6,a,b,c,d,e}", "∅"],
-    "a": "{3,c,d}"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping f(x) = (7x - 1) / (x² - 3x - 10)",
-    "options": ["x = 5 va x = -2", "x = -5 va x = 2", "x = 7", "Uzilish yo'q"],
-    "a": "x = 5 va x = -2"
-  },
-  {
-    "q": "Aniq integralni hisoblang: ∫ (1 dan 4 gacha) (2x - 5) dx",
-    "options": ["0", "5", "-5", "2"],
-    "a": "0"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping f(x) = (-5x + 7) / (x² + 9x + 18)",
-    "options": ["x = -3 va x = -6", "x = 3 va x = 6", "x = 0", "Uzilish yo'q"],
-    "a": "x = -3 va x = -6"
-  },
-  {
-    "q": "Σ f(ci) · Δxi ifoda qanday nomlanadi?",
-    "options": ["Integral yig'indi (Riman yig'indisi)", "Limit", "Hosila", "Argument orttirmasi"],
-    "a": "Integral yig'indi (Riman yig'indisi)"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping: f(x) = (-3x + 5) / (x² + 3x - 18)",
-    "options": ["x = 3 va x = -6", "x = -3 va x = 6", "x = 5", "Uzilish yo'q"],
-    "a": "x = 3 va x = -6"
-  },
-  {
-    "q": "Funksiyaning o'sish, kamayish oraliqlari va ekstremum nuqtalarini toping: y = 1/3x³ + 4x² + 7x - 3",
-    "options": ["Max x = -7, Min x = -1", "Max x = -1, Min x = -7", "Max x = 7, Min x = 1", "Ekstremum yo'q"],
-    "a": "Max x = -7, Min x = -1"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = e⁷ˣ",
-    "options": ["7e⁷ˣ", "e⁷ˣ", "7x e⁷ˣ⁻¹", "e⁷ˣ / 7"],
-    "a": "7e⁷ˣ"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping: f(x) = (-7x + 5) / (x² - 3x - 18)",
-    "options": ["x = 6 va x = -3", "x = -6 va x = 3", "x = 0", "x = 7"],
-    "a": "x = 6 va x = -3"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = e³ˣ",
-    "options": ["3e³ˣ", "e³ˣ", "3x e³ˣ⁻¹", "e³"],
-    "a": "3e³ˣ"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping: f(x) = (7x + 21) / (x² - 8x - 9)",
-    "options": ["x = 9 va x = -1", "x = -9 va x = 1", "x = -3", "Uzilish yo'q"],
-    "a": "x = 9 va x = -1"
-  },
-  {
-    "q": "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = -x³ - 6x² + 2x - 1",
-    "options": ["(-∞,-2) botiq, (-2,∞) qavariq", "(-∞,2) qavariq, (2,∞) botiq", "Doimo qavariq", "Doimo botiq"],
-    "a": "(-∞,-2) botiq, (-2,∞) qavariq"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping: f(x) = (3x + 21) / (x² - 10x + 9)",
-    "options": ["x = 1 va x = 9", "x = -1 va x = -9", "x = -7", "x = 0"],
-    "a": "x = 1 va x = 9"
-  },
-  {
-    "q": "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = -x³ - 6x² + 2x - 1",
-    "options": ["(-∞,-2) botiq, (-2,∞) qavariq", "(-∞,-2) qavariq", "(-2,∞) qavariq", "Doimo botiq"],
-    "a": "(-∞,-2) botiq, (-2,∞) qavariq"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping: f(x) = (3x+21)/(x²-10x+9)",
-    "options": ["x = 1 va x = 9", "x = -1 va x = -9", "x = 3", "x = 7"],
-    "a": "x = 1 va x = 9"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = 6 tg 7x",
-    "options": ["42/cos²7x", "6/cos²7x", "42 tg 7x", "42/sin²7x"],
-    "a": "42/cos²7x"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping: f(x) = (5x + 3) / (x² - 3x - 28)",
-    "options": ["x = 7 va x = -4", "x = -7 va x = 4", "x = 0", "x = 5"],
-    "a": "x = 7 va x = -4"
-  },
-  {
-    "q": "Birinchi ajoyib limitni ko'rsating:",
-    "options": ["lim (x→0) sin x / x = 1", "lim (x→∞) (1 + 1/x)ˣ = e", "lim (x→0) tg x / x = 1", "lim (x→0) cos x = 1"],
-    "a": "lim (x→0) sin x / x = 1"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping: f(x) = (5x+4)/(x²+3x-28)",
-    "options": ["x = 4 va x = -7", "x = -4 va x = 7", "x = 1", "x = 0"],
-    "a": "x = 4 va x = -7"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = 2 arccos 6x",
-    "options": ["-12 / √(1 - 36x²)", "12 / √(1 - 36x²)", "-2 / √(1 - 36x²)", "-12 / (1 + 36x²)"],
-    "a": "-12 / √(1 - 36x²)"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping: f(x) = (5x + 6) / (x² - 11x + 28)",
-    "options": ["x = 4 va x = 7", "x = -4 va x = -7", "x = 6", "Uzilish yo'q"],
-    "a": "x = 4 va x = 7"
-  },
-  {
-    "q": "Funksiyaning aniqlanish sohasini toping: y = ⁶√(11x + 33)",
-    "options": ["x ≥ -3", "x > -3", "x ≤ -3", "(-∞,+∞)"],
-    "a": "x ≥ -3"
-  },
-  {
-    "q": "Funksiya qanday ko'rinishdagi uzilish nuqtalariga ega bo'ladi?",
-    "options": ["I-tur va II-tur", "Faqat I-tur", "Faqat II-tur", "Uzluksiz nuqtalar"],
-    "a": "I-tur va II-tur"
-  },
-  {
-    "q": "Qachon x0 uzilish nuqtasi y = f(x) funksiyaning ikkinchi tur uzilish nuqtasi deyiladi?",
-    "options": ["Kamida bitta bir tomonlama limit cheksiz yoki mavjud emas bo'lsa", "Ikkala limit mavjud bo'lsa", "Limitlar teng bo'lsa", "Funksiya f(x0) ga teng bo'lsa"],
-    "a": "Kamida bitta bir tomonlama limit cheksiz yoki mavjud emas bo'lsa"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping: f(x) = (-9x + 2) / (x² + 4x - 5)",
-    "options": ["x = 1 va x = -5", "x = -1 va x = 5", "x = 0", "x = 2"],
-    "a": "x = 1 va x = -5"
-  },
-  {
-    "q": "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = -x³ + 12x² + 3x - 4",
-    "options": ["(-∞,4) botiq, (4,∞) qavariq", "(-∞,4) qavariq, (4,∞) botiq", "Doimo botiq", "Doimo qavariq"],
-    "a": "(-∞,4) botiq, (4,∞) qavariq"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→-3) (x² + 8x + 15) / (x² + 2x - 3)",
-    "options": ["-0.5", "0.5", "1", "-1"],
-    "a": "-0.5"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = -7x⁴",
-    "options": ["-28x³", "28x³", "-7x³", "21x⁴"],
-    "a": "-28x³"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→5) (x² + 2x - 35) / (x² - 2x - 15)",
-    "options": ["1.5", "1", "0", "5"],
-    "a": "1.5"
-  },
-  {
-    "q": "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = x³ + 6x² + x - 7",
-    "options": ["(-∞,-2) qavariq, (-2,∞) botiq", "(-∞,2) botiq, (2,∞) qavariq", "Doimo qavariq", "Doimo botiq"],
-    "a": "(-∞,-2) qavariq, (-2,∞) botiq"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→7) (x² - 12x + 35) / (x² - 4x - 21)",
-    "options": ["0.2", "-0.2", "1", "0"],
-    "a": "0.2"
-  },
-  {
-    "q": "Funksiyaning o'sish, kamayish oraliqlari va ekstremum nuqtalarini toping: y = -1/3x³ + 4x² - 12x + 9",
-    "options": ["Max x = 6, Min x = 2", "Max x = 2, Min x = 6", "Max x = 4, Min x = 0", "Ekstremum yo'q"],
-    "a": "Max x = 6, Min x = 2"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→1) (x² - 8x + 7) / (x² + 2x - 3)",
-    "options": ["-1.5", "1.5", "1", "0"],
-    "a": "-1.5"
-  },
-  {
-    "q": "Funksiyaning o'sish, kamayish oraliqlari va ekstremum nuqtalarini toping: y = 1/3x³ + x² - 8x + 8",
-    "options": ["Max x = -4, Min x = 2", "Max x = 2, Min x = -4", "Max x = 0", "Ekstremum yo'q"],
-    "a": "Max x = -4, Min x = 2"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→-5) (x² - 3x - 40) / (x² + 8x + 15)",
-    "options": ["6.5", "-6.5", "1", "0"],
-    "a": "6.5"
-  },
-  {
-    "q": "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = -x³ - 15x² + 11x - 3",
-    "options": ["(-∞,-5) botiq, (-5,∞) qavariq", "(-∞,5) qavariq, (5,∞) botiq", "Doimo botiq", "Doimo qavariq"],
-    "a": "(-∞,-5) botiq, (-5,∞) qavariq"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→8) (x² - x - 56) / (x² - 5x - 24)",
-    "options": ["15/11", "11/15", "1", "0"],
-    "a": "15/11"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = 3 arctg 8x",
-    "options": ["24 / (1 + 64x²)", "3 / (1 + 64x²)", "24 / (1 + 8x²)", "24 / √(1 - 64x²)"],
-    "a": "24 / (1 + 64x²)"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→4) (x² + x - 20) / (x² - 5x + 4)",
-    "options": ["3", "-3", "1", "0"],
-    "a": "3"
-  },
-  {
-    "q": "Aniqmas integralni toping: ∫ (x⁵ - 1/sin²x) dx",
-    "options": ["x⁶/6 + ctg x + C", "x⁶/6 - ctg x + C", "5x⁴ + ctg x + C", "x⁶/6 + tg x + C"],
-    "a": "x⁶/6 + ctg x + C"
-  },
-  {
-    "q": "Funksiyaning aniqlanish sohasini toping: y = 1 / √(-9x - 27)",
-    "options": ["x < -3", "x ≤ -3", "x > -3", "x ≠ -3"],
-    "a": "x < -3"
-  },
-  {
-    "q": "Funksiyaning o'sish, kamayish oraliqlari va ekstremum nuqtalarini toping: y = -1/3x³ + 3x² + 7x + 3",
-    "options": ["Max x = 7, Min x = -1", "Max x = -1, Min x = 7", "Max x = 3, Min x = -3", "Ekstremum yo'q"],
-    "a": "Max x = 7, Min x = -1"
-  },
-  {
-    "q": "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = -x³ - 12x² - 8x + 9",
-    "options": ["(-∞,-4) botiq, (-4,∞) qavariq", "(-∞,4) qavariq, (4,∞) botiq", "Doimo botiq", "Doimo qavariq"],
-    "a": "(-∞,-4) botiq, (-4,∞) qavariq"
-  },
-  {
-    "q": "Aniq integralni hisoblang: ∫ (1 dan 3 gacha) (6x² - 4x - 7) dx",
-    "options": ["22", "18", "25", "30"],
-    "a": "22"
-  },
-  {
-    "q": "Funksiyaning aniqlanish sohasini toping: y = 1 / √(5x + 20)",
-    "options": ["x > -4", "x ≥ -4", "x < -4", "x ≠ -4"],
-    "a": "x > -4"
-  },
-  {
-    "q": "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = -x³ + 15x² + 15x - 9",
-    "options": ["(-∞,5) botiq, (5,∞) qavariq", "(-∞,5) qavariq", "(-5,∞) botiq", "Doimo botiq"],
-    "a": "(-∞,5) botiq, (5,∞) qavariq"
-  },
-  {
-    "q": "Funksiyaning aniqlanish sohasini toping: y = ⁹√x + 36",
-    "options": ["(-∞,+∞)", "x > 0", "x ≥ 0", "x ≠ -36"],
-    "a": "(-∞,+∞)"
-  },
-  {
-    "q": "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = -x³ - 9x² + 2x + 10",
-    "options": ["(-∞,-3) botiq, (-3,∞) qavariq", "(-∞,3) qavariq, (3,∞) botiq", "Doimo botiq", "Doimo qavariq"],
-    "a": "(-∞,-3) botiq, (-3,∞) qavariq"
-  },
-  {
-    "q": "Funksiyaning aniqlanish sohasini toping: y = ⁷√7x + 35",
-    "options": ["(-∞,+∞)", "x ≥ -5", "x > -5", "x ≠ -35"],
-    "a": "(-∞,+∞)"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = 3x⁵",
-    "options": ["15x⁴", "3x⁴", "15x⁵", "5x⁴"],
-    "a": "15x⁴"
-  },
-  {
-    "q": "Funksiyaning aniqlanish sohasini toping: y = 1 / √(4x + 16)",
-    "options": ["x > -4", "x ≥ -4", "x < -4", "x ≠ -4"],
-    "a": "x > -4"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→-5) (x² + 8x + 15) / (x² - 3x - 40)",
-    "options": ["-2/13", "2/13", "0", "1"],
-    "a": "-2/13"
-  },
-  {
-    "q": "Funksiyaning aniqlanish sohasini toping: y = 1 / √(6x + 24)",
-    "options": ["x > -4", "x ≥ -4", "x < -4", "x ≠ -4"],
-    "a": "x > -4"
-  },
-  {
-    "q": "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = x³ - 15x² + 10x - 7",
-    "options": ["(-∞, 5) qavariq, (5, ∞) botiq", "(-∞, 5) botiq, (5, ∞) qavariq", "Doimo botiq", "Doimo qavariq"],
-    "a": "(-∞, 5) qavariq, (5, ∞) botiq"
-  },
-  {
-    "q": "Funksiyaning aniqlanish sohasini toping: y = 1 / √(2x + 18)",
-    "options": ["x > -9", "x ≥ -9", "x < -9", "x ≠ -9"],
-    "a": "x > -9"
-  },
-  {
-    "q": "Funksiyaning o'sish, kamayish oraliqlari va ekstremum nuqtalarini toping: y = 1/3x³ - 2x² - 5x - 2",
-    "options": ["Max x = -1, Min x = 5", "Max x = 5, Min x = -1", "Max x = 0", "Ekstremum yo'q"],
-    "a": "Max x = -1, Min x = 5"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping: f(x) = (7x + 2) / (x² + 10x + 16)",
-    "options": ["x = -2 va x = -8", "x = 2 va x = 8", "x = 0", "Uzilish yo'q"],
-    "a": "x = -2 va x = -8"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = -3x⁴ + 1/x - 2 cos x",
-    "options": ["-12x³ - 1/x² + 2 sin x", "-12x³ + 1/x² - 2 sin x", "-3x³ - ln x + 2 sin x", "-12x³ - 1/x² - 2 sin x"],
-    "a": "-12x³ - 1/x² + 2 sin x"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→-7) (x² + 6x - 7) / (x² + 10x + 21)",
-    "options": ["2", "1", "0", "Mavjud emas"],
-    "a": "2"
-  },
-  {
-    "q": "Funksiyaning o'sish, kamayish oraliqlari va ekstremum nuqtalarini toping: y = 1/3x³ + 5x² + 9x + 1",
-    "options": ["Max x = -9, Min x = -1", "Max x = -1, Min x = -9", "Max x = 3", "Ekstremum yo'q"],
-    "a": "Max x = -9, Min x = -1"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping: f(x) = (5x + 2) / (x² + 11x + 28)",
-    "options": ["x = -4 va x = -7", "x = 4 va x = 7", "x = -2", "Uzilish yo'q"],
-    "a": "x = -4 va x = -7"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = 5 sin 4x",
-    "options": ["20 cos 4x", "5 cos 4x", "-20 cos 4x", "20 sin 4x"],
-    "a": "20 cos 4x"
-  },
-  {
-    "q": "Funksiyaning o'sish, kamayish oraliqlari va ekstremum nuqtalarini toping: y = 1/3x³ + 3x² + 8x - 20",
-    "options": ["Max x = -4, Min x = -2", "Max x = -2, Min x = -4", "Max x = 0", "Ekstremum yo'q"],
-    "a": "Max x = -4, Min x = -2"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→-7) (x² - 4x - 21) / (x² + 2x - 3)",
-    "options": ["11/8", "1", "0", "Mavjud emas"],
-    "a": "11/8"
-  },
-  {
-    "q": "A ⊂ E yozuvi nimani anglatadi?",
-    "options": ["A to'plam E ning qism to'plami", "A to'plam E ga tegishli", "E to'plam A ning qismi", "To'plamlar teng"],
-    "a": "A to'plam E ning qism to'plami"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping: f(x) = (3x + 11) / (x² - 6x - 16)",
-    "options": ["x = 8 va x = -2", "x = -8 va x = 2", "x = 0", "Uzilish yo'q"],
-    "a": "x = 8 va x = -2"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = -5x⁴ + 6/x + 2 tg x",
-    "options": ["-20x³ - 6/x² + 2/cos²x", "-20x³ + 6/x² + 2/cos²x", "-5x³ - 6 ln x + 2/cos²x", "20x³ - 6/x² + 2/sin²x"],
-    "a": "-20x³ - 6/x² + 2/cos²x"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→-1) (x² + 2x - 3) / (x² + 4x - 5)",
-    "options": ["2/3", "1", "0", "Mavjud emas"],
-    "a": "2/3"
-  },
-  {
-    "q": "Funksiyaning o'sish, kamayish oraliqlari va ekstremum nuqtalarini toping: y = -1/3x³ + 5x² - 16x + 10",
-    "options": ["Max x = 8, Min x = 2", "Max x = 2, Min x = 8", "Max x = 5", "Ekstremum yo'q"],
-    "a": "Max x = 8, Min x = 2"
-  },
-  {
-    "q": "Qanday to'plamga A va B to'plamlarning birlashmasi deb ataladi?",
-    "options": ["A yoki B ga tegishli barcha elementlar to'plami", "Faqat umumiy elementlar", "A da bor, B da yo'q elementlar", "Bo'sh to'plam"],
-    "a": "A yoki B ga tegishli barcha elementlar to'plami"
-  },
-  {
-    "q": "Funksiyaning aniqlanish sohasini toping: y = 1 / √(3x + 15)",
-    "options": ["x > -5", "x ≥ -5", "x < -5", "x ≠ -5"],
-    "a": "x > -5"
-  },
-  {
-    "q": "y = f(x) funksiyaning x0 nuqtadagi hosilasining ta'rifini ko'rsating:",
-    "options": ["lim (Δx→0) Δy/Δx", "lim (x→0) f(x)", "f(x+Δx) - f(x)", "Δy/Δx"],
-    "a": "lim (Δx→0) Δy/Δx"
-  },
-  {
-    "q": "Funksiyaning o'sish, kamayish oraliqlari va ekstremum nuqtalarini toping: y = 1/3x³ + 4x² + 15x + 11",
-    "options": ["Max x = -5, Min x = -3", "Max x = -3, Min x = -5", "Max x = 0", "Ekstremum yo'q"],
-    "a": "Max x = -5, Min x = -3"
-  },
-  {
-    "q": "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = -x³ + 3x² - 7x + 5",
-    "options": ["(-∞, 1) botiq, (1, ∞) qavariq", "(-∞, 1) qavariq, (1, ∞) botiq", "Doimo botiq", "Doimo qavariq"],
-    "a": "(-∞, 1) botiq, (1, ∞) qavariq"
-  },
-  {
-    "q": "D to'plamda aniqlangan y = f(x) funksiya qachon davriy deyiladi?",
-    "options": ["f(x+T) = f(x) sharti bajarilsa", "f(-x) = f(x) bo'lsa", "f'(x) = 0 bo'lsa", "Doimo o'suvchi bo'lsa"],
-    "a": "f(x+T) = f(x) sharti bajarilsa"
-  },
-  {
-    "q": "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = x³ - 6x² + 5x + 1",
-    "options": ["(-∞, 2) qavariq, (2, ∞) botiq", "(-∞, 2) botiq, (2, ∞) qavariq", "Doimo botiq", "Doimo qavariq"],
-    "a": "(-∞, 2) qavariq, (2, ∞) botiq"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→-5) (x² - 7x + 10) / (x² - 2x - 15)",
-    "options": ["-1.5", "1.5", "0", "1"],
-    "a": "-1.5"
-  },
-  {
-    "q": "x ∈ E yozuvi nimani anglatadi?",
-    "options": ["x elementi E to'plamga tegishli", "E to'plam x ga tegishli", "x to'plam E ning qismi", "x va E teng"],
-    "a": "x elementi E to'plamga tegishli"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = x ln x",
-    "options": ["ln x + 1", "ln x", "1/x", "x + ln x"],
-    "a": "ln x + 1"
-  },
-  {
-    "q": "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = x³ - 9x² - 7x + 3",
-    "options": ["(-∞, 3) qavariq, (3, ∞) botiq", "(-∞, 3) botiq, (3, ∞) qavariq", "Doimo botiq", "Doimo qavariq"],
-    "a": "(-∞, 3) qavariq, (3, ∞) botiq"
-  },
-  {
-    "q": "Funksiyaning aniqlanish sohasini toping: y = √(3x - 21)",
-    "options": ["x ≥ 7", "x > 7", "x < 7", "x ≤ 7"],
-    "a": "x ≥ 7"
-  },
-  {
-    "q": "Funksiyalar qanday usullar bilan beriladi?",
-    "options": ["Analitik, jadval, grafik", "Faqat grafik", "Faqat analitik", "Og'zaki va yozma"],
-    "a": "Analitik, jadval, grafik"
-  },
-  {
-    "q": "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = -x³ + 9x² + 5x + 4",
-    "options": ["(-∞, 3) botiq, (3, ∞) qavariq", "(-∞, 3) qavariq, (3, ∞) botiq", "Doimo botiq", "Doimo qavariq"],
-    "a": "(-∞, 3) botiq, (3, ∞) qavariq"
-  },
-  {
-    "q": "Qachon A to'plam B to'plamning qism to'plami deyiladi?",
-    "options": ["A ning barcha elementlari B da bo'lsa", "B ning barcha elementlari A da bo'lsa", "Umumiy elementlari bo'lsa", "Hech qanday umumiy element bo'lmasa"],
-    "a": "A ning barcha elementlari B da bo'lsa"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→4) (-6x + 8) / (2x + 9)",
-    "options": ["-16/17", "16/17", "0", "1"],
-    "a": "-16/17"
-  },
-  {
-    "q": "Funksiyaning aniqlanish sohasini toping: y = 1 / √(-5x - 25)",
-    "options": ["x < -5", "x ≤ -5", "x > -5", "x ≥ -5"],
-    "a": "x < -5"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→-1) (x² + 4x - 5) / (x² + 2x - 3)",
-    "options": ["1.5", "-1.5", "0", "1"],
-    "a": "1.5"
-  },
-  {
-    "q": "Aniq integralni hisoblang: ∫(1 dan 3 gacha) 3x² dx",
-    "options": ["26", "27", "9", "30"],
-    "a": "26"
-  },
-  {
-    "q": "Qachon a soni ketma-ketlikning limiti deyiladi?",
-    "options": ["Har qanday ε > 0 uchun |xn - a| < ε bo'lsa", "xn = a bo'lsa", "xn > a bo'lsa", "Ketma-ketlik cheksiz bo'lsa"],
-    "a": "Har qanday ε > 0 uchun |xn - a| < ε bo'lsa"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = 5ˣ",
-    "options": ["5ˣ ln 5", "5ˣ / ln 5", "x 5ˣ⁻¹", "5ˣ"],
-    "a": "5ˣ ln 5"
-  },
-  {
-    "q": "Davriy funksiyalar qatorini ko'rsating:",
-    "options": ["sin x, cos x, tg x", "x², x³, x", "eˣ, ln x", "√x, |x|"],
-    "a": "sin x, cos x, tg x"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→2) (x² - 10x + 16) / (x² + 3x - 10)",
-    "options": ["-6/7", "6/7", "0", "1"],
-    "a": "-6/7"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping: f(x) = (8x + 3) / (x² + 3x - 10)",
-    "options": ["x = 2 va x = -5", "x = -2 va x = 5", "x = 0", "Uzilish yo'q"],
-    "a": "x = 2 va x = -5"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarining uzluksizligi ta'rifini ko'rsating:",
-    "options": ["lim (x→x0) f(x) = f(x0)", "f'(x) = 0", "f(x) mavjud bo'lsa", "Limit cheksiz bo'lsa"],
-    "a": "lim (x→x0) f(x) = f(x0)"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping: f(x) = (x + 9) / (x² - 7x + 10)",
-    "options": ["x = 2 va x = 5", "x = -2 va x = -5", "x = -9", "Uzilish yo'q"],
-    "a": "x = 2 va x = 5"
-  },
-  {
-    "q": "Limitni hisoblang: lim (x→2) (3x + 5) / (5x - 4)",
-    "options": ["11/6", "11/4", "1", "0"],
-    "a": "11/6"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = x³ + 5x² - 6x + 5 + ln x",
-    "options": ["3x² + 10x - 6 + 1/x", "3x² + 10x - 6", "x² + 5x - 6 + 1/x", "3x² + 5x + 1/x"],
-    "a": "3x² + 10x - 6 + 1/x"
-  },
-  {
-    "q": "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = x³ + 6x² − 2x + 7",
-    "options": [
-      "Qavariq: (−∞, −2), Botiq: (−2, +∞)",
-      "Qavariq: (−2, +∞), Botiq: (−∞, −2)",
-      "Qavariq: (−∞, +∞)",
-      "Botiq: (−∞, +∞)"
-    ],
-    "a": "Qavariq: (−∞, −2), Botiq: (−2, +∞)"
-  },
-  {
-    "q": "Funksiyaning o‘sish, kamayish oraliqlari va ekstremum nuqtalarini toping: y = 1/3 x³ + 4x² + 12x + 6",
-    "options": [
-      "Kamayadi: (−∞, −2), O‘sadi: (−2, +∞), minimum x = −2",
-      "O‘sadi: (−∞, −2), Kamayadi: (−2, +∞), maksimum x = −2",
-      "Faqat o‘suvchi",
-      "Faqat kamayuvchi"
-    ],
-    "a": "Kamayadi: (−∞, −2), O‘sadi: (−2, +∞), minimum x = −2"
-  },
-  {
-    "q": "Differensiallanuvchi funksiya o‘sishining zaruriy sharti qaysi?",
-    "options": [
-      "f′(x) ≥ 0",
-      "f′(x) > 0",
-      "f(x) ≥ 0",
-      "f′(x) = 0"
-    ],
-    "a": "f′(x) ≥ 0"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping va turini aniqlang: y = (x + 3)/(x − 7)",
-    "options": [
-      "x = 7, cheksiz uzilish",
-      "x = −3, bartaraf etiladigan uzilish",
-      "Uzilish yo‘q",
-      "x = 0, sakrashli uzilish"
-    ],
-    "a": "x = 7, cheksiz uzilish"
-  },
-  {
-    "q": "Funksiyaning uzilish nuqtalarini toping: f(x) = (−9x + 2)/(x² − 6x + 5)",
-    "options": [
-      "x = 1 va x = 5",
-      "x = −1 va x = −5",
-      "x = 0",
-      "Uzilish yo‘q"
-    ],
-    "a": "x = 1 va x = 5"
-  },
-  {
-    "q": "Funksiyaning hosilasini toping: y = 2x⁵ − 3/x + 2√x",
-    "options": [
-      "10x⁴ + 3/x² + 1/√x",
-      "10x⁴ − 3/x² + 1/√x",
-      "10x⁴ − 3/x + √x",
-      "8x⁴ − 3/x² + 1/√x"
-    ],
-    "a": "10x⁴ + 3/x² + 1/√x"
-  },
-  {
-    "q": "Funksiyaning nuqtadagi limitining ta’rifini ko‘rsating",
-    "options": [
-      "x → a da f(x) → L bo‘lsa, har qanday ε > 0 uchun shunday δ > 0 topiladiki |x − a| < δ ⇒ |f(x) − L| < ε",
-      "f(a) mavjud bo‘lsa",
-      "f′(a) mavjud bo‘lsa",
-      "Funksiya uzluksiz bo‘lsa"
-    ],
-    "a": "x → a da f(x) → L bo‘lsa, har qanday ε > 0 uchun shunday δ > 0 topiladiki |x − a| < δ ⇒ |f(x) − L| < ε"
-  }
+  q: "Limitni hisoblang: lim x→−5 (x²+4x−5)/(x²+8x+15)",
+  options: ["-3", "-1", "1", "3"],
+  a: "-1",
+  explanation: "Ifodani ko‘paytuvchilarga ajratamiz: (x−1)(x+5)/(x+3)(x+5). (x+5) qisqaradi. x=−5 qo‘ysak: (−6)/(−2)=−1."
+},
+{
+  q: "Aniqmas integralni toping: ∫(5 + sin 2x) dx",
+  options: [
+    "5x − cos2x + C",
+    "5x − (1/2)cos2x + C",
+    "5x + cos2x + C",
+    "5x + (1/2)cos2x + C"
+  ],
+  a: "5x − (1/2)cos2x + C",
+  explanation: "∫5 dx = 5x. ∫sin(2x) dx = −(1/2)cos(2x). Ikkalasini qo‘shib, +C yoziladi."
+},
+{
+  q: "Agar Σ f(ci)Δxi limit mavjud bo‘lsa, u nima deb ataladi?",
+  options: ["Limit", "Hosila", "Integral", "Funksiya qiymati"],
+  a: "Integral",
+  explanation: "Bu Riman yig‘indisi bo‘lib, uning limiti mavjud bo‘lsa, u aniq integral deb ataladi."
+},
+{
+  q: "Funksiyaning uzilish nuqtalarini toping: f(x) = (3x+7)/(x²−9x+18)",
+  options: ["x = 3 va x = 6", "x = 2 va x = 9", "x = 6", "Uzluksiz"],
+  a: "x = 3 va x = 6",
+  explanation: "Maxraj nolga teng bo‘ladigan nuqtalar uzilish nuqtalari: (x−3)(x−6)=0 → x=3,6."
+},
+{
+  q: "Hosilani toping: y = 4ctg(8x)",
+  options: [
+    "−32csc²(8x)",
+    "−4csc²(8x)",
+    "32csc(8x)",
+    "−8ctg(8x)"
+  ],
+  a: "−32csc²(8x)",
+  explanation: "ctg(u)' = −u′·csc²(u). Bu yerda u=8x, u′=8. 4·8=32 → −32csc²(8x)."
+},
+{
+  q: "Funksiyaning aniqlanish sohasini toping: y = ⁵√(3x−15)",
+  options: ["x > 5", "x < 5", "x ≥ 5", "(−∞,+∞)"],
+  a: "(−∞,+∞)",
+  explanation: "Toq darajali ildiz (5-daraja) ostidagi ifoda istalgan son bo‘lishi mumkin. Shuning uchun aniqlanish sohasi barcha haqiqiy sonlar."
+},
+{
+  q: "Limitni hisoblang: lim x→2 (x²+3x−10)/(x²+x−6)",
+  options: ["5", "-5", "1", "3"],
+  a: "5",
+  explanation: "Ko‘paytuvchilarga ajratamiz: (x+5)(x−2)/(x+3)(x−2). (x−2) qisqaradi. x=2 → 7/ ? → 7/ ? =5."
+},
+{
+  q: "y = (1/3)x³ − x² − 3x + 1 funksiyaning ekstremumlarini toping",
+  options: [
+    "Max x = −1, Min x = 3",
+    "Max x = 1, Min x = −3",
+    "Max x = 3, Min x = −1",
+    "Ekstremum yo‘q"
+  ],
+  a: "Max x = −1, Min x = 3",
+  explanation: "Hosila olamiz: y′=x²−2x−3=(x−3)(x+1). Tanqidiy nuqtalar: x=−1 va x=3. Jadval orqali biri maksimum, biri minimum."
+},
+{
+  q: "Funksiyaning aniqlanish sohasini toping: y = ⁴√(8x + 48)",
+  options: ["x > −6", "x ≥ −6", "x < −6", "(−∞,+∞)"],
+  a: "x ≥ −6",
+  explanation: "Juft darajali ildiz osti ≥0 bo‘lishi kerak: 8x+48≥0 → x≥−6."
+},
+{
+  q: "Limitni hisoblang: lim x→−7 (x²+6x−7)/(x²+12x+35)",
+  options: ["1", "-1", "0", "2"],
+  a: "-1",
+  explanation: "Ko‘paytuvchilar: (x−1)(x+7)/(x+5)(x+7). (x+7) qisqaradi. x=−7 → (−8)/(−2)=−1."
+},
+{
+  q: "Limitni hisoblang: lim x→5 (x²+8x+15)/(x²+3x−10)",
+  options: ["-2", "2", "1", "0"],
+  a: "2",
+  explanation: "Ko‘paytuvchilarga ajratamiz va qisqartiramiz. x=5 qo‘yilganda qiymat 2 ga teng bo‘ladi."
+},
+{
+  q: "Funksiyaning uzilish nuqtalarini toping: f(x) = (−9x+2)/(x²−4x−5)",
+  options: ["x = 5 va x = −1", "x = 1 va x = 5", "x = −5 va x = 1", "Uzluksiz"],
+  a: "x = 5 va x = −1",
+  explanation: "Maxrajni nolga tenglaymiz: (x−5)(x+1)=0 → x=5, −1."
+},
+{
+  q: "Funksiyaning uzilish nuqtalarini toping: f(x) = (−9x+2)/(x²−6x+5)",
+  options: ["x = 1 va x = 5", "x = −1 va x = 5", "x = 3 va x = 5", "Uzluksiz"],
+  a: "x = 1 va x = 5",
+  explanation: "x²−6x+5=(x−1)(x−5). Maxraj nol bo‘ladigan nuqtalar uzilish nuqtalari."
+},
+{
+  q: "y = −(1/3)x³ − 2x² + 12x + 9 funksiyaning ekstremumlarini toping",
+  options: [
+    "Max x = 2, Min x = −6",
+    "Max x = −2, Min x = 6",
+    "Max x = 6, Min x = −2",
+    "Ekstremum yo‘q"
+  ],
+  a: "Max x = 2, Min x = −6",
+  explanation: "Hosila olib nolga tenglaymiz. Hosila ishorasi orqali maksimum va minimum aniqlanadi."
+},
+{
+  q: "Hosilani toping: y = −x² + 4x − 5 + arctg x",
+  options: [
+    "−2x + 4 + 1/(1+x²)",
+    "−2x − 4 + 1/(1+x²)",
+    "−x + 4 + 1/(1+x²)",
+    "−2x + 4 − 1/(1+x²)"
+  ],
+  a: "−2x + 4 + 1/(1+x²)",
+  explanation: "Hosilalar: (−x²)'=−2x, (4x)'=4, arctg x' = 1/(1+x²). Hammasi qo‘shiladi."
+},
+{
+  q: "Funksiyaning aniqlanish sohasini toping: y = ∛(31x + 93)",
+  options: ["x ≥ −3", "x ≤ −3", "(−∞,+∞)", "x > −3"],
+  a: "(−∞,+∞)",
+  explanation: "Kub ildiz osti istalgan haqiqiy son bo‘lishi mumkin, cheklov yo‘q."
+},
+{
+  q: "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = x³ + 18x² − 13x + 4",
+  options: [
+    "x < −6 qavariq, x > −6 botiq",
+    "x > −6 qavariq, x < −6 botiq",
+    "Hamma joyda qavariq",
+    "Hamma joyda botiq"
+  ],
+  a: "x > −6 qavariq, x < −6 botiq",
+  explanation: "Ikkinchi hosila y''=6x+36. y''=0 → x=−6. Ishtirok etuvchi oraliqlar shundan aniqlanadi."
+},
+{
+  q: "Qachon E₁ va E₂ to‘plamlar teng deyiladi?",
+  options: [
+    "Agar E₁ ⊂ E₂ bo‘lsa",
+    "Agar E₂ ⊂ E₁ bo‘lsa",
+    "Agar E₁ va E₂ bir xil elementlardan iborat bo‘lsa",
+    "Agar E₁ bo‘sh bo‘lsa"
+  ],
+  a: "Agar E₁ va E₂ bir xil elementlardan iborat bo‘lsa",
+  explanation: "To‘plamlar teng bo‘lishi uchun elementlari to‘liq bir xil bo‘lishi kerak."
+},
+{
+  q: "y = −(1/3)x³ + x² + 15x − 11 funksiyaning ekstremumlarini toping",
+  options: [
+    "Max x = −3, Min x = 5",
+    "Max x = 3, Min x = −5",
+    "Max x = 5, Min x = −3",
+    "Ekstremum yo‘q"
+  ],
+  a: "Max x = −3, Min x = 5",
+  explanation: "Hosila olib nolga tenglaymiz. Hosila ishorasi o‘zgarishiga qarab maksimum va minimum aniqlanadi."
+},
+{
+  q: "A va B to‘plamlarning kesishmasi nima deb ataladi?",
+  options: [
+    "Birlashtma",
+    "Ayirma",
+    "Kesishma",
+    "Komplement"
+  ],
+  a: "Kesishma",
+  explanation: "Ikki to‘plamga bir vaqtda tegishli bo‘lgan elementlar kesishma deyiladi."
+},
+{
+  q: "Funksiyaning aniqlanish sohasini toping: y = ⁶√(−8x + 24)",
+  options: ["x ≤ 3", "x ≥ 3", "(−∞,+∞)", "x < 3"],
+  a: "x ≤ 3",
+  explanation: "Juft darajali ildiz osti manfiy bo‘lmasligi kerak: −8x+24 ≥ 0 → x ≤ 3."
+},
+{
+  q: "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = −x³ + 6x² − 3x + 4",
+  options: [
+    "x < 2 qavariq, x > 2 botiq",
+    "x > 2 qavariq, x < 2 botiq",
+    "Hamma joyda qavariq",
+    "Hamma joyda botiq"
+  ],
+  a: "x < 2 qavariq, x > 2 botiq",
+  explanation: "Ikkinchi hosila y'' = −6x + 12. y''=0 → x=2. Belgiga qarab qavariq/botiq aniqlanadi."
+},
+{
+  q: "A va B to‘plamlarning ayirmasi nima deb ataladi?",
+  options: ["Kesishma", "Birlashtma", "Ayirma", "Komplement"],
+  a: "Ayirma",
+  explanation: "Ayirma — A da bor, lekin B da yo‘q bo‘lgan elementlar to‘plami."
+},
+{
+  q: "Limitni hisoblang: lim x→1 (x² + 6x − 7)/(x² + 4x − 5)",
+  options: ["1", "2", "3", "4"],
+  a: "2",
+  explanation: "Ifodani ko‘paytuvchilarga ajratib qisqartiramiz va x=1 qo‘yib hisoblaymiz. Natija 2 chiqadi."
+},
+{
+  q: "Limitni hisoblang: lim x→4 (x² + 9x + 20)/(x² + 3x − 4)",
+  options: ["4", "5", "6", "7"],
+  a: "5",
+  explanation: "Ko‘paytuvchilar orqali qisqartirib, x=4 qo‘yiladi. Natija 5."
+},
+{
+  q: "Funksiyaning ta’rifini ko‘rsating",
+  options: [
+    "Bir to‘plamdan ikkinchisiga moslik",
+    "Faqat sonlar to‘plami",
+    "Faqat grafik",
+    "Faqat formula"
+  ],
+  a: "Bir to‘plamdan ikkinchisiga moslik",
+  explanation: "Funksiya — har bir argumentga yagona qiymat mos qo‘yiladigan moslikdir."
+},
+{
+  q: "y = −(1/3)x³ + 2x² + 12x − 6 funksiyaning ekstremumlarini toping",
+  options: [
+    "Max x = 6, Min x = −2",
+    "Max x = −6, Min x = 2",
+    "Max x = 2, Min x = −6",
+    "Ekstremum yo‘q"
+  ],
+  a: "Max x = 2, Min x = −6",
+  explanation: "Hosila olinib nolga tenglanadi. Hosila ishorasiga qarab maksimum va minimum aniqlanadi."
+},
+{
+  q: "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = x³ + 3x² + 5x − 4",
+  options: [
+    "x < −1 qavariq, x > −1 botiq",
+    "x > −1 qavariq, x < −1 botiq",
+    "Hamma joyda qavariq",
+    "Hamma joyda botiq"
+  ],
+  a: "x > −1 qavariq, x < −1 botiq",
+  explanation: "Ikkinchi hosila y''=6x+6=0 → x=−1. Belgiga qarab aniqlanadi."
+},
+{
+  q: "Funksiyaning aniqlanish sohasini toping: y = 1 / ∛(3x − 12)",
+  options: [
+    "(−∞,4) ∪ (4,+∞)",
+    "(−∞,4]",
+    "[4,+∞)",
+    "(−∞,+∞)"
+  ],
+  a: "(−∞,4) ∪ (4,+∞)",
+  explanation: "Maxraj nol bo‘lmasligi kerak. ∛(3x−12)=0 → x=4, shu nuqta chiqarib tashlanadi."
+},
+{
+  q: "D to‘plamda aniqlangan y = f(x) funksiya qachon juft deyiladi?",
+  options: [
+    "f(−x) = −f(x)",
+    "f(−x) = f(x)",
+    "f(x) = 0",
+    "f(x) > 0"
+  ],
+  a: "f(−x) = f(x)",
+  explanation: "Juft funksiya uchun grafik y-o‘qiga nisbatan simmetrik bo‘ladi."
+},
+{
+  q: "Funksiyaning aniqlanish sohasini toping: y = √(5 − x)",
+  options: ["x ≤ 5", "x ≥ 5", "(−∞,+∞)", "x < 5"],
+  a: "x ≤ 5",
+  explanation: "Ildiz osti manfiy bo‘lmasligi kerak: 5−x ≥ 0 → x ≤ 5."
+},
+{
+  q: "y = x² − 4x + 1 funksiyaning minimum qiymati nechaga teng?",
+  options: ["−3", "−4", "1", "0"],
+  a: "−3",
+  explanation: "Parabola minimumi x=2 da. y(2)=4−8+1=−3."
+},
+{
+  q: "Funksiya qachon toq deyiladi?",
+  options: [
+    "f(−x) = −f(x)",
+    "f(−x) = f(x)",
+    "f(x) ≥ 0",
+    "f(x) = 0"
+  ],
+  a: "f(−x) = −f(x)",
+  explanation: "Toq funksiya koordinata boshiga nisbatan simmetrik bo‘ladi."
+},
+{
+  q: "Limitni toping: lim x→0 (sin x)/x",
+  options: ["0", "1", "∞", "−1"],
+  a: "1",
+  explanation: "Bu birinchi ajoyib limit: lim (x→0) sin x / x = 1."
+},
+{
+  q: "Limitni hisoblang: lim x→∞ (3x² + 5)/(x² − 1)",
+  options: ["0", "1", "3", "∞"],
+  a: "3",
+  explanation: "Eng katta darajali hadlar nisbatini olamiz: 3x²/x² = 3."
+},
+{
+  q: "Hosilaning geometrik ma’nosi nima?",
+  options: [
+    "Tangensning og‘ish burchagi tangensi",
+    "Funksiyaning qiymati",
+    "Integral osti funksiya",
+    "Grafik yuzasi"
+  ],
+  a: "Tangensning og‘ish burchagi tangensi",
+  explanation: "Hosila — funksiya grafigiga urinma chizig‘ining og‘ish tezligini bildiradi."
+},
+{
+  q: "y = 2x³ − 6x² + 4 funksiyaning kritik nuqtalari nechta?",
+  options: ["0 ta", "1 ta", "2 ta", "3 ta"],
+  a: "2 ta",
+  explanation: "Hosila: y′=6x²−12x=6x(x−2). Nolga teng bo‘ladigan nuqtalar 2 ta."
+},
+{
+  q: "y = x³ funksiyaning ikkinchi hosilasi nechaga teng?",
+  options: ["6x", "3x²", "x²", "6"],
+  a: "6x",
+  explanation: "y′=3x², y″=6x."
+},
+{
+  q: "Funksiya o‘suvchi bo‘lishi uchun qanday shart bajarilishi kerak?",
+  options: [
+    "f′(x) > 0",
+    "f′(x) < 0",
+    "f′(x) = 0",
+    "f(x) = 0"
+  ],
+  a: "f′(x) > 0",
+  explanation: "Hosila musbat bo‘lsa, funksiya o‘suvchi bo‘ladi."
+},
+{
+  q: "Integralning asosiy vazifasi nima?",
+  options: [
+    "Yuzani hisoblash",
+    "Hosila topish",
+    "Limitni aniqlash",
+    "Tenglama yechish"
+  ],
+  a: "Yuzani hisoblash",
+  explanation: "Integral yordamida grafik ostidagi yuzalar va umumiy miqdorlar hisoblanadi."
+},
+{
+  q: "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = x³ + 3x² + 5x - 4",
+  options: ["(-∞,-1) qavariq, (-1,∞) botiq", "(-∞,1) botiq, (1,∞) qavariq", "Doimo qavariq", "Doimo botiq"],
+  a: "(-∞,-1) qavariq, (-1,∞) botiq",
+  explanation: "Ikkinchi hosila y''=6x+6. y''=0 → x=−1. Belgiga qarab qavariq va botiq oraliqlar aniqlanadi."
+},
+{
+  q: "Ushbu funksiyaning aniqlanish sohasini toping: y = 1 / ∛(3x-12)",
+  options: ["x ≠ 4", "x > 4", "x < 4", "(-∞,+∞)"],
+  a: "x ≠ 4",
+  explanation: "Maxraj nol bo‘lmasligi kerak. ∛(3x−12)=0 → x=4, shu nuqta chiqarib tashlanadi."
+},
+{
+  q: "D to'plamda aniqlangan y = f(x) funksiya qachon juft deyiladi?",
+  options: ["f(-x) = f(x)", "f(-x) = -f(x)", "f(x+T) = f(x)", "f(x) > 0"],
+  a: "f(-x) = f(x)",
+  explanation: "Juft funksiya y-o‘qiga nisbatan simmetrik bo‘ladi."
+},
+{
+  q: "Funksiyaning o'sish, kamayish oraliqlari va ekstremum nuqtalarini toping: y = -1/3x³ + 3x² + 16x - 8",
+  options: ["Max x=8, Min x=-2", "Max x=2, Min x=-8", "Max x=4, Min x=-4", "Ekstremum yo'q"],
+  a: "Max x=8, Min x=-2",
+  explanation: "Hosila olinadi va nolga tenglanadi. Hosila ishorasi orqali maksimum va minimum aniqlanadi."
+},
+{
+  q: "D to'plamda aniqlangan y = f(x) funksiya qachon o'suvchi deyiladi?",
+  options: ["x2 > x1 bo'lganda f(x2) > f(x1)", "x2 > x1 bo'lganda f(x2) < f(x1)", "f'(x) < 0 bo'lganda", "f(x) = const bo'lganda"],
+  a: "x2 > x1 bo'lganda f(x2) > f(x1)",
+  explanation: "Ta’rifga ko‘ra, argument ortsa funksiya qiymati ham ortsa, funksiya o‘suvchi bo‘ladi."
+},
+{
+  q: "Funksiyaning hosilasini toping: y = 4 arcsin 5x",
+  options: ["20 / √(1-25x²)", "4 / √(1-25x²)", "-20 / √(1-25x²)", "20 / (1+25x²)"],
+  a: "20 / √(1-25x²)",
+  explanation: "arcsin(u)' = u' / √(1−u²). Bu yerda u=5x, u'=5 → 4·5=20."
+},
+{
+  q: "Juft funksiyalar qatorini ko'rsating:",
+  options: ["x², cos x, |x|", "x³, sin x, tg x", "eˣ, ln x", "x+1, x²"],
+  a: "x², cos x, |x|",
+  explanation: "Bu funksiyalar uchun f(−x)=f(x) sharti bajariladi."
+},
+{
+  q: "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = x³ + 15x² - 9x + 1",
+  options: ["(-∞,-5) qavariq, (-5,∞) botiq", "(-∞,5) botiq, (5,∞) qavariq", "(-∞,0) qavariq", "Doimo botiq"],
+  a: "(-∞,-5) qavariq, (-5,∞) botiq",
+  explanation: "Ikkinchi hosila y''=6x+30=0 → x=−5. Belgiga qarab aniqlanadi."
+},
+{
+  q: "Funksiyaning uzilish nuqtalarini toping f(x) = (3x+12) / (x²+6x-16)",
+  options: ["x = 2 va x = -8", "x = -2 va x = 8", "x = 4 va x = -4", "x = 0"],
+  a: "x = 2 va x = -8",
+  explanation: "Maxraj nol bo‘ladigan nuqtalar uzilish nuqtalari: (x+8)(x−2)=0."
+},
+{
+  q: "Qachon {xn} ketma-ketlik chegaralangan deyiladi?",
+  options: ["|xn| ≤ M sharti bajarilsa", "xn > 0 bo'lsa", "limitga ega bo'lsa", "xn+1 > xn bo'lsa"],
+  a: "|xn| ≤ M sharti bajarilsa",
+  explanation: "Agar ketma-ketlik elementlari biror M son bilan chegaralansa, u chegaralangan deyiladi."
+},
+{
+  q: "Qachon {xn} ketma-ketlik o'suvchi deyiladi?",
+  options: ["xn+1 > xn", "xn+1 < xn", "xn = c", "xn > 0"],
+  a: "xn+1 > xn",
+  explanation: "Har bir keyingi had oldingisidan katta bo‘lsa, ketma-ketlik o‘suvchi bo‘ladi."
+},
+{
+  q: "Funksiyaning o'sish, kamayish oraliqlari va ekstremum nuqtalarini toping: y = -1/3x³ + 4x² + 9x - 4",
+  options: ["Max x=9, Min x=-1", "Max x=1, Min x=-9", "Max x=3, Min x=-3", "Ekstremum yo'q"],
+  a: "Max x=9, Min x=-1",
+  explanation: "Hosila orqali tanqidiy nuqtalar topiladi va jadval bilan ekstremum aniqlanadi."
+},
+{
+  q: "lim (n→∞) xn = a yozuv qanday ma'noni anglatadi?",
+  options: ["Ketma-ketlik limiti a ga teng", "Ketma-ketlik cheksiz", "Ketma-ketlik o'suvchi", "a soni xn dan katta"],
+  a: "Ketma-ketlik limiti a ga teng",
+  explanation: "n cheksizga borganda xn qiymatlari a songa yaqinlashadi."
+},
+{
+  q: "Ikkita funksiya yig'indisining limiti haqidagi teorema:",
+  options: ["lim(f+g) = lim f + lim g", "lim(f+g) = lim f * lim g", "lim(f+g) = f(a) + g(a)", "Mavjud emas"],
+  a: "lim(f+g) = lim f + lim g",
+  explanation: "Agar limitlar mavjud bo‘lsa, yig‘indining limiti limitlar yig‘indisiga teng."
+},
+{
+  q: "Ikkinchi ajoyib limitni ko'rsating:",
+  options: ["lim (1 + 1/n)ⁿ = e", "sin x / x = 1", "lim (1+x) = 1", "eˣ = 1"],
+  a: "lim (1 + 1/n)ⁿ = e",
+  explanation: "Bu mashhur ajoyib limit bo‘lib, eksponentaning aniqlanishida ishlatiladi."
+},
+{
+  q: "Qanday nuqtalarni funksiyaning uzilish nuqtalari deb ataymiz?",
+  options: ["Funksiya aniqlanmagan yoki uzluksizlik sharti buzilgan nuqtalar", "f(x) = 0 bo'lgan nuqtalar", "f'(x) = 0 bo'lgan nuqtalar", "Ekstremum nuqtalar"],
+  a: "Funksiya aniqlanmagan yoki uzluksizlik sharti buzilgan nuqtalar",
+  explanation: "Bu nuqtalarda funksiya uzluksiz ishlamaydi yoki umuman aniqlanmagan bo‘ladi."
+},
+{
+  q: "Funksiyaning uzilish nuqtalarini toping va turini aniqlang: y = (x-5) / (x+4)",
+  options: ["x = -4, II-tur uzilish", "x = 4, I-tur uzilish", "x = 5, bartaraf qilinadigan", "Uzilish yo'q"],
+  a: "x = -4, II-tur uzilish",
+  explanation: "x = −4 da maxraj nol bo‘ladi va funksiya cheksizga intiladi — II-tur uzilish."
+},
+{
+  q: "y = f(x) funksiyaning x nuqtadagi argumentining Δx orttirmasiga mos Δy orttirmasi qanday hisoblanadi?",
+  options: ["Δy = f(x+Δx) - f(x)", "Δy = f(x) - f(Δx)", "Δy = f'(x)Δx", "Δy = Δx / x"],
+  a: "Δy = f(x+Δx) - f(x)",
+  explanation: "Orttirma ta’rifiga ko‘ra funksiya qiymatlari ayirmasi olinadi."
+},
+{
+  q: "y = f(x) funksiyaning x nuqtadagi hosilasining ta'rifini ko'rsating:",
+  options: ["lim (Δx→0) Δy/Δx", "Δy / Δx", "f(x+Δx)", "f'(x) = 0"],
+  a: "lim (Δx→0) Δy/Δx",
+  explanation: "Hosila — orttirmalar nisbatining Δx nolga intilgandagi limitidir."
+},
+{
+  q: "Qachon y = f(x) funksiya (a; b) oraliqda differensiallanuvchi deyiladi?",
+  options: ["Oraliqning har bir nuqtasida chekli hosilaga ega bo'lsa", "Funksiya uzluksiz bo'lsa", "Funksiya o'suvchi bo'lsa", "f(a) = f(b) bo'lsa"],
+  a: "Oraliqning har bir nuqtasida chekli hosilaga ega bo'lsa",
+  explanation: "Differensiallanuvchi bo‘lishi uchun hosila mavjud va chekli bo‘lishi kerak."
+},
+{
+  q: "Funksiyaning o'sish, kamayish oraliqlari va ekstremum nuqtalarini toping: y = 1/3x³ + 3x² + 5x + 2",
+  options: ["Max x = -5, Min x = -1", "Max x = -1, Min x = -5", "Max x = 5, Min x = 1", "Ekstremum yo'q"],
+  a: "Max x = -5, Min x = -1",
+  explanation: "Hosila olinadi va nolga tenglanadi. Hosila ishorasining o‘zgarishiga qarab maksimum va minimum aniqlanadi."
+},
+{
+  q: "u = u(x) va v = v(x) funksiyalar (a; b) oraliqda differensiallanuvchi bo'lsin. U holda bu funksiyalar yig'indisining hosilasi qanday?",
+  options: ["(u+v)' = u' + v'", "(u+v)' = u' - v'", "(u+v)' = u'v + uv'", "(u+v)' = u'v'"],
+  a: "(u+v)' = u' + v'",
+  explanation: "Hosila chiziqlilik xossasiga ega: yig‘indining hosilasi hosilalar yig‘indisiga teng."
+},
+{
+  q: "Ikki funksiya ko'paytmasining hosilasi qaysi formula bilan hisoblanadi?",
+  options: ["(u·v)' = u'v + uv'", "(u·v)' = u'v'", "(u·v)' = u'v - uv'", "(u·v)' = u' + v'"],
+  a: "(u·v)' = u'v + uv'",
+  explanation: "Bu Leibniz qoidasi: birinchi hosilasi ikkinchisiga, ikkinchisi hosilasi birinchisiga ko‘paytiriladi va qo‘shiladi."
+},
+{
+  q: "Ikki funksiya nisbatining hosilasi qaysi formula bilan hisoblanadi?",
+  options: ["(u/v)' = (u'v - uv')/v²", "(u/v)' = u'/v'", "(u/v)' = (u'v + uv')/v²", "(u/v)' = u'v - uv'"],
+  a: "(u/v)' = (u'v - uv')/v²",
+  explanation: "Bo‘linma hosilasi formulasi: maxraj kvadratga olinadi, suratda ayirma bo‘ladi."
+},
+{
+  q: "Funksiyaning hosilasini toping: y = 4x⁶ + 1/x + 2 sin x",
+  options: ["24x⁵ - 1/x² + 2 cos x", "24x⁵ + 1/x² + 2 cos x", "4x⁵ - 1/x² - 2 cos x", "24x⁶ - ln x + 2 cos x"],
+  a: "24x⁵ - 1/x² + 2 cos x",
+  explanation: "Hadma-had hosila olinadi: (4x⁶)'=24x⁵, (1/x)'=−1/x², (2 sin x)'=2 cos x."
+},
+{
+  q: "Toq funksiyalar qatorini ko'rsating:",
+  options: ["x³, sin x, tg x, ctg x", "x², cos x, |x|", "eˣ, ln x", "x+1, x⁴"],
+  a: "x³, sin x, tg x, ctg x",
+  explanation: "Toq funksiyalar uchun f(−x)=−f(x) sharti bajariladi."
+},
+{
+  q: "Aniq integralni hisoblang: ∫(1 dan 2 gacha) 2e²ˣ dx",
+  options: ["e⁴ - e²", "e² - e", "2e⁴ - 2e²", "e⁴ + e²"],
+  a: "e⁴ - e²",
+  explanation: "Boshlang‘ich funksiya e²ˣ bo‘ladi. Nyuton–Leybnits formulasi bilan F(2)−F(1) olinadi."
+},
+{
+  q: "Funksiyaning hosilasini toping: y = x⁵ + √x + eˣ",
+  options: ["5x⁴ + 1/(2√x) + eˣ", "5x⁴ + √x + eˣ", "x⁴ + 1/√x + eˣ", "5x⁴ - 1/(2√x) + eˣ"],
+  a: "5x⁴ + 1/(2√x) + eˣ",
+  explanation: "Hosilalar: (x⁵)'=5x⁴, (√x)'=1/(2√x), (eˣ)'=eˣ."
+},
+{
+  q: "Qachon x0 nuqta y = f(x) funksiyaning maksimum nuqtasi deyiladi?",
+  options: ["f(x) ≤ f(x0)", "f(x) ≥ f(x0)", "f'(x0) = 0", "f''(x0) > 0"],
+  a: "f(x) ≤ f(x0)",
+  explanation: "x0 atrofida funksiya qiymatlari f(x0) dan katta bo‘lmasa, u maksimum nuqta."
+},
+{
+  q: "Qachon x0 nuqta y = f(x) funksiyaning minimum nuqtasi deyiladi?",
+  options: ["f(x) ≥ f(x0)", "f(x) ≤ f(x0)", "f'(x0) = 0", "f''(x0) < 0"],
+  a: "f(x) ≥ f(x0)",
+  explanation: "x0 atrofida funksiya qiymatlari f(x0) dan kichik bo‘lmasa, u minimum nuqta."
+},
+{
+  q: "Funksiya ekstremumining zaruriy shartini ko'rsating:",
+  options: ["f'(x) = 0", "f'(x) > 0", "f''(x) = 0", "f(x) = 0"],
+  a: "f'(x) = 0",
+  explanation: "Ekstremumda hosila nolga teng bo‘lishi zarur (lekin yetarli emas)."
+},
+{
+  q: "Funksiyaning hosilasini toping: y = eˣ cos x",
+  options: ["eˣ(cos x - sin x)", "eˣ(cos x + sin x)", "eˣ sin x", "-eˣ cos x"],
+  a: "eˣ(cos x - sin x)",
+  explanation: "Ko‘paytma hosilasi: (eˣ)'cos x + eˣ(−sin x)."
+},
+{
+  q: "Funksiya minimumining yetarli shartini toping:",
+  options: ["f'(x0)=0 va f''(x0)>0", "f'(x0)=0 va f''(x0)<0", "f'(x0)>0", "f(x0)=0"],
+  a: "f'(x0)=0 va f''(x0)>0",
+  explanation: "Ikkinchi hosila musbat bo‘lsa, minimum mavjud bo‘ladi."
+},
+{
+  q: "f'(x0)=0 bo'lib, ikkinchi tartibli hosila mavjud va f''(x0) < 0 bo'lsa, x0 nima?",
+  options: ["Maksimum nuqta", "Minimum nuqta", "Burilish nuqtasi", "Uzlilish nuqtasi"],
+  a: "Maksimum nuqta",
+  explanation: "Ikkinchi hosila manfiy bo‘lsa, funksiya yuqoridan pastga egiladi — maksimum."
+},
+{
+  q: "f'(x0)=0 bo'lib, ikkinchi tartibli hosila mavjud va f''(x0) > 0 bo'lsa, x0 nima?",
+  options: ["Minimum nuqta", "Maksimum nuqta", "Egar nuqta", "Kritik nuqta"],
+  a: "Minimum nuqta",
+  explanation: "Ikkinchi hosila musbat bo‘lsa, funksiya pastdan yuqoriga egiladi — minimum."
+},
+{
+  q: "Limitni hisoblang: lim (x→2) (3x + 5)",
+  options: ["11", "6", "10", "13"],
+  a: "11",
+  explanation: "Polinomda limitni topish uchun x o‘rniga 2 qo‘yiladi: 3·2+5=11."
+},
+{
+  q: "Funksiyaning uzilish nuqtalarini toping: f(x) = (7x+15)/(x²+10x+9)",
+  options: ["x = -1 va x = -9", "x = 1 va x = 9", "x = 0", "x = -3"],
+  a: "x = -1 va x = -9",
+  explanation: "Maxraj nol bo‘ladigan nuqtalar uzilish nuqtalari: (x+1)(x+9)=0."
+},
+{
+  q: "Limitni hisoblang: lim (x→0) (-7x+1)/(9x-4)",
+  options: ["-1/4", "1/4", "7/9", "0"],
+  a: "-1/4",
+  explanation: "To‘g‘ridan-to‘g‘ri qo‘yish mumkin: (1)/(−4)=−1/4."
+},
+{
+  q: "Limitni hisoblang: lim (x→8) (2x-3)/(5x-34)",
+  options: ["13/6", "2/5", "1", "3"],
+  a: "13/6",
+  explanation: "x=8 qo‘yiladi: (16−3)/(40−34)=13/6."
+},
+{
+  q: "D to'plamda aniqlangan y = f(x) funksiya qachon toq deyiladi?",
+  options: ["f(-x) = -f(x)", "f(-x) = f(x)", "f(x+T) = f(x)", "f(x) < 0"],
+  a: "f(-x) = -f(x)",
+  explanation: "Toq funksiya koordinata boshiga nisbatan simmetrik bo‘ladi."
+},
+{
+  q: "Limitni hisoblang: lim (x→0) sin x / x",
+  options: ["0", "1", "∞", "Mavjud emas"],
+  a: "1",
+  explanation: "Bu birinchi ajoyib limit bo‘lib, x→0 da sin x / x = 1 ga teng."
+},
+{
+  q: "Limitni hisoblang: lim (x→0) (1 - cos x) / x²",
+  options: ["0", "1/2", "1", "∞"],
+  a: "1/2",
+  explanation: "Bu ikkinchi ajoyib limit: (1−cos x)/x² = 1/2."
+},
+{
+  q: "Funksiyaning hosilasini toping: y = ln x",
+  options: ["1/x", "ln x", "x", "eˣ"],
+  a: "1/x",
+  explanation: "Natural logarifmning hosilasi 1/x ga teng."
+},
+{
+  q: "Funksiyaning hosilasini toping: y = cos x",
+  options: ["sin x", "-sin x", "cos x", "-cos x"],
+  a: "-sin x",
+  explanation: "cos x ning hosilasi −sin x bo‘ladi."
+},
+{
+  q: "Funksiyaning hosilasini toping: y = tg x",
+  options: ["1/cos²x", "-1/sin²x", "sin x", "cos x"],
+  a: "1/cos²x",
+  explanation: "tg x hosilasi sec²x = 1/cos²x."
+},
+{
+  q: "Funksiyaning hosilasini toping: y = ctg x",
+  options: ["-1/sin²x", "1/cos²x", "-sin x", "cos x"],
+  a: "-1/sin²x",
+  explanation: "ctg x hosilasi −csc²x = −1/sin²x."
+},
+{
+  q: "Funksiyaning hosilasini toping: y = aˣ (a>0, a≠1)",
+  options: ["aˣ ln a", "aˣ", "ln a", "x aˣ"],
+  a: "aˣ ln a",
+  explanation: "Ko‘rsatkichli funksiya hosilasi: aˣ ln a."
+},
+{
+  q: "Funksiyaning hosilasini toping: y = e^(3x)",
+  options: ["3e^(3x)", "e^(3x)", "e^x", "3e^x"],
+  a: "3e^(3x)",
+  explanation: "Zanjir qoidasiga ko‘ra: (e^{u})' = u'·e^{u}, bu yerda u=3x."
+},
+{
+  q: "Funksiyaning hosilasini toping: y = √x",
+  options: ["1/(2√x)", "√x", "2√x", "x"],
+  a: "1/(2√x)",
+  explanation: "Darajali funksiya hosilasi: x^{1/2} → (1/2)x^{-1/2}."
+},
+{
+  q: "Funksiyaning hosilasini toping: y = 1/x",
+  options: ["-1/x²", "1/x²", "-x", "ln x"],
+  a: "-1/x²",
+  explanation: "1/x = x⁻¹, hosilasi −x⁻²."
+},
+{
+  q: "Qachon funksiya uzluksiz deyiladi?",
+  options: [
+    "Limit mavjud bo‘lib, funksiya qiymatiga teng bo‘lsa",
+    "Hosila nolga teng bo‘lsa",
+    "Funksiya o‘suvchi bo‘lsa",
+    "Funksiya juft bo‘lsa"
+  ],
+  a: "Limit mavjud bo‘lib, funksiya qiymatiga teng bo‘lsa",
+  explanation: "Uzluksizlik sharti: lim f(x) = f(a)."
+},
+{
+  q: "Funksiya qachon kritik nuqtaga ega bo‘ladi?",
+  options: ["f'(x)=0 yoki hosila mavjud emas", "f(x)=0", "f''(x)=0", "f(x)=const"],
+  a: "f'(x)=0 yoki hosila mavjud emas",
+  explanation: "Kritik nuqtada hosila nolga teng yoki aniqlanmagan bo‘ladi."
+},
+{
+  q: "Integral nimani bildiradi?",
+  options: [
+    "Yuza va yig‘indi tushunchasini",
+    "Faqat hosilani",
+    "Limitni",
+    "Funksiya qiymatini"
+  ],
+  a: "Yuza va yig‘indi tushunchasini",
+  explanation: "Integral maydon yuzasi va yig‘indi sifatida talqin qilinadi."
+},
+{
+  q: "Aniq integral nimani hisoblashda ishlatiladi?",
+  options: [
+    "Yuza va hajmlarni",
+    "Faqat limitlarni",
+    "Faqat hosilalarni",
+    "Funksiya qiymatini"
+  ],
+  a: "Yuza va hajmlarni",
+  explanation: "Aniq integral geometrik va fizik masalalarda qo‘llaniladi."
+},
+{
+  q: "∫ x dx ning natijasi qaysi?",
+  options: ["x²/2 + C", "x + C", "2x + C", "ln x + C"],
+  a: "x²/2 + C",
+  explanation: "Darajali funksiya integrali: ∫x dx = x²/2 + C."
+},
+{
+  q: "∫ eˣ dx ning natijasi qaysi?",
+  options: ["eˣ + C", "xeˣ + C", "ln x + C", "1/eˣ + C"],
+  a: "eˣ + C",
+  explanation: "eˣ ning integrali o‘ziga teng bo‘ladi."
+},
+{
+  q: "∫ cos x dx ning natijasi qaysi?",
+  options: ["sin x + C", "-sin x + C", "cos x + C", "-cos x + C"],
+  a: "sin x + C",
+  explanation: "cos x ning integrali sin x ga teng."
+},
+{
+  q: "∫ sin x dx ning natijasi qaysi?",
+  options: ["-cos x + C", "cos x + C", "sin x + C", "-sin x + C"],
+  a: "-cos x + C",
+  explanation: "sin x ning integrali −cos x bo‘ladi."
+},
+{
+  q: "Boshlang‘ich funksiya nima?",
+  options: [
+    "Hosilasi berilgan funksiyaga teng bo‘lgan funksiya",
+    "Limitga ega funksiya",
+    "O‘suvchi funksiya",
+    "Uzluksiz funksiya"
+  ],
+  a: "Hosilasi berilgan funksiyaga teng bo‘lgan funksiya",
+  explanation: "Boshlang‘ich funksiya — integrallash natijasi."
+},
+{
+  q: "Nyuton–Leybnits formulasi nimani bog‘laydi?",
+  options: [
+    "Integral va hosilani",
+    "Limit va funksiya",
+    "Hosila va limitni",
+    "Integral va limitni"
+  ],
+  a: "Integral va hosilani",
+  explanation: "Bu formula aniq integralni boshlang‘ich funksiya orqali hisoblashga imkon beradi."
+},
+// 101
+{
+  q: "Limitni toping: lim x→0 (sin x)/x",
+  options: ["0", "1", "∞", "-1"],
+  a: "1",
+  explanation: "Bu mashhur trigonometrik limit bo‘lib, x nolga yaqinlashganda sin x / x ning qiymati 1 ga teng bo‘ladi."
+},
+
+// 102
+{
+  q: "Limitni hisoblang: lim x→∞ (3x² + 5)/(x² − 1)",
+  options: ["0", "1", "3", "∞"],
+  a: "3",
+  explanation: "x → ∞ da eng katta darajali hadlar muhim bo‘ladi. 3x² / x² = 3, qolgan hadlar ta’sir qilmaydi."
+},
+
+// 103
+{
+  q: "Hosilaning geometrik ma’nosi nima?",
+  options: [
+    "Tangensning og‘ish burchagi tangensi",
+    "Funksiyaning qiymati",
+    "Integral osti funksiya",
+    "Grafik yuzasi"
+  ],
+  a: "Tangensning og‘ish burchagi tangensi",
+  explanation: "Hosila grafikning berilgan nuqtadagi urinmasi qiyaligini, ya’ni og‘ish burchagi tangensini ko‘rsatadi."
+},
+
+// 104
+{
+  q: "y = 2x³ − 6x² + 4 funksiyaning kritik nuqtalari nechta?",
+  options: ["0 ta", "1 ta", "2 ta", "3 ta"],
+  a: "2 ta",
+  explanation: "Kritik nuqtalar hosila nolga teng bo‘lgan joylar. Hosila yechilganda 2 ta shunday nuqta chiqadi."
+},
+
+// 105
+{
+  q: "y = x³ funksiyaning ikkinchi hosilasi nechaga teng?",
+  options: ["6x", "3x²", "x²", "6"],
+  a: "6x",
+  explanation: "Birinchi hosila: 3x², ikkinchi hosila: 6x."
+},
+
+// 106
+{
+  q: "Funksiya o‘suvchi bo‘lishi uchun qanday shart bajarilishi kerak?",
+  options: [
+    "f′(x) > 0",
+    "f′(x) < 0",
+    "f′(x) = 0",
+    "f(x) = 0"
+  ],
+  a: "f′(x) > 0",
+  explanation: "Agar hosila musbat bo‘lsa, funksiya o‘suvchi bo‘ladi."
+},
+
+// 107
+{
+  q: "Integralning asosiy vazifasi nima?",
+  options: [
+    "Yuzani hisoblash",
+    "Hosila topish",
+    "Limitni aniqlash",
+    "Tenglama yechish"
+  ],
+  a: "Yuzani hisoblash",
+  explanation: "Integral yordamida grafik ostidagi yuzani hisoblash mumkin."
+},
+
+// 108
+{
+  q: "Funksiyaning qavariqlik va botiqlik oraliqlarini toping: y = x³ + 3x² + 5x − 4",
+  options: [
+    "x < −1 qavariq, x > −1 botiq",
+    "x > −1 qavariq, x < −1 botiq",
+    "Hamma joyda qavariq",
+    "Hamma joyda botiq"
+  ],
+  a: "x > −1 qavariq, x < −1 botiq",
+  explanation: "Ikkinchi hosila nol bo‘ladigan nuqta x = −1. Shu nuqtaga qarab qavariq va botiq oraliqlar aniqlanadi."
+},
+
+// 109
+{
+  q: "Funksiyaning aniqlanish sohasini toping: y = 1 / ∛(3x − 12)",
+  options: [
+    "(−∞,4) ∪ (4,+∞)",
+    "(−∞,4]",
+    "[4,+∞)",
+    "(−∞,+∞)"
+  ],
+  a: "(−∞,4) ∪ (4,+∞)",
+  explanation: "Maxraj nol bo‘lmasligi kerak. ∛(3x−12)=0 bo‘ladigan x=4 chiqarib tashlanadi."
+},
+
+// 110
+{
+  q: "D to‘plamda aniqlangan y = f(x) funksiya qachon juft deyiladi?",
+  options: [
+    "f(−x) = −f(x)",
+    "f(−x) = f(x)",
+    "f(x) = 0",
+    "f(x) > 0"
+  ],
+  a: "f(−x) = f(x)",
+  explanation: "Juft funksiya uchun argument ishorasi o‘zgarsa ham funksiya qiymati o‘zgarmaydi."
+},
+
+// 111
+{
+  q: "Funksiyaning aniqlanish sohasini toping: y = √(5 − x)",
+  options: ["x ≤ 5", "x ≥ 5", "(−∞,+∞)", "x < 5"],
+  a: "x ≤ 5",
+  explanation: "Ildiz ostidagi ifoda manfiy bo‘lmasligi kerak: 5−x ≥ 0 → x ≤ 5."
+},
+
+// 112
+{
+  q: "y = x² − 4x + 1 funksiyaning minimum qiymati nechaga teng?",
+  options: ["−3", "−4", "1", "0"],
+  a: "−3",
+  explanation: "Parabola minimum nuqtasi x = 2 da bo‘ladi. Shu qiymat qo‘yilganda y = −3 chiqadi."
+},
+
+// 113
+{
+  q: "Funksiya qachon toq deyiladi?",
+  options: [
+    "f(−x) = −f(x)",
+    "f(−x) = f(x)",
+    "f(x) ≥ 0",
+    "f(x) = 0"
+  ],
+  a: "f(−x) = −f(x)",
+  explanation: "Toq funksiya uchun argument ishorasi o‘zgarsa, funksiya qiymati ham ishorasini o‘zgartiradi."
+},
+
+// 114
+{
+  q: "Limitni toping: lim x→0 (sin x)/x",
+  options: ["0", "1", "∞", "−1"],
+  a: "1",
+  explanation: "Bu birinchi ajoyib limit bo‘lib, natijasi doim 1 ga teng."
+},
+
+// 115
+{
+  q: "Limitni hisoblang: lim x→∞ (3x² + 5)/(x² − 1)",
+  options: ["0", "1", "3", "∞"],
+  a: "3",
+  explanation: "Eng katta darajali hadlar nisbatini olamiz: 3x²/x² = 3."
+},
+
+// 116
+{
+  q: "Hosilaning geometrik ma’nosi nima?",
+  options: [
+    "Tangensning og‘ish burchagi tangensi",
+    "Funksiyaning qiymati",
+    "Integral osti funksiya",
+    "Grafik yuzasi"
+  ],
+  a: "Tangensning og‘ish burchagi tangensi",
+  explanation: "Hosila grafikdagi urinmaning qiyaligini bildiradi."
+},
+
+// 117
+{
+  q: "y = 2x³ − 6x² + 4 funksiyaning kritik nuqtalari nechta?",
+  options: ["0 ta", "1 ta", "2 ta", "3 ta"],
+  a: "2 ta",
+  explanation: "Hosila nolga teng bo‘lgan ikki nuqta mavjud."
+},
+
+// 118
+{
+  q: "y = x³ funksiyaning ikkinchi hosilasi nechaga teng?",
+  options: ["6x", "3x²", "x²", "6"],
+  a: "6x",
+  explanation: "Ikkinchi hosila — birinchi hosilaning hosilasi: (3x²)' = 6x."
+},
+
+// 119
+{
+  q: "Funksiya o‘suvchi bo‘lishi uchun qanday shart bajarilishi kerak?",
+  options: [
+    "f′(x) > 0",
+    "f′(x) < 0",
+    "f′(x) = 0",
+    "f(x) = 0"
+  ],
+  a: "f′(x) > 0",
+  explanation: "Hosila musbat bo‘lsa, funksiya o‘sadi."
+},
+
+// 120
+{
+  q: "Integralning asosiy vazifasi nima?",
+  options: [
+    "Yuzani hisoblash",
+    "Hosila topish",
+    "Limitni aniqlash",
+    "Tenglama yechish"
+  ],
+  a: "Yuzani hisoblash",
+  explanation: "Integral grafik ostidagi yuzani topish uchun ishlatiladi."
+},
+// 121
+{
+  q: "Funksiyaning hosilasini toping: y = 2x³",
+  options: ["6x²", "3x²", "2x²", "x²"],
+  a: "6x²",
+  explanation: "Darajali funksiyaning hosilasi formulasi bo‘yicha: (x³)' = 3x², oldidagi 2 ni ko‘paytiramiz."
+},
+
+// 122
+{
+  q: "Funksiyaning aniqlanish sohasini toping: y = √(7 − x)",
+  options: ["x ≤ 7", "x ≥ 7", "x < 7", "(−∞,+∞)"],
+  a: "x ≤ 7",
+  explanation: "Kvadrat ildiz ostidagi ifoda manfiy bo‘lmasligi kerak: 7 − x ≥ 0."
+},
+
+// 123
+{
+  q: "Funksiya qachon toq deyiladi?",
+  options: [
+    "f(−x) = −f(x)",
+    "f(−x) = f(x)",
+    "f(x) ≥ 0",
+    "f(x) = 0"
+  ],
+  a: "f(−x) = −f(x)",
+  explanation: "Toq funksiyada argument ishorasi o‘zgarsa, funksiya qiymati ham ishorasini o‘zgartiradi."
+},
+
+// 124
+{
+  q: "Limitni toping: lim x→∞ 1/x",
+  options: ["0", "1", "∞", "−1"],
+  a: "0",
+  explanation: "x cheksizlikka ketganda 1/x juda kichik bo‘lib, nolga yaqinlashadi."
+},
+
+// 125
+{
+  q: "Hosilaning fizik ma’nosi nima?",
+  options: [
+    "O‘zgarish tezligi",
+    "Yuza",
+    "Grafik",
+    "Integral"
+  ],
+  a: "O‘zgarish tezligi",
+  explanation: "Hosila fizikada tezlik, ya’ni miqdorning o‘zgarish tezligini bildiradi."
+},
+
+// 126
+{
+  q: "Funksiya kamayuvchi bo‘lishi uchun qanday shart bajarilishi kerak?",
+  options: [
+    "f′(x) < 0",
+    "f′(x) > 0",
+    "f′(x) = 0",
+    "f(x) = 0"
+  ],
+  a: "f′(x) < 0",
+  explanation: "Agar hosila manfiy bo‘lsa, funksiya kamayuvchi bo‘ladi."
+},
+
+// 127
+{
+  q: "y = x² funksiyaning minimum qiymati nechaga teng?",
+  options: ["0", "1", "−1", "2"],
+  a: "0",
+  explanation: "x² har doim musbat yoki nol bo‘ladi. Eng kichik qiymati x=0 da 0 ga teng."
+},
+
+// 128
+{
+  q: "Limitni toping: lim x→3 (x − 3)",
+  options: ["0", "3", "1", "−3"],
+  a: "0",
+  explanation: "x → 3 bo‘lganda (x − 3) ifoda nolga tenglashadi."
+},
+
+// 129
+{
+  q: "Funksiyaning aniqlanish sohasini toping: y = 1/(x − 2)",
+  options: [
+    "(−∞,2) ∪ (2,+∞)",
+    "(−∞,2]",
+    "[2,+∞)",
+    "(−∞,+∞)"
+  ],
+  a: "(−∞,2) ∪ (2,+∞)",
+  explanation: "Maxraj nol bo‘lmasligi kerak, shuning uchun x = 2 chiqarib tashlanadi."
+},
+
+// 130
+{
+  q: "Integral nimani bildiradi?",
+  options: [
+    "Yig‘indi",
+    "Tezlik",
+    "Hosila",
+    "Limit"
+  ],
+  a: "Yig‘indi",
+  explanation: "Integral — juda kichik bo‘laklar yig‘indisining limitini ifodalaydi."
+},
+
+// 131
+{
+  q: "y = 3x funksiyaning hosilasi nechaga teng?",
+  options: ["3", "x", "6x", "0"],
+  a: "3",
+  explanation: "Chiziqli funksiya y = ax bo‘lsa, uning hosilasi doim a ga teng."
+},
+
+// 132
+{
+  q: "Funksiyaning grafigi qachon o‘suvchi bo‘ladi?",
+  options: [
+    "Chapdan o‘ngga ko‘tarilsa",
+    "Chapdan o‘ngga tushsa",
+    "Tekis bo‘lsa",
+    "Egri bo‘lsa"
+  ],
+  a: "Chapdan o‘ngga ko‘tarilsa",
+  explanation: "Agar grafik chapdan o‘ngga ko‘tarilib borsa, funksiya o‘suvchi bo‘ladi."
+},
+
+// 133
+{
+  q: "Limit mavjud bo‘lishi uchun nima kerak?",
+  options: [
+    "Chap va o‘ng limitlar teng bo‘lishi",
+    "Faqat chap limit bo‘lishi",
+    "Faqat o‘ng limit bo‘lishi",
+    "Funksiya nol bo‘lishi"
+  ],
+  a: "Chap va o‘ng limitlar teng bo‘lishi",
+  explanation: "Limit mavjud bo‘lishi uchun chap va o‘ng tomondan bir xil qiymatga yaqinlashishi kerak."
+},
+
+// 134
+{
+  q: "y = x³ funksiyaning x=0 dagi qiymati nechaga teng?",
+  options: ["0", "1", "−1", "3"],
+  a: "0",
+  explanation: "x = 0 ni funksiyaga qo‘ysak: 0³ = 0."
+},
+
+// 135
+{
+  q: "Funksiya uzluksiz bo‘lishi uchun qaysi shart bajariladi?",
+  options: [
+    "lim f(x) = f(x₀)",
+    "f′(x₀) = 0",
+    "f(x) > 0",
+    "Integral mavjud bo‘lishi"
+  ],
+  a: "lim f(x) = f(x₀)",
+  explanation: "Uzluksizlikda funksiya qiymati limitga teng bo‘lishi kerak."
+},
+
+// 136
+{
+  q: "y = sin x funksiyaning qiymatlari qaysi oraliqda yotadi?",
+  options: [
+    "[−1,1]",
+    "[0,1]",
+    "(−∞,+∞)",
+    "[−2,2]"
+  ],
+  a: "[−1,1]",
+  explanation: "Sinus funksiyasining qiymatlari har doim −1 bilan 1 orasida bo‘ladi."
+},
+
+// 137
+{
+  q: "Hosila nolga teng bo‘lsa, bu nimani bildiradi?",
+  options: [
+    "Ekstremum bo‘lishi mumkin",
+    "Funksiya yo‘q",
+    "Limit yo‘q",
+    "Funksiya uzluksiz emas"
+  ],
+  a: "Ekstremum bo‘lishi mumkin",
+  explanation: "Hosila nol bo‘lgan nuqtalarda maksimum yoki minimum bo‘lishi mumkin."
+},
+
+// 138
+{
+  q: "y = |x| funksiyasi qachon juft hisoblanadi?",
+  options: [
+    "Doimo",
+    "Hech qachon",
+    "Faqat musbatda",
+    "Faqat manfiyda"
+  ],
+  a: "Doimo",
+  explanation: "|−x| = |x| bo‘lgani uchun bu funksiya juft hisoblanadi."
+},
+
+// 139
+{
+  q: "Limitni toping: lim x→0 x²",
+  options: ["0", "1", "∞", "−1"],
+  a: "0",
+  explanation: "x nolga yaqinlashganda x² ham nolga yaqinlashadi."
+},
+
+// 140
+{
+  q: "Funksiyaning eng katta yoki eng kichik qiymati nima deb ataladi?",
+  options: [
+    "Ekstremum",
+    "Limit",
+    "Hosila",
+    "Integral"
+  ],
+  a: "Ekstremum",
+  explanation: "Funksiyaning maksimum yoki minimum qiymatlari umumiy holda ekstremum deyiladi."
+}
 
 
 
@@ -6057,7 +5819,6 @@ async function sendQuestion(ctx, isNew = false) {
     const userId = ctx.from.id;
     if (timers[userId]) clearTimeout(timers[userId]);
 
-    // Test tugashi
     if (s.index >= s.activeList.length) {
         updateGlobalScore(userId, s.userName, ctx.from.username, s.score);
         let finishMsg = `🏁 <b>Test yakunlandi, ${s.userName}!</b>\n\n` +
@@ -6067,34 +5828,45 @@ async function sendQuestion(ctx, isNew = false) {
     }
 
     const qData = s.activeList[s.index];
-    s.currentOptions = shuffle([...qData.options]);
+    
+    // Faqat yangi savol bo'lgandagina variantlarni qorishtiramiz
+    if (isNew || !s.currentOptions) {
+        s.currentOptions = shuffle([...qData.options]);
+    }
+
     const buttons = s.currentOptions.map((opt, i) => [Markup.button.callback(opt, `ans_${i}`)]);
+    
+    // Tushuntirish tugmasi (faqat agar massivda explanation bo'lsa)
+    if (qData.explanation) {
+        buttons.push([Markup.button.callback("💡 Tushuntirish (Yechimni ko'rish)", `explain_current`)]);
+    }
+    
     buttons.push([Markup.button.callback("🛑 Testni to'xtatish", "stop_test")]);
 
     const progress = getProgressBar(s.index + 1, s.activeList.length);
-    
-    // SAVOL MATNINI TOZALASH (MUHIM!)
     const safeQuestion = escapeHTML(qData.q);
     
-    const text = `📊 Progress: [${progress}]\n` +
-                 `🔢 Savol: <b>${s.index + 1} / ${s.activeList.length}</b>\n` +
-                 `⏱ <b>VAQT: ${botSettings.timeLimit} soniya!</b>\n\n` +
-                 `❓ <b>${safeQuestion}</b>`;
+    let text = `📊 Progress: [${progress}]\n` +
+               `🔢 Savol: <b>${s.index + 1} / ${s.activeList.length}</b>\n` +
+               `⏱ <b>VAQT: ${botSettings.timeLimit} soniya!</b>\n\n` +
+               `❓ <b>${safeQuestion}</b>`;
+
+    // Agar tushuntirish rejimi yoqilgan bo'lsa, matnga qo'shamiz
+    if (s.showExplanation) {
+        text += `\n\n📖 <b>Yechim:</b>\n<i>${escapeHTML(qData.explanation)}</i>`;
+        s.showExplanation = false; // Keyingi savol uchun o'chiramiz
+    }
 
     try {
         if (isNew) {
-            // Markdown O'RNIGA HTML ISHLATILMOQDA
             await ctx.replyWithHTML(text, Markup.inlineKeyboard(buttons));
         } else {
-            // EDIT QILGANDA HAM HTML
             await ctx.editMessageText(text, { parse_mode: 'HTML', ...Markup.inlineKeyboard(buttons) });
         }
     } catch (e) {
-        // Agar xabar tahrirlashda xato bo'lsa, yangi xabar yuboradi
         await ctx.replyWithHTML(text, Markup.inlineKeyboard(buttons));
     }
 
-    // Taymerni o'rnatish
     timers[userId] = setTimeout(async () => {
         if (ctx.session && ctx.session.index === s.index) {
             ctx.session.wrongs.push(qData);
@@ -6177,6 +5949,37 @@ bot.action('check_sub', async (ctx) => {
         return showSubjectMenu(ctx);
     } else {
         return ctx.answerCbQuery("❌ Siz hali ham kanalga obuna emassiz!", { show_alert: true });
+    }
+});
+
+bot.action('explain_current', async (ctx) => {
+    const s = ctx.session;
+    if (!s || !s.activeList || s.index === undefined) return;
+
+    const qData = s.activeList[s.index];
+    
+    // Savol matnini va tushuntirishni birlashtiramiz
+    const safeQuestion = escapeHTML(qData.q);
+    const safeExplanation = escapeHTML(qData.explanation);
+    const progress = getProgressBar(s.index + 1, s.activeList.length);
+
+    const text = `📊 Progress: [${progress}]\n` +
+                 `🔢 Savol: <b>${s.index + 1} / ${s.activeList.length}</b>\n\n` +
+                 `❓ <b>${safeQuestion}</b>\n\n` +
+                 `📖 <b>Tushuntirish:</b>\n<i>${safeExplanation}</i>`;
+
+    // Tugmalarni qayta yasaymiz (variantlar o'chib ketmasligi uchun)
+    const buttons = s.currentOptions.map((opt, i) => [Markup.button.callback(opt, `ans_${i}`)]);
+    buttons.push([Markup.button.callback("🛑 Testni to'xtatish", "stop_test")]);
+
+    try {
+        await ctx.editMessageText(text, { 
+            parse_mode: 'HTML', 
+            ...Markup.inlineKeyboard(buttons) 
+        });
+        await ctx.answerCbQuery("💡 Yechim ko'rsatildi");
+    } catch (e) {
+        console.log("Tushuntirishda xato:", e);
     }
 });
 
