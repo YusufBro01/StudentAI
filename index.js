@@ -5991,15 +5991,23 @@ function updateGlobalScore(userId, name, username, score) {
 
 function getLeaderboard() {
     const db = getDb();
-    const usersArray = Object.values(db.users || {});
+    if (!db.users) return "Hozircha hech kim test topshirmadi.";
+    
+    const usersArray = Object.values(db.users);
     if (usersArray.length === 0) return "Hozircha hech kim test topshirmadi.";
     
+    // Saralash
     const sorted = usersArray.sort((a, b) => (b.score || 0) - (a.score || 0)).slice(0, 10);
     
-    return "🏆 **TOP 10 REYTING**\n\n" + sorted.map((u, i) => {
+    let res = "🏆 **TOP 10 REYTING**\n\n";
+    sorted.forEach((u, i) => {
         const medal = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : "👤";
-        return `${medal} ${u.name} (${u.username}) — ${(u.score || 0).toFixed(1)} ball`;
-    }).join('\n');
+        const name = u.name || "Noma'lum";
+        // Username undefined bo'lsa, bo'sh joy chiqaradi
+        const userLink = (u.username && u.username !== "Lichka yopiq") ? ` (${u.username})` : "";
+        res += `${medal} ${name}${userLink} — ${(u.score || 0).toFixed(1)} ball\n`;
+    });
+    return res;
 }
 
 function showSubjectMenu(ctx) {
@@ -6058,6 +6066,22 @@ bot.command('admin', (ctx) => {
                 ['⬅️ Orqaga (Fanlar)']
             ]).resize());
     }
+});
+
+// Statistika tugmasini eshitish (Admin uchun)
+bot.hears('📊 Statistika', (ctx) => {
+    if (ctx.from.id !== ADMIN_ID) return;
+
+    const db = getDb();
+    const users = Object.values(db.users || {});
+    const totalUsers = users.length;
+    const totalTests = users.reduce((sum, u) => sum + (u.totalTests || 0), 0);
+    
+    let report = `📊 **BOT STATISTIKASI**\n\n`;
+    report += `👥 Jami foydalanuvchilar: ${totalUsers} ta\n`;
+    report += `📝 Jami topshirilgan testlar: ${totalTests} ta\n`;
+    
+    return ctx.reply(report);
 });
 
 bot.hears('⏱ Vaqtni o\'zgartirish', (ctx) => {
