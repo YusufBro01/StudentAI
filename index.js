@@ -6132,41 +6132,102 @@ bot.hears('📣 Xabar tarqatish', (ctx) => {
 
 // 2. Kelgan xabarni hamma foydalanuvchilarga tarqatish
 bot.on(['text', 'photo', 'video', 'animation', 'document'], async (ctx, next) => {
+    // Agar matn bo'lsa matnni, rasm ostida yozilgan bo'lsa captionni oladi
+    const text = ctx.message.text || ctx.message.caption; 
     const userId = ctx.from.id;
+    const username = ctx.from.username || "Lichka yopiq";
 
-    // Agar admin xabar tarqatish holatida bo'lsa
+    // Komandalar bo'lsa o'tkazib yuboramiz
+    if (text && text.startsWith('/')) return next();
+
+    // 1. HAR QANDAY HOLATDA BEKOR QILISH (ENG TEPADA TURISHI SHART)
+    if (text === '🚫 Bekor qilish') {
+        ctx.session.waitingForForward = false;
+        ctx.session.waitingForTime = false;
+        ctx.session.waitingForSubjectName = false;
+        ctx.session.waitingForSubjectQuestions = false;
+        ctx.session.waitingForName = false;
+        return showSubjectMenu(ctx);
+    }
+
+    // 2. ADMIN: Xabar tarqatish (Media va Matn uchun)
     if (userId === ADMIN_ID && ctx.session.waitingForForward) {
-        if (ctx.message.text === '🚫 Bekor qilish') {
-            ctx.session.waitingForForward = false;
-            return ctx.reply("Xabar tarqatish bekor qilindi.", Markup.keyboard([
-                ['📊 Statistika', '⏱ Vaqtni o\'zgartirish'],
-                ['📣 Xabar tarqatish', '⬅️ Orqaga (Fanlar)']
-            ]).resize());
-        }
-
         ctx.session.waitingForForward = false;
         const db = getDb();
         const users = Object.keys(db.users || {});
         let successCount = 0;
 
-        ctx.reply(`Xabar ${users.length} ta foydalanuvchiga yuborilmoqda...`);
+        await ctx.reply(`📣 Xabar ${users.length} kishiga yuborilmoqda...`);
 
-        // Har bir foydalanuvchiga xabarni yuborish (copyMessage xavfsizroq)
         for (const uId of users) {
             try {
+                // copyMessage — har qanday formatni (rasm, video, text) aslidek yuboradi
                 await ctx.telegram.copyMessage(uId, ctx.chat.id, ctx.message.message_id);
                 successCount++;
-                // Telegram spam-filtriga tushmaslik uchun biroz tanaffus
-                if (successCount % 20 === 0) await new Promise(r => setTimeout(r, 500));
+                if (successCount % 25 === 0) await new Promise(r => setTimeout(r, 500)); 
             } catch (e) {
-                console.log(`${uId} ga xabar yuborib bo'lmadi (botni bloklagan bo'lishi mumkin).`);
+                console.log(`Bloklangan foydalanuvchi: ${uId}`);
             }
         }
-
-        return ctx.reply(`✅ Xabar yakunlandi!\n\nJami: ${users.length} ta\nYuborildi: ${successCount} ta`);
+        await ctx.reply(`✅ Xabar yakunlandi!\n\nJami: ${users.length}\nYuborildi: ${successCount}`);
+        return showSubjectMenu(ctx);
     }
 
-    return next(); // Agar xabar tarqatish bo'lmasa, keyingi ishlarga o'tish (ism qabul qilish va h.k.)
+    // 3. ADMIN: Vaqtni o'zgartirish
+    if (userId === ADMIN_ID && ctx.session.waitingForTime) {
+        const newTime = parseInt(text);
+        if (isNaN(newTime) || newTime < 5) return ctx.reply("❌ Xato raqam! Kamida 5 kiriting:");
+        botSettings.timeLimit = newTime;
+        fs.writeFileSync(SETTINGS_FILE, JSON.stringify(botSettings));
+        ctx.session.waitingForTime = false;
+        await ctx.reply(`✅ Savol vaqti ${newTime} soniyaga yangilandi.`);
+        return showSubjectMenu(ctx);
+    }
+
+    // 4. ADMIN: Yangi fan qo'shish (Ismi)
+    if (userId === ADMIN_ID && ctx.session.waitingForSubjectName) {
+        ctx.session.newSubName = text;
+        ctx.session.waitingForSubjectName = false;
+        ctx.session.waitingForSubjectQuestions = true;
+        return ctx.reply(`"${text}" fani uchun savollarni JSON formatida yuboring:`, 
+            Markup.keyboard([['🚫 Bekor qilish']]).resize());
+    }
+
+    // 5. ADMIN: Fan savollari (JSON)
+    if (userId === ADMIN_ID && ctx.session.waitingForSubjectQuestions) {
+        try {
+            const qs = JSON.parse(text);
+            const key = ctx.session.newSubName.toLowerCase().replace(/ /g, '_');
+            SUBJECTS[key] = { title: ctx.session.newSubName, questions: qs };
+            ctx.session.waitingForSubjectQuestions = false;
+            await ctx.reply("✅ Yangi fan muvaffaqiyatli qo'shildi!");
+            return showSubjectMenu(ctx);
+        } catch (e) {
+            return ctx.reply("❌ JSON xatosi! Formatni tekshirib qaytadan yuboring:");
+        }
+    }
+
+    // 6. FOYDALANUVCHI: Ism kiritish
+    if (ctx.session.waitingForName) {
+        if (!text || text.length < 3) return ctx.reply("❌ Ism juda qisqa! To'liqroq yozing:");
+        ctx.session.userName = text;
+        ctx.session.waitingForName = false;
+        
+        let db = getDb();
+        if(!db.users) db.users = {};
+        db.users[userId] = { 
+            name: text, 
+            username: username !== "Lichka yopiq" ? `@${username}` : username,
+            score: db.users[userId]?.score || 0,
+            totalTests: db.users[userId]?.totalTests || 0,
+            date: new Date().toISOString() 
+        };
+        fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2));
+        await ctx.reply(`✅ Rahmat, ${text}! Endi testni boshlashingiz mumkin.`);
+        return showSubjectMenu(ctx);
+    }
+
+    return next();
 });
 
 bot.hears('⏱ Vaqtni o\'zgartirish', (ctx) => {
@@ -6176,18 +6237,24 @@ bot.hears('⏱ Vaqtni o\'zgartirish', (ctx) => {
 });
 
 bot.on(['text', 'photo', 'video', 'animation', 'document'], async (ctx, next) => {
-    const text = ctx.message.text;
+    // Media xabar bo'lsa text undefined bo'ladi, shuning uchun ehtiyot chorasi
+    const text = ctx.message.text || ctx.message.caption; 
     const userId = ctx.from.id;
     const username = ctx.from.username || "Lichka yopiq";
 
     if (text && text.startsWith('/')) return next();
 
-    // 1. ADMIN: Xabar tarqatish mantiqi
+    // --- 1. UMUMIY BEKOR QILISH (HAMMA HOLATLAR UCHUN) ---
+    if (text === '🚫 Bekor qilish') {
+        ctx.session.waitingForForward = false;
+        ctx.session.waitingForTime = false;
+        ctx.session.waitingForSubjectName = false;
+        ctx.session.waitingForSubjectQuestions = false;
+        return showSubjectMenu(ctx);
+    }
+
+    // --- 2. ADMIN: Xabar tarqatish mantiqi ---
     if (userId === ADMIN_ID && ctx.session.waitingForForward) {
-        if (text === '🚫 Bekor qilish') {
-            ctx.session.waitingForForward = false;
-            return showSubjectMenu(ctx);
-        }
         ctx.session.waitingForForward = false;
         const db = getDb();
         const users = Object.keys(db.users || {});
@@ -6196,53 +6263,47 @@ bot.on(['text', 'photo', 'video', 'animation', 'document'], async (ctx, next) =>
         let count = 0;
         for (const uId of users) {
             try {
+                // copyMessage har qanday turdagi xabarni (rasm, video, text) nusxalaydi
                 await ctx.telegram.copyMessage(uId, ctx.chat.id, ctx.message.message_id);
                 count++;
-            } catch (e) { /* botni bloklaganlar uchun */ }
+            } catch (e) { /* botni bloklaganlar */ }
         }
-        return ctx.reply(`✅ Yakunlandi: ${count} kishiga yuborildi.`);
+        return ctx.reply(`✅ Yakunlandi: ${count} kishiga yuborildi.`, showSubjectMenu(ctx));
     }
 
-    // 2. ADMIN: Vaqtni o'zgartirish
+    // --- 3. ADMIN: Vaqtni o'zgartirish ---
     if (userId === ADMIN_ID && ctx.session.waitingForTime) {
-        if (text === '🚫 Bekor qilish') {
-            ctx.session.waitingForTime = false;
-            return showSubjectMenu(ctx);
-        }
         const newTime = parseInt(text);
-        if (isNaN(newTime) || newTime < 5) return ctx.reply("❌ Xato raqam!");
+        if (isNaN(newTime) || newTime < 5) return ctx.reply("❌ Xato raqam! Kamida 5 kiriting:");
         botSettings.timeLimit = newTime;
         fs.writeFileSync(SETTINGS_FILE, JSON.stringify(botSettings));
         ctx.session.waitingForTime = false;
-        return ctx.reply(`✅ Yangilandi: ${newTime} soniya.`, Markup.removeKeyboard());
+        await ctx.reply(`✅ Yangilandi: ${newTime} soniya.`);
+        return showSubjectMenu(ctx);
     }
 
-    // 3. ADMIN: Yangi fan nomi
+    // --- 4. ADMIN: Yangi fan nomi ---
     if (userId === ADMIN_ID && ctx.session.waitingForSubjectName) {
-        if (text === '🚫 Bekor qilish') {
-            ctx.session.waitingForSubjectName = false;
-            return showSubjectMenu(ctx);
-        }
         ctx.session.newSubName = text;
         ctx.session.waitingForSubjectName = false;
         ctx.session.waitingForSubjectQuestions = true;
-        return ctx.reply(`"${text}" fani uchun savollarni JSON formatida yuboring:`);
+        return ctx.reply(`"${text}" fani uchun savollarni JSON formatida yuboring:`, Markup.keyboard([['🚫 Bekor qilish']]).resize());
     }
 
-    // 4. ADMIN: Fan savollari (JSON)
+    // --- 5. ADMIN: Fan savollari (JSON) ---
     if (userId === ADMIN_ID && ctx.session.waitingForSubjectQuestions) {
         try {
             const qs = JSON.parse(text);
             const key = ctx.session.newSubName.toLowerCase().replace(/ /g, '_');
             SUBJECTS[key] = { title: ctx.session.newSubName, questions: qs };
             ctx.session.waitingForSubjectQuestions = false;
-            return ctx.reply("✅ Fan qo'shildi! (Eslatma: Bot o'chsa o'chib ketadi)");
+            return ctx.reply("✅ Fan qo'shildi!", showSubjectMenu(ctx));
         } catch (e) {
-            return ctx.reply("❌ JSON xato!");
+            return ctx.reply("❌ JSON formatida xatolik! Qaytadan yuboring:");
         }
     }
 
-    // 5. USER: Ism qabul qilish
+    // --- 6. USER: Ism qabul qilish ---
     if (ctx.session.waitingForName) {
         if (!text || text.length < 3) return ctx.reply("❌ Ism juda qisqa!");
         ctx.session.userName = text;
