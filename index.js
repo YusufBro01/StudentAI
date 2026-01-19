@@ -65,7 +65,7 @@ try {
 
 // --- FANLAR BAZASI ---
 let SUBJECTS = {
-    "academic": {
+   "academic": {
         "name": "📝 Akademik yozuv",
         "questions": [
   {
@@ -6236,94 +6236,6 @@ bot.hears('⏱ Vaqtni o\'zgartirish', (ctx) => {
     return ctx.reply("Vaqtni soniyalarda kiriting:", Markup.keyboard([['🚫 Bekor qilish']]).resize());
 });
 
-bot.on(['text', 'photo', 'video', 'animation', 'document'], async (ctx, next) => {
-    // Media xabar bo'lsa text undefined bo'ladi, shuning uchun ehtiyot chorasi
-    const text = ctx.message.text || ctx.message.caption; 
-    const userId = ctx.from.id;
-    const username = ctx.from.username || "Lichka yopiq";
-
-    if (text && text.startsWith('/')) return next();
-
-    // --- 1. UMUMIY BEKOR QILISH (HAMMA HOLATLAR UCHUN) ---
-    if (text === '🚫 Bekor qilish') {
-        ctx.session.waitingForForward = false;
-        ctx.session.waitingForTime = false;
-        ctx.session.waitingForSubjectName = false;
-        ctx.session.waitingForSubjectQuestions = false;
-        return showSubjectMenu(ctx);
-    }
-
-    // --- 2. ADMIN: Xabar tarqatish mantiqi ---
-    if (userId === ADMIN_ID && ctx.session.waitingForForward) {
-        ctx.session.waitingForForward = false;
-        const db = getDb();
-        const users = Object.keys(db.users || {});
-        ctx.reply(`📣 Xabar ${users.length} kishiga yuborilmoqda...`);
-        
-        let count = 0;
-        for (const uId of users) {
-            try {
-                // copyMessage har qanday turdagi xabarni (rasm, video, text) nusxalaydi
-                await ctx.telegram.copyMessage(uId, ctx.chat.id, ctx.message.message_id);
-                count++;
-            } catch (e) { /* botni bloklaganlar */ }
-        }
-        return ctx.reply(`✅ Yakunlandi: ${count} kishiga yuborildi.`, showSubjectMenu(ctx));
-    }
-
-    // --- 3. ADMIN: Vaqtni o'zgartirish ---
-    if (userId === ADMIN_ID && ctx.session.waitingForTime) {
-        const newTime = parseInt(text);
-        if (isNaN(newTime) || newTime < 5) return ctx.reply("❌ Xato raqam! Kamida 5 kiriting:");
-        botSettings.timeLimit = newTime;
-        fs.writeFileSync(SETTINGS_FILE, JSON.stringify(botSettings));
-        ctx.session.waitingForTime = false;
-        await ctx.reply(`✅ Yangilandi: ${newTime} soniya.`);
-        return showSubjectMenu(ctx);
-    }
-
-    // --- 4. ADMIN: Yangi fan nomi ---
-    if (userId === ADMIN_ID && ctx.session.waitingForSubjectName) {
-        ctx.session.newSubName = text;
-        ctx.session.waitingForSubjectName = false;
-        ctx.session.waitingForSubjectQuestions = true;
-        return ctx.reply(`"${text}" fani uchun savollarni JSON formatida yuboring:`, Markup.keyboard([['🚫 Bekor qilish']]).resize());
-    }
-
-    // --- 5. ADMIN: Fan savollari (JSON) ---
-    if (userId === ADMIN_ID && ctx.session.waitingForSubjectQuestions) {
-        try {
-            const qs = JSON.parse(text);
-            const key = ctx.session.newSubName.toLowerCase().replace(/ /g, '_');
-            SUBJECTS[key] = { title: ctx.session.newSubName, questions: qs };
-            ctx.session.waitingForSubjectQuestions = false;
-            return ctx.reply("✅ Fan qo'shildi!", showSubjectMenu(ctx));
-        } catch (e) {
-            return ctx.reply("❌ JSON formatida xatolik! Qaytadan yuboring:");
-        }
-    }
-
-    // --- 6. USER: Ism qabul qilish ---
-    if (ctx.session.waitingForName) {
-        if (!text || text.length < 3) return ctx.reply("❌ Ism juda qisqa!");
-        ctx.session.userName = text;
-        ctx.session.waitingForName = false;
-        let db = getDb();
-        if(!db.users) db.users = {};
-        db.users[userId] = { 
-            name: text, 
-            username: username !== "Lichka yopiq" ? `@${username}` : username,
-            score: db.users[userId]?.score || 0,
-            totalTests: db.users[userId]?.totalTests || 0,
-            date: new Date().toISOString() 
-        };
-        fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2));
-        await ctx.reply(`✅ Rahmat, ${text}!`);
-        return showSubjectMenu(ctx);
-    }
-
-    return next();
-});
 
 // --- TEST BOSHLASH ---
 bot.hears(["📝 Akademik yozuv", "📜 Tarix", "➕ Matematika", "💻 Dasturlash 1"], async (ctx) => {
