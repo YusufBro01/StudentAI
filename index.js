@@ -8,6 +8,8 @@ const http = require('http');
 // 1. O'zgaruvchilarni tartib bilan e'lon qilish
 const ADMIN_ID = parseInt(process.env.ADMIN_ID); 
 const bot = new Telegraf(process.env.BOT_TOKEN);
+const REQUIRED_CHANNEL = '@student_aitex'; // Kanal yuzernamini yozing (@ bilan)
+const CHANNEL_ID = '-1001234567890'; // Kanal ID raqamini yozing (agar bilsangiz)
 
 // Railway uchun doimiy papka (Volume)
 const DATA_DIR = '/data'; 
@@ -6071,6 +6073,20 @@ async function sendQuestion(ctx, isNew = false) {
     }, botSettings.timeLimit * 1000);
 }
 
+async function checkSubscription(ctx) {
+    try {
+        // Kanal yuzernami yoki ID orqali tekshirish
+        const member = await ctx.telegram.getChatMember(REQUIRED_CHANNEL, ctx.from.id);
+        const status = member.status;
+        
+        // Agar foydalanuvchi kanalda bo'lsa: member, administrator yoki creator bo'ladi
+        return ['member', 'administrator', 'creator'].includes(status);
+    } catch (error) {
+        console.error("Obunani tekshirishda xato:", error);
+        return false; // Xatolik bo'lsa (masalan bot kanalda admin emas), xavfsizlik uchun false qaytaramiz
+    }
+}
+
 // BU FUNKSIYANI KODINGIZNING OXIRIGA QO'SHIB QO'YING
 function escapeHTML(str) {
     if (!str) return "";
@@ -6096,6 +6112,39 @@ bot.command('admin', (ctx) => {
                 ['📊 Statistika', '📣 Xabar tarqatish'],
                 ['⬅️ Orqaga (Fanlar)']
             ]).resize());
+    }
+});
+
+
+bot.use(async (ctx, next) => {
+    // Agar bu start komandasi bo'lsa, o'tkazib yuboramiz (ism kiritish uchun)
+    if (ctx.message && ctx.message.text === '/start') return next();
+    
+    // Obunani tekshiramiz
+    const isSubscribed = await checkSubscription(ctx);
+    
+    if (!isSubscribed) {
+        return ctx.reply(
+            "⚠️ Botdan foydalanish uchun rasmiy kanalimizga obuna bo'lishingiz shart!",
+            Markup.inlineKeyboard([
+                [Markup.button.url("📢 Kanalga o'tish", `https://t.me/${REQUIRED_CHANNEL.replace('@', '')}`)],
+                [Markup.button.callback("✅ Tekshirish", "check_sub")]
+            ])
+        );
+    }
+    
+    return next(); // Obuna bo'lgan bo'lsa, keyingi ishlarga o'tadi
+});
+
+// "✅ Tekshirish" tugmasi bosilganda
+bot.action('check_sub', async (ctx) => {
+    const isSubscribed = await checkSubscription(ctx);
+    if (isSubscribed) {
+        await ctx.answerCbQuery("✅ Rahmat! Endi botdan foydalanishingiz mumkin.");
+        await ctx.deleteMessage();
+        return showSubjectMenu(ctx);
+    } else {
+        return ctx.answerCbQuery("❌ Siz hali ham kanalga obuna emassiz!", { show_alert: true });
     }
 });
 
@@ -6353,9 +6402,9 @@ bot.action('buy_vip', (ctx) => {
     ctx.session.waitingForReceipt = true; // Bot chek kutish rejimiga o'tadi
     return ctx.replyWithHTML(
         `💎 <b>VIP STATUS SOTIB OLISH</b>\n\n` +
-        `💳 Karta: <code>8600123456789012</code>\n` +
-        `👤 Egasi: Ism Familiya\n` +
-        `💰 Summa: 10,000 so'm\n\n` +
+        `💳 Karta: <code>4073420058363577</code>\n` +
+        `👤 Egasi: M.M\n` +
+        `💰 Summa: 5,000 so'm\n\n` +
         `📸 To'lovni amalga oshirgach, <b>chekni (rasm ko'rinishida)</b> shu yerga yuboring.`
     );
 });
