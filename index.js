@@ -6024,9 +6024,10 @@ async function sendQuestion(ctx, isNew = false) {
     if (timers[userId]) clearTimeout(timers[userId]);
 
     if (s.index >= s.activeList.length) {
-        updateGlobalScore(userId, s.userName, s.score);
-        let finishMsg = `🏁 **Test yakunlandi, ${s.userName}!**\n\n✅ Natija: ${s.score.toFixed(1)} ball\n❌ Xatolar: ${s.wrongs.length} ta.`;
-        return ctx.reply(finishMsg, Markup.keyboard([["⚡️ Blitz (25)", "📝 To'liq test"], ["⬅️ Orqaga (Fanlar)"]]).resize());
+        // Bu yerda ctx.from.username ni ham qo'shib yuboramiz (avvalgi kelishuvga ko'ra)
+        updateGlobalScore(userId, s.userName, ctx.from.username, s.score);
+        let finishMsg = `🏁 <b>Test yakunlandi, ${s.userName}!</b>\n\n✅ Natija: <b>${s.score.toFixed(1)} ball</b>\n❌ Xatolar: <b>${s.wrongs.length} ta</b>.`;
+        return ctx.replyWithHTML(finishMsg, Markup.keyboard([["⚡️ Blitz (25)", "📝 To'liq test"], ["⬅️ Orqaga (Fanlar)"]]).resize());
     }
 
     const qData = s.activeList[s.index];
@@ -6035,23 +6036,49 @@ async function sendQuestion(ctx, isNew = false) {
     buttons.push([Markup.button.callback("🛑 Testni to'xtatish", "stop_test")]);
 
     const progress = getProgressBar(s.index + 1, s.activeList.length);
-    const text = `📊 Progress: [${progress}]\n🔢 Savol: ${s.index + 1} / ${s.activeList.length}\n⏱ **VAQT: ${botSettings.timeLimit} soniya!**\n\n❓ ${qData.q}`;
+    
+    // Markdown o'rniga HTML ishlatamiz (<b> va <i> xavfsizroq)
+    // escapeHTML funksiyasi savol ichidagi < va > belgilarini zararsizlantiradi
+    const safeQuestion = escapeHTML(qData.q);
+    
+    const text = `📊 Progress: [${progress}]\n` +
+                 `🔢 Savol: <b>${s.index + 1} / ${s.activeList.length}</b>\n` +
+                 `⏱ <b>VAQT: ${botSettings.timeLimit} soniya!</b>\n\n` +
+                 `❓ <b>${safeQuestion}</b>`;
 
     try {
-        if (isNew) await ctx.reply(text, { parse_mode: 'Markdown', ...Markup.inlineKeyboard(buttons) });
-        else await ctx.editMessageText(text, { parse_mode: 'Markdown', ...Markup.inlineKeyboard(buttons) });
+        if (isNew) {
+            await ctx.replyWithHTML(text, Markup.inlineKeyboard(buttons));
+        } else {
+            await ctx.editMessageText(text, { parse_mode: 'HTML', ...Markup.inlineKeyboard(buttons) });
+        }
     } catch (e) {
-        await ctx.reply(text, { parse_mode: 'Markdown', ...Markup.inlineKeyboard(buttons) });
+        // Agar editMessage xato bersa (masalan, matn o'zgarmagan bo'lsa), yangi xabar yuboradi
+        await ctx.replyWithHTML(text, Markup.inlineKeyboard(buttons));
     }
 
     timers[userId] = setTimeout(async () => {
         if (ctx.session && ctx.session.index === s.index) {
             ctx.session.wrongs.push(qData);
             ctx.session.index++; 
-            await ctx.reply(`⏰ **VAQT TUGADI!**`);
+            await ctx.replyWithHTML(`⏰ <b>VAQT TUGADI!</b>`);
             sendQuestion(ctx, true);
         }
     }, botSettings.timeLimit * 1000);
+}
+
+// BU FUNKSIYANI KODINGIZNING OXIRIGA QO'SHIB QO'YING
+function escapeHTML(str) {
+    if (!str) return "";
+    return str.replace(/[&<>"']/g, function(m) {
+        return {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#039;'
+        }[m];
+    });
 }
 
 // --- ADMIN KOMANDALARI ---
