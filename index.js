@@ -1,8 +1,8 @@
 const { Telegraf, Markup } = require('telegraf');
-const LocalSession = require('telegraf-session-local');
-const fs = require('fs'); //Qisqa muddatli xotirasi 
+const LocalSession = require('telegraf-session-local'); //Qisqa muddatli xotirasi Telegram botlar tabiatan "esda tutmas" (stateless) bo'ladi. Ya'ni, bot foydalanuvchi hozirgina nima deganini darrov unutadi.
+const fs = require('fs');
 const path = require('path');
-const XLSX = require('xlsx');//exsel
+const XLSX = require('xlsx');
 const http = require('http');
 
 // 1. O'zgaruvchilarni tartib bilan e'lon qilish
@@ -6019,22 +6019,16 @@ function getLeaderboard() {
     const usersArray = Object.values(db.users);
     if (usersArray.length === 0) return "Hozircha hech kim test topshirmadi.";
     
-    // Ballar bo'yicha saralash
+    // Saralash
     const sorted = usersArray.sort((a, b) => (b.score || 0) - (a.score || 0)).slice(0, 10);
     
     let res = "🏆 **TOP 10 REYTING**\n\n";
     sorted.forEach((u, i) => {
         const medal = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : "👤";
         const name = u.name || "Noma'lum";
-        const userLink = (u.username && u.username !== "Lichka yopiq") ? ` (@${u.username})` : "";
-        
-        // Fanlarni chiroyli chiqarish (agar u.subjects bo'lsa)
-        // Masalan: ["Matematika", "Tarix"] -> "Matematika, Tarix"
-        const subs = (u.subjects && u.subjects.length > 0) 
-                     ? `\n   📚 <i>Fanlar: ${u.subjects.join(', ')}</i>` 
-                     : "";
-
-        res += `${medal} <b>${name}</b>${userLink} — <b>${(u.score || 0).toFixed(1)} ball</b>${subs}\n\n`;
+        // Username undefined bo'lsa, bo'sh joy chiqaradi
+        const userLink = (u.username && u.username !== "Lichka yopiq") ? ` (${u.username})` : "";
+        res += `${medal} ${name}${userLink} — ${(u.score || 0).toFixed(1)} ball\n`;
     });
     return res;
 }
@@ -6449,40 +6443,17 @@ bot.hears(["⚡️ Blitz (25)", "📝 To'liq test"], async (ctx) => {
 bot.hears("📊 Reyting", (ctx) => ctx.reply(getLeaderboard()));
 bot.hears("⬅️ Orqaga (Fanlar)", (ctx) => showSubjectMenu(ctx));
 
-bot.start(async (ctx) => {
-    const userId = ctx.from.id;
+bot.start((ctx) => {
     const db = getDb();
+    const userId = ctx.from.id;
 
-    // Sessiyani tozalaymiz
-    ctx.session = {
-        index: 0,
-        score: 0,
-        wrongs: [],
-        step: 'WAITING_NAME' // Ism kutish rejimiga o'tkazamiz
-    };
-
-    // Agar bazada foydalanuvchi bo'lsa, uning fanlarini saqlab qolgan holda ismini yangilashimiz mumkin
-    // Yoki shunchaki xabar yuboramiz
-    await ctx.reply(`Salom! Bot qayta ishga tushirildi.\n\nIltimos, ismingizni qaytadan kiriting:`, Markup.removeKeyboard());
-});
-
-// Ismni qabul qilish qismi
-bot.on('text', async (ctx) => {
-    const s = ctx.session;
-    
-    if (s && s.step === 'WAITING_NAME') {
-        const name = ctx.message.text.trim();
-        if (name.length < 3) return ctx.reply("Ism juda qisqa, qaytadan kiriting:");
-
-        s.userName = name;
-        s.step = 'CHOOSE_SUBJECT'; // Keyingi qadamga o'tamiz
-        
-        // Bazada ismni yangilab qo'yamiz
-        updateUserNameInDb(ctx.from.id, name, ctx.from.username);
-
-        await ctx.reply(`Rahmat, ${name}! Endi test topshirish uchun fanni tanlang:`, 
-            Markup.keyboard([["Matematika", "Tarix"], ["Reyting 🏆"]]).resize());
+    if (db.users[userId] && db.users[userId].name) {
+        ctx.session.userName = db.users[userId].name;
+        return showSubjectMenu(ctx);
     }
+
+    ctx.session.waitingForName = true;
+    return ctx.reply("Assalomu alaykum! Test simulyatoriga xush kelibsiz.\n\nIltimos, ismingizni kiriting (Reyting uchun):");
 });
 
 // --- CALLBACKLAR ---
