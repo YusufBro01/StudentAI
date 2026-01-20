@@ -1,5 +1,6 @@
 const { Telegraf, Markup } = require('telegraf');
-const LocalSession = require('telegraf-session-local'); //Qisqa muddatli xotirasi 
+const LocalSession = require('telegraf-session-local');
+const fs = require('fs'); //Qisqa muddatli xotirasi 
 const path = require('path');
 const XLSX = require('xlsx');//exsel
 const http = require('http');
