@@ -6822,3 +6822,11 @@ function escapeHTML(str) {
         }[m];
     });
 }
+
+function saveDb(db) {
+    try {
+        fs.writeFileSync('./db.json', JSON.stringify(db, null, 2));
+    } catch (error) {
+        console.error("Bazani saqlashda xato yuz berdi:", error);
+    }
+}
