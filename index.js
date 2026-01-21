@@ -6492,44 +6492,43 @@ bot.on('text', async (ctx, next) => {
     const userId = ctx.from.id;
     const user = db.users[userId];
 
-    // 1. ISM KIRITISH JARAYONI KETAYOTGAN BO'LSA
+    // 1. AGAR BOT ISM KUTAYOTGAN BO'LSA VA FOYDALANUVCHI ISM YOZSA
     if (s.waitingForName) {
         const inputName = ctx.message.text.trim();
         
         if (inputName.length < 3) {
-            return ctx.reply("Ism juda qisqa. Iltimos, ism-familiyangizni to'liq kiriting:");
+            return ctx.reply("Ism juda qisqa. Iltimos, ismingizni kiriting:");
         }
 
+        // Bazada foydalanuvchi bormi?
         if (db.users[userId]) {
-            // ESKI FOYDALANUVCHI: Faqat ismi o'zgaradi, ballari (score) o'chmaydi!
-            db.users[userId].name = inputName;
+            db.users[userId].name = inputName; // Faqat ismni yangilaymiz
         } else {
-            // MUTLAQO YANGI FOYDALANUVCHI
             db.users[userId] = { 
                 id: userId, 
                 name: inputName, 
-                username: ctx.from.username || "niki_yoq", 
-                score: 0 
+                score: 0, 
+                isVip: false 
             };
         }
 
-        saveDb(db);
+        saveDb(db); // Faylga saqlaymiz
+        s.waitingForName = false; // Ism kutishni to'xtatamiz
         s.userName = inputName;
-        s.waitingForName = false;
 
-        await ctx.reply(`Rahmat, ${inputName}! Ma'lumotlaringiz muvaffaqiyatli saqlandi. ✅`);
+        await ctx.reply(`Rahmat, ${inputName}! Endi testlarni yechishingiz mumkin. ✅`);
         return showSubjectMenu(ctx);
     }
 
-    // 2. HAR QANDAY TUGMA BOSILGANDA TEKSHIRUV (MAJBURIY ISM)
-    // Agar foydalanuvchi bazada bo'lmasa yoki ismi kiritilmagan bo'lsa
-    if (!user || !user.name) {
-        s.waitingForName = true;
-        return ctx.reply("Davom etish uchun avval ism-familiyangizni kiriting:");
+    // 2. MUHIM QISMI: AGAR FOYDALANUVCHI ISMI BAZADA BO'LSA, UNGA TUGMALARNI ISHLATISHGA RUXSAT BERISH
+    if (user && user.name) {
+        s.waitingForName = false; // Xavfsizlik uchun sessiyani ham to'g'irlab qo'yamiz
+        return next(); // Keyingi tugma buyruqlariga o'tkazib yuboramiz
     }
 
-    // 3. AGAR ISMI BO'LSA, KEYINGI TUGMALARGA O'TQAZIB YUBORADI
-    return next();
+    // 3. AGAR ISMI YO'Q BO'LSA, FAQAT SHUNDA ISM SO'RAYMIZ
+    s.waitingForName = true;
+    return ctx.reply("Davom etish uchun avval ismingizni kiriting:");
 });
 
 
@@ -6707,10 +6706,20 @@ bot.hears("📊 Reyting", (ctx) => {
 bot.hears("⬅️ Orqaga (Fanlar)", (ctx) => showSubjectMenu(ctx));
 
 bot.start((ctx) => {
-    // Sessionni tozalaymiz va ism kutish rejimini yoqamiz
+    const db = getDb();
+    const userId = ctx.from.id;
+    const user = db.users[userId];
+
+    // 1. Agar foydalanuvchi bazada bo'lsa VA ismi bo'lsa - UNI O'TKAZIB YUBORAMIZ
+    if (user && user.name) {
+        ctx.session.waitingForName = false; // Ism so'rashni to'xtatamiz
+        ctx.session.userName = user.name;
+        return showSubjectMenu(ctx); // Fanlar menyusini ko'rsatamiz
+    }
+
+    // 2. Agar ismi bo'lmasa - FAQAT SHUNDA ISM SO'RAYMIZ
     ctx.session.waitingForName = true;
-    
-    return ctx.reply("Assalomu alaykum! Botimiz yangilandi.\n\nReytingda ballaringiz saqlanib qolishi va ismingiz chiroyli ko'rinishi uchun, iltimos, ismingizni kiriting:");
+    return ctx.reply("Assalomu alaykum! Botimiz yangilandi.\n\nReytingda ballaringiz saqlanib qolishi uchun, iltimos, ismingizni kiriting:");
 });
 
 // --- CALLBACKLAR ---
