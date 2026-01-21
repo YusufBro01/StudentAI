@@ -6166,23 +6166,32 @@ function updateGlobalScore(userId, name, username, score) {
     } catch (error) { console.error("Bazaga yozishda xato:", error); }
 }
 
-function getLeaderboard() {
+function getLeaderboard(ctx) {
     const db = getDb();
     if (!db.users) return "Hozircha hech kim test topshirmadi.";
     
     const usersArray = Object.values(db.users);
     if (usersArray.length === 0) return "Hozircha hech kim test topshirmadi.";
     
-    // Saralash
+    // BU YERGA O'ZINGIZNING ID RAQAMINGIZNI YOZING
+    const ADMIN_ID = 123456789; 
+    const isRequesterAdmin = ctx && ctx.from && ctx.from.id === ADMIN_ID;
+
+    // Saralash (ballar bo'yicha)
     const sorted = usersArray.sort((a, b) => (b.score || 0) - (a.score || 0)).slice(0, 10);
     
-    let res = "🏆 **TOP 10 REYTING**\n\n";
+    let res = "🏆 <b>TOP 10 REYTING</b>\n\n";
     sorted.forEach((u, i) => {
-        const medal = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : "👤";
+        const medal = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : "🔹";
         const name = u.name || "Noma'lum";
-        // Username undefined bo'lsa, bo'sh joy chiqaradi
-        const userLink = (u.username && u.username !== "Lichka yopiq") ? ` (${u.username})` : "";
-        res += `${medal} ${name}${userLink} — ${(u.score || 0).toFixed(1)} ball\n`;
+        
+        // NIK (username) FAQAT ADMIN UCHUN SHAKLLANTIRILADI
+        let userLink = "";
+        if (isRequesterAdmin && u.username && u.username !== "Lichka yopiq") {
+            userLink = ` (@${u.username})`;
+        }
+
+        res += `${medal} <b>${name}</b>${userLink} — ${(u.score || 0).toFixed(1)} ball\n`;
     });
     return res;
 }
@@ -6222,30 +6231,39 @@ async function sendQuestion(ctx, isNew = false) {
 
     const qData = s.activeList[s.index];
     s.currentOptions = shuffle([...qData.options]);
-    const buttons = s.currentOptions.map((opt, i) => [Markup.button.callback(opt, `ans_${i}`)]);
-    buttons.push([Markup.button.callback("🛑 Testni to'xtatish", "stop_test")]);
+    const labels = ['A', 'B', 'C', 'D']; // Harflar
 
     const progress = getProgressBar(s.index + 1, s.activeList.length);
-    
-    // SAVOL MATNINI TOZALASH (MUHIM!)
     const safeQuestion = escapeHTML(qData.q);
     
-    const text = `📊 Progress: [${progress}]\n` +
-                 `🔢 Savol: <b>${s.index + 1} / ${s.activeList.length}</b>\n` +
-                 `⏱ <b>VAQT: ${botSettings.timeLimit} soniya!</b>\n\n` +
-                 `❓ <b>${safeQuestion}</b>`;
+    // 1. ASOSIY MATNNI SHAKLLANTIRISH
+    let text = `📊 Progress: [${progress}]\n` +
+               `🔢 Savol: <b>${s.index + 1} / ${s.activeList.length}</b>\n` +
+               `⏱ <b>VAQT: ${botSettings.timeLimit} soniya!</b>\n\n` +
+               `❓ <b>${safeQuestion}</b>\n\n`;
+
+    // 2. VARIANTLARNI MATNGA QO'SHISH (Harflar bilan)
+    s.currentOptions.forEach((opt, i) => {
+        text += `<b>${labels[i]})</b> ${escapeHTML(opt)}\n\n`;
+    });
+
+    // 3. TUGMALARNI FAQAT HARFLARDAN YASASH
+    const inlineButtons = [
+        s.currentOptions.map((_, i) => Markup.button.callback(labels[i], `ans_${i}`)),
+        [Markup.button.callback("🛑 Testni to'xtatish", "stop_test")]
+    ];
 
     try {
         if (isNew) {
-            // Markdown O'RNIGA HTML ISHLATILMOQDA
-            await ctx.replyWithHTML(text, Markup.inlineKeyboard(buttons));
+            await ctx.replyWithHTML(text, Markup.inlineKeyboard(inlineButtons));
         } else {
-            // EDIT QILGANDA HAM HTML
-            await ctx.editMessageText(text, { parse_mode: 'HTML', ...Markup.inlineKeyboard(buttons) });
+            await ctx.editMessageText(text, { 
+                parse_mode: 'HTML', 
+                ...Markup.inlineKeyboard(inlineButtons) 
+            });
         }
     } catch (e) {
-        // Agar xabar tahrirlashda xato bo'lsa, yangi xabar yuboradi
-        await ctx.replyWithHTML(text, Markup.inlineKeyboard(buttons));
+        await ctx.replyWithHTML(text, Markup.inlineKeyboard(inlineButtons));
     }
 
     // Taymerni o'rnatish
@@ -6271,6 +6289,36 @@ async function checkSubscription(ctx) {
         console.error("Obunani tekshirishda xato:", error);
         return false; // Xatolik bo'lsa (masalan bot kanalda admin emas), xavfsizlik uchun false qaytaramiz
     }
+}
+
+async function showProfile(ctx) {
+    const db = getDb();
+    const userId = ctx.from.id;
+    const user = db.users[userId];
+
+    if (!user) {
+        return ctx.reply("Siz hali test topshirmagansiz. Avval test yechib ko'ring!");
+    }
+
+    // Reytingdagi o'rnini aniqlash
+    const usersArray = Object.values(db.users);
+    const sortedUsers = usersArray.sort((a, b) => (b.score || 0) - (a.score || 0));
+    const rank = sortedUsers.findIndex(u => u.id === userId) + 1;
+
+    let profileMsg = `👤 <b>SIZNING PROFILINGIZ</b>\n\n`;
+    profileMsg += `🆔 <b>ID:</b> <code>${userId}</code>\n`;
+    profileMsg += `👤 <b>Ism:</b> ${user.name || "Kiritilmagan"}\n`;
+    profileMsg += `🏆 <b>Umumiy ball:</b> ${user.score.toFixed(1)} ball\n`;
+    profileMsg += `📈 <b>Reytingdagi o'rningiz:</b> ${rank}-o'rin (jami ${usersArray.length} tadan)\n\n`;
+    
+    // Foydalanuvchiga qo'shimcha motivatsiya
+    if (rank <= 10) {
+        profileMsg += `🌟 Siz TOP-10 talikdasiz! Baraka bering!`;
+    } else {
+        profileMsg += `🚀 TOP-10 ga kirish uchun yana biroz harakat qiling!`;
+    }
+
+    return ctx.replyWithHTML(profileMsg);
 }
 
 // BU FUNKSIYANI KODINGIZNING OXIRIGA QO'SHIB QO'YING
@@ -6334,6 +6382,10 @@ bot.action('check_sub', async (ctx) => {
     }
 });
 
+
+bot.hears("👤 Profil", async (ctx) => {
+    return showProfile(ctx);
+});
 
 // 1. Musobaqa boshqaruv menyusini ochish
 bot.hears('🏆 Musobaqa boshqarish', (ctx) => {
@@ -6430,6 +6482,53 @@ bot.hears('🆓 Bepul versiya', (ctx) => {
     isBotPaidMode = false; // Botni bepul rejimga o'tkazamiz
     return ctx.reply("✅ Bot BEPUL REJIMGA o'tkazildi. Hamma test topshirishi mumkin.");
 });
+
+
+
+
+bot.on('text', async (ctx, next) => {
+    const s = ctx.session;
+    const db = getDb();
+    const userId = ctx.from.id;
+
+    // Agar foydalanuvchi ism kiritishi kutilayotgan bo'lsa
+    if (s.waitingForName) {
+        const inputName = ctx.message.text.trim();
+        
+        if (inputName.length < 3) {
+            return ctx.reply("Ism juda qisqa. Iltimos, to'liq ismingizni kiriting:");
+        }
+
+        // Bazada foydalanuvchi borligini tekshiramiz
+        if (!db.users[userId]) {
+            // Yangi foydalanuvchi bo'lsa, yangi ochamiz
+            db.users[userId] = { 
+                id: userId, 
+                name: inputName, 
+                username: ctx.from.username || "niki_yoq", 
+                score: 0 
+            };
+        } else {
+            // Eski foydalanuvchi bo'lsa, faqat ismini va niki yangilaymiz (bali qoladi)
+            db.users[userId].name = inputName;
+            db.users[userId].username = ctx.from.username || db.users[userId].username;
+        }
+
+        saveDb(db); // Bazani faylga saqlash
+        s.userName = inputName;
+        s.waitingForName = false;
+
+        await ctx.reply(`Rahmat, ${inputName}! Endi fanlardan birini tanlang va testni boshlang.`);
+        return showSubjectMenu(ctx);
+    }
+
+    return next(); // Agar ism kutish bo'lmasa, keyingi buyruqlarga o'tadi
+});
+
+
+
+
+
 
 // 2. Kelgan xabarni hamma foydalanuvchilarga tarqatish
 bot.on(['text', 'photo', 'video', 'animation', 'document'], async (ctx, next) => {
@@ -6594,7 +6693,10 @@ bot.hears(["⚡️ Blitz (25)", "📝 To'liq test"], async (ctx) => {
     sendQuestion(ctx, true);
 });
 
-bot.hears("📊 Reyting", (ctx) => ctx.reply(getLeaderboard()));
+bot.hears("📊 Reyting", (ctx) => {
+    const text = getLeaderboard(ctx); // ctx ni yuboramiz
+    return ctx.replyWithHTML(text);
+});
 bot.hears("⬅️ Orqaga (Fanlar)", (ctx) => showSubjectMenu(ctx));
 
 bot.start((ctx) => {
@@ -6615,44 +6717,40 @@ bot.action(/^ans_(\d+)$/, async (ctx) => {
     const s = ctx.session;
     const userId = ctx.from.id;
 
-    // 1. HIMOYALASH: Sessiya yoki savol yo'qligini tekshirish
     if (!s || !s.activeList || s.index === undefined || !s.activeList[s.index]) {
         if (timers[userId]) clearTimeout(timers[userId]);
-        
-        // Callback xabarini yopish (aylanib turmasligi uchun)
         await ctx.answerCbQuery("⚠️ Sessiya muddati tugagan.").catch(() => {});
-        
-        return ctx.reply("⚠️ Sessiya muddati tugagan yoki bot yangilangan. Iltimos, /start bosing.");
+        return ctx.reply("⚠️ Sessiya muddati tugagan. Iltimos, /start bosing.");
     }
 
-    // Taymerni to'xtatamiz
     if (timers[userId]) clearTimeout(timers[userId]);
 
     const selIdx = parseInt(ctx.match[1]);
     const currentQ = s.activeList[s.index];
+    const labels = ['A', 'B', 'C', 'D']; // Harflarni aniqlash uchun
 
     try {
-        // 2. JAVOBNI TEKSHIRISH
         if (s.currentOptions[selIdx] === currentQ.a) {
             s.score++;
             await ctx.answerCbQuery("✅ To'g'ri!");
         } else {
-            // Noto'g'ri bo'lsa xatolar ro'yxatiga qo'shamiz
             s.wrongs.push(currentQ);
             
-            // Foydalanuvchiga to'g'ri javobni ko'rsatish (show_alert: true - oyna chiqaradi)
-            await ctx.answerCbQuery(`❌ Noto'g'ri!\nTo'g'ri javob: ${currentQ.a}`, { show_alert: true });
+            // To'g'ri javob qaysi harf ostida ekanligini topamiz
+            const correctIdx = s.currentOptions.indexOf(currentQ.a);
+            const correctLetter = labels[correctIdx] || "";
+
+            // Foydalanuvchiga harf va matnni birga ko'rsatamiz
+            await ctx.answerCbQuery(`❌ Noto'g'ri!\nTo'g'ri javob: ${correctLetter}) ${currentQ.a}`, { show_alert: true });
         }
 
-        // Keyingi savolga o'tamiz
         s.index++;
         
-        // Keyingi savolni yuborish (false - xabarni tahrirlash uchun)
+        // Agar savollar tugasa, natijani chiqarish funksiyasini chaqiring (masalan finishTest yoki sendQuestion ichidagi logika)
         return sendQuestion(ctx, false);
 
     } catch (error) {
         console.error("Action error:", error);
-        // Xatolik bo'lsa bot o'chib qolmasligi uchun catch qilamiz
         await ctx.answerCbQuery("Xatolik yuz berdi.").catch(() => {});
         return ctx.reply("⚠️ Xatolik yuz berdi. Qaytadan /start bosing.");
     }
