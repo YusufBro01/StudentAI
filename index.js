@@ -6613,21 +6613,44 @@ bot.start((ctx) => {
 // --- CALLBACKLAR ---
 bot.action(/^ans_(\d+)$/, async (ctx) => {
     const s = ctx.session;
-    if (!s.activeList) return;
-    if (timers[ctx.from.id]) clearTimeout(timers[ctx.from.id]);
+    const userId = ctx.from.id;
+
+    // 1. HIMOYALASH: Sessiya yoki savollar ro'yxati o'chib ketmaganmi?
+    if (!s || !s.activeList || s.index === undefined || !s.activeList[s.index]) {
+        if (timers[userId]) clearTimeout(timers[userId]);
+        return ctx.reply("⚠️ Sessiya muddati tugagan yoki bot yangilangan. Iltimos, /start bosing.");
+    }
+
+    // Taymerni to'xtatamiz
+    if (timers[userId]) clearTimeout(timers[userId]);
 
     const selIdx = parseInt(ctx.match[1]);
     const currentQ = s.activeList[s.index];
 
-    if (s.currentOptions[selIdx] === currentQ.a) {
-        s.score++;
-        await ctx.answerCbQuery("✅");
-    } else {
-        s.wrongs.push(currentQ);
-        await ctx.answerCbQuery(`❌ To'g'ri: ${currentQ.a}`, { show_alert: true });
+    try {
+        // 2. JAVOBNI TEKSHIRISH
+        if (s.currentOptions[selIdx] === currentQ.a) {
+            s.score++;
+            await ctx.answerCbQuery("✅");
+        } else {
+            // Noto'g'ri bo'lsa xatolar ro'yxatiga qo'shamiz
+            s.wrongs.push(currentQ);
+            
+            // Foydalanuvchiga to'g'ri javobni ko'rsatish
+            const correctAnswer = currentQ.a;
+            await ctx.answerCbQuery(`❌ Noto'g'ri! \nTo'g'ri javob: ${correctAnswer}`, { show_alert: true });
+        }
+
+        // Keyingi savolga o'tamiz
+        s.index++;
+        
+        // Keyingi savolni yuboramiz
+        return sendQuestion(ctx);
+
+    } catch (error) {
+        console.error("Action error:", error);
+        return ctx.reply("Xatolik yuz berdi. Qaytadan /start bosing.");
     }
-    s.index++;
-    sendQuestion(ctx);
 });
 
 bot.action('stop_test', (ctx) => {
