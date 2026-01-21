@@ -36,14 +36,16 @@ if (!fs.existsSync(DB_FILE)) fs.writeFileSync(DB_FILE, JSON.stringify({ users: {
 
 function getDb() {
     try {
-        if (fs.existsSync(DB_FILE)) {
-            const data = fs.readFileSync(DB_FILE, 'utf8');
-            return JSON.parse(data);
+        if (!fs.existsSync('./db.json')) {
+            // Agar fayl bo'lmasa, bo'sh baza yaratamiz
+            fs.writeFileSync('./db.json', JSON.stringify({ users: {} }, null, 2));
         }
-    } catch (e) {
-        console.error("Baza o'qishda xato:", e);
+        const data = fs.readFileSync('./db.json', 'utf8');
+        return JSON.parse(data);
+    } catch (error) {
+        console.error("Bazani o'qishda xato:", error);
+        return { users: {} };
     }
-    return { users: {} };
 }
 
 // Bot sozlamalarini yuklash
@@ -6699,8 +6701,20 @@ bot.hears(["⚡️ Blitz (25)", "📝 To'liq test"], async (ctx) => {
     sendQuestion(ctx, true);
 });
 
-bot.hears("📊 Reyting", (ctx) => {
-    const text = getLeaderboard(ctx); // ctx ni yuboramiz
+bot.hears("📊 Reyting", async (ctx) => {
+    const db = getDb(); // Har safar yangi ma'lumotni fayldan o'qiymiz
+    const usersArray = Object.values(db.users);
+
+    // Ballar bo'yicha saralash
+    const topUsers = usersArray
+        .sort((a, b) => (b.score || 0) - (a.score || 0))
+        .slice(0, 10);
+
+    let text = "🏆 <b>TOP 10 REYTING</b>\n\n";
+    topUsers.forEach((u, i) => {
+        text += `${i + 1}. ${u.name || 'Ismsiz'} — ${u.score || 0} ball\n`;
+    });
+
     return ctx.replyWithHTML(text);
 });
 bot.hears("⬅️ Orqaga (Fanlar)", (ctx) => showSubjectMenu(ctx));
