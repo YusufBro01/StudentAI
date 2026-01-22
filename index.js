@@ -9267,9 +9267,9 @@ bot.command('admin', (ctx) => {
         return ctx.reply(`🛠 **Admin Panel**\n⏱ Vaqt: ${botSettings.timeLimit}s\n🏆 Musobaqa: ${tournament.isActive ? '✅' : '❌'}`, 
             Markup.keyboard([
                 ['💰 Pullik versiya', '🆓 Bepul versiya'],
-                [statusEmoji, turboEmoji], // Ikkita asosiy boshqaruv bitta qatorda
-                ['🏆 Musobaqa boshqarish', '➕ Yangi fan qoshish'],
-                ['⏱ Vaqtni o\'zgartirish', '📊 Statistika'],
+                [statusEmoji, turboEmoji],
+                ['🏆 Musobaqa boshqarish', '📊 Statistika'],
+                ['🗑 Foydalanuvchini o\'chirish', '⏱ Vaqtni o\'zgartirish'], // Yangi tugma shu yerga qo'shildi
                 ['📣 Xabar tarqatish', '⬅️ Orqaga (Fanlar)']
             ]).resize());
     }
@@ -9330,6 +9330,13 @@ bot.use(async (ctx, next) => {
     }
 
     return next();
+});
+
+
+bot.hears("🗑 Foydalanuvchini o'chirish", (ctx) => {
+    if (ctx.from.id !== ADMIN_ID) return;
+    ctx.session.adminStep = 'wait_delete_id';
+    return ctx.reply("🗑 O'chirmoqchi bo'lgan foydalanuvchining ID raqamini kiriting (yoki profilidan nusxa olib tashlang):");
 });
 
 
@@ -9493,6 +9500,43 @@ bot.hears('🆓 Bepul versiya', (ctx) => {
     return ctx.reply("✅ Bot BEPUL REJIMGA o'tkazildi. Hamma test topshirishi mumkin.");
 });
 
+// 1. Tugma bosilganda
+bot.hears("🗑 Foydalanuvchini o'chirish", (ctx) => {
+    if (ctx.from.id !== ADMIN_ID) return;
+    ctx.session.adminStep = 'wait_delete_id';
+    return ctx.reply("🗑 O'chirmoqchi bo'lgan foydalanuvchining ID raqamini kiriting (yoki profilidan nusxa olib tashlang):");
+});
+
+// 2. ID raqami yozilganda ishlaydigan logika
+bot.on('text', async (ctx, next) => {
+    const s = ctx.session;
+    
+    // Faqat admin va faqat o'chirish qadamida bo'lsa ishlaydi
+    if (ctx.from.id === ADMIN_ID && s.adminStep === 'wait_delete_id') {
+        const targetId = ctx.message.text.trim();
+        const db = getDb();
+
+        if (db.users && db.users[targetId]) {
+            const userName = db.users[targetId].name || "Noma'lum";
+            
+            // Foydalanuvchini asosiy bazadan o'chirish
+            delete db.users[targetId];
+            
+            // Agar reyting alohida scores massivida bo'lsa, u yerdan ham o'chirish
+            if (db.scores) {
+                db.scores = db.scores.filter(user => String(user.id) !== String(targetId));
+            }
+
+            saveDb(db); // O'zgarishlarni saqlash
+            s.adminStep = null; // Qadamni tozalash
+
+            return ctx.reply(`✅ Foydalanuvchi muvaffaqiyatli o'chirildi:\n👤 Ismi: ${userName}\n🆔 ID: ${targetId}`);
+        } else {
+            return ctx.reply("❌ Bunday ID topilmadi. ID to'g'ri ekanligini tekshirib qayta yuboring:");
+        }
+    }
+    return next();
+});
 
 bot.on(['text', 'photo', 'video', 'animation', 'document'], async (ctx, next) => {
     // Agar matn bo'lsa matnni, rasm ostida yozilgan bo'lsa captionni oladi
