@@ -6337,16 +6337,31 @@ function escapeHTML(str) {
     });
 }
 
+
+
+bot.use(async (ctx, next) => {
+    const db = getDb();
+    // Agar bot to'xtatilgan bo'lsa va foydalanuvchi admin bo'lmasa
+    if (db.settings?.isMaintenance && ctx.from?.id !== ADMIN_ID) {
+        return ctx.reply("🛠 Botimizda hozirda texnik ishlar olib borilmoqda. Tez orada qaytamiz! Sabringiz uchun rahmat.");
+    }
+    return next();
+});
+
 // --- ADMIN KOMANDALARI ---
 bot.command('admin', (ctx) => {
     if (ctx.from.id === ADMIN_ID) {
-        const currentMin = (botSettings.timeLimit / 60).toFixed(1);
-        return ctx.reply(`🛠 **Admin Panel**\n⏱ Oddiy test vaqti: ${botSettings.timeLimit}s\n🏆 Musobaqa holati: ${tournament.isActive ? '✅ YOQILGAN' : '❌ OCHIK'}`, 
+        const db = getDb();
+        // Bot holatiga qarab tugma matnini aniqlaymiz
+        const statusEmoji = db.settings?.isMaintenance ? "🟢 Botni Yoqish" : "🛑 Botni To'xtatish";
+        
+        return ctx.reply(`🛠 **Admin Panel**\n⏱ Vaqt: ${botSettings.timeLimit}s\n🏆 Musobaqa: ${tournament.isActive ? '✅' : '❌'}`, 
             Markup.keyboard([
                 ['💰 Pullik versiya', '🆓 Bepul versiya'],
-                ['🏆 Musobaqa boshqarish', '➕ Yangi fan qoshish'], // Yangi tugma qo'shildi
-                ['⏱ Vaqtni o\'zgartirish', '📊 Statistika'],
-                ['📣 Xabar tarqatish', '⬅️ Orqaga (Fanlar)']
+                ['🏆 Musobaqa boshqarish', statusEmoji], // 👈 Botni to'xtatish shu yerda
+                ['➕ Yangi fan qoshish', '📊 Statistika'],
+                ['⏱ Vaqtni o\'zgartirish', '📣 Xabar tarqatish'],
+                ['⬅️ Orqaga (Fanlar)']
             ]).resize());
     }
 });
@@ -6383,6 +6398,71 @@ bot.action('check_sub', async (ctx) => {
         return ctx.answerCbQuery("❌ Siz hali ham kanalga obuna emassiz!", { show_alert: true });
     }
 });
+
+
+
+
+
+
+bot.use(async (ctx, next) => {
+    const db = getDb();
+    const userId = ctx.from?.id;
+
+    // Agar bot "Maintenance" holatida bo'lsa va yozayotgan odam Admin bo'lmasa
+    if (db.settings?.isMaintenance && userId !== ADMIN_ID) {
+        return ctx.reply("⚠️ Botda texnik ishlar olib borilmoqda. Tez orada qaytamiz!");
+    }
+
+    return next();
+});
+
+// To'xtatish tugmasi bosilganda
+bot.hears("🛑 Botni To'xtatish", (ctx) => {
+    if (ctx.from.id !== ADMIN_ID) return;
+    const db = getDb();
+    if (!db.settings) db.settings = {};
+    
+    db.settings.isMaintenance = true;
+    saveDb(db);
+    
+    ctx.reply("🔴 Bot hamma uchun to'xtatildi! Endi faqat siz ishlata olasiz.", 
+        Markup.keyboard([['🟢 Botni Yoqish'], ['⬅️ Orqaga (Fanlar)']]).resize());
+});
+
+// Yoqish tugmasi bosilganda
+// To'xtatish tugmasi bosilganda
+bot.hears("🛑 Botni To'xtatish", (ctx) => {
+    if (ctx.from.id !== ADMIN_ID) return;
+    const db = getDb();
+    if (!db.settings) db.settings = {};
+    
+    db.settings.isMaintenance = true;
+    saveDb(db);
+    
+    ctx.reply("🔴 Bot hamma uchun to'xtatildi! Endi faqat siz ishlata olasiz.", 
+        Markup.keyboard([['🟢 Botni Yoqish'], ['⬅️ Orqaga (Fanlar)']]).resize());
+});
+
+// Yoqish tugmasi bosilganda
+bot.hears("🟢 Botni Yoqish", (ctx) => {
+    if (ctx.from.id !== ADMIN_ID) return;
+    const db = getDb();
+    if (!db.settings) db.settings = {};
+    
+    db.settings.isMaintenance = false;
+    saveDb(db);
+    
+    ctx.reply("🟢 Bot barcha foydalanuvchilar uchun qayta yoqildi!", 
+        Markup.keyboard([['🛑 Botni Toxtatish'], ['⬅️ Orqaga (Fanlar)']]).resize());
+});
+
+
+
+
+
+
+
+
 
 
 bot.hears("👤 Profil", async (ctx) => {
@@ -6535,7 +6615,10 @@ bot.on('text', async (ctx, next) => {
 
 
 
-
+if (db.users[userId]) {
+    db.users[userId].score += 1; // Ballni oshirish
+    saveDb(db); // BAZAGA SAQLASH (BU JUDA MUHIM!)
+}
 
 
 // 2. Kelgan xabarni hamma foydalanuvchilarga tarqatish
@@ -6702,20 +6785,25 @@ bot.hears(["⚡️ Blitz (25)", "📝 To'liq test"], async (ctx) => {
 });
 
 bot.hears("📊 Reyting", async (ctx) => {
-    const db = getDb(); // Har safar yangi ma'lumotni fayldan o'qiymiz
-    const usersArray = Object.values(db.users);
+    const db = getDb(); // Fayldan yangi ma'lumotlarni o'qish
+    const users = Object.values(db.users);
 
-    // Ballar bo'yicha saralash
-    const topUsers = usersArray
-        .sort((a, b) => (b.score || 0) - (a.score || 0))
+    // Ballar bo'yicha saralash va 0 balli odamlarni chiqarmaslik (ixtiyoriy)
+    const sortedUsers = users
+        .filter(u => u.score > 0) 
+        .sort((a, b) => b.score - a.score)
         .slice(0, 10);
 
-    let text = "🏆 <b>TOP 10 REYTING</b>\n\n";
-    topUsers.forEach((u, i) => {
-        text += `${i + 1}. ${u.name || 'Ismsiz'} — ${u.score || 0} ball\n`;
+    if (sortedUsers.length === 0) {
+        return ctx.reply("Hozircha reyting bo'sh. Birinchi bo'lib test yeching!");
+    }
+
+    let report = "🏆 <b>TOP 10 REYTING</b>\n\n";
+    sortedUsers.forEach((user, index) => {
+        report += `${index + 1}. ${user.name} — <b>${user.score}</b> ball\n`;
     });
 
-    return ctx.replyWithHTML(text);
+    return ctx.replyWithHTML(report);
 });
 bot.hears("⬅️ Orqaga (Fanlar)", (ctx) => showSubjectMenu(ctx));
 
@@ -6847,9 +6935,14 @@ function escapeHTML(str) {
 }
 
 function saveDb(db) {
+    const fs = require('fs');
+    const path = require('path');
+    const dbPath = path.join(__dirname, 'db.json'); // To'liq yo'lni ko'rsatish xavfsizroq
+
     try {
-        fs.writeFileSync('./db.json', JSON.stringify(db, null, 2));
-    } catch (error) {
-        console.error("Bazani saqlashda xato yuz berdi:", error);
+        fs.writeFileSync(dbPath, JSON.stringify(db, null, 2), 'utf8');
+        console.log("Ma'lumot faylga muvaffaqiyatli yozildi.");
+    } catch (err) {
+        console.error("FAYLGA YOZISHDA XATO:", err);
     }
 }
