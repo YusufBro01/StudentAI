@@ -6198,19 +6198,26 @@ function getLeaderboard(ctx) {
 }
 
 function showSubjectMenu(ctx) {
-    // Asosiy tugmalar (Har doim ko'rinadigan fanlar)
+    const db = getDb(); // Bazani o'qiymiz
+    
+    // Asosiy tugmalar
     let keyboard = [
         ["📝 Akademik yozuv", "📜 Tarix"],
         ["➕ Matematika", "💻 Dasturlash 1"]
     ];
 
-    // AGAR MUSOBAQA YOQILGAN BO'LSA - Tugmani qo'shamiz
+    // AGAR ADMIN TURBO REJIMNI YOQQAN BO'LSA
+    if (db.settings?.turboMode) {
+        // Bu tugmani eng tepaga, ko'zga ko'rinadigan qilib qo'shamiz
+        keyboard.unshift(["🚀 TURBO YODLASH (16:30)"]);
+    }
+
+    // Musobaqa holati
     if (tournament.isActive) {
-        // Unikal ko'rinishi uchun alohida qatorga va emojilar bilan qo'shamiz
         keyboard.push(["🏆 Musobaqada qatnashish"]);
     }
 
-    // Pastki doimiy menyu (Reyting va Profil)
+    // Pastki menyu
     keyboard.push(["📊 Reyting", "👤 Profil"]);
 
     return ctx.reply("Fanni tanlang:", Markup.keyboard(keyboard).resize());
@@ -6221,34 +6228,76 @@ async function sendQuestion(ctx, isNew = false) {
     const userId = ctx.from.id;
     if (timers[userId]) clearTimeout(timers[userId]);
 
-    // Test tugashi
+    // 1. Test yoki Yodlash tugashi
     if (s.index >= s.activeList.length) {
-        updateGlobalScore(userId, s.userName, ctx.from.username, s.score);
-        let finishMsg = `🏁 <b>Test yakunlandi, ${s.userName}!</b>\n\n` +
-                        `✅ Natija: <b>${s.score.toFixed(1)} ball</b>\n` +
-                        `❌ Xatolar: <b>${s.wrongs.length} ta</b>.`;
-        return ctx.replyWithHTML(finishMsg, Markup.keyboard([["⚡️ Blitz (25)", "📝 To'liq test"], ["⬅️ Orqaga (Fanlar)"]]).resize());
+        if (!s.isTurbo) { // Faqat oddiy test bo'lsa ballni yangilaymiz
+            updateGlobalScore(userId, s.userName, ctx.from.username, s.score);
+        }
+        
+        let finishMsg = s.isTurbo 
+            ? `🏁 <b>Turbo yodlash yakunlandi!</b>\n\nBarcha savollarni ko'rib chiqdingiz. Yana bir bor takrorlashni maslahat beramiz.`
+            : `🏁 <b>Test yakunlandi, ${s.userName}!</b>\n\n` +
+              `✅ Natija: <b>${s.score.toFixed(1)} ball</b>\n` +
+              `❌ Xatolar: <b>${s.wrongs.length} ta</b>.`;
+
+        // Turbo rejim tugasa sessiyani tozalaymiz
+        s.isTurbo = false;
+
+        return ctx.replyWithHTML(finishMsg, Markup.keyboard([
+            ["⚡️ Blitz (25)", "📝 To'liq test"], 
+            ["⬅️ Orqaga (Fanlar)"]
+        ]).resize());
     }
 
     const qData = s.activeList[s.index];
-    s.currentOptions = shuffle([...qData.options]);
-    const labels = ['A', 'B', 'C', 'D']; // Harflar
-
-    const progress = getProgressBar(s.index + 1, s.activeList.length);
     const safeQuestion = escapeHTML(qData.q);
-    
-    // 1. ASOSIY MATNNI SHAKLLANTIRISH
+    const progress = getProgressBar(s.index + 1, s.activeList.length);
+
+    // ==========================================
+    // 🚀 TURBO YODLASH REJIMI (YANGI QISM)
+    // ==========================================
+    if (s.isTurbo) {
+        let turboText = `🚀 <b>TURBO YODLASH (Sessiya 16:30)</b>\n` +
+                        `📊 Progress: [${progress}]\n` +
+                        `🔢 Savol: <b>${s.index + 1} / ${s.activeList.length}</b>\n` +
+                        `_________________________\n\n` +
+                        `❓ <b>${safeQuestion}</b>\n\n` +
+                        `✅ <b>TO'G'RI JAVOB:</b>\n<code>${escapeHTML(qData.a)}</code>\n` +
+                        `_________________________\n` +
+                        `👇 Keyingi savolga o'tish uchun bosing:`;
+
+        const turboButtons = [
+            [Markup.button.callback("Keyingi savol ➡️", "next_turbo_q")],
+            [Markup.button.callback("🛑 To'xtatish", "stop_test")]
+        ];
+
+        try {
+            if (isNew) {
+                return await ctx.replyWithHTML(turboText, Markup.inlineKeyboard(turboButtons));
+            } else {
+                return await ctx.editMessageText(turboText, { parse_mode: 'HTML', ...Markup.inlineKeyboard(turboButtons) });
+            }
+        } catch (e) {
+            return await ctx.replyWithHTML(turboText, Markup.inlineKeyboard(turboButtons));
+        }
+    }
+    // ==========================================
+    // 🚀 TURBO REJIM TUGADI
+    // ==========================================
+
+    // ODDIY TEST REJIMI (ESKI KODINGIZ)
+    s.currentOptions = shuffle([...qData.options]);
+    const labels = ['A', 'B', 'C', 'D'];
+
     let text = `📊 Progress: [${progress}]\n` +
                `🔢 Savol: <b>${s.index + 1} / ${s.activeList.length}</b>\n` +
                `⏱ <b>VAQT: ${botSettings.timeLimit} soniya!</b>\n\n` +
                `❓ <b>${safeQuestion}</b>\n\n`;
 
-    // 2. VARIANTLARNI MATNGA QO'SHISH (Harflar bilan)
     s.currentOptions.forEach((opt, i) => {
         text += `<b>${labels[i]})</b> ${escapeHTML(opt)}\n\n`;
     });
 
-    // 3. TUGMALARNI FAQAT HARFLARDAN YASASH
     const inlineButtons = [
         s.currentOptions.map((_, i) => Markup.button.callback(labels[i], `ans_${i}`)),
         [Markup.button.callback("🛑 Testni to'xtatish", "stop_test")]
@@ -6258,18 +6307,14 @@ async function sendQuestion(ctx, isNew = false) {
         if (isNew) {
             await ctx.replyWithHTML(text, Markup.inlineKeyboard(inlineButtons));
         } else {
-            await ctx.editMessageText(text, { 
-                parse_mode: 'HTML', 
-                ...Markup.inlineKeyboard(inlineButtons) 
-            });
+            await ctx.editMessageText(text, { parse_mode: 'HTML', ...Markup.inlineKeyboard(inlineButtons) });
         }
     } catch (e) {
         await ctx.replyWithHTML(text, Markup.inlineKeyboard(inlineButtons));
     }
 
-    // Taymerni o'rnatish
     timers[userId] = setTimeout(async () => {
-        if (ctx.session && ctx.session.index === s.index) {
+        if (ctx.session && ctx.session.index === s.index && !ctx.session.isTurbo) {
             ctx.session.wrongs.push(qData);
             ctx.session.index++; 
             await ctx.replyWithHTML(`⏰ <b>VAQT TUGADI!</b>`);
@@ -6351,16 +6396,18 @@ bot.use(async (ctx, next) => {
 bot.command('admin', (ctx) => {
     if (ctx.from.id === ADMIN_ID) {
         const db = getDb();
-        // Bot holatiga qarab tugma matnini aniqlaymiz
         const statusEmoji = db.settings?.isMaintenance ? "🟢 Botni Yoqish" : "🛑 Botni To'xtatish";
+        
+        // Turbo rejim statusini aniqlaymiz
+        const turboEmoji = db.settings?.turboMode ? "🚀 Turbo (O'chirish)" : "🚀 Turbo (Yoqish)";
         
         return ctx.reply(`🛠 **Admin Panel**\n⏱ Vaqt: ${botSettings.timeLimit}s\n🏆 Musobaqa: ${tournament.isActive ? '✅' : '❌'}`, 
             Markup.keyboard([
                 ['💰 Pullik versiya', '🆓 Bepul versiya'],
-                ['🏆 Musobaqa boshqarish', statusEmoji], // 👈 Botni to'xtatish shu yerda
-                ['➕ Yangi fan qoshish', '📊 Statistika'],
-                ['⏱ Vaqtni o\'zgartirish', '📣 Xabar tarqatish'],
-                ['⬅️ Orqaga (Fanlar)']
+                [statusEmoji, turboEmoji], // Ikkita asosiy boshqaruv bitta qatorda
+                ['🏆 Musobaqa boshqarish', '➕ Yangi fan qoshish'],
+                ['⏱ Vaqtni o\'zgartirish', '📊 Statistika'],
+                ['📣 Xabar tarqatish', '⬅️ Orqaga (Fanlar)']
             ]).resize());
     }
 });
@@ -6399,7 +6446,13 @@ bot.action('check_sub', async (ctx) => {
 });
 
 
-
+bot.action("next_turbo_q", async (ctx) => {
+    if (ctx.session) {
+        ctx.session.index++;
+        return sendQuestion(ctx, false);
+    }
+    await ctx.answerCbQuery();
+});
 
 
 
@@ -6413,6 +6466,22 @@ bot.use(async (ctx, next) => {
     }
 
     return next();
+});
+
+
+bot.hears(["🚀 Turbo (Yoqish)", "🚀 Turbo (O'chirish)"], async (ctx) => {
+    if (ctx.from.id !== ADMIN_ID) return;
+    const db = getDb();
+    if (!db.settings) db.settings = {};
+
+    const isTurningOn = ctx.message.text.includes("Yoqish");
+    db.settings.turboMode = isTurningOn;
+    saveDb(db);
+
+    const msg = isTurningOn ? "🚀 TURBO REJIM YOQILDI!\nEndi foydalanuvchilar menyusida maxsus tugma ko'rinadi." : "🚀 Turbo rejim o'chirildi.";
+    
+    // Adminni qaytadan admin panelga yuboramiz (status yangilanishi uchun)
+    return ctx.reply(msg, Markup.keyboard([['/admin']]).resize());
 });
 
 // To'xtatish tugmasi bosilganda
