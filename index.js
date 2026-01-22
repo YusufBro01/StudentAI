@@ -6120,7 +6120,2871 @@ if (fs.existsSync(SUBJECTS_FILE)) {
     }
 
     ] 
-  }
+  },
+  physics: {
+        title: "Fizika",
+        questions: [
+  {
+    "q": "Tezlanish deb nimaga aytiladi?",
+    "options": [
+      "Moddiy nuqta tezligining birlik vaqt davomidagi o‘zgarishini xarakterlaydigan kattalikka tezlanish deyiladi.",
+      "Moddiy nuqta ko‘chishining birlik vaqt davomidagi o‘zgarishini xarakterlaydigan kattalikka tezlanish deyiladi.",
+      "Moddiy nuqta trayektoriyasining birlik vaqt davomidagi o‘zgarishini xarakterlaydigan kattalikka tezlanish deyiladi.",
+      "Moddiy nuqta harakatining birlik vaqt davomidagi o‘zgarishini xarakterlaydigan kattalikka tezlanish deyiladi."
+    ],
+    "a": "Moddiy nuqta tezligining birlik vaqt davomidagi o‘zgarishini xarakterlaydigan kattalikka tezlanish deyiladi."
+  },
+  {
+    "q": "Klassik mexanikada fazoning bir jinsli va izotropligi nimani bildiradi?",
+    "options": [
+      "Turli yo‘nalishlardagi xususiyatlarining bir xil deb qabul qilinishini",
+      "Bir xil yo‘nalishlardagi xususiyatlarining har xil deb qabul qilinishini",
+      "Turli yo‘nalishlardagi xususiyatlarining har xil deb qabul qilinishini",
+      "Bir xil yo‘nalishlardagi xususiyatlarining bir xil deb qabul qilinishini"
+    ],
+    "a": "Turli yo‘nalishlardagi xususiyatlarining bir xil deb qabul qilinishini"
+  },
+  {
+    "q": "Moddiy nuqta deb nimaga aytiladi?",
+    "options": [
+      "Qaralayotgan sharoitlarda shakli va o‘lchamlarini e’tiborga olmasa ham bo‘ladigan jismga moddiy nuqta deyiladi.",
+      "Qaralayotgan sharoitlarda faqat shaklini e’tiborga olmasa bo‘ladigan jism.",
+      "Qaralayotgan sharoitlarda faqat o‘lchamlarini e’tiborga olmasa bo‘ladigan jism.",
+      "Qaralayotgan sharoitlarda hajmini e’tiborga olmasa bo‘ladigan jism."
+    ],
+    "a": "Qaralayotgan sharoitlarda shakli va o‘lchamlarini e’tiborga olmasa ham bo‘ladigan jismga moddiy nuqta deyiladi."
+  },
+  {
+    "q": "Sanoq sistemasi deb nimaga aytiladi?",
+    "options": [
+      "Sanoq jismi, koordinatalar sistemasi va vaqtni qayd qiluvchi asbob-soat majmuasi.",
+      "Faqat koordinatalar sistemasi.",
+      "Faqat sanoq jismi va soat.",
+      "Faqat vaqtni qayd qiluvchi asbob."
+    ],
+    "a": "Sanoq jismi, koordinatalar sistemasi va vaqtni qayd qiluvchi asbob-soat majmuasi."
+  },
+  {
+    "q": "Trayektoriya deb nimaga aytiladi?",
+    "options": [
+      "Moddiy nuqtaning harakati davomida qoldirgan iziga trayektoriya deyiladi.",
+      "Moddiy nuqtaning tezligiga trayektoriya deyiladi.",
+      "Bosib o‘tilgan yo‘lga trayektoriya deyiladi.",
+      "Ko‘chishga trayektoriya deyiladi."
+    ],
+    "a": "Moddiy nuqtaning harakati davomida qoldirgan iziga trayektoriya deyiladi."
+  },
+  {
+    "q": "Tezlik deb nimaga aytiladi?",
+    "options": [
+      "Moddiy nuqtaning fazodagi vaziyati vaqt bo‘yicha o‘zgarish jadalligini xarakterlovchi kattalik.",
+      "Moddiy nuqtaning harakati davomida bosib o‘tgan yo‘li.",
+      "Moddiy nuqtaning tezlanishi.",
+      "Moddiy nuqtaning massasi."
+    ],
+    "a": "Moddiy nuqtaning fazodagi vaziyati vaqt bo‘yicha o‘zgarish jadalligini xarakterlovchi kattalik."
+  },
+  {
+    "q": "Markazga intilma yoki normal tezlanish formulasini ko‘rsating?",
+    "options": [
+      "aₙ = dv / dt",
+      "aₙ = v² / R",
+      "aₜ = dv / dt",
+      "a = v / R"
+    ],
+    "a": "aₙ = v² / R"
+  },
+  {
+    "q": "Bosib o‘tilgan yo‘l deb nimaga aytiladi?",
+    "options": [
+      "Moddiy nuqta trayektoriyasining ma’lum qismiga bosib o‘tilgan yo‘l deyiladi.",
+      "Moddiy nuqta trayektoriyasining uzunligi va shakliga bosib o‘tilgan yo‘l deyiladi.",
+      "Moddiy nuqta harakat trayektoriyasining uzunligiga bosib o‘tilgan yo‘l deyiladi.",
+      "Moddiy nuqta harakatining tezligiga bosib o‘tilgan yo‘l deyiladi."
+    ],
+    "a": "Moddiy nuqta harakat trayektoriyasining uzunligiga bosib o‘tilgan yo‘l deyiladi."
+  },
+  {
+    "q": "Tezlik qanday kattalik?",
+    "options": [
+      "Tezlik o‘zgarmaydigan kattalik.",
+      "Tezlik skalyar kattalik.",
+      "Tezlik vektor va skalyar kattalik.",
+      "Tezlik vektor kattalik.",
+    ],
+    "a": "Tezlik vektor kattalik."
+  },
+  {
+    "q": "Nyutonning ikkinchi qonuni formulasini ko‘rsating?",
+    "options": [
+      "F = m·a",
+      "F = m·v",
+      "F = −F",
+      "F = m·g"
+    ],
+    "a": "F = m·a"
+  },
+  {
+    "q": "Ilgarilanma harakat deb nimaga aytiladi?",
+    "options": [
+      "Jismdagi ixtiyoriy ikki nuqtani tutashtiruvchi to‘g‘ri chiziq o‘z-o‘ziga parallel va perpendikulyar ravishda ko‘chadigan harakat.",
+      "Jismdagi ixtiyoriy ikki nuqtani tutashtiruvchi to‘g‘ri chiziq o‘z-o‘ziga parallel ravishda ko‘chadigan harakat.",
+      "Jismdagi ixtiyoriy ikki nuqtani tutashtiruvchi to‘g‘ri chiziq o‘z-o‘ziga perpendikulyar ravishda ko‘chadigan harakat.",
+      "Jismdagi ixtiyoriy ikki nuqtani tutashtiruvchi to‘g‘ri chiziq o‘z-o‘ziga parallel ravishda ko‘chmaydigan harakat."
+    ],
+    "a": "Jismdagi ixtiyoriy ikki nuqtani tutashtiruvchi to‘g‘ri chiziq o‘z-o‘ziga parallel ravishda ko‘chadigan harakat."
+  },
+  {
+    "q": "Nyutonning uchinchi qonuni formulasini ko‘rsating?",
+    "options": [
+      "F₁₂ = F₂₁",
+      "F = m·a",
+      "F₁₂ = −F₂₁",
+      "F = −F₁"
+    ],
+    "a": "F₁₂ = −F₂₁"
+  },
+  {
+    "q": "Jismning impulsi formulasini ko‘rsating?",
+    "options": [
+      "F = m + v",
+      "p = m·v",
+      "p = m·a",
+      "F = m·a"
+    ],
+    "a": "p = m·v"
+  },
+  {
+    "q": "Jism inertligining o‘lchovi — jismning massasi deb nimaga aytiladi?",
+    "options": [
+      "Jismga ta’sir etuvchi kuchning tezlanishga nisbati bilan xarakterlanadigan fizik kattalik.",
+      "Jismga ta’sir etuvchi kuchning shu kuch ta’sirida jism oladigan tezligiga nisbati bilan xarakterlanadigan fizik kattalik.",
+      "Jismga ta’sir etuvchi kuchning shu kuch ta’sirida jism oladigan tezlanishga ko‘paytmasi bilan xarakterlanadigan fizik kattalik.",
+      "Jismga ta’sir etuvchi kuchning shu kuch ta’sirida jism oladigan tezlanishga nisbati bilan xarakterlanadigan fizik kattalik.",
+    ],
+    "a": "Jismga ta’sir etuvchi kuchning shu kuch ta’sirida jism oladigan tezlanishga nisbati bilan xarakterlanadigan fizik kattalik."
+  },
+  {
+    "q": "Nyutonning uchinchi qonuniga ta’rif bering?",
+    "options": [
+      "Ikki jismning o‘zaro ta’sir kuchlari kichiklik jihatidan teng bo‘lib, qarama-qarshi yo‘nalgan.",
+      "Bir jismning o‘zaro ta’sir kuchlari kattalik jihatidan teng bo‘lib, qarama-qarshi yo‘nalgan.",
+      "Ikki jismning o‘zaro ta’sir kuchlari kattalik jihatidan teng bo‘lib, jismlarni birlashtiruvchi to‘g‘ri chiziq bo‘ylab qarama-qarshi yo‘nalgan.",
+      "Bir jismning o‘zaro ta’sir kuchlari kichiklik jihatidan teng bo‘lib, yo‘nalgan."
+    ],
+    "a": "Ikki jismning o‘zaro ta’sir kuchlari kattalik jihatidan teng bo‘lib, jismlarni birlashtiruvchi to‘g‘ri chiziq bo‘ylab qarama-qarshi yo‘nalgan."
+  },
+  {
+    "q": "Mexanik ish formulasi va o‘lchov birligini ko‘rsating?",
+    "options": [
+      "A = F·s·cosα, Joul",
+      "F = μ·m·g, Nyuton",
+      "A = F / s, Pa",
+      "A = F·s·cosα, Vatt"
+    ],
+    "a": "A = F·s·cosα, Joul"
+  },
+  {
+    "q": "Kinetik energiya formulasi va o‘lchov birligini ko‘rsating?",
+    "options": [
+      "E = S / t, Pa",
+      "E = m·v² / 2, Joul",
+      "E = F·s, Vatt",
+      "E = m·v / t, Joul"
+    ],
+    "a": "E = m·v² / 2, Joul"
+  },
+  {
+    "q": "Butun olam tortishish (gravitasiya) qonunining formulasini ko‘rsating?",
+    "options": [
+      "F = γ·m₁·m₂ / r",
+      "F = m₁·m₂ / r²",
+      "F = γ·m₁·m₂ / r²",
+      "F = −γ·m₁·m₂ / r²"
+    ],
+    "a": "F = γ·m₁·m₂ / r²"
+  },
+  {
+    "q": "Butun olam tortishish (gravitasiya) doimiysining qiymati va o‘lchov birligini ko‘rsating?",
+    "options": [
+      "γ = 6,67·10⁻¹¹ N·m/kg",
+      "γ = 6,67·10⁻¹¹ N·m²/kg²",
+      "γ = 6,67·10⁻¹¹ N·kg²",
+      "γ = 6,67·10⁻¹¹ m²/kg²"
+    ],
+    "a": "γ = 6,67·10⁻¹¹ N·m²/kg²"
+  },
+  {
+    "q": "Ishning asosiy o‘lchov birligi Joul (J) ga berilgan to‘g‘ri ta’rifni ko‘rsating?",
+    "options": [
+      "1 J — 1 sekund davomida 1 joul ish bajaradigan mashinaning quvvati.",
+      "1 J — 1 m/s tezlik bilan harakat qiluvchi moddiy nuqtaning 1 s dagi yo‘li.",
+      "1 J — 1 N kuch ta’sirida jismni 1 m masofaga ko‘chirishda bajarilgan ish.",
+      "1 J — tezlanish bilan harakat qilayotgan moddiy nuqtaning tezligi."
+    ],
+    "a": "1 J — 1 N kuch ta’sirida jismni 1 m masofaga ko‘chirishda bajarilgan ish."
+  },
+  {
+    "q": "Chiziqli va burchak tezliklar orasidagi bog‘lanish formulasini ko‘rsating?",
+    "options": [
+      "v = ω + r",
+      "v = ω·r",
+      "v = ω − r",
+      "v = ω / r"
+    ],
+    "a": "v = ω·r"
+  },
+  {
+    "q": "Jismning erkin tushish tezlanishi Yer tortish maydonining shu jism joylashgan nuqtasidagi ............dir.",
+    "options": [
+      "tezligi",
+      "kuchlanganligi",
+      "kuchi",
+      "ko‘chishi"
+    ],
+    "a": "kuchlanganligi"
+  },
+  {
+    "q": "Normal tezlanish formulasini ko‘rsating?",
+    "options": [
+      "aₙ = v / t",
+      "aₙ = v·t",
+      "aₙ = v² / r",
+      "aₙ = v² / t"
+    ],
+    "a": "aₙ = v² / r"
+  },
+  {
+    "q": "Jismning og‘irlik kuchi Yerning tortish maydonining mazkur nuqtasi uchun ............ kattalikdir.",
+    "options": [
+      "kamayuvchi",
+      "o‘zgarmas",
+      "o‘zgaruvchan",
+      "ortuvchi"
+    ],
+    "a": "o‘zgaruvchan"
+  },
+  {
+    "q": "Tangensial tezlanish formulasini ko‘rsating?",
+    "options": [
+      "aₜ = v² / r",
+      "aₜ = ε·r",
+      "aₜ = v + t",
+      "aₜ = v + a / t"
+    ],
+    "a": "aₜ = ε·r"
+  },
+  {
+    "q": "Jismning ............ deganda jism tomonidan o‘zi osilib turgan ipga yoki bosib turgan tayanchga ta’sir etadigan kuch tushuniladi.",
+    "options": [
+      "tezligi",
+      "og‘irligi",
+      "vazni",
+      "yengilmasligi"
+    ],
+    "a": "vazni"
+  },
+  {
+    "q": "Kuch moment formulasini ko‘rsating?",
+    "options": [
+      "M = F / l",
+      "M = F − l",
+      "M = F·l",
+      "M = F + l"
+    ],
+    "a": "M = F·l"
+  },
+  {
+    "q": "O‘ta yuklanish deb nimaga aytiladi?",
+    "options": [
+      "Vazn og‘irlik kuchiga tenglashib qolgan holatlarga aytiladi",
+      "Vazn og‘irlik kuchidan kamayib ketgan holatlarga aytiladi",
+      "Vazn og‘irlik kuchidan ortib ketgan holatlarga aytiladi",
+      "Vazn og‘irlik kuchidan juda ko‘p marta kamayib ketgan holatlarga aytiladi"
+    ],
+    "a": "Vazn og‘irlik kuchidan ortib ketgan holatlarga aytiladi"
+  },
+  {
+    "q": "Kuch momentining “SI” dagi o‘lchov birligini ko‘rsating?",
+    "options": [
+      "J/m",
+      "N/m",
+      "N·m",
+      "J·m"
+    ],
+    "a": "N·m"
+  },
+  {
+    "q": "Potensial energiya deb nimaga aytiladi?",
+    "options": [
+      "Jismlarning ish bajarish qobiliyatiga bog‘liq bo‘lgan energiya",
+      "Jismlarning harakat tezligiga bog‘liq bo‘lgan energiya",
+      "Jismlarning bir-biriga nisbatan joylashishiga bog‘liq bo‘lgan energiya",
+      "Jismlarning joylashuvi va harakatiga bog‘liq bo‘lgan energiya"
+    ],
+    "a": "Jismlarning bir-biriga nisbatan joylashishiga bog‘liq bo‘lgan energiya"
+  },
+  {
+    "q": "Maydon ixtiyoriy nuqtasining potensiali deb nimaga aytiladi?",
+    "options": [
+      "Mazkur nuqtadagi maksimal energiya",
+      "Mazkur nuqtadagi kuchlanganlik",
+      "Mazkur nuqtaga kiritilgan birlik massali sinov jismning potensial energiyasiga teng kattalik",
+      "Mazkur nuqtaga kiritilgan birlik massali jismning kinetik energiyasi"
+    ],
+    "a": "Mazkur nuqtaga kiritilgan birlik massali sinov jismning potensial energiyasiga teng kattalik"
+  },
+  {
+    "q": "Energiyaning saqlanish qonunining eng umumiy ta’rifini ko‘rsating?",
+    "options": [
+      "Energiya faqat ish bajaradi",
+      "Energiya yo‘qolmaydi va yo‘qdan paydo bo‘lmaydi, faqat bir ko‘rinishdan boshqasiga aylanadi",
+      "Energiya doimo issiqlikka aylanadi",
+      "Energiya har doim yo‘qoladi"
+    ],
+    "a": "Energiya yo‘qolmaydi va yo‘qdan paydo bo‘lmaydi, faqat bir ko‘rinishdan boshqasiga aylanadi"
+  },
+  {
+    "q": "Inersiya momentining “SI” dagi o‘lchov birligini ko‘rsating?",
+    "options": [
+      "N·m",
+      "kg·m",
+      "kg·m²",
+      "J"
+    ],
+    "a": "kg·m²"
+  },
+  {
+    "q": "Fizikada urilish tushunchasiga ta’rif bering?",
+    "options": [
+      "Jismlarning katta fazoda uzoq vaqtli harakati",
+      "Jismlarning to‘xtab qolishi",
+      "Jismlarning kichik fazoda qisqa vaqtli o‘zaro ta’sirlashuvi",
+      "Jismlarning bir xil tezlikda harakati"
+    ],
+    "a": "Jismlarning kichik fazoda qisqa vaqtli o‘zaro ta’sirlashuvi"
+  },
+  {
+    "q": "Qattiq jism impuls momenti formulasini ko‘rsating?",
+    "options": [
+      "L = J·ω²",
+      "L = J·ω",
+      "L = J·ω³",
+      "L = J·ω⁴"
+    ],
+    "a": "L = J·ω"
+  },
+  {
+    "q": "Sharning markazidan o‘tuvchi o‘qqa nisbatan inersiya momenti formulasini ko‘rsating?",
+    "options": [
+      "J = m·r²",
+      "J = J₀ + m·d²",
+      "J = 2/5·m·r²",
+      "J = 1/3·m·r²"
+    ],
+    "a": "J = 2/5·m·r²"
+  },
+  {
+    "q": "Absolyut noelastik urilishga yaqin bo‘lgan urilishlar qaysi?",
+    "options": [
+      "Po‘lat va loy jismlarining urilishi",
+      "Plastilin, loy, qo‘rg‘oshin jismlarining urilishi",
+      "Faqat po‘lat jismlarining urilishi",
+      "Po‘lat, qo‘rg‘oshin, fil suyagi jismlarining urilishi"
+    ],
+    "a": "Plastilin, loy, qo‘rg‘oshin jismlarining urilishi"
+  },
+  {
+    "q": "Absolyut elastik urilishga yaqin bo‘lgan urilishlar qaysi?",
+    "options": [
+      "Plastilin va loy jismlarining urilishi",
+      "Po‘lat va fil suyagi jismlarining urilishi",
+      "Yumshoq jismlar urilishi",
+      "Qo‘rg‘oshin jismlarining urilishi"
+    ],
+    "a": "Po‘lat va fil suyagi jismlarining urilishi"
+  },
+  {
+    "q": "Deformatsiyalanmaydigan jism qanday ataladi?",
+    "options": [
+      "absolyut yumshoq jism",
+      "absolyut qora jism",
+      "absolyut qattiq jism",
+      "absolyut qattiq yoki yumshoq jism"
+    ],
+    "a": "absolyut qattiq jism"
+  },
+  {
+    "q": "Inersiya momentining “SI” dagi o‘lchov birligini ko‘rsating?",
+    "options": [
+      "kg·m",
+      "N·m",
+      "kg·m²",
+      "J"
+    ],
+    "a": "kg·m²"
+  },
+  {
+    "q": "Fizikada urilish tushunchasiga ta’rif bering?",
+    "options": [
+      "Jismlarning katta fazoda uzoq vaqtli harakati",
+      "Jismlarning kichik fazoda qisqa vaqtli o‘zaro ta’sirlashuvi",
+      "Jismlarning bir xil tezlikda harakati",
+      "Jismlarning to‘xtab qolishi"
+    ],
+    "a": "Jismlarning kichik fazoda qisqa vaqtli o‘zaro ta’sirlashuvi"
+  },
+  {
+    "q": "Qattiq jism impuls momenti formulasini ko‘rsating?",
+    "options": [
+      "L = J·ω²",
+      "L = J·ω³",
+      "L = J·ω",
+      "L = J·ω⁴"
+    ],
+    "a": "L = J·ω"
+  },
+  {
+    "q": "Sharning markazidan o‘tuvchi o‘qqa nisbatan inersiya momenti formulasini ko‘rsating?",
+    "options": [
+      "J = m·r²",
+      "J = 1/3·m·r²",
+      "J = J₀ + m·d²",
+      "J = 2/5·m·r²"
+    ],
+    "a": "J = 2/5·m·r²"
+  },
+  {
+    "q": "Absolyut noelastik urilishga yaqin bo‘lgan urilishlar qaysi?",
+    "options": [
+      "Po‘lat va loy jismlarining urilishi",
+      "Plastilin, loy, qo‘rg‘oshin jismlarining urilishi",
+      "Faqat po‘lat jismlarining urilishi",
+      "Po‘lat, qo‘rg‘oshin, fil suyagi jismlarining urilishi"
+    ],
+    "a": "Plastilin, loy, qo‘rg‘oshin jismlarining urilishi"
+  },
+  {
+    "q": "Absolyut elastik urilishga yaqin bo‘lgan urilishlar qaysi?",
+    "options": [
+      "Plastilin va loy jismlarining urilishi",
+      "Qo‘rg‘oshin jismlarining urilishi",
+      "Po‘lat va fil suyagi jismlarining urilishi",
+      "Yumshoq jismlar urilishi"
+    ],
+    "a": "Po‘lat va fil suyagi jismlarining urilishi"
+  },
+  {
+    "q": "Deformatsiyalanmaydigan jism qanday ataladi?",
+    "options": [
+      "absolyut yumshoq jism",
+      "absolyut qattiq jism",
+      "absolyut qora jism",
+      "absolyut qattiq yoki yumshoq jism"
+    ],
+    "a": "absolyut qattiq jism"
+  },
+  {
+    "q": "Jismning inersiya momenti shu jismning aylana harakatga nisbatan ........ ifodalaydigan kattalikdir.",
+    "options": [
+      "tezligini",
+      "massasini",
+      "inersiya momentini",
+      "inersiyasini"
+    ],
+    "a": "inersiyasini"
+  },
+  {
+    "q": "Mexanika necha qismdan iborat?",
+    "options": [
+      "2",
+      "5",
+      "3",
+      "4"
+    ],
+    "a": "3"
+  },
+  {
+    "q": "36 km/soat ni m/s ga aylantiring.",
+    "options": [
+      "15",
+      "20",
+      "10",
+      "30"
+    ],
+    "a": "10"
+  },
+  {
+    "q": "Trayektoriya nima?",
+    "options": [
+      "Jismning bosib o‘tgan masofasi",
+      "Jismning fazoda qoldirgan izi",
+      "Boshlang‘ich va oxirgi vaziyatni tutashtiruvchi chiziq",
+      "Jism tezligining o‘zgarishi"
+    ],
+    "a": "Jismning fazoda qoldirgan izi"
+  },
+  {
+    "q": "Statika nimani o‘rganadi?",
+    "options": [
+      "Faqat tekis harakatni",
+      "Muvozanat shartlarini o‘rganadigan mexanikaning bir bo‘limini",
+      "Harakat turlarini",
+      "Harakat sabablarini"
+    ],
+    "a": "Muvozanat shartlarini o‘rganadigan mexanikaning bir bo‘limini"
+  },
+  {
+    "q": "Nexia avtomobili to‘g‘ri chiziqli tekis harakatlanib 120 km masofani 2 soatda bosib o‘tdi. Tezligini toping (m/s).",
+    "options": [
+      "16,7",
+      "40",
+      "60",
+      "30"
+    ],
+    "a": "16,7"
+  },
+  {
+    "q": "Burchak tezlik ifodasini toping.",
+    "options": [
+      "ω = dφ / dt",
+      "v = ds / dt",
+      "a = dv / dt",
+      "φ = ω·t"
+    ],
+    "a": "ω = dφ / dt"
+  },
+  {
+    "q": "Bir marta to‘liq aylanish uchun sarflangan vaqt nima deyiladi?",
+    "options": [
+      "burchakli tezlik",
+      "aylanish chastotasi",
+      "aylanish davri",
+      "burchakli tezlanish"
+    ],
+    "a": "aylanish davri"
+  },
+  {
+    "q": "Chastotaning birligi qanday?",
+    "options": [
+      "sekund",
+      "rad/s",
+      "Amper",
+      "Hz"
+    ],
+    "a": "Hz"
+  },
+  {
+    "q": "Kuchning birligi qanday?",
+    "options": [
+      "Joul",
+      "Watt",
+      "Nyuton",
+      "Amper"
+    ],
+    "a": "Nyuton"
+  },
+  {
+    "q": "Stol ustida turgan 8 kg massali jismning stolga ta’sir etuvchi og‘irlik kuchini aniqlang (g≈10 m/s²).",
+    "options": [
+      "60",
+      "40",
+      "80",
+      "70"
+    ],
+    "a": "80"
+  },
+  {
+    "q": "Jismga tashqi kuch ta’sir etilmaguncha u o‘zining tinch yoki to‘g‘ri chiziqli tekis harakatini saqlaydi. Bu Nyutonning qaysi qonuni?",
+    "options": [
+      "2-qonuni",
+      "3-qonuni",
+      "4-qonuni",
+      "1-qonuni"
+    ],
+    "a": "1-qonuni"
+  },
+  {
+    "q": "Nyutonning 3-qonuni qanday ataladi?",
+    "options": [
+      "inersiya qonuni",
+      "dalton qonuni",
+      "aks ta’sir qonuni",
+      "mustaqillik qonuni"
+    ],
+    "a": "aks ta’sir qonuni"
+  },
+  {
+    "q": "Bir-biriga tegib turgan jismlarning bir-biriga nisbatan sirpanishiga to‘sqinlik qiluvchi kuch qanday nomlanadi?",
+    "options": [
+      "og‘irlik kuchi",
+      "elastiklik kuchi",
+      "taranglik kuchi",
+      "ishqalanish kuchi"
+    ],
+    "a": "ishqalanish kuchi"
+  },
+  {
+    "q": "Burilish burchagidan vaqt bo‘yicha olingan birinchi tartibli hosila qaysi kattalikka teng?",
+    "options": [
+      "normal tezlanish",
+      "burchakli tezlik",
+      "tangensial tezlanish",
+      "burchakli tezlanish"
+    ],
+    "a": "burchakli tezlik"
+  },
+  {
+    "q": "Inersiya momenti qaysi harf bilan belgilanadi?",
+    "options": [
+      "R",
+      "U",
+      "B",
+      "I"
+    ],
+    "a": "I"
+  },
+  {
+    "q": "O‘zaro ta’sirlashuvchi jismlarning bir-biriga nisbatan joylashuvi tufayli ega bo‘lgan energiyasi … deb ataladi.",
+    "options": [
+      "issiqlik energiya",
+      "kinetik energiya",
+      "potensial energiya",
+      "ichki energiya"
+    ],
+    "a": "potensial energiya"
+  },
+  {
+    "q": "Massasi 60 kg bo‘lgan quruvchi 45 m balandlikda ishlamoqda. Uning potensial energiyasini hisoblang (g≈10 m/s²).",
+    "options": [
+      "25 kJ",
+      "60 kJ",
+      "27 kJ",
+      "270 kJ"
+    ],
+    "a": "27 kJ"
+  },
+  {
+    "q": "Energiya ta’rifini toping.",
+    "options": [
+      "Jismning harakati davomida bosib o‘tgan masofasi",
+      "Jismning ish bajarish qobiliyati",
+      "Jismning tezligi tufayli hosil bo‘lgan kattalik",
+      "Jismning vaziyati tufayli hosil bo‘lgan kattalik"
+    ],
+    "a": "Jismning ish bajarish qobiliyati"
+  },
+  {
+    "q": "Ishning birligi qanday?",
+    "options": [
+      "Watt",
+      "Candela",
+      "Kulon",
+      "Joul"
+    ],
+    "a": "Joul"
+  },
+  {
+    "q": "Jismning tezligi tufayli hosil bo‘lgan energiya qanday nomlanadi?",
+    "options": [
+      "potensial energiya",
+      "ichki energiya",
+      "mexanik energiya",
+      "kinetik energiya"
+    ],
+    "a": "kinetik energiya"
+  },
+  {
+    "q": "Sinus yoki kosinus qonuniga nisbatan tebranish qanday nomlanadi?",
+    "options": [
+      "Erkin tebranish",
+      "Elektromagnit tebranish",
+      "Majburiy tebranish",
+      "Garmonik tebranish"
+    ],
+    "a": "Garmonik tebranish"
+  },
+  {
+    "q": "Muvozanat vaziyatidan eng chetki vaziyatgacha bo‘lgan masofa nima deyiladi?",
+    "options": [
+      "to‘lqin uzunligi",
+      "yo‘l",
+      "amplituda",
+      "masofa"
+    ],
+    "a": "amplituda"
+  },
+  {
+    "q": "2π s ichidagi tebranish soniga … deb ataladi.",
+    "options": [
+      "tebranish davri",
+      "maksimal tezlik",
+      "tebranish chastotasi",
+      "siklik chastota"
+    ],
+    "a": "siklik chastota"
+  },
+  {
+    "q": "Prujinali mayatnikning tebranish davri, chastotasi yoki siklik chastotasi nimalarga bog‘liq?",
+    "options": [
+      "faqat prujinaning materialiga",
+      "erkin tushish tezlanishiga",
+      "jism massasiga va prujinaning bikrligiga",
+      "prujinaning uzunligiga"
+    ],
+    "a": "jism massasiga va prujinaning bikrligiga"
+  },
+  {
+    "q": "Bir-biriga nisbatan tekis va to‘g‘ri chiziqli harakat qilayotgan sanoq tizimlarida Nyuton qonunlari bajarilsa, bunday sanoq tizimlari … deb ataladi.",
+    "options": [
+      "sanoq sistema",
+      "noinersial sanoq tizim",
+      "inersial sanoq tizimlari",
+      "sanoq jism"
+    ],
+    "a": "inersial sanoq tizimlari"
+  },
+  {
+    "q": "Relativistik massani topish formulasini ko‘rsating.",
+    "options": [
+      "m = F / a",
+      "m = m₀ / √(1 − v² / c²)",
+      "m = F / g",
+      "m = v · p"
+    ],
+    "a": "m = m₀ / √(1 − v² / c²)"
+  },
+  {
+    "q": "√(1 − v² / c²) formula nimani ifodalaydi?",
+    "options": [
+      "Relativistik tezlik",
+      "Relativistik vaqt",
+      "Relativistik massa",
+      "Relativistik energiya"
+    ],
+    "a": "Relativistik vaqt"
+  },
+  {
+    "q": "Gazni to‘g‘ri davom ettiring: “Issiqlik almashmaydigan jarayon … ”",
+    "options": [
+      "izobarik",
+      "izoxorik",
+      "izotermik",
+      "adiabatik"
+    ],
+    "a": "adiabatik"
+  },
+  {
+    "q": "Berilgan tenglamalar orasidan izoxorik jarayon tenglamasini toping.",
+    "options": [
+      "P/T = const",
+      "V/T = const",
+      "P·V = const",
+      "P·T = const"
+    ],
+    "a": "P/T = const"
+  },
+  {
+    "q": "Izoxorik jarayon uchun termodinamikaning birinchi qonuni formulasini ko‘rsating.",
+    "options": [
+      "Q = A",
+      "Q = A + ΔU",
+      "Q = ΔU",
+      "P/T = const"
+    ],
+    "a": "Q = ΔU"
+  },
+  {
+    "q": "Quyidagi kattaliklardan Avogadro sonini ko‘rsating.",
+    "options": [
+      "0,023·10²³ 1/mol",
+      "6,023·10²³ 1/mol",
+      "6,023·10²⁰ 1/mol",
+      "23·10²³ 1/mol"
+    ],
+    "a": "6,023·10²³ 1/mol"
+  },
+  {
+    "q": "Termodinamikaning birinchi qonuni nimani ifodalaydi?",
+    "options": [
+      "Nyutonning birinchi qonunini",
+      "Inersiya qonunini",
+      "Aks ta’sir qonunini",
+      "Energiya saqlanish qonunini"
+    ],
+    "a": "Energiya saqlanish qonunini"
+  },
+  {
+    "q": "Moddaning … deb, 1 kg moddaning 1°C ga isitishga sarf bo‘lgan issiqlik miqdoriga teng fizik kattalik ataladi.",
+    "options": [
+      "zichligi",
+      "modda miqdori",
+      "solishtirma issiqlik sig‘imi",
+      "hajmi"
+    ],
+    "a": "solishtirma issiqlik sig‘imi"
+  },
+  {
+    "q": "Modda temperaturasi o‘zgarmas bo‘lgan jarayon qanday nomlanadi?",
+    "options": [
+      "adiabatik",
+      "izoxorik",
+      "izobarik",
+      "izotermik"
+    ],
+    "a": "izotermik"
+  },
+  {
+    "q": "Adiabatik jarayon qanday jarayon?",
+    "options": [
+      "hajmi o‘zgarmas bo‘lgan jarayon",
+      "bosimi o‘zgarmas bo‘lgan jarayon",
+      "temperaturasi o‘zgarmas bo‘lgan jarayon",
+      "tashqi muhit bilan issiqlik almashmaydigan jarayon"
+    ],
+    "a": "tashqi muhit bilan issiqlik almashmaydigan jarayon"
+  },
+
+
+  {
+    "q": "Bu grafikda izobarik jarayonlarning grafigini aniqlang.",
+    "image": "image.png",
+    "options": [
+      "3–2, 4–1",
+      "2–1, 4–1",
+      "3–4, 2–1",
+      "3–2, 3–4"
+    ],
+    "a": "3–4, 2–1"
+  },
+  {
+    "q": "Zaryadlarning o‘zaro ta’sir kuchi qanday nomlanadi?",
+    "options": [
+      "Elastiklik kuchi",
+      "Ishqalanish kuchi",
+      "Og‘irlik kuchi",
+      "Kulon kuchi"
+    ],
+    "a": "Kulon kuchi"
+  },
+  {
+    "q": "Kulon kuchiga ta’rif bering.",
+    "options": [
+      "Vaqt birligi ichida bosib o‘tilgan yo‘l",
+      "Zaryadlarning o‘zaro ta’sir kuchi zaryadlar ko‘paytmasiga to‘g‘ri, masofa kvadratiga teskari proportsional",
+      "Jismning harakati davomida olgan tezlanishi",
+      "Vaqt birligi ichida tezlikning o‘zgarishi"
+    ],
+    "a": "Zaryadlarning o‘zaro ta’sir kuchi zaryadlar ko‘paytmasiga to‘g‘ri, masofa kvadratiga teskari proportsional"
+  },
+  {
+    "q": "Zaryad miqdorining birligi qanday?",
+    "options": [
+      "V",
+      "N",
+      "C",
+      "F"
+    ],
+    "a": "C"
+  },
+  {
+    "q": "Zaryadlar o‘zaro qanday ta’sirlashadi?",
+    "options": [
+      "Zaryadlar faqat tortishadi",
+      "Zaryadlar itarishmaydi ham tortishmaydi ham",
+      "Qarama-qarshi zaryadlar tortishadi, bir xil zaryadlar itarishadi",
+      "Faqat bir xil zaryadlar tortishadi"
+    ],
+    "a": "Qarama-qarshi zaryadlar tortishadi, bir xil zaryadlar itarishadi"
+  },
+  {
+    "q": "Elektr maydon kuchlanganligi qanday kattalik?",
+    "options": [
+      "Oddiy kattalik",
+      "Skalyar kattalik",
+      "Murakkab kattalik",
+      "Vektor kattalik"
+    ],
+    "a": "Vektor kattalik"
+  },
+  {
+    "q": "Elektr zaryadining bajargan ishini ifodasini aniqlang.",
+    "options": [
+      "A = U·I·t",
+      "A = k·q₁·q₂ / r",
+      "A = F·l·cosα",
+      "A = W₁ − W₂"
+    ],
+    "a": "A = k·q₁·q₂ / r"
+  },
+  {
+    "q": "Ishning birligi to‘g‘ri ko‘rsatilgan javobni aniqlang.",
+    "options": [
+      "A",
+      "s",
+      "W",
+      "J"
+    ],
+    "a": "J"
+  },
+  {
+    "q": "Zaryad miqdori 80 C ga teng va potensiallar farqi 2 V bo‘lsa, bajarilgan ishni aniqlang.",
+    "options": [
+      "20 J",
+      "160 J",
+      "320 J",
+      "40 J"
+    ],
+    "a": "160 J"
+  },
+  {
+    "q": "Ish qanday kattalik?",
+    "options": [
+      "Vektor kattalik",
+      "Oddiy kattalik",
+      "Skalyar kattalik",
+      "Murakkab kattalik"
+    ],
+    "a": "Skalyar kattalik"
+  },
+  {
+    "q": "Kondensator sig‘imining birligi qanday?",
+    "options": [
+      "V",
+      "A",
+      "J",
+      "F"
+    ],
+    "a": "F"
+  },
+  {
+    "q": "Yassi kondensatorning sig‘imi ifodasini ko‘rsating.",
+    "options": [
+      "C = q / φ",
+      "C = 4π ε₀ R",
+      "C = εε₀ S / d",
+      "C = 4π ε₀ rR / (R − r)"
+    ],
+    "a": "C = εε₀ S / d"
+  },
+  {
+    "q": "Biz katta sig‘imga erishish uchun kondensatorlarni qanday ulashimiz kerak?",
+    "options": [
+      "ketma-ket",
+      "aralash",
+      "birin-ketin",
+      "parallel"
+    ],
+    "a": "parallel"
+  },
+  {
+    "q": "Aralash ulash qanday ulash?",
+    "options": [
+      "faqat ketma-ket",
+      "parallel",
+      "ketma-ket va parallel ulash",
+      "birin-ketin"
+    ],
+    "a": "ketma-ket va parallel ulash"
+  },
+  {
+    "q": "Tok kuchini o‘lchovchi asbob nomi qaysi?",
+    "options": [
+      "Ommetr",
+      "Akselerometr",
+      "Ampermetr",
+      "Voltmetr"
+    ],
+    "a": "Ampermetr"
+  },
+  {
+    "q": "Joul–Lens qonunining ifodasini ko‘rsating.",
+    "options": [
+      "I = dq / dt",
+      "Q = I²Rt",
+      "N = q / e",
+      "j = dI / dS"
+    ],
+    "a": "Q = I²Rt"
+  },
+  {
+    "q": "Elektr qarshiligining birligi to‘g‘ri ko‘rsatilgan javobni belgilang.",
+    "options": [
+      "A",
+      "V",
+      "W",
+      "Ω"
+    ],
+    "a": "Ω"
+  },
+  {
+    "q": "I = ε / (R + r) formulasi nimani ifodalaydi?",
+    "options": [
+      "Zanjirning bir qismi uchun Om qonuni",
+      "Joul–Lens qonuni",
+      "Butun zanjir uchun Om qonuni",
+      "Kirxgof qoidasi"
+    ],
+    "a": "Butun zanjir uchun Om qonuni"
+  },
+  {
+    "q": "Magnit maydonning tokli o‘tkazgichga ta’sir kuchi qanday nomlanadi?",
+    "options": [
+      "Ishqalanish kuchi",
+      "Elastiklik kuchi",
+      "Og‘irlik kuchi",
+      "Amper kuchi"
+    ],
+    "a": "Amper kuchi"
+  },
+  {
+    "q": "Magnit maydon zaryadli zarrachaga ta’sir kuchi qanday nomlanadi?",
+    "options": [
+      "Og‘irlik kuchi",
+      "Ishqalanish kuchi",
+      "Lorens kuchi",
+      "Elastiklik kuchi"
+    ],
+    "a": "Lorens kuchi"
+  },
+  {
+    "q": "Magnit induksiya oqimining birligi qanday?",
+    "options": [
+      "J (Joul)",
+      "N (Nyuton)",
+      "W (Vatt)",
+      "Wb (Veber)"
+    ],
+    "a": "Wb (Veber)"
+  },
+  {
+    "q": "F = Bqv sinα formulasi orqali qaysi kuch hisoblanadi?",
+    "options": [
+      "Og‘irlik kuchi",
+      "Elastiklik kuchi",
+      "Ishqalanish kuchi",
+      "Lorens kuchi"
+    ],
+    "a": "Lorens kuchi"
+  },
+  {
+    "q": "Magnit maydon induksiyasini magnit maydon kuchlanganligiga bog‘liqlik ifodasini toping.",
+    "options": [
+      "B = μ₀ μ H",
+      "B = F / q",
+      "B = Φ / S",
+      "B = I / R"
+    ],
+    "a": "B = μ₀ μ H"
+  },
+  {
+    "q": "Magnit maydon kuchlanganligini qanday harf bilan belgilaymiz?",
+    "options": [
+      "F",
+      "I",
+      "B",
+      "H"
+    ],
+    "a": "H"
+  },
+  {
+    "q": "Eng katta magnitlik xususiyati to‘g‘ri ko‘rsatilgan javobni aniqlang.",
+    "options": [
+      "Diamagnit",
+      "Paramagnit",
+      "To‘g‘ri javob yo‘q",
+      "Ferromagnit"
+    ],
+    "a": "Ferromagnit"
+  },
+  {
+    "q": "Matematik mayatnikning tebranish davri formulasini ko‘rsating.",
+    "options": [
+      "T = √(ℓ / g)",
+      "T = 2π √(ℓ / g)",
+      "T = 2π √(g / ℓ)",
+      "T = 2π √(ℓ·g)"
+    ],
+    "a": "T = 2π √(ℓ / g)"
+  },
+  {
+    "q": "Elektr zaryadining bajargan ishini ifodasini aniqlang.",
+    "options": [
+      "A = U·I·t",
+      "A = F·l",
+      "A = k·q₁·q₂ / r",
+      "A = m·g·h"
+    ],
+    "a": "A = k·q₁·q₂ / r"
+  },
+  {
+    "q": "Ishning birligi to‘g‘ri ko‘rsatilgan javobni aniqlang.",
+    "options": [
+      "V",
+      "J",
+      "W",
+      "A"
+    ],
+    "a": "J"
+  },
+  {
+    "q": "Zaryad miqdori 80 C va potensiallar farqi 2 V bo‘lsa, bajarilgan ish qancha?",
+    "options": [
+      "320 J",
+      "40 J",
+      "160 J",
+      "20 J"
+    ],
+    "a": "160 J"
+  },
+  {
+    "q": "Ish qanday kattalik?",
+    "options": [
+      "Vektor kattalik",
+      "Murakkab kattalik",
+      "Oddiy kattalik",
+      "Skalyar kattalik"
+    ],
+    "a": "Skalyar kattalik"
+  },
+  {
+    "q": "Kondensator sig‘imining birligi qaysi?",
+    "options": [
+      "V",
+      "F",
+      "A",
+      "J"
+    ],
+    "a": "F"
+  },
+  {
+    "q": "Yassi kondensatorning sig‘imi ifodasini ko‘rsating.",
+    "options": [
+      "C = q / φ",
+      "C = 4πϵ₀R",
+      "C = ϵϵ₀S / d",
+      "C = U / I"
+    ],
+    "a": "C = ϵϵ₀S / d"
+  },
+  {
+    "q": "Katta sig‘imga erishish uchun kondensatorlar qanday ulanadi?",
+    "options": [
+      "Ketma-ket",
+      "Aralash",
+      "Birin-ketin",
+      "Parallel"
+    ],
+    "a": "Parallel"
+  },
+  {
+    "q": "Aralash ulash qanday ulash?",
+    "options": [
+      "Faqat ketma-ket",
+      "Faqat parallel",
+      "Ketma-ket va parallel",
+      "Birin-ketin"
+    ],
+    "a": "Ketma-ket va parallel"
+  },
+  {
+    "q": "Tok kuchini o‘lchovchi asbob nomi qaysi?",
+    "options": [
+      "Voltmetr",
+      "Ampermetr",
+      "Ommetr",
+      "Akselerometr"
+    ],
+    "a": "Ampermetr"
+  },
+  {
+    "q": "Joul–Lens qonuni ifodasini ko‘rsating.",
+    "options": [
+      "I = dq/dt",
+      "j = dI/dS",
+      "Q = I²Rt",
+      "N = q/e"
+    ],
+    "a": "Q = I²Rt"
+  },
+  {
+    "q": "Elektr qarshiligining birligi qaysi?",
+    "options": [
+      "V",
+      "Ω",
+      "W",
+      "A"
+    ],
+    "a": "Ω"
+  },
+  {
+    "q": "I = ε / (R + r) formulasi nimani ifodalaydi?",
+    "options": [
+      "Joul–Lens qonuni",
+      "Zanjirning bir qismi uchun Om qonuni",
+      "Butun zanjir uchun Om qonuni",
+      "Kirxgof qoidasi"
+    ],
+    "a": "Butun zanjir uchun Om qonuni"
+  },
+  {
+    "q": "Magnit maydonning tokli o‘tkazgichga ta’sir kuchi qanday ataladi?",
+    "options": [
+      "Lorens kuchi",
+      "Amper kuchi",
+      "Og‘irlik kuchi",
+      "Ishqalanish kuchi"
+    ],
+    "a": "Amper kuchi"
+  },
+  {
+    "q": "Magnit maydonning zaryadli zarrachaga ta’sir kuchi nima?",
+    "options": [
+      "Og‘irlik kuchi",
+      "Elastiklik kuchi",
+      "Lorens kuchi",
+      "Ishqalanish kuchi"
+    ],
+    "a": "Lorens kuchi"
+  },
+  {
+    "q": "Magnit induksiya oqimining birligi qaysi?",
+    "options": [
+      "Tesla",
+      "Nyuton",
+      "Veber",
+      "Vatt"
+    ],
+    "a": "Veber"
+  },
+  {
+    "q": "Magnit maydon kuchlanganligi qaysi harf bilan belgilanadi?",
+    "options": [
+      "B",
+      "H",
+      "I",
+      "F"
+    ],
+    "a": "H"
+  },
+  {
+    "q": "Eng katta magnit xossaga ega modda qaysi?",
+    "options": [
+      "Diamagnit",
+      "Paramagnit",
+      "To‘g‘ri javob yo‘q",
+      "Ferromagnit"
+    ],
+    "a": "Ferromagnit"
+  },
+  {
+    "q": "Matematik mayatnikning tebranish davri formulasi qaysi?",
+    "options": [
+      "T = 2π√(g/l)",
+      "T = √(l/g)",
+      "T = 2π√(l/g)",
+      "T = l/g"
+    ],
+    "a": "T = 2π√(l/g)"
+  },
+  {
+    "q": "Matematik mayatnikning tebranish davri formulasini ko‘rsating?",
+    "options": [
+      "T = 2π√(g/l)",
+      "T = √(l/g)",
+      "T = 2π√(l/g)",
+      "T = 2π√(l·g)"
+    ],
+    "a": "T = 2π√(l/g)"
+  },
+  {
+    "q": "Tashqi muhit bilan issiqlik almashinmaydigan jarayon qanday ataladi?",
+    "options": [
+      "izotermik",
+      "izobarik",
+      "adiabatik",
+      "izoxorik"
+    ],
+    "a": "adiabatik"
+  },
+  {
+    "q": "Prujinali mayatnikning tebranish davri formulasini ko‘rsating?",
+    "options": [
+      "T = 2π√(m/k)",
+      "T = 2π√(k/m)",
+      "T = √(m/k)",
+      "T = 1/(2π)√(m/k)"
+    ],
+    "a": "T = 2π√(m/k)"
+  },
+  {
+    "q": "1 kg gaz temperaturasi 1 K ga oshishi uchun kerak bo‘ladigan issiqlik miqdori bilan aniqlanuvchi kattalik nima?",
+    "options": [
+      "gazning adiabatik issiqlik sig‘imi",
+      "gazning molyar issiqlik sig‘imi",
+      "gazning solishtirma issiqlik sig‘imi",
+      "gazning politropik issiqlik sig‘imi"
+    ],
+    "a": "gazning solishtirma issiqlik sig‘imi"
+  },
+  {
+    "q": "Proton va elektron zaryadlari kattaligi va ishorasi jihatdan qanday?",
+    "options": [
+      "Protonniki kichik, elektronniki katta",
+      "Zaryadlari teng, ishoralari qarama-qarshi",
+      "Protonniki katta, elektronniki kichik",
+      "Ikkalasi ham musbat"
+    ],
+    "a": "Zaryadlari teng, ishoralari qarama-qarshi"
+  },
+  {
+    "q": "Kelvin va Selsiy shkalalari orasidagi bog‘lanish formulasini ko‘rsating?",
+    "options": [
+      "T = t − 273",
+      "T = t / 273",
+      "T = t + 273",
+      "T = 273 / t"
+    ],
+    "a": "T = t + 273"
+  },
+  {
+    "q": "O‘tkazgichdan o‘zgarmas tok o‘tganda uning atrofida qanday maydon hosil bo‘ladi?",
+    "options": [
+      "elektr maydon",
+      "gravitatsion maydon",
+      "elektromagnit maydon",
+      "magnit maydon"
+    ],
+    "a": "magnit maydon"
+  },
+  {
+    "q": "Zaryadlarning saqlanish qonuni ta’rifini ko‘rsating?",
+    "options": [
+      "Izolyatsiyalangan sistemada zaryadlar soni ortib boradi",
+      "Izolyatsiyalangan sistemada elektr zaryadlarining algebraik yig‘indisi o‘zgarmaydi",
+      "Zaryadlar faqat kamayadi",
+      "Zaryadlar faqat ortadi"
+    ],
+    "a": "Izolyatsiyalangan sistemada elektr zaryadlarining algebraik yig‘indisi o‘zgarmaydi"
+  },
+  {
+    "q": "Molekulyar-kinetik nazariyaning asosiy tenglamasini ko‘rsating?",
+    "options": [
+      "p = 3n m₀ v²",
+      "p = 1/3 n m₀ v²",
+      "p = n k T",
+      "p = m v²"
+    ],
+    "a": "p = 1/3 n m₀ v²"
+  },
+  {
+    "q": "Qo‘zg‘almas elektr zaryad atrofidagi elektr kuchlar ta’siri seziladigan fazo qanday ataladi?",
+    "options": [
+      "gravitatsiya maydoni",
+      "tortishish",
+      "itarishish",
+      "elektr maydoni"
+    ],
+    "a": "elektr maydoni"
+  },
+  {
+    "q": "Chap qo‘l qoidasiga ko‘ra qaysi kuchlarning yo‘nalishi aniqlanadi?",
+    "options": [
+      "Ampyer kuchi",
+      "Induksiya toki",
+      "Lorens kuchi",
+      "Ampyer va Lorens kuchlari"
+    ],
+    "a": "Ampyer va Lorens kuchlari"
+  },
+  {
+    "q": "Elektr maydonning ixtiyoriy nuqtasida birlik zaryadga ta’sir etuvchi kuch bilan aniqlanadigan kattalik nima?",
+    "options": [
+      "maydon potensiali",
+      "maydon kuchlanganligi",
+      "maydon superpozitsiyasi",
+      "maydon kuchlanishi"
+    ],
+    "a": "maydon kuchlanganligi"
+  },
+  {
+    "q": "Lorens kuchi zaryadli zarra tezligiga qanday ta’sir qiladi?",
+    "options": [
+      "Tezligini oshiradi",
+      "Tezligini kamaytiradi",
+      "Tezligini o‘zgartirmaydi",
+      "Tezlik yo‘nalishini o‘zgartiradi"
+    ],
+    "a": "Tezlik yo‘nalishini o‘zgartiradi"
+  },
+  {
+    "q": "O‘tkazgich bilan dielektrikning asosiy farqi nimada?",
+    "options": [
+      "Dielektrikda erkin protonlar mavjud",
+      "O‘tkazgichda erkin elektronlar mavjud",
+      "Dielektrikda erkin neytronlar mavjud",
+      "O‘tkazgichda zaryad bo‘lmaydi"
+    ],
+    "a": "O‘tkazgichda erkin elektronlar mavjud"
+  },
+  {
+    "q": "Elektromagnit induksiya hodisasini kim kashf etgan?",
+    "options": [
+      "Amper",
+      "Faradey",
+      "Ersted",
+      "Lens"
+    ],
+    "a": "Faradey"
+  },
+  {
+    "q": "Gaz bosimining konsentratsiya va absolut temperaturaga bog‘lanish formulasi qaysi?",
+    "options": [
+      "p = nkT",
+      "p = n/T",
+      "p = kT/n",
+      "p = n/kT"
+    ],
+    "a": "p = nkT"
+  },
+  {
+    "q": "Elektr tokning magnit ta’siri qachon va kim tomonidan aniqlangan?",
+    "options": [
+      "1831 y. Faradey",
+      "1820 y. Ersted",
+      "1620 y. Nyuton",
+      "1920 y. Eynshteyn"
+    ],
+    "a": "1820 y. Ersted"
+  },
+  {
+    "q": "Magnit induksiya EYuK ning birligi qaysi?",
+    "options": [
+      "A/s",
+      "H",
+      "Wb/s",
+      "T/s"
+    ],
+    "a": "Wb/s"
+  },
+  {
+    "q": "Magnit maydon induksiyasining o‘lchov birligi qaysi?",
+    "options": [
+      "Vb",
+      "Genri",
+      "Amper",
+      "Tesla"
+    ],
+    "a": "Tesla"
+  },
+  {
+    "q": "Magnit oqimi 0,3 s davomida 15 Wb dan 12 Wb gacha kamaygan bo‘lsa, induksiya EYuK necha volt?",
+    "options": [
+      "5",
+      "9",
+      "10",
+      "4.5"
+    ],
+    "a": "10"
+  },
+  {
+  "q": "Quyidagi keltirilgan kuchlarning qaysi biri ish bajarmaydi?",
+  "options": [
+    "Ishqalanish kuchi",
+    "Kulon kuchi",
+    "Lorens kuchi",
+    "Amper kuchi"
+  ],
+  "a": "Lorens kuchi"
+  },
+  {
+    "q": "Lorens kuchi harakatdagi zaryadli zarraning tezligini qanday o‘zgartiradi?",
+    "options": [
+      "Tezligini kamaytiradi",
+      "Tezligini oshiradi",
+      "Tezlik yo‘nalishini o‘zgartiradi",
+      "Tezligini o‘zgartirmaydi"
+    ],
+    "a": "Tezlik yo‘nalishini o‘zgartiradi"
+  },
+  {
+    "q": "O‘tkazgichlarning dielektriklardan asosiy farqi nimada?",
+    "options": [
+      "Erkin protonlarning mavjudligida",
+      "Erkin neytronlarning mavjudligida",
+      "Erkin elektronlarning mavjudligida",
+      "Zaryad tashuvchilarning yo‘qligida"
+    ],
+    "a": "Erkin elektronlarning mavjudligida"
+  },
+  {
+    "q": "Elektromagnit induksiya hodisasini kim kashf qilgan?",
+    "options": [
+      "Ampere",
+      "Faradey",
+      "Ersted",
+      "Lens"
+    ],
+    "a": "Faradey"
+  },
+  {
+    "q": "Gaz bosimining uning konsentratsiyasi va absolyut temperaturaga bog‘liqlik formulasini ko‘rsating?",
+    "options": [
+      "p = nkT",
+      "p = n / kT",
+      "p = nk / T",
+      "p = kT / n"
+    ],
+    "a": "p = nkT"
+  },
+  {
+    "q": "Elektr tokining magnit ta’siri qachon va kim tomonidan aniqlangan?",
+    "options": [
+      "1831 y. Faradey",
+      "1820 y. Ersted",
+      "1620 y. Nyuton",
+      "1920 y. Eynshteyn"
+    ],
+    "a": "1820 y. Ersted"
+  },
+  {
+    "q": "Induksiya EYuK ning birligini ko‘rsating?",
+    "options": [
+      "H",
+      "A/s",
+      "T/s",
+      "Wb/s"
+    ],
+    "a": "Wb/s"
+  },
+  {
+    "q": "Magnit maydon induksiyasining o‘lchov birligini ko‘rsating?",
+    "options": [
+      "Veber (Wb)",
+      "Amper (A)",
+      "Genri (Gn)",
+      "Tesla (Tl)"
+    ],
+    "a": "Tesla (Tl)"
+  },
+  {
+    "q": "Konturdan o‘tayotgan magnit oqimi 0,3 s davomida 15 Wb dan 12 Wb gacha tekis kamaygan bo‘lsa, konturda hosil bo‘lgan EYuK ning qiymati (V)?",
+    "options": [
+      "10",
+      "9",
+      "4.5",
+      "5"
+    ],
+    "a": "10"
+  },
+  {
+    "q": "G‘altakka kiritilgan ferromagnit o‘zak qanday vazifani bajaradi?",
+    "options": [
+      "Elektr maydonni kuchaytiradi",
+      "Magnit maydonni susaytiradi",
+      "Magnit maydonni kuchaytiradi",
+      "Elektr maydonni susaytiradi"
+    ],
+    "a": "Magnit maydonni kuchaytiradi"
+  },
+  {
+    "q": "Induktivligi 30 mH bo‘lgan g‘altakdan 0,8 A tok o‘tganda g‘altak magnit maydonining energiyasi nechaga teng (mJ)?",
+    "options": [
+      "2",
+      "3",
+      "9.6",
+      "4"
+    ],
+    "a": "9.6"
+  },
+  {
+    "q": "Agar o‘ng vint dastasini aylanish tok yo‘nalishida aylantirsak, vintning ilgarilanma harakati aylanish o‘qi ichidagi qaysi chiziqlarning yo‘nalishini ko‘rsatadi?",
+    "options": [
+      "Elektr maydon kuch chizig‘i",
+      "Magnit induksiya chizig‘i",
+      "To‘lqin chizig‘i",
+      "Elektr va magnit kuch chizig‘i"
+    ],
+    "a": "Magnit induksiya chizig‘i"
+  },
+  {
+    "q": "Tebranish konturidagi kondensatorda elektr zaryadi q = 10⁻³ cos(1000t) (C) qonuniyat bo‘yicha o‘zgarsa, konturda hosil bo‘layotgan tok kuchining amplitudasi nechaga teng?",
+    "options": [
+      "10 A",
+      "1 A",
+      "28 A",
+      "10⁻³ A"
+    ],
+    "a": "1 A"
+  },
+  {
+    "q": "Ideal tebranish konturida kondensator sig‘imi 9 marta kamaytirilsa, konturning tebranish chastotasi qanday o‘zgaradi?",
+    "options": [
+      "3 marta kamayadi",
+      "9 marta kamayadi",
+      "3 marta ortadi",
+      "9 marta ortadi"
+    ],
+    "a": "3 marta ortadi"
+  },
+  {
+    "q": "Magnit induksiya chiziqlari magnit maydonni vujudga keltiruvchi tokli o‘tkazgichlarning shaklidan qat’i nazar qanday chiziqlardir?",
+    "options": [
+      "ochiq",
+      "to‘g‘ri",
+      "egri",
+      "berk"
+    ],
+    "a": "berk"
+  },
+  {
+    "q": "Kulon qonuni formulasini ko‘rsating?",
+    "options": [
+      "F = q / 4πr²",
+      "F = q₁q₂ / r²",
+      "F = q₁q₂ / (4πϵ₀r²)",
+      "F = q / r²"
+    ],
+    "a": "F = q₁q₂ / (4πϵ₀r²)"
+  },
+  {
+    "q": "Magnit oqimining xalqaro birliklar sistemasidagi (XBS) o‘lchov birligi qaysi?",
+    "options": [
+      "Tesla (Tl)",
+      "Amper (A)",
+      "Veber (Wb)",
+      "Genri (Gn)"
+    ],
+    "a": "Veber (Wb)"
+  },
+  {
+    "q": "Nuqtaviy zaryadning undan r masofadagi maydon nuqtasining kuchlanganligi formulasini ko‘rsating?",
+    "options": [
+      "E = q / 4πϵ₀r³",
+      "E = q·r / 4πϵ₀",
+      "E = q / 4πϵ₀r²",
+      "E = q / r"
+    ],
+    "a": "E = q / 4πϵ₀r²"
+  },
+  {
+    "q": "Elektr maydon kuchlanganligi va potensialining o‘lchov birliklarini ko‘rsating?",
+    "options": [
+      "V/m ; V",
+      "V·m ; J",
+      "V/m² ; Pa",
+      "V·m² ; N"
+    ],
+    "a": "V/m ; V"
+  },
+  {
+    "q": "Maydonlar superpozitsiyasi prinsipining formulasini ko‘rsating?",
+    "options": [
+      "E = q / r",
+      "E = ΣEᵢ",
+      "E = −grad φ",
+      "E = q / t"
+    ],
+    "a": "E = ΣEᵢ"
+  },
+  {
+    "q": "Kondensatorning elektr sig‘imi formulasini ko‘rsating?",
+    "options": [
+      "C = q·U",
+      "C = q / U",
+      "C = ε₀εS",
+      "C = U / q"
+    ],
+    "a": "C = q / U"
+  },
+  {
+    "q": "Yassi kondensatorning elektr sig‘imi formulasini ko‘rsating?",
+    "options": [
+      "C = ε₀εS / d",
+      "C = ε₀ + S·d",
+      "C = ε₀S·d",
+      "C = d / ε₀εS"
+    ],
+    "a": "C = ε₀εS / d"
+  },
+  {
+    "q": "Kirxgofning ikkinchi qoidasi formulasini ko‘rsating?",
+    "options": [
+      "ΣIᵢ = 0",
+      "ΣIᵢRᵢ = Σεᵢ",
+      "ΣIᵢ = Σεᵢ",
+      "ΣIᵢRᵢ = 0"
+    ],
+    "a": "ΣIᵢRᵢ = Σεᵢ"
+  },
+  {
+    "q": "Magnit maydon induksiyasi va kuchlanganligi orasidagi bog‘lanish formulasini ko‘rsating?",
+    "options": [
+      "B = μ₀ + μH",
+      "B = μ₀·μ·H",
+      "B = μ₀ − H",
+      "B = μ + μ₀H"
+    ],
+    "a": "B = μ₀·μ·H"
+  },
+  {
+    "q": "Yarim o‘tkazgichning solishtirma qarshiligi temperaturaga qanday bog‘liq?",
+    "options": [
+      "Temperatura ortishi bilan kamayadi",
+      "Temperaturaga bog‘liq bo‘lmaydi",
+      "Temperatura kvadratiga bog‘liq",
+      "Temperatura ortishi bilan ortadi"
+    ],
+    "a": "Temperatura ortishi bilan kamayadi"
+  },
+  {
+    "q": "Amper qonunining ifodasini toping?",
+    "options": [
+      "dF = I·dl × B",
+      "dF = qE",
+      "F = μ₀ I₁I₂ / 2πr",
+      "F = qvB"
+    ],
+    "a": "dF = I·dl × B"
+  },
+  {
+    "q": "Ikki parallel cheksiz to‘g‘ri toklar orasidagi o‘zaro ta’sir kuchi formulasi qaysi?",
+    "options": [
+      "F = μ₀(I₁ + I₂) / 2πr",
+      "F = μ₀ I₁ I₂ / 2πr",
+      "F = k q₁ q₂ / r²",
+      "F = qvB"
+    ],
+    "a": "F = μ₀ I₁ I₂ / 2πr"
+  },
+  {
+    "q": "Atom yadrosi qanday zarrachalardan tuzilgan?",
+    "options": [
+      "Elektronlar va protonlardan",
+      "Protonlar va neytronlardan",
+      "Neytronlar va elektronlardan",
+      "Faqat protonlardan"
+    ],
+    "a": "Protonlar va neytronlardan"
+  },
+  {
+    "q": "β-zarralar qanday xossaga ega?",
+    "options": [
+      "Musbat zaryadlangan protonlar",
+      "Magnit maydonda og‘maydi",
+      "Manfiy zaryadlangan elektronlar",
+      "Zaryadsiz neytronlar"
+    ],
+    "a": "Manfiy zaryadlangan elektronlar"
+  },
+  {
+    "q": "O‘rtacha tezlik formulasini ko‘rsating?",
+    "options": [
+      "v = ds/dt",
+      "v̄ = Δr / Δt",
+      "v = at",
+      "v = lim a/t"
+    ],
+    "a": "v̄ = Δr / Δt"
+  },
+  {
+    "q": "Markazga intilma (normal) tezlanish formulasi qaysi?",
+    "options": [
+      "aₙ = v² / R",
+      "a = dv/dt",
+      "a = v/t",
+      "a = R/v²"
+    ],
+    "a": "aₙ = v² / R"
+  },
+  {
+    "q": "Bosib o‘tilgan yo‘l deb nimaga aytiladi?",
+    "options": [
+      "Traektoriyaning uzunligi",
+      "Ko‘chish vektori moduli",
+      "Boshlang‘ich va oxirgi nuqta orasidagi masofa",
+      "Tezlikning vaqtga ko‘paytmasi"
+    ],
+    "a": "Traektoriyaning uzunligi"
+  },
+  {
+    "q": "Tezlik qanday kattalik?",
+    "options": [
+      "Skalyar kattalik",
+      "O‘zgarmas kattalik",
+      "Vektor kattalik",
+      "Faqat modulga ega kattalik"
+    ],
+    "a": "Vektor kattalik"
+  },
+  {
+    "q": "Markazga intilma kuch formulasini ko‘rsating?",
+    "options": [
+      "F = ma",
+      "F = mv² / R",
+      "F = mg",
+      "F = kx"
+    ],
+    "a": "F = mv² / R"
+  },
+  {
+    "q": "Jismning impulsi formulasini ko‘rsating?",
+    "options": [
+      "p = mv",
+      "p = ma",
+      "p = Ft",
+      "p = m/v"
+    ],
+    "a": "p = mv"
+  },
+  {
+    "q": "Gravitatsiya doimiysining qiymati va o‘lchov birligini ko‘rsating?",
+    "options": [
+      "G = 6,67·10⁻¹¹ N·m²/kg²",
+      "G = 9,8 m/s²",
+      "G = 1,6·10⁻¹⁹ C",
+      "G = 3·10⁸ m/s"
+    ],
+    "a": "G = 6,67·10⁻¹¹ N·m²/kg²"
+  },
+  {
+    "q": "Ishning asosiy o‘lchov birligi — joul (J) ga to‘g‘ri ta’rif qaysi?",
+    "options": [
+      "1 J = 1 kg·m²/s²",
+      "1 J = 1 N/s",
+      "1 J = 1 V·A",
+      "1 J = 1 W·s"
+    ],
+    "a": "1 J = 1 kg·m²/s²"
+  },
+  {
+    "q": "Kinetik energiyaga berilgan to‘g‘ri ta’rifni ko‘rsating?",
+    "options": [
+      "Jismning o‘zaro ta’sir energiyasi",
+      "Jism massasining tezlik kvadratiga ko‘paytmasining yarmiga teng energiya",
+      "Jismning balandlikka bog‘liq energiyasi",
+      "Zaryadlar orasidagi energiya"
+    ],
+    "a": "Jism massasining tezlik kvadratiga ko‘paytmasining yarmiga teng energiya"
+  },
+
+
+
+
+        ]
+  },
+  english: {
+        title: "English",
+        questions: [
+  {
+    "q": "What does manufacturing mean?",
+    "options": [
+      "Selling products",
+      "Transporting goods",
+      "Making products in factories",
+      "Advertising products"
+    ],
+    "a": "Making products in factories"
+  },
+  {
+    "q": "Which business activity is connected with hospitals and doctors?",
+    "options": [
+      "Agriculture",
+      "Health care",
+      "Transport",
+      "Software"
+    ],
+    "a": "Health care"
+  },
+  {
+    "q": "Software developers usually work in the:",
+    "options": [
+      "Manufacturing sector",
+      "Mining sector",
+      "IT / software sector",
+      "Agriculture sector"
+    ],
+    "a": "IT / software sector"
+  },
+  {
+    "q": "Factories are most closely connected with:",
+    "options": [
+      "Advertising",
+      "Transport",
+      "Manufacturing",
+      "Agriculture"
+    ],
+    "a": "Manufacturing"
+  },
+  {
+    "q": "Which collocation is correct?",
+    "options": [
+      "buy from a customer",
+      "buy from a profit",
+      "buy from a supplier",
+      "buy from a market"
+    ],
+    "a": "buy from a supplier"
+  },
+  {
+    "q": "Choose the correct collocation:",
+    "options": [
+      "make a market",
+      "make services",
+      "make goods",
+      "make a supplier"
+    ],
+    "a": "make goods"
+  },
+  {
+    "q": "What can a company face?",
+    "options": [
+      "goods",
+      "value",
+      "competition",
+      "a customer"
+    ],
+    "a": "competition"
+  },
+  {
+    "q": "Which phrase is correct?",
+    "options": [
+      "sell a profit",
+      "make a market",
+      "make a profit",
+      "provide a profit"
+    ],
+    "a": "make a profit"
+  },
+  {
+    "q": "What do most employers think is the most important information in a CV?",
+    "options": [
+      "Grades",
+      "School or university",
+      "Work experience and skills",
+      "Degree subject"
+    ],
+    "a": "Work experience and skills"
+  },
+  {
+    "q": "Why do many students choose internships in China?",
+    "options": [
+      "It is cheaper than Europe",
+      "Employers only accept Chinese experience",
+      "China offers many opportunities and experience",
+      "It is easy to find a job"
+    ],
+    "a": "China offers many opportunities and experience"
+  },
+  {
+    "q": "What skills can students develop during internships in China?",
+    "options": [
+      "Only technical skills",
+      "Sports skills",
+      "Intercultural and working skills",
+      "Only language skills"
+    ],
+    "a": "Intercultural and working skills"
+  },
+  {
+    "q": "How did Shaun Duggan feel after his year in China?",
+    "options": [
+      "Tired of working",
+      "Less confident",
+      "More independent and confident",
+      "More stressed"
+    ],
+    "a": "More independent and confident"
+  },
+  {
+    "q": "What happened when Shaun returned to London?",
+    "options": [
+      "He continued studying",
+      "He found one interview",
+      "He changed his profession",
+      "He was offered three jobs"
+    ],
+    "a": "He was offered three jobs"
+  },
+  {
+    "q": "What is the first essential skill for working across cultures?",
+    "options": [
+      "Managing people",
+      "Speaking many languages",
+      "Intercultural sensitivity",
+      "Making fast decisions"
+    ],
+    "a": "Intercultural sensitivity"
+  },
+  {
+    "q": "What do Asians usually prefer when making decisions, according to the text?",
+    "options": [
+      "Making quick decisions",
+      "Letting the boss decide",
+      "Taking more time to avoid mistakes",
+      "Avoiding decisions"
+    ],
+    "a": "Taking more time to avoid mistakes"
+  },
+  {
+    "q": "What is important in Chinese organizations?",
+    "options": [
+      "Working alone",
+      "Equality in all positions",
+      "Informal communication",
+      "Respecting hierarchy and the boss"
+    ],
+    "a": "Respecting hierarchy and the boss"
+  },
+  {
+    "q": "What comes next when you count in twos? 2, 4, 6, 8, …",
+    "options": [
+      "11",
+      "12",
+      "10",
+      "9"
+    ],
+    "a": "10"
+  },
+  {
+    "q": "Which number is correct for “one thousand five hundred”?",
+    "options": [
+      "150",
+      "1,500",
+      "105",
+      "15,000"
+    ],
+    "a": "1,500"
+  },
+  {
+    "q": "How do we say 7,777?",
+    "options": [
+      "seven hundred seventy-seven",
+      "seven thousand seven hundred",
+      "seven million seven hundred",
+      "seven thousand seven hundred and seventy-seven"
+    ],
+    "a": "seven thousand seven hundred and seventy-seven"
+  },
+  {
+    "q": "What does 2.5bn mean?",
+    "options": [
+      "two thousand five hundred",
+      "two point five million",
+      "two point five billion",
+      "twenty-five billion"
+    ],
+    "a": "two point five billion"
+  },
+  {
+    "q": "How do we read €15.99?",
+    "options": [
+      "fifteen euros ninety",
+      "fifteen euro nine nine",
+      "fifteen point ninety-nine euros",
+      "fifteen euros ninety-nine"
+    ],
+    "a": "fifteen euros ninety-nine"
+  },
+  {
+    "q": "What is the correct name of this symbol: @ ?",
+    "options": [
+      "hash",
+      "dot",
+      "slash",
+      "at"
+    ],
+    "a": "at"
+  },
+  {
+    "q": "Which symbol is called hash?",
+    "options": [
+      "@",
+      "/",
+      "#",
+      "\\"
+    ],
+    "a": "#"
+  },
+  {
+    "q": "What does 20.15 mean?",
+    "options": [
+      "quarter to eight in the evening",
+      "eight o’clock in the morning",
+      "quarter past two in the afternoon",
+      "quarter past eight in the evening"
+    ],
+    "a": "quarter past eight in the evening"
+  },
+  {
+    "q": "What is the digital form of half past two in the afternoon?",
+    "options": [
+      "02.30",
+      "12.30",
+      "14.00",
+      "14.30"
+    ],
+    "a": "14.30"
+  },
+  {
+    "q": "What does eleven o’clock at night mean in digital time?",
+    "options": [
+      "21.00",
+      "11.00",
+      "00.00",
+      "23.00"
+    ],
+    "a": "23.00"
+  },
+  {
+    "q": "Which expression means 08:00 exactly?",
+    "options": [
+      "about eight o’clock",
+      "eight o’clock at night",
+      "eight o’clock sharp",
+      "half past eight"
+    ],
+    "a": "eight o’clock sharp"
+  },
+  {
+    "q": "What time is twenty-five to one?",
+    "options": [
+      "12.15",
+      "12.45",
+      "01.25",
+      "12.35"
+    ],
+    "a": "12.35"
+  },
+  {
+    "q": "Which one is an analogue time expression?",
+    "options": [
+      "13.45",
+      "20.15",
+      "11.01",
+      "quarter past eight in the evening"
+    ],
+    "a": "quarter past eight in the evening"
+  },
+  {
+    "q": "What does oh eight hundred hours mean?",
+    "options": [
+      "18.00",
+      "midnight",
+      "8 p.m.",
+      "8 a.m."
+    ],
+    "a": "8 a.m."
+  },
+  {
+    "q": "Do the British really love drinking tea?",
+    "options": [
+      "Sometimes",
+      "Only in the evening",
+      "Yes, they do",
+      "No, they don’t"
+    ],
+    "a": "Yes, they do"
+  },
+  {
+    "q": "Germans ___ big fast cars.",
+    "options": [
+      "driving",
+      "drives",
+      "drove",
+      "drive"
+    ],
+    "a": "drive"
+  },
+  {
+    "q": "___ Italians talk with their hands?",
+    "options": [
+      "Does",
+      "Is",
+      "Are",
+      "Do"
+    ],
+    "a": "Do"
+  },
+  {
+    "q": "___ a German call his boss by his first name?",
+    "options": [
+      "Do",
+      "Is",
+      "Are",
+      "Does"
+    ],
+    "a": "Does"
+  },
+  {
+    "q": "Choose the correct negative sentence.",
+    "options": [
+      "Americans doesn’t eat burgers every day.",
+      "Americans aren’t eat burgers every day.",
+      "Americans don’t eats burgers every day.",
+      "Americans don’t eat burgers every day."
+    ],
+    "a": "Americans don’t eat burgers every day."
+  },
+  {
+    "q": "Choose the correct rule. In Indonesia, you should use your ___.",
+    "options": [
+      "left hand",
+      "both hands",
+      "finger",
+      "right hand / thumb"
+    ],
+    "a": "right hand / thumb"
+  },
+  {
+    "q": "Where ___ you staying?",
+    "options": [
+      "do",
+      "does",
+      "is",
+      "are"
+    ],
+    "a": "are"
+  },
+  {
+    "q": "What ___ you do?",
+    "options": [
+      "does",
+      "is",
+      "are",
+      "do"
+    ],
+    "a": "do"
+  },
+  {
+    "q": "___ you religious?",
+    "options": [
+      "Do",
+      "Does",
+      "Is",
+      "Are"
+    ],
+    "a": "Are"
+  },
+  {
+    "q": "___ this your first visit to Serbia?",
+    "options": [
+      "Do",
+      "Does",
+      "Are",
+      "Is"
+    ],
+    "a": "Is"
+  },
+  {
+    "q": "Cross out the one incorrect option. Hello, my name’s Felipe Conti.",
+    "options": [
+      "Pleased to meet you.",
+      "Nice to meet you.",
+      "Good to meet you.",
+      "How are you doing?"
+    ],
+    "a": "How are you doing?"
+  },
+  {
+    "q": "Cross out the one incorrect option. Sorry to keep you waiting.",
+    "options": [
+      "That’s all right.",
+      "No problem.",
+      "It’s OK.",
+      "Please."
+    ],
+    "a": "Please."
+  },
+  {
+    "q": "Cross out the one incorrect option. Can I see your ticket?",
+    "options": [
+      "I have an online booking.",
+      "I booked online.",
+      "I booked on my computer.",
+      "I like travelling."
+    ],
+    "a": "I like travelling."
+  },
+  {
+    "q": "Choose the correct response. Is this your first visit to Greece?",
+    "options": [
+      "I stay at a hotel.",
+      "Yes, I work here.",
+      "I’m from Ireland.",
+      "No, I live here. On one of the islands, actually."
+    ],
+    "a": "No, I live here. On one of the islands, actually."
+  },
+  {
+    "q": "Choose the correct response. Oh, really? Lucky you! What do you do?",
+    "options": [
+      "I live on an island.",
+      "I’m staying here.",
+      "I’m a hotel manager.",
+      "I have two children."
+    ],
+    "a": "I’m a hotel manager."
+  },
+  {
+    "q": "Choose the correct response. What sector do you work in?",
+    "options": [
+      "I work in London.",
+      "I’m from Greece.",
+      "I stay at a hotel.",
+      "I’m in the holiday business. I’m a travel agent."
+    ],
+    "a": "I’m in the holiday business. I’m a travel agent."
+  },
+  {
+    "q": "Choose the correct response. Can you recommend a good restaurant in town?",
+    "options": [
+      "I don’t like food.",
+      "I work here.",
+      "Sure. If you like fish, the Marina is very good.",
+      "I have children."
+    ],
+    "a": "Sure. If you like fish, the Marina is very good."
+  },
+  {
+    "q": "Which greeting is best for a close friend or family member?",
+    "options": [
+      "Dear Mr Jackson,",
+      "Hello Mr Jackson,",
+      "Dear Sir or Madam,",
+      "Hi John,"
+    ],
+    "a": "Hi John,"
+  },
+  {
+    "q": "Which greeting is appropriate for a teacher or work colleague you know?",
+    "options": [
+      "Hi!",
+      "Love,",
+      "John,",
+      "Dear Sam,"
+    ],
+    "a": "Dear Sam,"
+  },
+  {
+    "q": "Which greeting is best for a manager or customer you don’t know?",
+    "options": [
+      "Hi Sam,",
+      "Hello John,",
+      "Hi,",
+      "Dear Mr Jackson,"
+    ],
+    "a": "Dear Mr Jackson,"
+  },
+  {
+    "q": "Which ending is appropriate for a formal or semi-formal email?",
+    "options": [
+      "Thanks!",
+      "Love,",
+      "See you soon,",
+      "Kind regards,"
+    ],
+    "a": "Kind regards,"
+  },
+  {
+    "q": "Which ending is best for an email to a close friend?",
+    "options": [
+      "Best regards,",
+      "Kind regards,",
+      "Regards,",
+      "Love,"
+    ],
+    "a": "Love,"
+  },
+  {
+    "q": "Which ending is suitable for a work email to a colleague you know?",
+    "options": [
+      "Yours faithfully,",
+      "Dear,",
+      "Love,",
+      "All the best,"
+    ],
+    "a": "All the best,"
+  },
+  {
+    "q": "Which greeting is NOT appropriate for a professional email?",
+    "options": [
+      "Hello Sam,",
+      "Hi Sam,",
+      "Dear Sam,",
+      "John,"
+    ],
+    "a": "John,"
+  },
+  {
+    "q": "Which ending is NOT appropriate for an email to a customer?",
+    "options": [
+      "Best regards,",
+      "Kind regards,",
+      "Regards,",
+      "Love,"
+    ],
+    "a": "Love,"
+  },
+  {
+    "q": "What do customers want today, besides a good product?",
+    "options": [
+      "Only advertising",
+      "Good customer support and service",
+      "Only low prices",
+      "More competitors"
+    ],
+    "a": "Good customer support and service"
+  },
+  {
+    "q": "Why is customer support important for a company?",
+    "options": [
+      "It replaces marketing",
+      "It makes products cheaper",
+      "It helps keep customers and save money",
+      "It stops complaints"
+    ],
+    "a": "It helps keep customers and save money"
+  },
+  {
+    "q": "What should a company do first to understand its customers?",
+    "options": [
+      "Advertise more",
+      "Change staff",
+      "Listen carefully to customers",
+      "Increase prices"
+    ],
+    "a": "Listen carefully to customers"
+  },
+  {
+    "q": "How should companies talk to customers?",
+    "options": [
+      "Only by phone",
+      "Only face to face",
+      "In the way customers like best",
+      "Only by email"
+    ],
+    "a": "In the way customers like best"
+  },
+  {
+    "q": "What does “Give customers what they want, when they want it” include?",
+    "options": [
+      "Advertising campaigns",
+      "Right product, right place, right time, right price",
+      "Free products",
+      "Long explanations"
+    ],
+    "a": "Right product, right place, right time, right price"
+  },
+  {
+    "q": "Why do people prefer to buy from people they like?",
+    "options": [
+      "Because it is cheaper",
+      "Because of rules",
+      "Because people trust people like themselves",
+      "Because it is faster"
+    ],
+    "a": "Because people trust people like themselves"
+  },
+  {
+    "q": "What is good customer service mainly about?",
+    "options": [
+      "Selling more products",
+      "Working faster",
+      "Understanding and respecting customers",
+      "Giving discounts"
+    ],
+    "a": "Understanding and respecting customers"
+  },
+  {
+    "q": "What is important to agree on that fits the customer's schedule?",
+    "options": [
+      "repeat business",
+      "customer referral",
+      "delivery date",
+      "deal with complaints"
+    ],
+    "a": "delivery date"
+  },
+  {
+    "q": "If there are delivery problems, what must the company do?",
+    "options": [
+      "repeat business",
+      "customer referral",
+      "returning customers",
+      "deal with complaints"
+    ],
+    "a": "deal with complaints"
+  },
+  {
+    "q": "How should complaints be handled if necessary?",
+    "options": [
+      "secretly",
+      "politely",
+      "aggressively",
+      "impolitely"
+    ],
+    "a": "politely"
+  },
+  {
+    "q": "What does “put you in contact with another person” mean?",
+    "options": [
+      "leave a message",
+      "connect",
+      "call back",
+      "hang up"
+    ],
+    "a": "connect"
+  },
+  {
+    "q": "What does “press the right keys to contact someone by telephone” mean?",
+    "options": [
+      "listen",
+      "greet",
+      "dial",
+      "prepare"
+    ],
+    "a": "dial"
+  },
+  {
+    "q": "What does “agree to speak on the telephone” mean?",
+    "options": [
+      "wait",
+      "answer",
+      "record",
+      "smile"
+    ],
+    "a": "answer"
+  },
+  {
+    "q": "What does “reach the person you want to speak to” mean?",
+    "options": [
+      "hang up",
+      "put on hold",
+      "call back",
+      "get through"
+    ],
+    "a": "get through"
+  },
+  {
+    "q": "What does “contact someone again with more information” mean?",
+    "options": [
+      "connect",
+      "leave a message",
+      "prepare",
+      "call back"
+    ],
+    "a": "call back"
+  },
+  {
+    "q": "What does “respond to a message from someone who wants to speak to you” mean?",
+    "options": [
+      "dial",
+      "greet",
+      "record",
+      "answer"
+    ],
+    "a": "answer"
+  },
+  {
+    "q": "What does “finish a telephone call” mean?",
+    "options": [
+      "call back",
+      "put on hold",
+      "get through",
+      "hang up"
+    ],
+    "a": "hang up"
+  },
+  {
+    "q": "What does “try again to reach the person you want to speak to” mean?",
+    "options": [
+      "dial",
+      "smile",
+      "leave a message",
+      "call back"
+    ],
+    "a": "call back"
+  },
+  {
+    "q": "What does “record details of what your call is about” mean?",
+    "options": [
+      "smile",
+      "greet",
+      "put on hold",
+      "make a checklist"
+    ],
+    "a": "make a checklist"
+  },
+  {
+    "q": "What does “make someone wait and listen to music” mean?",
+    "options": [
+      "dial",
+      "answer",
+      "hang up",
+      "put on hold"
+    ],
+    "a": "put on hold"
+  },
+  {
+    "q": "Which request matches “confirm/my order/by email”?",
+    "options": [
+      "Could you please check my order via Internet?",
+      "Could I use your phone?",
+      "I’m afraid I’m waiting for an important call.",
+      "Can you help me with the email?"
+    ],
+    "a": "Could you please check my order via Internet?"
+  },
+  {
+    "q": "Which request matches “speak to/salesperson”?",
+    "options": [
+      "I’m afraid I’m writing an urgent report.",
+      "Can you help me with this email?",
+      "Could I speak to the salesperson, please?",
+      "I need to ask your colleague."
+    ],
+    "a": "Could I speak to the salesperson, please?"
+  },
+  {
+    "q": "Which request matches “ask you/new software”?",
+    "options": [
+      "Can I use your phone?",
+      "Could you show me the new software?",
+      "Could you confirm my order?",
+      "I’m sorry, but I’m writing an urgent report."
+    ],
+    "a": "Could you show me the new software?"
+  },
+  {
+    "q": "Which request matches “call my customer back”?",
+    "options": [
+      "I need to speak to the salesperson.",
+      "Can you help me with this email?",
+      "I’m afraid I can’t call now.",
+      "Could you call my customer back?"
+    ],
+    "a": "Could you call my customer back?"
+  },
+  {
+    "q": "Which request matches “talk to you/at 5 o’clock”?",
+    "options": [
+      "Could you confirm my order?",
+      "I’m writing an urgent report.",
+      "Could I use your phone?",
+      "Can we talk at 5 o’clock?"
+    ],
+    "a": "Can we talk at 5 o’clock?"
+  },
+  {
+    "q": "Which request matches “come in/early/tomorrow morning”?",
+    "options": [
+      "Sorry, I can’t fly to Colombia.",
+      "Can you come in early tomorrow morning?",
+      "I’m afraid I’m waiting for an important call.",
+      "Could you confirm my order?"
+    ],
+    "a": "Can you come in early tomorrow morning?"
+  },
+  {
+    "q": "Choose the correct sentence (Present Continuous):",
+    "options": [
+      "She goes to the shop now.",
+      "She is going to the shop now.",
+      "She is go to the shop now.",
+      "She going to the shop now."
+    ],
+    "a": "She is going to the shop now."
+  },
+  {
+    "q": "Which question is correct (Present Continuous)?",
+    "options": [
+      "You are reading a book at the moment?",
+      "Are you read a book at the moment?",
+      "Are you reading a book at the moment?",
+      "Do you reading a book at the moment?"
+    ],
+    "a": "Are you reading a book at the moment?"
+  },
+  {
+    "q": "Complete the sentence: “Look! The children _______ in the garden.”",
+    "options": [
+      "play",
+      "plays",
+      "are playing",
+      "is playing"
+    ],
+    "a": "are playing"
+  },
+  {
+    "q": "Choose the correct negative form (Present Continuous):",
+    "options": [
+      "He not listening to music.",
+      "He are not listening to music.",
+      "He not is listening to music.",
+      "He is not listening to music."
+    ],
+    "a": "He is not listening to music."
+  },
+  {
+    "q": "Complete the sentence: “I _______ my homework right now.”",
+    "options": [
+      "do",
+      "are doing",
+      "am doing",
+      "doing"
+    ],
+    "a": "am doing"
+  },
+  {
+    "q": "Which sentence shows a temporary action?",
+    "options": [
+      "She lived in London last year.",
+      "She lives in London.",
+      "She will live in London next year.",
+      "She is living with her parents for a few weeks."
+    ],
+    "a": "She is living with her parents for a few weeks."
+  },
+  {
+    "q": "Complete the question: “What _______ you _______ at the moment?”",
+    "options": [
+      "do / do",
+      "are / do",
+      "is / doing",
+      "are / doing"
+    ],
+    "a": "are / doing"
+  },
+  {
+    "q": "Choose the correct sentence:",
+    "options": [
+      "They is watching TV now.",
+      "They watching TV now.",
+      "They watch TV now.",
+      "They are watching TV now."
+    ],
+    "a": "They are watching TV now."
+  },
+  {
+    "q": "Which sentence is an offer of help?",
+    "options": [
+      "I leave a message.",
+      "Can you leave a message?",
+      "Would you like to leave a message?",
+      "Do you want to leave a message?"
+    ],
+    "a": "Would you like to leave a message?"
+  },
+  {
+    "q": "Which sentence is an invitation?",
+    "options": [
+      "I write down the message.",
+      "Would you like me to take a message?",
+      "I can take a message.",
+      "Will I take a message?"
+    ],
+    "a": "Would you like me to take a message?"
+  },
+  {
+    "q": "How would you politely ask someone to call back later?",
+    "options": [
+      "Call me back.",
+      "Call later.",
+      "Can you call me later?",
+      "Could you call you back later?"
+    ],
+    "a": "Can you call me later?"
+  },
+  {
+    "q": "Which is a correct way to offer to send something by post?",
+    "options": [
+      "I send it to you.",
+      "Post it to you?",
+      "Can I post it to you today?",
+      "Can you post it?"
+    ],
+    "a": "Can I post it to you today?"
+  },
+  {
+    "q": "How do you politely offer to connect someone to another person?",
+    "options": [
+      "I connect you now.",
+      "Connect you to the manager?",
+      "You go to sales manager.",
+      "Shall I connect you to the sales manager?"
+    ],
+    "a": "Shall I connect you to the sales manager?"
+  },
+  {
+    "q": "Which sentence is a polite way to suggest thinking before deciding?",
+    "options": [
+      "Think before.",
+      "Can you think?",
+      "Think about that before you decide.",
+      "Shall I think about that before you decide?"
+    ],
+    "a": "Think about that before you decide."
+  },
+  {
+    "q": "How can you offer to confirm information by email?",
+    "options": [
+      "I confirm by email.",
+      "Confirm email.",
+      "Can email?",
+      "Shall I confirm that for you by email?"
+    ],
+    "a": "Shall I confirm that for you by email?"
+  },
+  {
+    "q": "Which is a correct way to invite someone to speak tomorrow?",
+    "options": [
+      "Speak to me tomorrow about that?",
+      "Can you speak to me tomorrow?",
+      "Shall we speak to me tomorrow about that?",
+      "Shall I speak to you tomorrow about that?"
+    ],
+    "a": "Shall I speak to you tomorrow about that?"
+  },
+  {
+    "q": "How do you say this email address in English? Email: info@myworld.biz/news",
+    "options": [
+      "info my world at dot biz news",
+      "info at my world slash biz dot news",
+      "info dot my world at biz slash news",
+      "info at my world dot biz slash news"
+    ],
+    "a": "info at my world dot biz slash news"
+  },
+  {
+    "q": "How do you say this email address in English? Email: maria@bt.com",
+    "options": [
+      "maria b t at dot com",
+      "maria at b t slash com",
+      "maria at b t dot com",
+      "maria dot b t at com"
+    ],
+    "a": "maria at b t dot com"
+  },
+  {
+    "q": "How do you say this date in English? Date: 4 June 2004",
+    "options": [
+      "Four June, two hundred four",
+      "Fourteenth of June, two thousand and four",
+      "June four, two thousand six",
+      "June fourth, two thousand four"
+    ],
+    "a": "June fourth, two thousand four"
+  },
+
+
+
+
+
+
+
+        ]
+    }
 };
 }
 
@@ -6208,15 +9072,15 @@ function getLeaderboard(ctx) {
 function showSubjectMenu(ctx) {
     const db = getDb(); // Bazani o'qiymiz
     
-    // Asosiy tugmalar
+    // Tugmalarni English (Ingliz tili) qo'shilgan holati
     let keyboard = [
         ["📝 Akademik yozuv", "📜 Tarix"],
-        ["➕ Matematika", "💻 Dasturlash 1"]
+        ["➕ Matematika", "🧲 Fizika"],
+        ["💻 Dasturlash 1", "🇬🇧 Perfect English"] // Dasturlashning yoniga qo'shildi
     ];
 
     // AGAR ADMIN TURBO REJIMNI YOQQAN BO'LSA
     if (db.settings?.turboMode) {
-        // Bu tugmani eng tepaga, ko'zga ko'rinadigan qilib qo'shamiz
         keyboard.unshift(["🚀 TURBO YODLASH (16:30)"]);
     }
 
@@ -6238,89 +9102,80 @@ async function sendQuestion(ctx, isNew = false) {
 
     // 1. Test yoki Yodlash tugashi
     if (s.index >= s.activeList.length) {
-        if (!s.isTurbo) { // Faqat oddiy test bo'lsa ballni yangilaymiz
+        if (!s.isTurbo) {
             updateGlobalScore(userId, s.userName, ctx.from.username, s.score);
         }
         
         let finishMsg = s.isTurbo 
-            ? `🏁 <b>Turbo yodlash yakunlandi!</b>\n\nBarcha savollarni ko'rib chiqdingiz. Yana bir bor takrorlashni maslahat beramiz.`
-            : `🏁 <b>Test yakunlandi, ${s.userName}!</b>\n\n` +
-              `✅ Natija: <b>${s.score.toFixed(1)} ball</b>\n` +
-              `❌ Xatolar: <b>${s.wrongs.length} ta</b>.`;
+            ? `🏁 <b>Turbo yodlash yakunlandi!</b>\n\nBarcha savollarni ko'rib chiqdingiz.`
+            : `🏁 <b>Test yakunlandi, ${s.userName}!</b>\n\n✅ Natija: <b>${s.score.toFixed(1)} ball</b>`;
 
-        // Turbo rejim tugasa sessiyani tozalaymiz
         s.isTurbo = false;
-
-        return ctx.replyWithHTML(finishMsg, Markup.keyboard([
-            ["⚡️ Blitz (25)", "📝 To'liq test"], 
-            ["⬅️ Orqaga (Fanlar)"]
-        ]).resize());
+        return ctx.replyWithHTML(finishMsg, Markup.keyboard([["⚡️ Blitz (25)", "📝 To'liq test"], ["⬅️ Orqaga (Fanlar)"]]).resize());
     }
 
     const qData = s.activeList[s.index];
     const safeQuestion = escapeHTML(qData.q);
     const progress = getProgressBar(s.index + 1, s.activeList.length);
+    
+    // Rasm yo'lini tekshirish (images papkasida bo'lishi kerak)
+    const imagePath = qData.image ? `./images/${qData.image}` : null;
+    const hasImage = imagePath && fs.existsSync(imagePath);
 
     // ==========================================
-    // 🚀 TURBO YODLASH REJIMI (YANGI QISM)
+    // 🚀 TURBO YODLASH REJIMI
     // ==========================================
     if (s.isTurbo) {
-        let turboText = `🚀 <b>TURBO YODLASH (Sessiya 16:30)</b>\n` +
-                        `📊 Progress: [${progress}]\n` +
-                        `🔢 Savol: <b>${s.index + 1} / ${s.activeList.length}</b>\n` +
-                        `_________________________\n\n` +
-                        `❓ <b>${safeQuestion}</b>\n\n` +
+        let turboText = `🚀 <b>TURBO YODLASH</b>\n📊 [${progress}]\n🔢 Savol: <b>${s.index + 1} / ${s.activeList.length}</b>\n` +
+                        `_________________________\n\n❓ <b>${safeQuestion}</b>\n\n` +
                         `✅ <b>TO'G'RI JAVOB:</b>\n<code>${escapeHTML(qData.a)}</code>\n` +
-                        `_________________________\n` +
-                        `👇 Keyingi savolga o'tish uchun bosing:`;
+                        `_________________________\n👇 Keyingi savol:`;
 
-        const turboButtons = [
+        const turboButtons = Markup.inlineKeyboard([
             [Markup.button.callback("Keyingi savol ➡️", "next_turbo_q")],
             [Markup.button.callback("🛑 To'xtatish", "stop_test")]
-        ];
+        ]);
+
+        if (hasImage) {
+            return await ctx.replyWithPhoto({ source: imagePath }, { caption: turboText, parse_mode: 'HTML', ...turboButtons });
+        }
 
         try {
-            if (isNew) {
-                return await ctx.replyWithHTML(turboText, Markup.inlineKeyboard(turboButtons));
-            } else {
-                return await ctx.editMessageText(turboText, { parse_mode: 'HTML', ...Markup.inlineKeyboard(turboButtons) });
-            }
+            if (isNew) return await ctx.replyWithHTML(turboText, turboButtons);
+            return await ctx.editMessageText(turboText, { parse_mode: 'HTML', ...turboButtons });
         } catch (e) {
-            return await ctx.replyWithHTML(turboText, Markup.inlineKeyboard(turboButtons));
+            return await ctx.replyWithHTML(turboText, turboButtons);
         }
     }
-    // ==========================================
-    // 🚀 TURBO REJIM TUGADI
-    // ==========================================
 
-    // ODDIY TEST REJIMI (ESKI KODINGIZ)
+    // ==========================================
+    // 📝 ODDIY TEST REJIMI
+    // ==========================================
     s.currentOptions = shuffle([...qData.options]);
     const labels = ['A', 'B', 'C', 'D'];
 
-    let text = `📊 Progress: [${progress}]\n` +
-               `🔢 Savol: <b>${s.index + 1} / ${s.activeList.length}</b>\n` +
-               `⏱ <b>VAQT: ${botSettings.timeLimit} soniya!</b>\n\n` +
-               `❓ <b>${safeQuestion}</b>\n\n`;
+    let text = `📊 Progress: [${progress}]\n🔢 Savol: <b>${s.index + 1} / ${s.activeList.length}</b>\n` +
+               `⏱ <b>VAQT: ${botSettings.timeLimit}s</b>\n\n❓ <b>${safeQuestion}</b>\n\n`;
 
-    s.currentOptions.forEach((opt, i) => {
-        text += `<b>${labels[i]})</b> ${escapeHTML(opt)}\n\n`;
-    });
+    s.currentOptions.forEach((opt, i) => { text += `<b>${labels[i]})</b> ${escapeHTML(opt)}\n\n`; });
 
-    const inlineButtons = [
+    const inlineButtons = Markup.inlineKeyboard([
         s.currentOptions.map((_, i) => Markup.button.callback(labels[i], `ans_${i}`)),
         [Markup.button.callback("🛑 Testni to'xtatish", "stop_test")]
-    ];
+    ]);
 
-    try {
-        if (isNew) {
-            await ctx.replyWithHTML(text, Markup.inlineKeyboard(inlineButtons));
-        } else {
-            await ctx.editMessageText(text, { parse_mode: 'HTML', ...Markup.inlineKeyboard(inlineButtons) });
+    if (hasImage) {
+        await ctx.replyWithPhoto({ source: imagePath }, { caption: text, parse_mode: 'HTML', ...inlineButtons });
+    } else {
+        try {
+            if (isNew) await ctx.replyWithHTML(text, inlineButtons);
+            else await ctx.editMessageText(text, { parse_mode: 'HTML', ...inlineButtons });
+        } catch (e) {
+            await ctx.replyWithHTML(text, inlineButtons);
         }
-    } catch (e) {
-        await ctx.replyWithHTML(text, Markup.inlineKeyboard(inlineButtons));
     }
 
+    // Taymerni o'rnatish
     timers[userId] = setTimeout(async () => {
         if (ctx.session && ctx.session.index === s.index && !ctx.session.isTurbo) {
             ctx.session.wrongs.push(qData);
@@ -6455,9 +9310,10 @@ bot.action('check_sub', async (ctx) => {
 
 
 bot.action("next_turbo_q", async (ctx) => {
-    if (ctx.session) {
+    if (ctx.session && ctx.session.isTurbo) {
         ctx.session.index++;
-        return sendQuestion(ctx, false);
+        // Har doim true yuboramiz, chunki rasm bo'lsa editMessageText xato beradi
+        return sendQuestion(ctx, true); 
     }
     await ctx.answerCbQuery();
 });
@@ -6814,29 +9670,36 @@ bot.hears('⏱ Vaqtni o\'zgartirish', (ctx) => {
 
 
 // --- TEST BOSHLASH ---
-bot.hears(["📝 Akademik yozuv", "📜 Tarix", "➕ Matematika", "💻 Dasturlash 1"], async (ctx) => {
+bot.hears(["📝 Akademik yozuv", "📜 Tarix", "➕ Matematika", "💻 Dasturlash 1", "🧲 Fizika", "🇬🇧 Perfect English"], async (ctx) => {
     const text = ctx.message.text;
     const s = ctx.session;
 
-    // 1. Fanni aniqlash
+    // 1. Fanni aniqlash (Yangi fanni qo'shdik)
     if (text.includes("Akademik")) s.currentSubject = "academic";
     else if (text.includes("Tarix")) s.currentSubject = "history";
     else if (text.includes("Matematika")) s.currentSubject = "math";
     else if (text.includes("Dasturlash")) s.currentSubject = "dasturlash";
+    else if (text.includes("Fizika")) s.currentSubject = "physics";
+    else if (text.includes("English")) s.currentSubject = "english"; // English uchun mantiq
 
-    // 2. Agar Turbo rejim yoqilgan bo'lsa, darhol boshlaymiz
+    // 2. Agar Turbo rejim bo'lsa
     if (s.isTurbo) {
-        const questions = SUBJECTS[s.currentSubject]?.questions;
-        if (!questions || questions.length === 0) return ctx.reply("Bu fanda savollar yo'q.");
+        // Savollar bazada borligini tekshiramiz
+        if (!SUBJECTS[s.currentSubject] || !SUBJECTS[s.currentSubject].questions) {
+            return ctx.reply("Bu fanda savollar hali qo'shilmagan.");
+        }
         
-        s.activeList = shuffle(questions); // Turbo rejimda hammasini ko'rsatish
+        const questions = SUBJECTS[s.currentSubject].questions;
+        if (questions.length === 0) return ctx.reply("Bu fanda savollar yo'q.");
+        
+        s.activeList = shuffle([...questions]); 
         s.index = 0;
         s.score = 0;
         s.wrongs = [];
-        return sendQuestion(ctx, true); // Savol berishni boshlash
+        return sendQuestion(ctx, true);
     }
 
-    // 3. Agar Turbo bo'lmasa (Oddiy rejim), eski menyuni chiqarish
+    // 3. Oddiy rejim (Blitz/To'liq test)
     return ctx.reply(`Tayyormisiz?`, Markup.keyboard([
         ["⚡️ Blitz (25)", "📝 To'liq test"], 
         ["⬅️ Orqaga (Fanlar)"]
