@@ -36,15 +36,14 @@ if (!fs.existsSync(DB_FILE)) fs.writeFileSync(DB_FILE, JSON.stringify({ users: {
 
 function getDb() {
     try {
-        if (!fs.existsSync('./db.json')) {
-            // Agar fayl bo'lmasa, bo'sh baza yaratamiz
-            fs.writeFileSync('./db.json', JSON.stringify({ users: {} }, null, 2));
+        if (!fs.existsSync(DB_FILE)) {
+            fs.writeFileSync(DB_FILE, JSON.stringify({ users: {}, settings: {} }, null, 2));
         }
-        const data = fs.readFileSync('./db.json', 'utf8');
+        const data = fs.readFileSync(DB_FILE, 'utf8');
         return JSON.parse(data);
     } catch (error) {
         console.error("Bazani o'qishda xato:", error);
-        return { users: {} };
+        return { users: {}, settings: {} };
     }
 }
 
@@ -6151,20 +6150,20 @@ function updateGlobalScore(userId, name, username, score) {
         if (!db.users[userId]) {
             db.users[userId] = { 
                 name: name || "Foydalanuvchi", 
-                username: username ? `@${username}` : "Lichka yopiq", // Username saqlash
+                username: username ? `@${username}` : "Lichka yopiq",
                 score: 0, 
-                totalTests: 0, 
-                date: new Date().toISOString() 
+                totalTests: 0 
             };
         }
         db.users[userId].totalTests = (db.users[userId].totalTests || 0) + 1;
-        if (score > (db.users[userId].score || 0)) {
-            db.users[userId].score = score;
-            db.users[userId].date = new Date().toISOString();
-        }
+        
+        // Ballarni shunchaki qo'shish (Eski kodingizda faqat eng yuqorisini saqlardi)
+        db.users[userId].score = (db.users[userId].score || 0) + score;
+        
         db.users[userId].name = name;
         db.users[userId].username = username ? `@${username}` : "Lichka yopiq";
-        fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2));
+        
+        saveDb(db); // Biz yangilagan saveDb ni chaqiramiz
     } catch (error) { console.error("Bazaga yozishda xato:", error); }
 }
 
@@ -6417,43 +6416,26 @@ bot.use(async (ctx, next) => {
 });
 
 // To'xtatish tugmasi bosilganda
-bot.hears("🛑 Botni To'xtatish", (ctx) => {
+// Botni to'xtatish (Mantiqiy qismi)
+bot.hears(["🛑 Botni To'xtatish", "🟢 Botni Yoqish"], async (ctx) => {
     if (ctx.from.id !== ADMIN_ID) return;
-    const db = getDb();
-    if (!db.settings) db.settings = {};
-    
-    db.settings.isMaintenance = true;
-    saveDb(db);
-    
-    ctx.reply("🔴 Bot hamma uchun to'xtatildi! Endi faqat siz ishlata olasiz.", 
-        Markup.keyboard([['🟢 Botni Yoqish'], ['⬅️ Orqaga (Fanlar)']]).resize());
-});
 
-// Yoqish tugmasi bosilganda
-// To'xtatish tugmasi bosilganda
-bot.hears("🛑 Botni To'xtatish", (ctx) => {
-    if (ctx.from.id !== ADMIN_ID) return;
-    const db = getDb();
+    const db = getDb(); // Fayldan bazani oqish
     if (!db.settings) db.settings = {};
-    
-    db.settings.isMaintenance = true;
-    saveDb(db);
-    
-    ctx.reply("🔴 Bot hamma uchun to'xtatildi! Endi faqat siz ishlata olasiz.", 
-        Markup.keyboard([['🟢 Botni Yoqish'], ['⬅️ Orqaga (Fanlar)']]).resize());
-});
 
-// Yoqish tugmasi bosilganda
-bot.hears("🟢 Botni Yoqish", (ctx) => {
-    if (ctx.from.id !== ADMIN_ID) return;
-    const db = getDb();
-    if (!db.settings) db.settings = {};
+    const isStopping = ctx.message.text === "🛑 Botni To'xtatish";
+    db.settings.isMaintenance = isStopping;
     
-    db.settings.isMaintenance = false;
-    saveDb(db);
-    
-    ctx.reply("🟢 Bot barcha foydalanuvchilar uchun qayta yoqildi!", 
-        Markup.keyboard([['🛑 Botni Toxtatish'], ['⬅️ Orqaga (Fanlar)']]).resize());
+    saveDb(db); // Bazaga saqlash
+
+    const text = isStopping ? "🔴 Bot hamma uchun to'xtatildi!" : "🟢 Bot qayta yoqildi!";
+    const buttonText = isStopping ? "🟢 Botni Yoqish" : "🛑 Botni To'xtatish";
+
+    return ctx.reply(text, Markup.keyboard([
+        ['🏆 Musobaqa boshqarish', buttonText],
+        ['➕ Yangi fan qoshish', '📊 Statistika'],
+        ['⬅️ Orqaga (Fanlar)']
+    ]).resize());
 });
 
 
@@ -6566,62 +6548,6 @@ bot.hears('🆓 Bepul versiya', (ctx) => {
 });
 
 
-
-
-bot.on('text', async (ctx, next) => {
-    const s = ctx.session;
-    const db = getDb();
-    const userId = ctx.from.id;
-    const user = db.users[userId];
-
-    // 1. AGAR BOT ISM KUTAYOTGAN BO'LSA VA FOYDALANUVCHI ISM YOZSA
-    if (s.waitingForName) {
-        const inputName = ctx.message.text.trim();
-        
-        if (inputName.length < 3) {
-            return ctx.reply("Ism juda qisqa. Iltimos, ismingizni kiriting:");
-        }
-
-        // Bazada foydalanuvchi bormi?
-        if (db.users[userId]) {
-            db.users[userId].name = inputName; // Faqat ismni yangilaymiz
-        } else {
-            db.users[userId] = { 
-                id: userId, 
-                name: inputName, 
-                score: 0, 
-                isVip: false 
-            };
-        }
-
-        saveDb(db); // Faylga saqlaymiz
-        s.waitingForName = false; // Ism kutishni to'xtatamiz
-        s.userName = inputName;
-
-        await ctx.reply(`Rahmat, ${inputName}! Endi testlarni yechishingiz mumkin. ✅`);
-        return showSubjectMenu(ctx);
-    }
-
-    // 2. MUHIM QISMI: AGAR FOYDALANUVCHI ISMI BAZADA BO'LSA, UNGA TUGMALARNI ISHLATISHGA RUXSAT BERISH
-    if (user && user.name) {
-        s.waitingForName = false; // Xavfsizlik uchun sessiyani ham to'g'irlab qo'yamiz
-        return next(); // Keyingi tugma buyruqlariga o'tkazib yuboramiz
-    }
-
-    // 3. AGAR ISMI YO'Q BO'LSA, FAQAT SHUNDA ISM SO'RAYMIZ
-    s.waitingForName = true;
-    return ctx.reply("Davom etish uchun avval ismingizni kiriting:");
-});
-
-
-
-if (db.users[userId]) {
-    db.users[userId].score += 1; // Ballni oshirish
-    saveDb(db); // BAZAGA SAQLASH (BU JUDA MUHIM!)
-}
-
-
-// 2. Kelgan xabarni hamma foydalanuvchilarga tarqatish
 bot.on(['text', 'photo', 'video', 'animation', 'document'], async (ctx, next) => {
     // Agar matn bo'lsa matnni, rasm ostida yozilgan bo'lsa captionni oladi
     const text = ctx.message.text || ctx.message.caption; 
@@ -6736,6 +6662,59 @@ bot.on(['text', 'photo', 'video', 'animation', 'document'], async (ctx, next) =>
 
     return next();
 });
+
+
+bot.on('text', async (ctx, next) => {
+    const s = ctx.session;
+    const db = getDb();
+    const userId = ctx.from.id;
+    const user = db.users[userId];
+
+    // 1. AGAR BOT ISM KUTAYOTGAN BO'LSA VA FOYDALANUVCHI ISM YOZSA
+    if (s.waitingForName) {
+        const inputName = ctx.message.text.trim();
+        
+        if (inputName.length < 3) {
+            return ctx.reply("Ism juda qisqa. Iltimos, ismingizni kiriting:");
+        }
+
+        // Bazada foydalanuvchi bormi?
+        if (db.users[userId]) {
+            db.users[userId].name = inputName; // Faqat ismni yangilaymiz
+        } else {
+            db.users[userId] = { 
+                id: userId, 
+                name: inputName, 
+                score: 0, 
+                isVip: false 
+            };
+        }
+
+        saveDb(db); // Faylga saqlaymiz
+        s.waitingForName = false; // Ism kutishni to'xtatamiz
+        s.userName = inputName;
+
+        await ctx.reply(`Rahmat, ${inputName}! Endi testlarni yechishingiz mumkin. ✅`);
+        return showSubjectMenu(ctx);
+    }
+
+    // 2. MUHIM QISMI: AGAR FOYDALANUVCHI ISMI BAZADA BO'LSA, UNGA TUGMALARNI ISHLATISHGA RUXSAT BERISH
+    if (user && user.name) {
+        s.waitingForName = false; // Xavfsizlik uchun sessiyani ham to'g'irlab qo'yamiz
+        return next(); // Keyingi tugma buyruqlariga o'tkazib yuboramiz
+    }
+
+    // 3. AGAR ISMI YO'Q BO'LSA, FAQAT SHUNDA ISM SO'RAYMIZ
+    s.waitingForName = true;
+    return ctx.reply("Davom etish uchun avval ismingizni kiriting:");
+});
+
+
+
+
+
+
+// 2. Kelgan xabarni hamma foydalanuvchilarga tarqatish
 
 bot.hears('⏱ Vaqtni o\'zgartirish', (ctx) => {
     if (ctx.from.id !== ADMIN_ID) return;
@@ -6935,13 +6914,8 @@ function escapeHTML(str) {
 }
 
 function saveDb(db) {
-    const fs = require('fs');
-    const path = require('path');
-    const dbPath = path.join(__dirname, 'db.json'); // To'liq yo'lni ko'rsatish xavfsizroq
-
     try {
-        fs.writeFileSync(dbPath, JSON.stringify(db, null, 2), 'utf8');
-        console.log("Ma'lumot faylga muvaffaqiyatli yozildi.");
+        fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2), 'utf8');
     } catch (err) {
         console.error("FAYLGA YOZISHDA XATO:", err);
     }
