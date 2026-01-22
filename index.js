@@ -9511,33 +9511,48 @@ bot.hears("🗑 Foydalanuvchini o'chirish", (ctx) => {
 bot.on('text', async (ctx, next) => {
     const s = ctx.session;
     
-    // Faqat admin va faqat o'chirish qadamida bo'lsa ishlaydi
     if (ctx.from.id === ADMIN_ID && s.adminStep === 'wait_delete_id') {
-        const targetId = ctx.message.text.trim();
+        let input = ctx.message.text.trim();
         const db = getDb();
+        let targetId = null;
 
-        if (db.users && db.users[targetId]) {
-            const userName = db.users[targetId].name || "Noma'lum";
+        // 1. Agar username kiritilgan bo'lsa (@ belgi bilan yoki belgisiz)
+        if (input.startsWith('@') || isNaN(input)) {
+            const searchName = input.replace('@', '').toLowerCase();
             
-            // Foydalanuvchini asosiy bazadan o'chirish
+            // Bazadan shu usernameli odamni qidiramiz
+            targetId = Object.keys(db.users).find(id => {
+                const user = db.users[id];
+                return user.username && user.username.toLowerCase() === searchName;
+            });
+        } else {
+            // 2. Agar to'g'ridan-to'g'ri ID kiritilgan bo'lsa
+            targetId = input;
+        }
+
+        // O'chirish jarayoni
+        if (targetId && db.users[targetId]) {
+            const userName = db.users[targetId].name || "Noma'lum";
+            const userTag = db.users[targetId].username ? `@${db.users[targetId].username}` : "Nik yo'q";
+
+            // Asosiy bazadan o'chirish
             delete db.users[targetId];
             
-            // Agar reyting alohida scores massivida bo'lsa, u yerdan ham o'chirish
+            // Reytingdan o'chirish
             if (db.scores) {
-                db.scores = db.scores.filter(user => String(user.id) !== String(targetId));
+                db.scores = db.scores.filter(u => String(u.id) !== String(targetId));
             }
 
-            saveDb(db); // O'zgarishlarni saqlash
-            s.adminStep = null; // Qadamni tozalash
+            saveDb(db);
+            s.adminStep = null;
 
-            return ctx.reply(`✅ Foydalanuvchi muvaffaqiyatli o'chirildi:\n👤 Ismi: ${userName}\n🆔 ID: ${targetId}`);
+            return ctx.reply(`✅ Foydalanuvchi topildi va o'chirildi:\n👤 Ism: ${userName}\nℹ️ Nik: ${userTag}\n🆔 ID: ${targetId}`);
         } else {
-            return ctx.reply("❌ Bunday ID topilmadi. ID to'g'ri ekanligini tekshirib qayta yuboring:");
+            return ctx.reply("❌ Bunday foydalanuvchi topilmadi.\n\nEslatma: Foydalanuvchi botni kamida bir marta ishlatgan va bazaga tushgan bo'lishi kerak.");
         }
     }
     return next();
 });
-
 bot.on(['text', 'photo', 'video', 'animation', 'document'], async (ctx, next) => {
     // Agar matn bo'lsa matnni, rasm ostida yozilgan bo'lsa captionni oladi
     const text = ctx.message.text || ctx.message.caption; 
