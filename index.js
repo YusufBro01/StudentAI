@@ -47,6 +47,14 @@ function getDb() {
     }
 }
 
+function saveDb(db) {
+    try {
+        fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2), 'utf8');
+    } catch (err) {
+        console.error("FAYLGA YOZISHDA XATO:", err);
+    }
+}
+
 // Bot sozlamalarini yuklash
 let botSettings = { timeLimit: 60 }; 
 if (fs.existsSync(SETTINGS_FILE)) {
@@ -6470,8 +6478,8 @@ bot.use(async (ctx, next) => {
 
 
 bot.hears(["🚀 Turbo (Yoqish)", "🚀 Turbo (O'chirish)"], async (ctx) => {
+  const db = getDb();
     if (ctx.from.id !== ADMIN_ID) return;
-    const db = getDb();
     if (!db.settings) db.settings = {};
 
     const isTurningOn = ctx.message.text.includes("Yoqish");
@@ -6583,9 +6591,9 @@ bot.hears('➕ Yangi fan qoshish', (ctx) => {
 
 // Statistika tugmasini eshitish (Admin uchun)
 bot.hears('📊 Statistika', (ctx) => {
+  const db = getDb();
     if (ctx.from.id !== ADMIN_ID) return;
 
-    const db = getDb();
     const users = Object.values(db.users || {});
     const totalUsers = users.length;
     const totalTests = users.reduce((sum, u) => sum + (u.totalTests || 0), 0);
@@ -7017,10 +7025,3 @@ function escapeHTML(str) {
     });
 }
 
-function saveDb(db) {
-    try {
-        fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2), 'utf8');
-    } catch (err) {
-        console.error("FAYLGA YOZISHDA XATO:", err);
-    }
-}
