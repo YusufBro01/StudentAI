@@ -6478,10 +6478,23 @@ bot.hears(["🚀 Turbo (Yoqish)", "🚀 Turbo (O'chirish)"], async (ctx) => {
     db.settings.turboMode = isTurningOn;
     saveDb(db);
 
-    const msg = isTurningOn ? "🚀 TURBO REJIM YOQILDI!\nEndi foydalanuvchilar menyusida maxsus tugma ko'rinadi." : "🚀 Turbo rejim o'chirildi.";
+    const msg = isTurningOn ? "🚀 TURBO REJIM YOQILDI!" : "🚀 Turbo rejim o'chirildi.";
     
-    // Adminni qaytadan admin panelga yuboramiz (status yangilanishi uchun)
-    return ctx.reply(msg, Markup.keyboard([['/admin']]).resize());
+    // Xabar yuboramiz va avtomatik Admin panelni qayta chiqaramiz
+    await ctx.reply(msg);
+    
+    // Bu yerda admin panel funksiyasini qayta chaqiramiz (o'zingizni kodingizdagi admin menyusi)
+    const statusEmoji = db.settings?.isMaintenance ? "🟢 Botni Yoqish" : "🛑 Botni To'xtatish";
+    const turboEmoji = db.settings?.turboMode ? "🚀 Turbo (O'chirish)" : "🚀 Turbo (Yoqish)";
+    
+    return ctx.reply(`🛠 **Admin Panel** qaytadan yuklandi`, 
+        Markup.keyboard([
+            ['💰 Pullik versiya', '🆓 Bepul versiya'],
+            [statusEmoji, turboEmoji],
+            ['🏆 Musobaqa boshqarish', '➕ Yangi fan qoshish'],
+            ['⏱ Vaqtni o\'zgartirish', '📊 Statistika'],
+            ['📣 Xabar tarqatish', '⬅️ Orqaga (Fanlar)']
+        ]).resize());
 });
 
 // To'xtatish tugmasi bosilganda
@@ -6795,19 +6808,41 @@ bot.hears('⏱ Vaqtni o\'zgartirish', (ctx) => {
 // --- TEST BOSHLASH ---
 bot.hears(["📝 Akademik yozuv", "📜 Tarix", "➕ Matematika", "💻 Dasturlash 1"], async (ctx) => {
     const text = ctx.message.text;
-    if (text.includes("Akademik")) ctx.session.currentSubject = "academic";
-    else if (text.includes("Tarix")) ctx.session.currentSubject = "history";
-    else if (text.includes("Matematika")) ctx.session.currentSubject = "math";
-    else if (text.includes("Dasturlash")) ctx.session.currentSubject = "dasturlash"; // Shu joyi aniq bo'lishi kerak
-    ctx.reply(`Tayyormisiz?`, Markup.keyboard([["⚡️ Blitz (25)", "📝 To'liq test"], ["⬅️ Orqaga (Fanlar)"]]).resize());
+    const s = ctx.session;
+
+    // 1. Fanni aniqlash
+    if (text.includes("Akademik")) s.currentSubject = "academic";
+    else if (text.includes("Tarix")) s.currentSubject = "history";
+    else if (text.includes("Matematika")) s.currentSubject = "math";
+    else if (text.includes("Dasturlash")) s.currentSubject = "dasturlash";
+
+    // 2. Agar Turbo rejim yoqilgan bo'lsa, darhol boshlaymiz
+    if (s.isTurbo) {
+        const questions = SUBJECTS[s.currentSubject]?.questions;
+        if (!questions || questions.length === 0) return ctx.reply("Bu fanda savollar yo'q.");
+        
+        s.activeList = shuffle(questions); // Turbo rejimda hammasini ko'rsatish
+        s.index = 0;
+        s.score = 0;
+        s.wrongs = [];
+        return sendQuestion(ctx, true); // Savol berishni boshlash
+    }
+
+    // 3. Agar Turbo bo'lmasa (Oddiy rejim), eski menyuni chiqarish
+    return ctx.reply(`Tayyormisiz?`, Markup.keyboard([
+        ["⚡️ Blitz (25)", "📝 To'liq test"], 
+        ["⬅️ Orqaga (Fanlar)"]
+    ]).resize());
 });
 
 bot.hears(["⚡️ Blitz (25)", "📝 To'liq test"], async (ctx) => {
     const s = ctx.session;
     const userId = ctx.from.id;
 
+    // 🚀 MUHIM: Oddiy test boshlanganda Turbo rejimni o'chiramiz
+    s.isTurbo = false;
+
     // 1. PULLIK REJIM TEKSHIRUVI
-    // Agar bot pullik rejimda bo'lsa VA foydalanuvchi VIP bo'lmasa VA admin bo'lmasa
     if (isBotPaidMode && !vipUsers.includes(userId) && userId !== ADMIN_ID) {
         return ctx.reply(
             "⚠️ Kechirasiz, bot hozirda pullik rejimda.\nTest topshirish uchun VIP statusini sotib olishingiz kerak.", 
@@ -6829,9 +6864,9 @@ bot.hears(["⚡️ Blitz (25)", "📝 To'liq test"], async (ctx) => {
     s.score = 0; 
     s.wrongs = [];
     
+    // Savol berishni boshlash (isTurbo false bo'lgani uchun oddiy variantlar chiqadi)
     sendQuestion(ctx, true);
 });
-
 bot.hears("📊 Reyting", async (ctx) => {
     const db = getDb(); // Fayldan yangi ma'lumotlarni o'qish
     const users = Object.values(db.users);
