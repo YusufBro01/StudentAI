@@ -6746,7 +6746,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Moddiy nuqta trayektoriyasining birlik vaqt davomidagi o‘zgarishini xarakterlaydigan kattalikka tezlanish deyiladi.",
       "Moddiy nuqta harakatining birlik vaqt davomidagi o‘zgarishini xarakterlaydigan kattalikka tezlanish deyiladi."
     ],
-    "a": "Moddiy nuqta tezligining birlik vaqt davomidagi o‘zgarishini xarakterlaydigan kattalikka tezlanish deyiladi."
+    "a": "Moddiy nuqta tezligining birlik vaqt davomidagi o‘zgarishini xarakterlaydigan kattalikka tezlanish deyiladi.",
+    "hint": "💡 Tezlanish — bu tezlikning qanchalik tez o'zgarayotganini ko'rsatadi. Masalan, mashina gazini bossangiz, tezlik orta boshlaydi, demak tezlanish paydo bo'ladi. Formula: a = Δv / Δt."
   },
   {
     "q": "Klassik mexanikada fazoning bir jinsli va izotropligi nimani bildiradi?",
@@ -6756,7 +6757,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Turli yo‘nalishlardagi xususiyatlarining har xil deb qabul qilinishini",
       "Bir xil yo‘nalishlardagi xususiyatlarining bir xil deb qabul qilinishini"
     ],
-    "a": "Turli yo‘nalishlardagi xususiyatlarining bir xil deb qabul qilinishini"
+    "a": "Turli yo‘nalishlardagi xususiyatlarining bir xil deb qabul qilinishini",
+    "hint": "💡 Izotroplik — bu fazoning barcha yo'nalishlarda bir xil xususiyatga ega ekanligini anglatadi. Ya'ni, tajribani shimolga qarab o'tkazasizmi yoki janubga, fizika qonunlari o'zgarmaydi."
   },
   {
     "q": "Moddiy nuqta deb nimaga aytiladi?",
@@ -6766,7 +6768,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Qaralayotgan sharoitlarda faqat o‘lchamlarini e’tiborga olmasa bo‘ladigan jism.",
       "Qaralayotgan sharoitlarda hajmini e’tiborga olmasa bo‘ladigan jism."
     ],
-    "a": "Qaralayotgan sharoitlarda shakli va o‘lchamlarini e’tiborga olmasa ham bo‘ladigan jismga moddiy nuqta deyiladi."
+    "a": "Qaralayotgan sharoitlarda shakli va o‘lchamlarini e’tiborga olmasa ham bo‘ladigan jismga moddiy nuqta deyiladi.",
+    "hint": "💡 Moddiy nuqta — bu ideal tushuncha. Masalan, Yerdan Quyoshgacha bo'lgan masofani hisoblaganda, Yerning o'lchami juda kichik bo'lgani uchun uni oddiy nuqta deb hisoblashimiz mumkin."
   },
   {
     "q": "Sanoq sistemasi deb nimaga aytiladi?",
@@ -6776,7 +6779,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Faqat sanoq jismi va soat.",
       "Faqat vaqtni qayd qiluvchi asbob."
     ],
-    "a": "Sanoq jismi, koordinatalar sistemasi va vaqtni qayd qiluvchi asbob-soat majmuasi."
+    "a": "Sanoq jismi, koordinatalar sistemasi va vaqtni qayd qiluvchi asbob-soat majmuasi.",
+    "hint": "💡 Harakatni o'rganish uchun bizga 3 ta narsa kerak: 1. Nimaga nisbatan harakatlanyapmiz (jism), 2. Qayerda turibmiz (koordinata), 3. Qachon (vaqt/soat)."
   },
   {
     "q": "Trayektoriya deb nimaga aytiladi?",
@@ -6786,7 +6790,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Bosib o‘tilgan yo‘lga trayektoriya deyiladi.",
       "Ko‘chishga trayektoriya deyiladi."
     ],
-    "a": "Moddiy nuqtaning harakati davomida qoldirgan iziga trayektoriya deyiladi."
+    "a": "Moddiy nuqtaning harakati davomida qoldirgan iziga trayektoriya deyiladi.",
+    "hint": "💡 Trayektoriya — bu jism harakatlanayotganda chizgan chizig'i. Masalan, samolyot osmonda qoldirgan oq chiziq uning trayektoriyasini ko'rsatadi."
   },
   {
     "q": "Tezlik deb nimaga aytiladi?",
@@ -6796,7 +6801,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Moddiy nuqtaning tezlanishi.",
       "Moddiy nuqtaning massasi."
     ],
-    "a": "Moddiy nuqtaning fazodagi vaziyati vaqt bo‘yicha o‘zgarish jadalligini xarakterlovchi kattalik."
+    "a": "Moddiy nuqtaning fazodagi vaziyati vaqt bo‘yicha o‘zgarish jadalligini xarakterlovchi kattalik.",
+    "hint": "💡 Tezlik jismning qanchalik tez joyini o'zgartirayotganini bildiradi. Agar jism qisqa vaqtda uzoqqa ko'chsa, demak uning tezligi yuqori. Formula: v = s / t."
   },
   {
     "q": "Markazga intilma yoki normal tezlanish formulasini ko‘rsating?",
@@ -6806,7 +6812,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "aₜ = dv / dt",
       "a = v / R"
     ],
-    "a": "aₙ = v² / R"
+    "a": "aₙ = v² / R",
+    "hint": "💡 Normal tezlanish jism aylanma harakat qilayotganda tezlikning yo'nalishini o'zgartirishga xizmat qiladi. U har doim aylana markaziga yo'nalgan bo'ladi."
   },
   {
     "q": "Bosib o‘tilgan yo‘l deb nimaga aytiladi?",
@@ -6816,7 +6823,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Moddiy nuqta harakat trayektoriyasining uzunligiga bosib o‘tilgan yo‘l deyiladi.",
       "Moddiy nuqta harakatining tezligiga bosib o‘tilgan yo‘l deyiladi."
     ],
-    "a": "Moddiy nuqta harakat trayektoriyasining uzunligiga bosib o‘tilgan yo‘l deyiladi."
+    "a": "Moddiy nuqta harakat trayektoriyasining uzunligiga bosib o‘tilgan yo‘l deyiladi.",
+    "hint": "💡 Yo'l — bu trayektoriyaning uzunligi. Masalan, siz uydan maktabgacha egri yo'llar bilan yursangiz, barcha bosib o'tgan qadamlaringiz yig'indisi yo'l hisoblanadi."
   },
   {
     "q": "Tezlik qanday kattalik?",
@@ -6826,7 +6834,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Tezlik vektor va skalyar kattalik.",
       "Tezlik vektor kattalik.",
     ],
-    "a": "Tezlik vektor kattalik."
+    "a": "Tezlik vektor kattalik.",
+    "hint": "💡 Vektor kattalik — bu ham miqdori (qiymati), ham yo'nalishi bor kattalikdir. Tezlik haqida gapirganda nafaqat 'necha km/soat', balki 'qaysi tomonga' harakatlanayotgani ham muhim."
   },
   {
     "q": "Nyutonning ikkinchi qonuni formulasini ko‘rsating?",
@@ -6836,7 +6845,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "F = −F",
       "F = m·g"
     ],
-    "a": "F = m·a"
+    "a": "F = m·a",
+    "hint": "💡 Nyutonning 2-qonuni: Jismga ta'sir etuvchi kuch (F) uning massasi (m) va olgan tezlanishi (a) ko'paytmasiga teng. Kuch qancha katta bo'lsa, tezlanish ham shuncha katta bo'ladi."
   },
   {
     "q": "Ilgarilanma harakat deb nimaga aytiladi?",
@@ -6846,7 +6856,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Jismdagi ixtiyoriy ikki nuqtani tutashtiruvchi to‘g‘ri chiziq o‘z-o‘ziga perpendikulyar ravishda ko‘chadigan harakat.",
       "Jismdagi ixtiyoriy ikki nuqtani tutashtiruvchi to‘g‘ri chiziq o‘z-o‘ziga parallel ravishda ko‘chmaydigan harakat."
     ],
-    "a": "Jismdagi ixtiyoriy ikki nuqtani tutashtiruvchi to‘g‘ri chiziq o‘z-o‘ziga parallel ravishda ko‘chadigan harakat."
+    "a": "Jismdagi ixtiyoriy ikki nuqtani tutashtiruvchi to‘g‘ri chiziq o‘z-o‘ziga parallel ravishda ko‘chadigan harakat.",
+    "hint": "💡 Ilgarilanma harakatda jismning barcha nuqtalari bir xil harakat qiladi. Tasavvur qiling, qutini polda sursangiz, uning burchaklarini tutashtiruvchi chiziq har doim bir xil yo'nalishda (parallel) qoladi."
   },
   {
     "q": "Nyutonning uchinchi qonuni formulasini ko‘rsating?",
@@ -6856,7 +6867,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "F₁₂ = −F₂₁",
       "F = −F₁"
     ],
-    "a": "F₁₂ = −F₂₁"
+    "a": "F₁₂ = −F₂₁",
+    "hint": "💡 Bu qonun 'Ta'sir va aks ta'sir' qonunidir. Minus belgisi kuchlarning yo'nalishi bir-biriga qarama-qarshi ekanligini bildiradi. Siz devorni qanchalik bossangiz, devor ham sizni shunchalik kuch bilan qaytaradi."
   },
   {
     "q": "Jismning impulsi formulasini ko‘rsating?",
@@ -6866,7 +6878,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "p = m·a",
       "F = m·a"
     ],
-    "a": "p = m·v"
+    "a": "p = m·v",
+    "hint": "💡 Impuls — bu 'harakat miqdori'. Jismning massasi va tezligi qanchalik katta bo'lsa, uning impulsi ham shunchalik yuqori bo'ladi. Masalan, og'ir yuk mashinasini to'xtatish yengil mashinaga qaraganda qiyinroq, chunki uning impulsi katta."
   },
   {
     "q": "Jism inertligining o‘lchovi — jismning massasi deb nimaga aytiladi?",
@@ -6876,7 +6889,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Jismga ta’sir etuvchi kuchning shu kuch ta’sirida jism oladigan tezlanishga ko‘paytmasi bilan xarakterlanadigan fizik kattalik.",
       "Jismga ta’sir etuvchi kuchning shu kuch ta’sirida jism oladigan tezlanishga nisbati bilan xarakterlanadigan fizik kattalik.",
     ],
-    "a": "Jismga ta’sir etuvchi kuchning shu kuch ta’sirida jism oladigan tezlanishga nisbati bilan xarakterlanadigan fizik kattalik."
+    "a": "Jismga ta’sir etuvchi kuchning shu kuch ta’sirida jism oladigan tezlanishga nisbati bilan xarakterlanadigan fizik kattalik.",
+    "hint": "💡 Massa jismning 'taysalligi' yoki inertligini bildiradi. Bir xil kuch bilan itarsangiz, og'ir jism (katta massa) kamroq tezlanish oladi. Shuning uchun m = F / a."
   },
   {
     "q": "Nyutonning uchinchi qonuniga ta’rif bering?",
@@ -6886,7 +6900,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Ikki jismning o‘zaro ta’sir kuchlari kattalik jihatidan teng bo‘lib, jismlarni birlashtiruvchi to‘g‘ri chiziq bo‘ylab qarama-qarshi yo‘nalgan.",
       "Bir jismning o‘zaro ta’sir kuchlari kichiklik jihatidan teng bo‘lib, yo‘nalgan."
     ],
-    "a": "Ikki jismning o‘zaro ta’sir kuchlari kattalik jihatidan teng bo‘lib, jismlarni birlashtiruvchi to‘g‘ri chiziq bo‘ylab qarama-qarshi yo‘nalgan."
+    "a": "Ikki jismning o‘zaro ta’sir kuchlari kattalik jihatidan teng bo‘lib, jismlarni birlashtiruvchi to‘g‘ri chiziq bo‘ylab qarama-qarshi yo‘nalgan.",
+    "hint": "💡 Kuchlar har doim juft-juft bo'lib yuzaga keladi. Muhim jihati: bu kuchlar qiymat jihatdan teng, lekin yo'nalishi qarama-qarshi va turli jismlarga qo'yilgan bo'ladi."
   },
   {
     "q": "Mexanik ish formulasi va o‘lchov birligini ko‘rsating?",
@@ -6896,7 +6911,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "A = F / s, Pa",
       "A = F·s·cosα, Vatt"
     ],
-    "a": "A = F·s·cosα, Joul"
+    "a": "A = F·s·cosα, Joul",
+    "hint": "💡 Ish bajarilishi uchun kuch (F) ta'sirida jism ko'chishi (s) kerak. Agar siz devorni itarsangiz-u, u joyidan jilmasa, fizik ma'noda ish bajarilmagan hisoblanadi. Birligi — Joul."
   },
   {
     "q": "Kinetik energiya formulasi va o‘lchov birligini ko‘rsating?",
@@ -6906,7 +6922,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "E = F·s, Vatt",
       "E = m·v / t, Joul"
     ],
-    "a": "E = m·v² / 2, Joul"
+    "a": "E = m·v² / 2, Joul",
+    "hint": "💡 Kinetik energiya — bu harakatlanayotgan jismning energiyasidir. Jismning tezligi (v) ortishi bilan uning energiyasi kvadratik ravishda o'sib boradi."
   },
   {
     "q": "Butun olam tortishish (gravitasiya) qonunining formulasini ko‘rsating?",
@@ -6916,7 +6933,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "F = γ·m₁·m₂ / r²",
       "F = −γ·m₁·m₂ / r²"
     ],
-    "a": "F = γ·m₁·m₂ / r²"
+    "a": "F = γ·m₁·m₂ / r²",
+    "hint": "💡 Nyutonning tortishish qonuniga ko'ra, barcha massaga ega jismlar bir-birini tortadi. Bu kuch masofaning (r) kvadrati ortishi bilan juda tez kamayib boradi."
   },
   {
     "q": "Butun olam tortishish (gravitasiya) doimiysining qiymati va o‘lchov birligini ko‘rsating?",
@@ -6926,7 +6944,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "γ = 6,67·10⁻¹¹ N·kg²",
       "γ = 6,67·10⁻¹¹ m²/kg²"
     ],
-    "a": "γ = 6,67·10⁻¹¹ N·m²/kg²"
+    "a": "γ = 6,67·10⁻¹¹ N·m²/kg²",
+    "hint": "💡 Bu juda kichik son (6,67·10⁻¹¹). Shuning uchun biz kundalik hayotda kichik jismlarning bir-birini tortishini sezmaymiz, lekin sayyoralar darajasida bu kuch ulkan ahamiyatga ega."
   },
   {
     "q": "Ishning asosiy o‘lchov birligi Joul (J) ga berilgan to‘g‘ri ta’rifni ko‘rsating?",
@@ -6936,7 +6955,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "1 J — 1 N kuch ta’sirida jismni 1 m masofaga ko‘chirishda bajarilgan ish.",
       "1 J — tezlanish bilan harakat qilayotgan moddiy nuqtaning tezligi."
     ],
-    "a": "1 J — 1 N kuch ta’sirida jismni 1 m masofaga ko‘chirishda bajarilgan ish."
+    "a": "1 J — 1 N kuch ta’sirida jismni 1 m masofaga ko‘chirishda bajarilgan ish.",
+    "hint": "💡 1 Joul juda oddiy: 1 Nyuton kuch bilan jismni 1 metrga sursangiz, aynan 1 Joul energiya sarflagan bo'lasiz."
   },
   {
     "q": "Chiziqli va burchak tezliklar orasidagi bog‘lanish formulasini ko‘rsating?",
@@ -6946,7 +6966,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "v = ω − r",
       "v = ω / r"
     ],
-    "a": "v = ω·r"
+    "a": "v = ω·r",
+    "hint": "💡 Tasavvur qiling, charxpalak aylanmoqda. Markazga yaqin turgan nuqta va chekkadagi nuqta bir xil vaqtda aylanib chiqadi (ω bir xil), lekin chekkadagi nuqta ko'proq yo'l bosadi (v kattaroq). Chunki uning radiusi (r) kattaroq."
   },
   {
     "q": "Jismning erkin tushish tezlanishi Yer tortish maydonining shu jism joylashgan nuqtasidagi ............dir.",
@@ -6956,7 +6977,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "kuchi",
       "ko‘chishi"
     ],
-    "a": "kuchlanganligi"
+    "a": "kuchlanganligi",
+    "hint": "💡 Gravitatsion maydon kuchlanganligi (g) — bu maydonning jismga qanchalik kuchli ta'sir qilishini ko'rsatadi. Yer yuzida bu qiymat taxminan 9.8 m/s² ga teng."
   },
   {
     "q": "Normal tezlanish formulasini ko‘rsating?",
@@ -6966,7 +6988,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "aₙ = v² / r",
       "aₙ = v² / t"
     ],
-    "a": "aₙ = v² / r"
+    "a": "aₙ = v² / r",
+    "hint": "💡 Normal tezlanish har doim aylana markaziga yo'nalgan bo'ladi. U tezlikning qiymatini emas, balki yo'nalishini o'zgartirish uchun mas'uldir."
   },
   {
     "q": "Jismning og‘irlik kuchi Yerning tortish maydonining mazkur nuqtasi uchun ............ kattalikdir.",
@@ -6976,7 +6999,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "o‘zgaruvchan",
       "ortuvchi"
     ],
-    "a": "o‘zgaruvchan"
+    "a": "o‘zgaruvchan",
+    "hint": "💡 Og'irlik kuchi Yerning qayerida ekanligingizga bog'liq. Masalan, Yer qutblarida og'irlik kuchi ekvatorga qaraganda biroz kuchliroq, chunki qutblar markazga yaqinroq."
   },
   {
     "q": "Tangensial tezlanish formulasini ko‘rsating?",
@@ -6986,7 +7010,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "aₜ = v + t",
       "aₜ = v + a / t"
     ],
-    "a": "aₜ = ε·r"
+    "a": "aₜ = ε·r",
+    "hint": "💡 Tangensial tezlanish aylanma harakat qilayotgan jismning tezligi (v) ortayotganini yoki kamayayotganini ko'rsatadi. U trayektoriyaga urinma yo'nalishda bo'ladi."
   },
   {
     "q": "Jismning ............ deganda jism tomonidan o‘zi osilib turgan ipga yoki bosib turgan tayanchga ta’sir etadigan kuch tushuniladi.",
@@ -6996,7 +7021,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "vazni",
       "yengilmasligi"
     ],
-    "a": "vazni"
+    "a": "vazni",
+    "hint": "💡 Muhim farq: Og'irlik kuchi Yerning jismni tortishidir, VAZN esa jismning yerga (tayanchni) bosish kuchi. Shuning uchun lift tepaga keskin harakatlansa, vazningiz ortib ketganini sezasiz."
   },
   {
     "q": "Kuch moment formulasini ko‘rsating?",
@@ -7006,7 +7032,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "M = F·l",
       "M = F + l"
     ],
-    "a": "M = F·l"
+    "a": "M = F·l",
+    "hint": "💡 Kuch momenti — bu kuchning jismni aylantirish qobiliyatidir. Eshikni tutqichidan (markazdan uzoqroq, ya'ni l katta) itarish osonroq, chunki moment kattaroq bo'ladi."
   },
   {
     "q": "O‘ta yuklanish deb nimaga aytiladi?",
@@ -7016,7 +7043,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Vazn og‘irlik kuchidan ortib ketgan holatlarga aytiladi",
       "Vazn og‘irlik kuchidan juda ko‘p marta kamayib ketgan holatlarga aytiladi"
     ],
-    "a": "Vazn og‘irlik kuchidan ortib ketgan holatlarga aytiladi"
+    "a": "Vazn og‘irlik kuchidan ortib ketgan holatlarga aytiladi",
+    "hint": "💡 Raketa uchayotgan vaqtda kosmonavtlarning vazni ularning og'irlik kuchidan bir necha barobar ortib ketadi. Bu holat o'ta yuklanish (overload) deb ataladi."
   },
   {
     "q": "Kuch momentining “SI” dagi o‘lchov birligini ko‘rsating?",
@@ -7026,7 +7054,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "N·m",
       "J·m"
     ],
-    "a": "N·m"
+    "a": "N·m",
+    "hint": "💡 Kuch (Nyuton - N) va kuch yelkasi (metr - m) ko'paytmasidan Nyuton-metr (N·m) hosil bo'ladi."
   },
   {
     "q": "Potensial energiya deb nimaga aytiladi?",
@@ -7036,7 +7065,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Jismlarning bir-biriga nisbatan joylashishiga bog‘liq bo‘lgan energiya",
       "Jismlarning joylashuvi va harakatiga bog‘liq bo‘lgan energiya"
     ],
-    "a": "Jismlarning bir-biriga nisbatan joylashishiga bog‘liq bo‘lgan energiya"
+    "a": "Jismlarning bir-biriga nisbatan joylashishiga bog‘liq bo‘lgan energiya",
+    "hint": "💡 Potensial energiya — bu yashirin energiya. Masalan, balandda turgan toshni qo'yib yuborsangiz, u joylashgan balandligi hisobiga ish bajaradi. Eₚ = mgh."
   },
   {
     "q": "Maydon ixtiyoriy nuqtasining potensiali deb nimaga aytiladi?",
@@ -7046,7 +7076,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Mazkur nuqtaga kiritilgan birlik massali sinov jismning potensial energiyasiga teng kattalik",
       "Mazkur nuqtaga kiritilgan birlik massali jismning kinetik energiyasi"
     ],
-    "a": "Mazkur nuqtaga kiritilgan birlik massali sinov jismning potensial energiyasiga teng kattalik"
+    "a": "Mazkur nuqtaga kiritilgan birlik massali sinov jismning potensial energiyasiga teng kattalik",
+    "hint": "💡 Potensial — bu maydonning energetik xarakteristikasi. U maydonning ma'lum bir nuqtasida turgan jism qancha energiyaga ega bo'lishini ko'rsatadi. Gravitatsion maydon uchun bu: φ = Eₚ / m."
   },
   {
     "q": "Energiyaning saqlanish qonunining eng umumiy ta’rifini ko‘rsating?",
@@ -7056,7 +7087,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Energiya doimo issiqlikka aylanadi",
       "Energiya har doim yo‘qoladi"
     ],
-    "a": "Energiya yo‘qolmaydi va yo‘qdan paydo bo‘lmaydi, faqat bir ko‘rinishdan boshqasiga aylanadi"
+    "a": "Energiya yo‘qolmaydi va yo‘qdan paydo bo‘lmaydi, faqat bir ko‘rinishdan boshqasiga aylanadi",
+    "hint": "💡 Bu tabiatning eng fundamental qonuni. Masalan, batareyadagi kimyoviy energiya elektr energiyasiga, u esa chiroqda yorug'lik va issiqlik energiyasiga aylanadi. Umumiy miqdor esa o'zgarmas qoladi."
   },
   {
     "q": "Inersiya momentining “SI” dagi o‘lchov birligini ko‘rsating?",
@@ -7066,7 +7098,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "kg·m²",
       "J"
     ],
-    "a": "kg·m²"
+    "a": "kg·m²",
+    "hint": "💡 Inersiya momenti jismning massasi (kg) va uning aylanish o'qigacha bo'lgan masofasining kvadrati (m²) ko'paytmasiga bog'liq. Shuning uchun birligi kg·m²."
   },
   {
     "q": "Fizikada urilish tushunchasiga ta’rif bering?",
@@ -7076,7 +7109,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Jismlarning kichik fazoda qisqa vaqtli o‘zaro ta’sirlashuvi",
       "Jismlarning bir xil tezlikda harakati"
     ],
-    "a": "Jismlarning kichik fazoda qisqa vaqtli o‘zaro ta’sirlashuvi"
+    "a": "Jismlarning kichik fazoda qisqa vaqtli o‘zaro ta’sirlashuvi",
+    "hint": "💡 Urilish — bu juda qisqa vaqt ichida sodir bo'ladigan jarayon. Masalan, futbol to'pini tepganingizda, oyoq va to'p orasidagi ta'sir soniyaning ulushlarida sodir bo'ladi, lekin juda katta kuch hosil qiladi."
   },
   {
     "q": "Qattiq jism impuls momenti formulasini ko‘rsating?",
@@ -7086,7 +7120,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "L = J·ω³",
       "L = J·ω⁴"
     ],
-    "a": "L = J·ω"
+    "a": "L = J·ω",
+    "hint": "💡 Impuls momenti (L) — aylanma harakat miqdori. U jismning inersiya momenti (J) va burchak tezligi (ω) ko'paytmasiga teng. Bu chiziqli harakatdagi p = m·v formulasining aylanma harakatdagi analogidir."
   },
   {
     "q": "Sharning markazidan o‘tuvchi o‘qqa nisbatan inersiya momenti formulasini ko‘rsating?",
@@ -7096,7 +7131,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "J = 2/5·m·r²",
       "J = 1/3·m·r²"
     ],
-    "a": "J = 2/5·m·r²"
+    "a": "J = 2/5·m·r²",
+    "hint": "💡 Har xil geometrik shakllar aylanish o'qiga nisbatan turlicha inersiyaga ega. To'la shar uchun bu koeffitsient 2/5 ga teng."
   },
   {
     "q": "Absolyut noelastik urilishga yaqin bo‘lgan urilishlar qaysi?",
@@ -7106,7 +7142,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Faqat po‘lat jismlarining urilishi",
       "Po‘lat, qo‘rg‘oshin, fil suyagi jismlarining urilishi"
     ],
-    "a": "Plastilin, loy, qo‘rg‘oshin jismlarining urilishi"
+    "a": "Plastilin, loy, qo‘rg‘oshin jismlarining urilishi",
+    "hint": "💡 Noelastik urilishda jismlar to'qnashuvdan keyin bir-biriga yopishib qoladi yoki shaklini o'zgartiradi. Plastilin va loy bunga eng yaxshi misol — ular urilishdan keyin qaytib o'z holiga kelmaydi."
   },
   {
     "q": "Absolyut elastik urilishga yaqin bo‘lgan urilishlar qaysi?",
@@ -7116,7 +7153,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Yumshoq jismlar urilishi",
       "Qo‘rg‘oshin jismlarining urilishi"
     ],
-    "a": "Po‘lat va fil suyagi jismlarining urilishi"
+    "a": "Po‘lat va fil suyagi jismlarining urilishi",
+    "hint": "💡 Elastik urilishda jismlar to'qnashuvdan so'ng darhol bir-biridan itariladi va deformatsiyaga uchramaydi (shakli buzilmaydi). Po'lat sharchalar yoki billiard toshlari (fil suyagi) shunday xususiyatga ega."
   },
   {
     "q": "Deformatsiyalanmaydigan jism qanday ataladi?",
@@ -7126,7 +7164,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "absolyut qattiq jism",
       "absolyut qattiq yoki yumshoq jism"
     ],
-    "a": "absolyut qattiq jism"
+    "a": "absolyut qattiq jism",
+    "hint": "💡 Absolyut qattiq jism — bu har qanday kuch ta'sirida ham o'z shaklini va o'lchamini zarracha bo'lsa ham o'zgartirmaydigan ideal jismdir."
   },
   {
     "q": "Inersiya momentining “SI” dagi o‘lchov birligini ko‘rsating?",
@@ -7136,7 +7175,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "kg·m²",
       "J"
     ],
-    "a": "kg·m²"
+    "a": "kg·m²",
+    "hint": "💡 Eslatma: Inersiya momenti (J) jism massasining taqsimlanishini xarakterlaydi. Formulasi: J = Σ mᵢrᵢ². Shuning uchun birligi kg va metr kvadrat ko'paytmasidir."
   },
   {
     "q": "Fizikada urilish tushunchasiga ta’rif bering?",
@@ -7146,7 +7186,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Jismlarning bir xil tezlikda harakati",
       "Jismlarning to‘xtab qolishi"
     ],
-    "a": "Jismlarning kichik fazoda qisqa vaqtli o‘zaro ta’sirlashuvi"
+    "a": "Jismlarning kichik fazoda qisqa vaqtli o‘zaro ta’sirlashuvi",
+    "hint": "💡 Urilish — bu bir zumda sodir bo'ladigan hodisa. Masalan, billiard sharlari to'qnashganda ular juda kichik masofada va juda qisqa soniyalar ichida bir-biriga kuch bilan ta'sir qiladi."
   },
   {
     "q": "Qattiq jism impuls momenti formulasini ko‘rsating?",
@@ -7156,7 +7197,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "L = J·ω",
       "L = J·ω⁴"
     ],
-    "a": "L = J·ω"
+    "a": "L = J·ω",
+    "hint": "💡 Aylana harakatdagi impuls momenti (L), chiziqli harakatdagi impulsga (p=mv) o'xshaydi. Bunda massa o'rnida inersiya momenti (J), tezlik o'rnida esa burchak tezligi (ω) keladi."
   },
   {
     "q": "Sharning markazidan o‘tuvchi o‘qqa nisbatan inersiya momenti formulasini ko‘rsating?",
@@ -7166,7 +7208,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "J = J₀ + m·d²",
       "J = 2/5·m·r²"
     ],
-    "a": "J = 2/5·m·r²"
+    "a": "J = 2/5·m·r²",
+    "hint": "💡 Shar aylanayotganda uning massasi markazdan qanchalik uzoqda taqsimlanganiga qarab formula o'zgaradi. To'la shar uchun bu koeffitsient aynan 2/5 ni tashkil etadi."
   },
   {
     "q": "Absolyut noelastik urilishga yaqin bo‘lgan urilishlar qaysi?",
@@ -7176,7 +7219,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Faqat po‘lat jismlarining urilishi",
       "Po‘lat, qo‘rg‘oshin, fil suyagi jismlarining urilishi"
     ],
-    "a": "Plastilin, loy, qo‘rg‘oshin jismlarining urilishi"
+    "a": "Plastilin, loy, qo‘rg‘oshin jismlarining urilishi",
+    "hint": "💡 Noelastik urilishda jismlar to'qnashgandan so'ng ajralmaydi, balki birga harakatlanadi yoki butunlay deformatsiyaga uchraydi. Plastilinni devorga urganingizda u qaytib tushmasdan yopishib qolishi bunga misol."
   },
   {
     "q": "Absolyut elastik urilishga yaqin bo‘lgan urilishlar qaysi?",
@@ -7186,7 +7230,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Po‘lat va fil suyagi jismlarining urilishi",
       "Yumshoq jismlar urilishi"
     ],
-    "a": "Po‘lat va fil suyagi jismlarining urilishi"
+    "a": "Po‘lat va fil suyagi jismlarining urilishi",
+    "hint": "💡 Elastik urilishda energiya saqlanadi va jismslar to'qnashuvdan so'ng o'z shaklini tiklab, bir-biridan itariladi. Po'lat sharchalarning urilishi shunday jarayonga juda yaqin."
   },
   {
     "q": "Deformatsiyalanmaydigan jism qanday ataladi?",
@@ -7196,7 +7241,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "absolyut qora jism",
       "absolyut qattiq yoki yumshoq jism"
     ],
-    "a": "absolyut qattiq jism"
+    "a": "absolyut qattiq jism",
+    "hint": "💡 Haqiqiy hayotda barcha jismlar biroz bo'lsa-da deformatsiyalanadi, lekin mexanika masalalarida shakli o'zgarmaydigan jismlarni biz 'absolyut qattiq' deb soddalashtirib olamiz."
   },
   {
     "q": "Jismning inersiya momenti shu jismning aylana harakatga nisbatan ........ ifodalaydigan kattalikdir.",
@@ -7206,7 +7252,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "inersiya momentini",
       "inersiyasini"
     ],
-    "a": "inersiyasini"
+    "a": "inersiyasini",
+    "hint": "💡 Inersiya — bu jismning o'z holatini saqlashga intilishi. Inersiya momenti qanchalik katta bo'lsa, jismni aylantirish yoki aylanayotgan jismni to'xtatish shunchalik qiyin bo'ladi."
   },
   {
     "q": "Mexanika necha qismdan iborat?",
@@ -7216,7 +7263,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "3",
       "4"
     ],
-    "a": "3"
+    "a": "3",
+    "hint": "💡 Klassik mexanika asosan 3 ta katta bo'limdan tashkil topgan: Kinematika (harakat tavsifi), Dinamika (harakat sabablari) va Statika (muvozanat)."
   },
   {
     "q": "36 km/soat ni m/s ga aylantiring.",
@@ -7226,7 +7274,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "10",
       "30"
     ],
-    "a": "10"
+    "a": "10",
+    "hint": "💡 Km/soat ni m/s ga o'tkazish uchun qiymatni 3.6 ga bo'lish kerak. (36 / 3.6 = 10). Chunki 1 km = 1000m, 1 soat = 3600s."
   },
   {
     "q": "Trayektoriya nima?",
@@ -7236,7 +7285,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Boshlang‘ich va oxirgi vaziyatni tutashtiruvchi chiziq",
       "Jism tezligining o‘zgarishi"
     ],
-    "a": "Jismning fazoda qoldirgan izi"
+    "a": "Jismning fazoda qoldirgan izi",
+    "hint": "💡 Tasavvur qiling, qorda yura turib orqangizda qolgan izlar — bu sizning harakat trayektoriyangizdir. Bu jism harakatlangan yo'nalishni ko'rsatuvchi xayoliy yoki real chiziq."
   },
   {
     "q": "Statika nimani o‘rganadi?",
@@ -7246,7 +7296,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Harakat turlarini",
       "Harakat sabablarini"
     ],
-    "a": "Muvozanat shartlarini o‘rganadigan mexanikaning bir bo‘limini"
+    "a": "Muvozanat shartlarini o‘rganadigan mexanikaning bir bo‘limini",
+    "hint": "💡 Statika — jism qachon qimirlamay turishi (muvozanatda bo'lishi) kerakligini o'rgatadi. Masalan, bino yoki ko'priklar qurishda statika qonunlari asosiy o'rin tutadi."
   },
   {
     "q": "Nexia avtomobili to‘g‘ri chiziqli tekis harakatlanib 120 km masofani 2 soatda bosib o‘tdi. Tezligini toping (m/s).",
@@ -7256,7 +7307,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "60",
       "30"
     ],
-    "a": "16,7"
+    "a": "16,7",
+    "hint": "💡 Dastlab km/soat dagi tezlikni topamiz: 120 / 2 = 60 km/soat. Uni m/s ga o'tkazish uchun 3.6 ga bo'lamiz: 60 / 3.6 ≈ 16.7 m/s."
   },
   {
     "q": "Burchak tezlik ifodasini toping.",
@@ -7266,7 +7318,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "a = dv / dt",
       "φ = ω·t"
     ],
-    "a": "ω = dφ / dt"
+    "a": "ω = dφ / dt",
+    "hint": "💡 Burchak tezlik (ω) — vaqt birligi ichida jismning necha gradusga yoki radiana burilganini ko'rsatadi. Bu oddiy tezlikning aylana harakatdagi analogidir."
   },
   {
     "q": "Bir marta to‘liq aylanish uchun sarflangan vaqt nima deyiladi?",
@@ -7276,7 +7329,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "aylanish davri",
       "burchakli tezlanish"
     ],
-    "a": "aylanish davri"
+    "a": "aylanish davri",
+    "hint": "💡 Davr — bu bitta to'liq aylanishga ketgan vaqt. Masalan, sekund milining aylanish davri 60 sekundga teng."
   },
   {
     "q": "Chastotaning birligi qanday?",
@@ -7286,7 +7340,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Amper",
       "Hz"
     ],
-    "a": "Hz"
+    "a": "Hz",
+    "hint": "💡 Chastota — bir sekundda jism necha marta aylanishini ko'rsatadi. U Gerts (Hz) birligida o'lchanadi. 1 Hz = 1/sekund."
   },
   {
     "q": "Kuchning birligi qanday?",
@@ -7296,7 +7351,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Nyuton",
       "Amper"
     ],
-    "a": "Nyuton"
+    "a": "Nyuton",
+    "hint": "💡 Fizikada kuch buyuk olim Isaak Nyuton sharafiga Nyuton (N) birligida o'lchanadi. 1 N — 1 kg jismga 1 m/s² tezlanish beradigan kuchdir."
   },
   {
     "q": "Stol ustida turgan 8 kg massali jismning stolga ta’sir etuvchi og‘irlik kuchini aniqlang (g≈10 m/s²).",
@@ -7306,7 +7362,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "80",
       "70"
     ],
-    "a": "80"
+    "a": "80",
+    "hint": "💡 Og'irlik kuchi formulasi: P = m * g. Berilgan: 8 kg * 10 m/s² = 80 Nyuton."
   },
   {
     "q": "Jismga tashqi kuch ta’sir etilmaguncha u o‘zining tinch yoki to‘g‘ri chiziqli tekis harakatini saqlaydi. Bu Nyutonning qaysi qonuni?",
@@ -7316,7 +7373,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "4-qonuni",
       "1-qonuni"
     ],
-    "a": "1-qonuni"
+    "a": "1-qonuni",
+    "hint": "💡 Bu inersiya qonunidir. Jism o'z holatini saqlashga intiladi. Masalan, avtobus to'satdan to'xtasa, yo'lovchilarning oldinga ketib qolishi aynan shu qonun natijasidir."
   },
   {
     "q": "Nyutonning 3-qonuni qanday ataladi?",
@@ -7326,7 +7384,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "aks ta’sir qonuni",
       "mustaqillik qonuni"
     ],
-    "a": "aks ta’sir qonuni"
+    "a": "aks ta’sir qonuni",
+    "hint": "💡 'Har bir ta'sirga teng va qarama-qarshi aks ta'sir mavjud'. Siz devorni urganingizda qo'lingiz og'rishiga sabab — devor ham sizni aynan o'sha kuch bilan urganidir."
   },
   {
     "q": "Bir-biriga tegib turgan jismlarning bir-biriga nisbatan sirpanishiga to‘sqinlik qiluvchi kuch qanday nomlanadi?",
@@ -7336,7 +7395,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "taranglik kuchi",
       "ishqalanish kuchi"
     ],
-    "a": "ishqalanish kuchi"
+    "a": "ishqalanish kuchi",
+    "hint": "💡 Ishqalanish kuchi har doim harakatga qarshi yo'naladi. Agar u bo'lmaganida, biz muz ustida turgandek sirpanib ketar edik va hech qachon to'xtay olmas edik."
   },
   {
     "q": "Burilish burchagidan vaqt bo‘yicha olingan birinchi tartibli hosila qaysi kattalikka teng?",
@@ -7346,7 +7406,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "tangensial tezlanish",
       "burchakli tezlanish"
     ],
-    "a": "burchakli tezlik"
+    "a": "burchakli tezlik",
+    "hint": "💡 Matematikada hosila o'zgarish tezligini bildiradi. Burchak (φ) qanchalik tez o'zgarsa, burchakli tezlik (ω) shunchalik yuqori bo'ladi. Formulasi: ω = dφ / dt."
   },
   {
     "q": "Inersiya momenti qaysi harf bilan belgilanadi?",
@@ -7356,7 +7417,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "B",
       "I"
     ],
-    "a": "I"
+    "a": "I",
+    "hint": "💡 Inersiya momenti (Inertia moment) odatda bosh harf 'I' yoki ba'zi darsliklarda 'J' harfi bilan belgilanadi. U jismning aylanishga bo'lgan qarshiligini ifodalaydi."
   },
   {
     "q": "O‘zaro ta’sirlashuvchi jismlarning bir-biriga nisbatan joylashuvi tufayli ega bo‘lgan energiyasi … deb ataladi.",
@@ -7366,7 +7428,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "potensial energiya",
       "ichki energiya"
     ],
-    "a": "potensial energiya"
+    "a": "potensial energiya",
+    "hint": "💡 Potensial energiya — bu vaziyat energiyasidir. Masalan, pishirilgan prujina yoki balandlikka ko'tarilgan tosh o'zining joylashuvi tufayli ish bajarish imkoniyatiga (energiyaga) ega bo'ladi."
   },
   {
     "q": "Massasi 60 kg bo‘lgan quruvchi 45 m balandlikda ishlamoqda. Uning potensial energiyasini hisoblang (g≈10 m/s²).",
@@ -7376,7 +7439,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "27 kJ",
       "270 kJ"
     ],
-    "a": "27 kJ"
+    "a": "27 kJ",
+    "hint": "💡 Formula: Eₚ = m·g·h. Hisoblaymiz: 60 * 10 * 45 = 27,000 Joul. Uni kilojoulga o'tkazish uchun 1000 ga bo'lamiz: 27 kJ."
   },
   {
     "q": "Energiya ta’rifini toping.",
@@ -7386,7 +7450,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Jismning tezligi tufayli hosil bo‘lgan kattalik",
       "Jismning vaziyati tufayli hosil bo‘lgan kattalik"
     ],
-    "a": "Jismning ish bajarish qobiliyati"
+    "a": "Jismning ish bajarish qobiliyati",
+    "hint": "💡 Energiya — bu jismning zaxirasidagi 'kuch' kabi. Jism qancha ko'p energiyaga ega bo'lsa, u shuncha ko'p mexanik ish bajara oladi."
   },
   {
     "q": "Ishning birligi qanday?",
@@ -7396,7 +7461,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Kulon",
       "Joul"
     ],
-    "a": "Joul"
+    "a": "Joul",
+    "hint": "💡 Mexanik ish va energiya bir xil birlikda — Joul (J) da o'lchanadi. Bu 1 Nyuton kuch bilan jismni 1 metrga surishda sarflangan energiyadir."
   },
   {
     "q": "Jismning tezligi tufayli hosil bo‘lgan energiya qanday nomlanadi?",
@@ -7406,7 +7472,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "mexanik energiya",
       "kinetik energiya"
     ],
-    "a": "kinetik energiya"
+    "a": "kinetik energiya",
+    "hint": "💡 'Kinetikos' yunoncha 'harakatlantiruvchi' degan ma'noni beradi. Harakatlanayotgan har qanday jism kinetik energiyaga ega. Formulasi: Eₖ = mv²/2."
   },
   {
     "q": "Sinus yoki kosinus qonuniga nisbatan tebranish qanday nomlanadi?",
@@ -7416,7 +7483,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Majburiy tebranish",
       "Garmonik tebranish"
     ],
-    "a": "Garmonik tebranish"
+    "a": "Garmonik tebranish",
+    "hint": "💡 Agar tebranish grafigi chiroyli to'lqin (sinusoida) shaklida bo'lsa, bu garmonik tebranishdir. U tabiatda eng ko'p uchraydigan ideal tebranish turidir."
   },
   {
     "q": "Muvozanat vaziyatidan eng chetki vaziyatgacha bo‘lgan masofa nima deyiladi?",
@@ -7426,7 +7494,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "amplituda",
       "masofa"
     ],
-    "a": "amplituda"
+    "a": "amplituda",
+    "hint": "💡 Amplituda — bu tebranishning qulochi (kattaligi). Masalan, belanchakni qanchalik balandga uchirsangiz, uning amplitudasi shunchalik katta bo'ladi."
   },
   {
     "q": "2π s ichidagi tebranish soniga … deb ataladi.",
@@ -7436,17 +7505,19 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "tebranish chastotasi",
       "siklik chastota"
     ],
-    "a": "siklik chastota"
+    "a": "siklik chastota",
+    "hint": "💡 Oddiy chastota 1 sekunddagi tebranishlar soni bo'lsa, siklik chastota (ω) 2π sekunddagi sonidir. Bu ko'pincha aylanma va tebranma harakatlarni bog'lash uchun ishlatiladi."
   },
   {
-    "q": "Prujinali mayatnikning tebranish davri, chastotasi yoki siklik chastotasi nimalarga bog‘liq?",
+    "q": "Prujinali mayatnikning tebranish davri, chastotasi yoki siklik chastota nimalarga bog‘liq?",
     "options": [
       "faqat prujinaning materialiga",
       "erkin tushish tezlanishiga",
       "jism massasiga va prujinaning bikrligiga",
       "prujinaning uzunligiga"
     ],
-    "a": "jism massasiga va prujinaning bikrligiga"
+    "a": "jism massasiga va prujinaning bikrligiga",
+    "hint": "💡 Prujinali mayatnikda yuk qancha og'ir bo'lsa (m), u shuncha sekin tebranadi. Prujina qancha qattiq (bikr - k) bo'lsa, tebranish shuncha tezlashadi. T = 2π√(m/k)."
   },
   {
     "q": "Bir-biriga nisbatan tekis va to‘g‘ri chiziqli harakat qilayotgan sanoq tizimlarida Nyuton qonunlari bajarilsa, bunday sanoq tizimlari … deb ataladi.",
@@ -7456,7 +7527,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "inersial sanoq tizimlari",
       "sanoq jism"
     ],
-    "a": "inersial sanoq tizimlari"
+    "a": "inersial sanoq tizimlari",
+    "hint": "💡 Inersial tizim — bu tinch turgan yoki bir tekis harakatlanayotgan tizimdir. Ularda inersiya qonuni (Nyutonning 1-qonuni) mukammal ishlaydi."
   },
   {
     "q": "Relativistik massani topish formulasini ko‘rsating.",
@@ -7466,7 +7538,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "m = F / g",
       "m = v · p"
     ],
-    "a": "m = m₀ / √(1 − v² / c²)"
+    "a": "m = m₀ / √(1 − v² / c²)",
+    "hint": "💡 Eynshteynning nisbiylik nazariyasiga ko'ra, jism tezligi yorug'lik tezligiga (c) yaqinlashsa, uning massasi orta boshlaydi. Bu formula o'sha massaning qanchalik ortishini hisoblaydi."
   },
   {
     "q": "√(1 − v² / c²) formula nimani ifodalaydi?",
@@ -7476,7 +7549,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Relativistik massa",
       "Relativistik energiya"
     ],
-    "a": "Relativistik vaqt"
+    "a": "Relativistik vaqt",
+    "hint": "💡 Bu formula vaqtning sekinlashishini (Time Dilation) hisoblashda ishlatiladi. Yorug'lik tezligiga (c) yaqin tezlikda (v) harakatlanayotgan jism uchun vaqt o'tishi sekinlashadi."
   },
   {
     "q": "Gazni to‘g‘ri davom ettiring: “Issiqlik almashmaydigan jarayon … ”",
@@ -7486,7 +7560,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "izotermik",
       "adiabatik"
     ],
-    "a": "adiabatik"
+    "a": "adiabatik",
+    "hint": "💡 Adiabatik jarayonda tizim o'zini tashqi muhitdan issiqlik jihatidan 'izolatsiya' qiladi. Masalan, termos ichidagi jarayonlar yoki porshenning juda tez siqilishi adiabatikka yaqin bo'ladi."
   },
   {
     "q": "Berilgan tenglamalar orasidan izoxorik jarayon tenglamasini toping.",
@@ -7496,7 +7571,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "P·V = const",
       "P·T = const"
     ],
-    "a": "P/T = const"
+    "a": "P/T = const",
+    "hint": "💡 'Izo' - bir xil, 'Xora' - hajm demakdir. Hajm (V) o'zgarmas bo'lsa, bosim (P) va temperatura (T) to'g'ri proporsional bo'ladi (Sharl qonuni)."
   },
   {
     "q": "Izoxorik jarayon uchun termodinamikaning birinchi qonuni formulasini ko‘rsating.",
@@ -7506,7 +7582,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Q = ΔU",
       "P/T = const"
     ],
-    "a": "Q = ΔU"
+    "a": "Q = ΔU",
+    "hint": "💡 Izoxorik jarayonda hajm o'zgarmaydi, demak gaz ish bajarmaydi (A=0). Shuning uchun berilgan barcha issiqlik (Q) faqat gazning ichki energiyasini (ΔU) oshirishga sarflanadi."
   },
   {
     "q": "Quyidagi kattaliklardan Avogadro sonini ko‘rsating.",
@@ -7516,7 +7593,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "6,023·10²⁰ 1/mol",
       "23·10²³ 1/mol"
     ],
-    "a": "6,023·10²³ 1/mol"
+    "a": "6,023·10²³ 1/mol",
+    "hint": "💡 Avogadro soni (Nₐ) — 1 mol moddadagi zarralar (atom yoki molekulalar) sonini bildiradi. Bu juda ulkan son: 6 dan keyin 23 ta nol bor deb tasavvur qiling."
   },
   {
     "q": "Termodinamikaning birinchi qonuni nimani ifodalaydi?",
@@ -7526,7 +7604,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Aks ta’sir qonunini",
       "Energiya saqlanish qonunini"
     ],
-    "a": "Energiya saqlanish qonunini"
+    "a": "Energiya saqlanish qonunini",
+    "hint": "💡 Bu qonun issiqlik jarayonlari uchun energiya saqlanishini bildiradi: tizimga berilgan issiqlik uning ichki energiyasini o'zgartirishga va ish bajarishga sarflanadi."
   },
   {
     "q": "Moddaning … deb, 1 kg moddaning 1°C ga isitishga sarf bo‘lgan issiqlik miqdoriga teng fizik kattalik ataladi.",
@@ -7536,7 +7615,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "solishtirma issiqlik sig‘imi",
       "hajmi"
     ],
-    "a": "solishtirma issiqlik sig‘imi"
+    "a": "solishtirma issiqlik sig‘imi",
+    "hint": "💡 Har bir moddaning 'issiqni o'ziga olish' qobiliyati har xil. Masalan, suvning issiqlik sig'imi qumnikidan ancha katta, shuning uchun dengiz suvi qumga qaraganda kechroq isib, kechroq soviydi."
   },
   {
     "q": "Modda temperaturasi o‘zgarmas bo‘lgan jarayon qanday nomlanadi?",
@@ -7546,7 +7626,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "izobarik",
       "izotermik"
     ],
-    "a": "izotermik"
+    "a": "izotermik",
+    "hint": "💡 'Term' - issiqlik/temperatura demakdir. Izotermik jarayonda temperatura o'zgarmaydi (T=const). Bunda Boyl-Mariott qonuni (P·V = const) amal qiladi."
   },
   {
     "q": "Adiabatik jarayon qanday jarayon?",
@@ -7556,10 +7637,9 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "temperaturasi o‘zgarmas bo‘lgan jarayon",
       "tashqi muhit bilan issiqlik almashmaydigan jarayon"
     ],
-    "a": "tashqi muhit bilan issiqlik almashmaydigan jarayon"
+    "a": "tashqi muhit bilan issiqlik almashmaydigan jarayon",
+    "hint": "💡 Bu jarayon juda tez sodir bo'ladi, natijada gaz atrof-muhitdan issiqlik olishga yoki berishga ulgurmaydi. Velosiped nasosida havoni tez siqqanda uning isib ketishi bunga misol."
   },
-
-
   {
     "q": "Bu grafikda izobarik jarayonlarning grafigini aniqlang.",
     "image": "image.png",
@@ -7569,7 +7649,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "3–4, 2–1",
       "3–2, 3–4"
     ],
-    "a": "3–4, 2–1"
+    "a": "3–4, 2–1",
+    "hint": "💡 'Bar' - bosim demakdir. Izobarik jarayonda bosim (P) o'zgarmas qoladi. Grafikda bu chiziqlar bosim o'qi (P) ga perpendikulyar yoki V-T koordinatasida koordinata boshidan chiquvchi to'g'ri chiziq bo'ladi."
   },
   {
     "q": "Zaryadlarning o‘zaro ta’sir kuchi qanday nomlanadi?",
@@ -7579,7 +7660,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Og‘irlik kuchi",
       "Kulon kuchi"
     ],
-    "a": "Kulon kuchi"
+    "a": "Kulon kuchi",
+    "hint": "💡 Ikki zaryadlangan jism o'rtasidagi tortishish yoki itarish kuchi buyuk olim Sharl Kulon sharafiga Kulon kuchi deb ataladi."
   },
   {
     "q": "Kulon kuchiga ta’rif bering.",
@@ -7589,7 +7671,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Jismning harakati davomida olgan tezlanishi",
       "Vaqt birligi ichida tezlikning o‘zgarishi"
     ],
-    "a": "Zaryadlarning o‘zaro ta’sir kuchi zaryadlar ko‘paytmasiga to‘g‘ri, masofa kvadratiga teskari proportsional"
+    "a": "Zaryadlarning o‘zaro ta’sir kuchi zaryadlar ko‘paytmasiga to‘g‘ri, masofa kvadratiga teskari proportsional",
+    "hint": "💡 Formula: F = k·q₁·q₂ / r². Bu shuni bildiradiki, zaryadlar kattalashsa kuch ortadi, lekin ular bir-biridan uzoqlashsa kuch juda tez kamayadi."
   },
   {
     "q": "Zaryad miqdorining birligi qanday?",
@@ -7599,7 +7682,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "C",
       "F"
     ],
-    "a": "C"
+    "a": "C",
+    "hint": "💡 Elektr zaryadi Kulon (C) birligida o'lchanadi. Masalan, bitta elektronning zaryadi juda kichik bo'lib, -1.6·10⁻¹⁹ C ga teng."
   },
   {
     "q": "Zaryadlar o‘zaro qanday ta’sirlashadi?",
@@ -7609,8 +7693,10 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Qarama-qarshi zaryadlar tortishadi, bir xil zaryadlar itarishadi",
       "Faqat bir xil zaryadlar tortishadi"
     ],
-    "a": "Qarama-qarshi zaryadlar tortishadi, bir xil zaryadlar itarishadi"
+    "a": "Qarama-qarshi zaryadlar tortishadi, bir xil zaryadlar itarishadi",
+    "hint": "💡 Tabiat qoidasi: 'Plyus' va 'minus' bir-birini yaxshi ko'radi (tortishadi), bir xil ishoralilar esa bir-birini yomon ko'radi (itarishadi)."
   },
+  ,
   {
     "q": "Elektr maydon kuchlanganligi qanday kattalik?",
     "options": [
@@ -7619,7 +7705,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Murakkab kattalik",
       "Vektor kattalik"
     ],
-    "a": "Vektor kattalik"
+    "a": "Vektor kattalik",
+    "hint": "💡 Kuchlanganlik (E) nafaqat qiymatga, balki yo'nalishga ham ega. U har doim musbat zaryaddan chiquvchi va manfiy zaryadga kiruvchi yo'nalishda bo'ladi."
   },
   {
     "q": "Elektr zaryadining bajargan ishini ifodasini aniqlang.",
@@ -7629,7 +7716,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "A = F·l·cosα",
       "A = W₁ − W₂"
     ],
-    "a": "A = k·q₁·q₂ / r"
+    "a": "A = k·q₁·q₂ / r",
+    "hint": "💡 Zaryadni bir nuqtadan ikkinchi nuqtaga ko'chirishda elektr maydon kuchlari ish bajaradi. Bu ish zaryadlarning o'zaro ta'sir energiyasiga bog'liq."
   },
   {
     "q": "Ishning birligi to‘g‘ri ko‘rsatilgan javobni aniqlang.",
@@ -7639,7 +7727,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "W",
       "J"
     ],
-    "a": "J"
+    "a": "J",
+    "hint": "💡 Mexanikada bo'lgani kabi, elektrda ham barcha turdagi ish va energiya Joul (J) birligida o'lchanadi."
   },
   {
     "q": "Zaryad miqdori 80 C ga teng va potensiallar farqi 2 V bo‘lsa, bajarilgan ishni aniqlang.",
@@ -7649,7 +7738,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "320 J",
       "40 J"
     ],
-    "a": "160 J"
+    "a": "160 J",
+    "hint": "💡 Formula: A = q · U. Hisoblaymiz: 80 C * 2 V = 160 Joul."
   },
   {
     "q": "Ish qanday kattalik?",
@@ -7659,7 +7749,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Skalyar kattalik",
       "Murakkab kattalik"
     ],
-    "a": "Skalyar kattalik"
+    "a": "Skalyar kattalik",
+    "hint": "💡 Ishning yo'nalishi bo'lmaydi, u faqat son qiymati (miqdori) bilan xarakterlanadi. Shuning uchun u skalyar kattalikdir."
   },
   {
     "q": "Kondensator sig‘imining birligi qanday?",
@@ -7669,7 +7760,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "J",
       "F"
     ],
-    "a": "F"
+    "a": "F",
+    "hint": "💡 Elektr sig'imi Farada (F) birligida o'lchanadi. 1 Farada — bu juda katta sig'im, shuning uchun amaliyotda mikrofarada (μF) yoki pikofarada (pF) ko'p ishlatiladi."
   },
   {
     "q": "Yassi kondensatorning sig‘imi ifodasini ko‘rsating.",
@@ -7679,8 +7771,10 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "C = εε₀ S / d",
       "C = 4π ε₀ rR / (R − r)"
     ],
-    "a": "C = εε₀ S / d"
+    "a": "C = εε₀ S / d",
+    "hint": "💡 Yassi kondensatorning sig'imi uning qoplamalarining yuzasiga (S) to'g'ri va ular orasidagi masofaga (d) teskari proporsionaldir."
   },
+  ,
   {
     "q": "Biz katta sig‘imga erishish uchun kondensatorlarni qanday ulashimiz kerak?",
     "options": [
@@ -7689,7 +7783,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "birin-ketin",
       "parallel"
     ],
-    "a": "parallel"
+    "a": "parallel",
+    "hint": "💡 Parallel ulanganda umumiy sig'im barcha kondensatorlar sig'imlarining yig'indisiga teng bo'ladi (C = C₁ + C₂ + ...), bu esa umumiy sig'imni oshiradi."
   },
   {
     "q": "Aralash ulash qanday ulash?",
@@ -7699,7 +7794,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "ketma-ket va parallel ulash",
       "birin-ketin"
     ],
-    "a": "ketma-ket va parallel ulash"
+    "a": "ketma-ket va parallel ulash",
+    "hint": "💡 Murakkab elektr zanjirlarida ba'zi qismlar bir-biriga ketma-ket, ba'zi qismlar esa parallel ulanishi mumkin. Bu aralash ulash deyiladi."
   },
   {
     "q": "Tok kuchini o‘lchovchi asbob nomi qaysi?",
@@ -7709,7 +7805,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Ampermetr",
       "Voltmetr"
     ],
-    "a": "Ampermetr"
+    "a": "Ampermetr",
+    "hint": "💡 Tok kuchi Amperda o'lchanadi, uni o'lchovchi asbob esa Ampermetr deb ataladi. U zanjirga har doim ketma-ket ulanadi."
   },
   {
     "q": "Joul–Lens qonunining ifodasini ko‘rsating.",
@@ -7719,7 +7816,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "N = q / e",
       "j = dI / dS"
     ],
-    "a": "Q = I²Rt"
+    "a": "Q = I²Rt",
+    "hint": "💡 Bu qonun o'tkazgichdan tok o'tganda undan ajralib chiqadigan issiqlik miqdorini aniqlaydi. Tok kuchi (I) ikki baravar ortsa, ajraladigan issiqlik (Q) to'rt baravar ortadi."
   },
   {
     "q": "Elektr qarshiligining birligi to‘g‘ri ko‘rsatilgan javobni belgilang.",
@@ -7729,7 +7827,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "W",
       "Ω"
     ],
-    "a": "Ω"
+    "a": "Ω",
+    "hint": "💡 Elektr qarshiligi Om (Ω) birligida o‘lchanadi. Bu o‘tkazgichning tok o‘tishiga ko‘rsatadigan to‘sqinligidir. 1 Om — 1 Volt kuchlanishda 1 Amper tok o‘tkazuvchi qismning qarshiligi."
   },
   {
     "q": "I = ε / (R + r) formulasi nimani ifodalaydi?",
@@ -7739,7 +7838,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Butun zanjir uchun Om qonuni",
       "Kirxgof qoidasi"
     ],
-    "a": "Butun zanjir uchun Om qonuni"
+    "a": "Butun zanjir uchun Om qonuni",
+    "hint": "💡 Bu formula butun zanjirdagi tok kuchi (I) manbaning elektr yurituvchi kuchi (ε) va umumiy qarshilikka (tashqi R + ichki r) bog‘liqligini ko‘rsatadi."
   },
   {
     "q": "Magnit maydonning tokli o‘tkazgichga ta’sir kuchi qanday nomlanadi?",
@@ -7749,7 +7849,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Og‘irlik kuchi",
       "Amper kuchi"
     ],
-    "a": "Amper kuchi"
+    "a": "Amper kuchi",
+    "hint": "💡 Amper kuchi magnit maydoni ichida turgan va o‘zidan tok o‘tkazayotgan simni itaradigan yoki tortadigan kuchdir. Formulasi: F = BIl sinα."
   },
   {
     "q": "Magnit maydon zaryadli zarrachaga ta’sir kuchi qanday nomlanadi?",
@@ -7759,8 +7860,10 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Lorens kuchi",
       "Elastiklik kuchi"
     ],
-    "a": "Lorens kuchi"
+    "a": "Lorens kuchi",
+    "hint": "💡 Lorens kuchi faqat harakatlanayotgan zaryadli zarrachalarga (elektron, proton) magnit maydoni tomonidan ko‘rsatiladigan ta’sirdir."
   },
+  
   {
     "q": "Magnit induksiya oqimining birligi qanday?",
     "options": [
@@ -7769,7 +7872,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "W (Vatt)",
       "Wb (Veber)"
     ],
-    "a": "Wb (Veber)"
+    "a": "Wb (Veber)",
+    "hint": "💡 Magnit oqimi Veber (Wb) birligida o‘lchanadi. 1 Veber — induksiyasi 1 Tesla bo‘lgan maydonning 1 kvadrat metr yuzadan o‘tishidir."
   },
   {
     "q": "F = Bqv sinα formulasi orqali qaysi kuch hisoblanadi?",
@@ -7779,7 +7883,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Ishqalanish kuchi",
       "Lorens kuchi"
     ],
-    "a": "Lorens kuchi"
+    "a": "Lorens kuchi",
+    "hint": "💡 Bu formula Lorens kuchining qiymatini hisoblaydi. Bunda B — magnit induksiyasi, q — zaryad miqdori, v — zarrachaning tezligi."
   },
   {
     "q": "Magnit maydon induksiyasini magnit maydon kuchlanganligiga bog‘liqlik ifodasini toping.",
@@ -7789,7 +7894,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "B = Φ / S",
       "B = I / R"
     ],
-    "a": "B = μ₀ μ H"
+    "a": "B = μ₀ μ H",
+    "hint": "💡 Bu formula maydonning muhitga bog‘liqligini ko‘rsatadi. μ — muhitning magnit singdiruvchanligi bo‘lib, modda maydonni qanchalik kuchaytirishini bildiradi."
   },
   {
     "q": "Magnit maydon kuchlanganligini qanday harf bilan belgilaymiz?",
@@ -7799,7 +7905,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "B",
       "H"
     ],
-    "a": "H"
+    "a": "H",
+    "hint": "💡 Magnit maydon kuchlanganligi 'H' harfi bilan belgilanadi. Uni induksiya (B) bilan adashtirmang; B maydonning kuchini, H esa tashqi sharoitni xarakterlaydi."
   },
   {
     "q": "Eng katta magnitlik xususiyati to‘g‘ri ko‘rsatilgan javobni aniqlang.",
@@ -7809,7 +7916,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "To‘g‘ri javob yo‘q",
       "Ferromagnit"
     ],
-    "a": "Ferromagnit"
+    "a": "Ferromagnit",
+    "hint": "💡 Ferromagnitlar (temir, nikel, kobalt) magnit maydonini o‘n minglab marta kuchaytiradi va o‘zida magnitlikni saqlab qoladi."
   },
   {
     "q": "Matematik mayatnikning tebranish davri formulasini ko‘rsating.",
@@ -7819,8 +7927,10 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "T = 2π √(g / ℓ)",
       "T = 2π √(ℓ·g)"
     ],
-    "a": "T = 2π √(ℓ / g)"
+    "a": "T = 2π √(ℓ / g)",
+    "hint": "💡 Matematik mayatnikning davri (T) ipning uzunligiga (ℓ) va erkin tushish tezlanishiga (g) bog‘liq. Ip qancha uzun bo‘lsa, tebranish shuncha sekinlashadi."
   },
+  
   {
     "q": "Elektr zaryadining bajargan ishini ifodasini aniqlang.",
     "options": [
@@ -7829,7 +7939,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "A = k·q₁·q₂ / r",
       "A = m·g·h"
     ],
-    "a": "A = k·q₁·q₂ / r"
+    "a": "A = k·q₁·q₂ / r",
+    "hint": "💡 Elektr maydoni ichida zaryadlarni o‘zaro harakatlantirishda bajarilgan ish zaryadlarning miqdori va ular orasidagi masofaga bog‘liq bo‘ladi."
   },
   {
     "q": "Ishning birligi to‘g‘ri ko‘rsatilgan javobni aniqlang.",
@@ -7839,7 +7950,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "W",
       "A"
     ],
-    "a": "J"
+    "a": "J",
+    "hint": "💡 Fizikada energiya kabi ish ham Joul (J) birligida o‘lchanadi. Bu zaryadning potensial energiyasi o‘zgarishiga teng."
   },
   {
     "q": "Zaryad miqdori 80 C va potensiallar farqi 2 V bo‘lsa, bajarilgan ish qancha?",
@@ -7849,7 +7961,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "160 J",
       "20 J"
     ],
-    "a": "160 J"
+    "a": "160 J",
+    "hint": "💡 Formula: A = q · U. Bizda q = 80 va U = 2. Ko‘paytiramiz: 80 * 2 = 160 Joul."
   },
   {
     "q": "Ish qanday kattalik?",
@@ -7859,7 +7972,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Oddiy kattalik",
       "Skalyar kattalik"
     ],
-    "a": "Skalyar kattalik"
+    "a": "Skalyar kattalik",
+    "hint": "💡 Ishning yo‘nalishi yo‘q, u faqat son qiymati bilan ifodalanadi, shuning uchun u skalyar kattalikdir."
   },
   {
     "q": "Kondensator sig‘imining birligi qaysi?",
@@ -7869,7 +7983,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "A",
       "J"
     ],
-    "a": "F"
+    "a": "F",
+    "hint": "💡 Kondensator sig‘imi Farada (F) birligida o‘lchanadi. Bu zaryad to‘plash qobiliyatini ko‘rsatadi. 1 Farada — 1 Volt kuchlanishda 1 Kulon zaryad to‘play olish demakdir."
   },
   {
     "q": "Yassi kondensatorning sig‘imi ifodasini ko‘rsating.",
@@ -7879,8 +7994,10 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "C = ϵϵ₀S / d",
       "C = U / I"
     ],
-    "a": "C = ϵϵ₀S / d"
+    "a": "C = ϵϵ₀S / d",
+    "hint": "💡 Yassi kondensator sig‘imi qoplamalar yuzasiga (S) to‘g‘ri, ular orasidagi masofaga (d) esa teskari proporsional. ϵ – muhitning dielektrik singdiruvchanligi."
   },
+  
   {
     "q": "Katta sig‘imga erishish uchun kondensatorlar qanday ulanadi?",
     "options": [
@@ -7889,7 +8006,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Birin-ketin",
       "Parallel"
     ],
-    "a": "Parallel"
+    "a": "Parallel",
+    "hint": "💡 Parallel ulanganda barcha kondensatorlarning sig‘imlari qo‘shiladi (C = C₁ + C₂ + ...), natijada umumiy sig‘im ortadi."
   },
   {
     "q": "Aralash ulash qanday ulash?",
@@ -7899,7 +8017,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Ketma-ket va parallel",
       "Birin-ketin"
     ],
-    "a": "Ketma-ket va parallel"
+    "a": "Ketma-ket va parallel",
+    "hint": "💡 Zanjirning bir qismida kondensatorlar (yoki qarshiliklar) ham parallel, ham ketma-ket ulangan bo‘lsa, bu aralash ulash hisoblanadi."
   },
   {
     "q": "Tok kuchini o‘lchovchi asbob nomi qaysi?",
@@ -7909,7 +8028,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Ommetr",
       "Akselerometr"
     ],
-    "a": "Ampermetr"
+    "a": "Ampermetr",
+    "hint": "💡 Tok kuchi 'Amper' birligida o‘lchanadi, shuning uchun asbob nomi ham 'Ampermetr' deb ataladi. U zanjirga har doim ketma-ket ulanadi."
   },
   {
     "q": "Joul–Lens qonuni ifodasini ko‘rsating.",
@@ -7919,7 +8039,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Q = I²Rt",
       "N = q/e"
     ],
-    "a": "Q = I²Rt"
+    "a": "Q = I²Rt",
+    "hint": "💡 Bu qonun o‘tkazgichdan tok o‘tganda ajraladigan issiqlik miqdorini aniqlaydi. Issiqlik tok kuchining kvadratiga, qarshilikka va vaqtga bog‘liq."
   },
   {
     "q": "Elektr qarshiligining birligi qaysi?",
@@ -7929,7 +8050,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "W",
       "A"
     ],
-    "a": "Ω"
+    "a": "Ω",
+    "hint": "💡 Elektr qarshiligi buyuk fizik Georg Om sharafiga 'Om' (Ω) birligida o‘lchanadi."
   },
   {
     "q": "I = ε / (R + r) formulasi nimani ifodalaydi?",
@@ -7939,7 +8061,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Butun zanjir uchun Om qonuni",
       "Kirxgof qoidasi"
     ],
-    "a": "Butun zanjir uchun Om qonuni"
+    "a": "Butun zanjir uchun Om qonuni",
+    "hint": "💡 Bu yerda ε – elektr yurituvchi kuch, R – tashqi qarshilik, r – manbaning ichki qarshiligi. Bu butun zanjirdagi tok kuchini hisoblaydi."
   },
   {
     "q": "Magnit maydonning tokli o‘tkazgichga ta’sir kuchi qanday ataladi?",
@@ -7949,7 +8072,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Og‘irlik kuchi",
       "Ishqalanish kuchi"
     ],
-    "a": "Amper kuchi"
+    "a": "Amper kuchi",
+    "hint": "💡 Magnit maydoni tokli simni (o‘tkazgichni) itaradi yoki tortadi. Bu kuch Amper kuchi deb ataladi. F = BIl sinα."
   },
   {
     "q": "Magnit maydonning zaryadli zarrachaga ta’sir kuchi nima?",
@@ -7959,8 +8083,10 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Lorens kuchi",
       "Ishqalanish kuchi"
     ],
-    "a": "Lorens kuchi"
+    "a": "Lorens kuchi",
+    "hint": "💡 Magnit maydonda harakatlanayotgan elektron yoki proton kabi zaryadlangan zarrachalarga ta’sir qiluvchi kuch Lorens kuchi deyiladi."
   },
+  
   {
     "q": "Magnit induksiya oqimining birligi qaysi?",
     "options": [
@@ -7969,7 +8095,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Veber",
       "Vatt"
     ],
-    "a": "Veber"
+    "a": "Veber",
+    "hint": "💡 Magnit induksiya (B) birligi Tesla, lekin magnit oqimi (Φ) birligi Veber (Wb) hisoblanadi."
   },
   {
     "q": "Magnit maydon kuchlanganligi qaysi harf bilan belgilanadi?",
@@ -7979,7 +8106,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "I",
       "F"
     ],
-    "a": "H"
+    "a": "H",
+    "hint": "💡 Magnit induksiyasi 'B', magnit maydon kuchlanganligi esa 'H' harfi bilan belgilanadi."
   },
   {
     "q": "Eng katta magnit xossaga ega modda qaysi?",
@@ -7989,7 +8117,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "To‘g‘ri javob yo‘q",
       "Ferromagnit"
     ],
-    "a": "Ferromagnit"
+    "a": "Ferromagnit",
+    "hint": "💡 Temir, nikel va kobalt kabi moddalar kuchli magnit xossaga ega bo‘lib, ular ferromagnitlar guruhiga kiradi."
   },
   {
     "q": "Matematik mayatnikning tebranish davri formulasi qaysi?",
@@ -7999,18 +8128,10 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "T = 2π√(l/g)",
       "T = l/g"
     ],
-    "a": "T = 2π√(l/g)"
+    "a": "T = 2π√(l/g)",
+    "hint": "💡 Matematik mayatnik davri ip uzunligi (l) ortishi bilan ortadi, erkin tushish tezlanishi (g) ortishi bilan esa kamayadi."
   },
-  {
-    "q": "Matematik mayatnikning tebranish davri formulasini ko‘rsating?",
-    "options": [
-      "T = 2π√(g/l)",
-      "T = √(l/g)",
-      "T = 2π√(l/g)",
-      "T = 2π√(l·g)"
-    ],
-    "a": "T = 2π√(l/g)"
-  },
+  
   {
     "q": "Tashqi muhit bilan issiqlik almashinmaydigan jarayon qanday ataladi?",
     "options": [
@@ -8019,7 +8140,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "adiabatik",
       "izoxorik"
     ],
-    "a": "adiabatik"
+    "a": "adiabatik",
+    "hint": "💡 Agar gaz siqilganda yoki kengayganda tashqi muhitga issiqlik bermasa va olmasa (Q=0), bu jarayon adiabatik jarayon deyiladi."
   },
   {
     "q": "Prujinali mayatnikning tebranish davri formulasini ko‘rsating?",
@@ -8029,8 +8151,10 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "T = √(m/k)",
       "T = 1/(2π)√(m/k)"
     ],
-    "a": "T = 2π√(m/k)"
+    "a": "T = 2π√(m/k)",
+    "hint": "💡 Prujinali mayatnikning davri (T) yukning massasi (m) va prujinaning bikrligiga (k) bog‘liq. Massasi katta yuk sekinroq, bikrligi yuqori (qattiq) prujina esa tezroq tebranadi."
   },
+  
   {
     "q": "1 kg gaz temperaturasi 1 K ga oshishi uchun kerak bo‘ladigan issiqlik miqdori bilan aniqlanuvchi kattalik nima?",
     "options": [
@@ -8039,7 +8163,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "gazning solishtirma issiqlik sig‘imi",
       "gazning politropik issiqlik sig‘imi"
     ],
-    "a": "gazning solishtirma issiqlik sig‘imi"
+    "a": "gazning solishtirma issiqlik sig‘imi",
+    "hint": "💡 Solishtirma issiqlik sig‘imi har bir moddaning o‘ziga xos xususiyatidir. U modda qanchalik tez isishi yoki sovishini belgilaydi. Suv uchun bu ko‘rsatkich juda yuqori."
   },
   {
     "q": "Proton va elektron zaryadlari kattaligi va ishorasi jihatdan qanday?",
@@ -8049,7 +8174,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Protonniki katta, elektronniki kichik",
       "Ikkalasi ham musbat"
     ],
-    "a": "Zaryadlari teng, ishoralari qarama-qarshi"
+    "a": "Zaryadlari teng, ishoralari qarama-qarshi",
+    "hint": "💡 Proton (+) va Elektron (-) zaryad miqdori (e = 1.6·10⁻¹⁹ C) bo‘yicha aynan teng, lekin ularning tabiati qarama-qarshi. Shu sababli atom umuman olganda neytral hisoblanadi."
   },
   {
     "q": "Kelvin va Selsiy shkalalari orasidagi bog‘lanish formulasini ko‘rsating?",
@@ -8059,8 +8185,10 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "T = t + 273",
       "T = 273 / t"
     ],
-    "a": "T = t + 273"
+    "a": "T = t + 273",
+    "hint": "💡 Kelvin (absolyut) shkalasi Selsiy shkalasidan 273 daraja yuqoridan boshlanadi. Masalan, muzning erish nuqtasi 0°C yoki 273 K ga teng."
   },
+  
   {
     "q": "O‘tkazgichdan o‘zgarmas tok o‘tganda uning atrofida qanday maydon hosil bo‘ladi?",
     "options": [
@@ -8069,7 +8197,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "elektromagnit maydon",
       "magnit maydon"
     ],
-    "a": "magnit maydon"
+    "a": "magnit maydon",
+    "hint": "💡 Har qanday harakatlanayotgan zaryad (tok) o‘z atrofida magnit maydonini yaratadi. Buni 1820-yilda Ersted o‘zining mashhur tajribasi bilan isbotlagan."
   },
   {
     "q": "Zaryadlarning saqlanish qonuni ta’rifini ko‘rsating?",
@@ -8079,7 +8208,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Zaryadlar faqat kamayadi",
       "Zaryadlar faqat ortadi"
     ],
-    "a": "Izolyatsiyalangan sistemada elektr zaryadlarining algebraik yig‘indisi o‘zgarmaydi"
+    "a": "Izolyatsiyalangan sistemada elektr zaryadlarining algebraik yig‘indisi o‘zgarmaydi",
+    "hint": "💡 Zaryadlar yo‘qdan paydo bo‘lmaydi va yo‘qolmaydi, ular faqat bir jismdan ikkinchisiga o‘tishi mumkin. Umumiy yig‘indi har doim doimiy (const) qoladi."
   },
   {
     "q": "Molekulyar-kinetik nazariyaning asosiy tenglamasini ko‘rsating?",
@@ -8089,7 +8219,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "p = n k T",
       "p = m v²"
     ],
-    "a": "p = 1/3 n m₀ v²"
+    "a": "p = 1/3 n m₀ v²",
+    "hint": "💡 Bu tenglama gaz bosimini (p) molekulalarning massasi (m₀), konsentratsiyasi (n) va o‘rtacha kvadratik tezligi (v²) bilan bog‘laydi. 1/3 koeffitsienti molekulalarning 3 xil o‘qda harakatlanishini anglatadi."
   },
   {
     "q": "Qo‘zg‘almas elektr zaryad atrofidagi elektr kuchlar ta’siri seziladigan fazo qanday ataladi?",
@@ -8099,7 +8230,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "itarishish",
       "elektr maydoni"
     ],
-    "a": "elektr maydoni"
+    "a": "elektr maydoni",
+    "hint": "💡 Maydon — bu moddaning maxsus shakli bo‘lib, u orqali zaryadlar bir-biriga masofadan turib ta’sir o‘tkazadi."
   },
   {
     "q": "Chap qo‘l qoidasiga ko‘ra qaysi kuchlarning yo‘nalishi aniqlanadi?",
@@ -8109,8 +8241,10 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Lorens kuchi",
       "Ampyer va Lorens kuchlari"
     ],
-    "a": "Ampyer va Lorens kuchlari"
+    "a": "Ampyer va Lorens kuchlari",
+    "hint": "💡 Chap qo‘l qoidasida: kaftga magnit chiziqlari kiradi, to‘rtta barmoq tokni (yoki zaryad tezligini) ko‘rsatadi, ochilgan bosh barmoq esa ta’sir etuvchi kuch yo‘nalishini beradi."
   },
+  
   {
     "q": "Elektr maydonning ixtiyoriy nuqtasida birlik zaryadga ta’sir etuvchi kuch bilan aniqlanadigan kattalik nima?",
     "options": [
@@ -8119,7 +8253,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "maydon superpozitsiyasi",
       "maydon kuchlanishi"
     ],
-    "a": "maydon kuchlanganligi"
+    "a": "maydon kuchlanganligi",
+    "hint": "💡 Kuchlanganlik (E) — maydonning 'quvvati'. U maydonning biror nuqtasida turgan zaryadga qanchalik kuch bilan ta’sir qilishini ko‘rsatadi. E = F / q."
   },
   {
     "q": "Lorens kuchi zaryadli zarra tezligiga qanday ta’sir qiladi?",
@@ -8129,7 +8264,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Tezligini o‘zgartirmaydi",
       "Tezlik yo‘nalishini o‘zgartiradi"
     ],
-    "a": "Tezlik yo‘nalishini o‘zgartiradi"
+    "a": "Tezlik yo‘nalishini o‘zgartiradi",
+    "hint": "💡 Lorens kuchi har doim tezlik yo‘nalishiga perpendikulyar bo‘ladi. Shuning uchun u ish bajarmaydi va tezlikning qiymatini o‘zgartirmaydi, faqat zarrachani aylanma trayektoriya bo‘ylab buradi."
   },
   {
     "q": "O‘tkazgich bilan dielektrikning asosiy farqi nimada?",
@@ -8139,7 +8275,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Dielektrikda erkin neytronlar mavjud",
       "O‘tkazgichda zaryad bo‘lmaydi"
     ],
-    "a": "O‘tkazgichda erkin elektronlar mavjud"
+    "a": "O‘tkazgichda erkin elektronlar mavjud",
+    "hint": "💡 O‘tkazgichlarda (masalan, metallarda) elektronlar atomdan ajralgan bo‘lib, butun jism bo‘ylab erkin harakatlanadi. Dielektriklarda (rezina, shisha) esa elektronlar 'band' bo‘ladi."
   },
   {
     "q": "Elektromagnit induksiya hodisasini kim kashf etgan?",
@@ -8149,7 +8286,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Ersted",
       "Lens"
     ],
-    "a": "Faradey"
+    "a": "Faradey",
+    "hint": "💡 Maykl Faradey 1831-yilda o‘zgaruvchan magnit maydoni orqali elektr toki olish mumkinligini kashf qilgan. Bu kashfiyot bugungi barcha elektr stansiyalari (generatorlar) asosidir."
   },
   {
     "q": "Gaz bosimining konsentratsiya va absolut temperaturaga bog‘lanish formulasi qaysi?",
@@ -8159,7 +8297,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "p = kT/n",
       "p = n/kT"
     ],
-    "a": "p = nkT"
+    "a": "p = nkT",
+    "hint": "💡 Bu tenglamaga ko‘ra, gaz molekulalari qanchalik ko‘p bo‘lsa (n) va ular qanchalik issiq bo‘lsa (T), bosim shunchalik yuqori bo‘ladi. k — Bolsman doimiysi."
   },
   {
     "q": "Elektr tokning magnit ta’siri qachon va kim tomonidan aniqlangan?",
@@ -8169,7 +8308,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "1620 y. Nyuton",
       "1920 y. Eynshteyn"
     ],
-    "a": "1820 y. Ersted"
+    "a": "1820 y. Ersted",
+    "hint": "💡 1820-yilda daniyalik fizik Xans Kristian Ersted tasodifan tok o'tayotgan sim yaqinidagi magnit mili (kompas) og'ishini payqagan va bu bilan elektr va magnetizm orasidagi bog'liqlikni isbotlagan."
   },
   {
     "q": "Magnit induksiya EYuK ning birligi qaysi?",
@@ -8179,7 +8319,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Wb/s",
       "T/s"
     ],
-    "a": "Wb/s"
+    "a": "Wb/s",
+    "hint": "💡 Faradey qonuniga ko‘ra, induksiya EYuK magnit oqimining o‘zgarish tezligiga teng. Shuning uchun uning birligi Veber bo‘lingan sekund (Wb/s) yoki Volt hisoblanadi."
   },
   {
     "q": "Magnit maydon induksiyasining o‘lchov birligi qaysi?",
@@ -8189,7 +8330,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Amper",
       "Tesla"
     ],
-    "a": "Tesla"
+    "a": "Tesla",
+    "hint": "💡 Magnit maydonining kuchi (induksiyasi) buyuk ixtirochi Nikola Tesla sharafiga Tesla (Tl) birligida o‘lchanadi."
   },
   {
     "q": "Magnit oqimi 0,3 s davomida 15 Wb dan 12 Wb gacha kamaygan bo‘lsa, induksiya EYuK necha volt?",
@@ -8199,18 +8341,21 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "10",
       "4.5"
     ],
-    "a": "10"
+    "a": "10",
+    "hint": "💡 Formula: E = |ΔΦ / Δt|. Magnit oqimi o‘zgarishi: 15 - 12 = 3 Wb. Vaqt: 0.3 s. Hisoblaymiz: 3 / 0.3 = 10 V."
   },
   {
-  "q": "Quyidagi keltirilgan kuchlarning qaysi biri ish bajarmaydi?",
-  "options": [
-    "Ishqalanish kuchi",
-    "Kulon kuchi",
-    "Lorens kuchi",
-    "Amper kuchi"
-  ],
-  "a": "Lorens kuchi"
+    "q": "Quyidagi keltirilgan kuchlarning qaysi biri ish bajarmaydi?",
+    "options": [
+      "Ishqalanish kuchi",
+      "Kulon kuchi",
+      "Lorens kuchi",
+      "Amper kuchi"
+    ],
+    "a": "Lorens kuchi",
+    "hint": "💡 Lorens kuchi har doim zarracha tezligiga perpendikulyar yo‘nalgan bo‘ladi. Shuning uchun u ish bajarmaydi va zarracha energiyasini o‘zgartirmaydi."
   },
+  
   {
     "q": "Lorens kuchi harakatdagi zaryadli zarraning tezligini qanday o‘zgartiradi?",
     "options": [
@@ -8219,7 +8364,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Tezlik yo‘nalishini o‘zgartiradi",
       "Tezligini o‘zgartirmaydi"
     ],
-    "a": "Tezlik yo‘nalishini o‘zgartiradi"
+    "a": "Tezlik yo‘nalishini o‘zgartiradi",
+    "hint": "💡 Lorens kuchi zarrachaning tezlik qiymatini (modulini) o‘zgartira olmaydi, u faqat zarrachani egri chiziq bo‘ylab burib, yo‘nalishini o‘zgartiradi."
   },
   {
     "q": "O‘tkazgichlarning dielektriklardan asosiy farqi nimada?",
@@ -8229,7 +8375,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Erkin elektronlarning mavjudligida",
       "Zaryad tashuvchilarning yo‘qligida"
     ],
-    "a": "Erkin elektronlarning mavjudligida"
+    "a": "Erkin elektronlarning mavjudligida",
+    "hint": "💡 Metallar (o‘tkazgichlar) elektrni yaxshi o‘tkazishiga sabab, ularning ichida kristall panjara bo‘ylab bemalol harakatlanuvchi 'erkin elektronlar' ko‘pligidir."
   },
   {
     "q": "Elektromagnit induksiya hodisasini kim kashf qilgan?",
@@ -8239,7 +8386,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Ersted",
       "Lens"
     ],
-    "a": "Faradey"
+    "a": "Faradey",
+    "hint": "💡 1831-yilda Maykl Faradey o‘zgaruvchan magnit maydoni orqali elektr toki olish mumkinligini isbotlagan va bu bilan energetika inqilobini boshlab bergan."
   },
   {
     "q": "Gaz bosimining uning konsentratsiyasi va absolyut temperaturaga bog‘liqlik formulasini ko‘rsating?",
@@ -8249,7 +8397,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "p = nk / T",
       "p = kT / n"
     ],
-    "a": "p = nkT"
+    "a": "p = nkT",
+    "hint": "💡 Bu tenglamaga ko‘ra, gaz molekulalari qanchalik ko‘p (n) va issiq (T) bo‘lsa, idish devoriga urilishlar soni va kuchi ortadi, natijada bosim ham ko‘tariladi."
   },
   {
     "q": "Elektr tokining magnit ta’siri qachon va kim tomonidan aniqlangan?",
@@ -8259,8 +8408,10 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "1620 y. Nyuton",
       "1920 y. Eynshteyn"
     ],
-    "a": "1820 y. Ersted"
+    "a": "1820 y. Ersted",
+    "hint": "💡 Xans Kristian Ersted 1820-yilda tasodifan tok o‘tayotgan sim yaqinida turgan kompas milining og‘ishini payqab, elektr va magnetizm bog‘liqligini kashf qilgan."
   },
+  
   {
     "q": "Induksiya EYuK ning birligini ko‘rsating?",
     "options": [
@@ -8269,7 +8420,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "T/s",
       "Wb/s"
     ],
-    "a": "Wb/s"
+    "a": "Wb/s",
+    "hint": "💡 Induksiya EYuK (Elektr Yurituvchi Kuch) — aslida kuchlanishdir. Volt = Veber / sekund."
   },
   {
     "q": "Magnit maydon induksiyasining o‘lchov birligini ko‘rsating?",
@@ -8279,7 +8431,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Genri (Gn)",
       "Tesla (Tl)"
     ],
-    "a": "Tesla (Tl)"
+    "a": "Tesla (Tl)",
+    "hint": "💡 Eslatma: Magnit oqimi - Veber, Magnit induksiyasi (zichligi) - Tesla."
   },
   {
     "q": "Konturdan o‘tayotgan magnit oqimi 0,3 s davomida 15 Wb dan 12 Wb gacha tekis kamaygan bo‘lsa, konturda hosil bo‘lgan EYuK ning qiymati (V)?",
@@ -8289,7 +8442,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "4.5",
       "5"
     ],
-    "a": "10"
+    "a": "10",
+    "hint": "💡 ΔΦ = 15 - 12 = 3. E = ΔΦ / Δt = 3 / 0.3 = 10."
   },
   {
     "q": "G‘altakka kiritilgan ferromagnit o‘zak qanday vazifani bajaradi?",
@@ -8299,8 +8453,10 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Magnit maydonni kuchaytiradi",
       "Elektr maydonni susaytiradi"
     ],
-    "a": "Magnit maydonni kuchaytiradi"
+    "a": "Magnit maydonni kuchaytiradi",
+    "hint": "💡 Temir kabi ferromagnitlar magnit maydon chiziqlarini o‘ziga tortib, zichlashtiradi. Bu esa g‘altak ichidagi umumiy magnit maydonni bir necha barobar kuchaytiradi."
   },
+  
   {
     "q": "Induktivligi 30 mH bo‘lgan g‘altakdan 0,8 A tok o‘tganda g‘altak magnit maydonining energiyasi nechaga teng (mJ)?",
     "options": [
@@ -8309,7 +8465,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "9.6",
       "4"
     ],
-    "a": "9.6"
+    "a": "9.6",
+    "hint": "💡 Formula: W = (L * I²) / 2. Hisoblaymiz: (30 * 0.8 * 0.8) / 2 = (30 * 0.64) / 2 = 19.2 / 2 = 9.6 mJ."
   },
   {
     "q": "Agar o‘ng vint dastasini aylanish tok yo‘nalishida aylantirsak, vintning ilgarilanma harakati aylanish o‘qi ichidagi qaysi chiziqlarning yo‘nalishini ko‘rsatadi?",
@@ -8319,7 +8476,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "To‘lqin chizig‘i",
       "Elektr va magnit kuch chizig‘i"
     ],
-    "a": "Magnit induksiya chizig‘i"
+    "a": "Magnit induksiya chizig‘i",
+    "hint": "💡 Bu 'O‘ng vint qoidasi' yoki 'Parma qoidasi' deb ataladi. U tokli o‘tkazgich atrofida hosil bo‘lgan magnit maydonining yo‘nalishini aniqlash uchun ishlatiladi."
   },
   {
     "q": "Tebranish konturidagi kondensatorda elektr zaryadi q = 10⁻³ cos(1000t) (C) qonuniyat bo‘yicha o‘zgarsa, konturda hosil bo‘layotgan tok kuchining amplitudasi nechaga teng?",
@@ -8329,7 +8487,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "28 A",
       "10⁻³ A"
     ],
-    "a": "1 A"
+    "a": "1 A",
+    "hint": "💡 Tok kuchi zaryadning vaqt bo'yicha hosilasiga teng ($I = q'$). Hosila olsak: $I = -10^{-3} \cdot 1000 \cdot \sin(1000t)$. Amplituda esa sinus oldidagi koeffitsient: $10^{-3} \cdot 1000 = 1$ A."
   },
   {
     "q": "Ideal tebranish konturida kondensator sig‘imi 9 marta kamaytirilsa, konturning tebranish chastotasi qanday o‘zgaradi?",
@@ -8339,8 +8498,10 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "3 marta ortadi",
       "9 marta ortadi"
     ],
-    "a": "3 marta ortadi"
+    "a": "3 marta ortadi",
+    "hint": "💡 Tomson formulasiga ko'ra, chastota sig'imning ($C$) kvadrat ildiziga teskari proporsional ($\nu \sim 1/\sqrt{C}$). Sig'im 9 marta kamaysa, ildizdan 3 chiqadi va chastota 3 marta ortadi."
   },
+  
   {
     "q": "Magnit induksiya chiziqlari magnit maydonni vujudga keltiruvchi tokli o‘tkazgichlarning shaklidan qat’i nazar qanday chiziqlardir?",
     "options": [
@@ -8349,7 +8510,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "egri",
       "berk"
     ],
-    "a": "berk"
+    "a": "berk",
+    "hint": "💡 Magnit maydon chiziqlari har doim berk bo'ladi (boshi va oxiri yo'q). Bu magnit zaryadlarining tabiatda alohida holda (monopol) mavjud emasligini bildiradi."
   },
   {
     "q": "Kulon qonuni formulasini ko‘rsating?",
@@ -8359,8 +8521,10 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "F = q₁q₂ / (4πϵ₀r²)",
       "F = q / r²"
     ],
-    "a": "F = q₁q₂ / (4πϵ₀r²)"
+    "a": "F = q₁q₂ / (4πϵ₀r²)",
+    "hint": "💡 Bu ikki nuqtaviy zaryad orasidagi o'zaro ta'sir kuchini belgilaydi. Bu yerda $1/(4\pi\epsilon_0)$ koeffitsienti biz bilgan $k$ o'zgarmasiga teng."
   },
+  
   {
     "q": "Magnit oqimining xalqaro birliklar sistemasidagi (XBS) o‘lchov birligi qaysi?",
     "options": [
@@ -8369,7 +8533,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Veber (Wb)",
       "Genri (Gn)"
     ],
-    "a": "Veber (Wb)"
+    "a": "Veber (Wb)",
+    "hint": "💡 Magnit induksiyasi ($B$) - Tesla, lekin magnit oqimi ($\Phi$) - Veber ($Wb$) birligida o'lchanadi. $1 Wb = 1 Tl \cdot 1 m^2$."
   },
   {
     "q": "Nuqtaviy zaryadning undan r masofadagi maydon nuqtasining kuchlanganligi formulasini ko‘rsating?",
@@ -8379,7 +8544,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "E = q / 4πϵ₀r²",
       "E = q / r"
     ],
-    "a": "E = q / 4πϵ₀r²"
+    "a": "E = q / 4πϵ₀r²",
+    "hint": "💡 Kuchlanganlik — bu maydonning kuch xarakteristikasi bo'lib, u masofaning kvadratiga teskari proporsional ravishda kamayib boradi."
   },
   {
     "q": "Elektr maydon kuchlanganligi va potensialining o‘lchov birliklarini ko‘rsating?",
@@ -8389,7 +8555,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "V/m² ; Pa",
       "V·m² ; N"
     ],
-    "a": "V/m ; V"
+    "a": "V/m ; V",
+    "hint": "💡 Kuchlanganlik birligi Volt bo'lingan metr ($V/m$), potensial birligi esa Volt ($V$) hisoblanadi."
   },
   {
     "q": "Maydonlar superpozitsiyasi prinsipining formulasini ko‘rsating?",
@@ -8399,7 +8566,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "E = −grad φ",
       "E = q / t"
     ],
-    "a": "E = ΣEᵢ"
+    "a": "E = ΣEᵢ",
+    "hint": "💡 Superpozitsiya prinsipi — bir nechta zaryadlar yaratgan natijaviy maydon har bir zaryad yaratgan maydonlarning vektor yig'indisiga tengligini anglatadi."
   },
   {
     "q": "Kondensatorning elektr sig‘imi formulasini ko‘rsating?",
@@ -8409,7 +8577,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "C = ε₀εS",
       "C = U / q"
     ],
-    "a": "C = q / U"
+    "a": "C = q / U",
+    "hint": "💡 Sig'im kondensatordagi zaryadning ($q$) undagi kuchlanishga ($U$) nisbatiga teng. Birligi — Farada ($F$)."
   },
   {
     "q": "Yassi kondensatorning elektr sig‘imi formulasini ko‘rsating?",
@@ -8419,8 +8588,10 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "C = ε₀S·d",
       "C = d / ε₀εS"
     ],
-    "a": "C = ε₀εS / d"
+    "a": "C = ε₀εS / d",
+    "hint": "💡 Sig'im plastinalar yuzasiga ($S$) to'g'ri proporsional va ular orasidagi masofaga ($d$) teskari proporsionaldir."
   },
+  
   {
     "q": "Kirxgofning ikkinchi qoidasi formulasini ko‘rsating?",
     "options": [
@@ -8429,7 +8600,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "ΣIᵢ = Σεᵢ",
       "ΣIᵢRᵢ = 0"
     ],
-    "a": "ΣIᵢRᵢ = Σεᵢ"
+    "a": "ΣIᵢRᵢ = Σεᵢ",
+    "hint": "💡 Kirxgofning 2-qoidasi (kontur qoidasi): berk konturdagi kuchlanishlar tushuvining yig'indisi o'sha konturdagi EYuKlar yig'indisiga teng."
   },
   {
     "q": "Magnit maydon induksiyasi va kuchlanganligi orasidagi bog‘lanish formulasini ko‘rsating?",
@@ -8439,7 +8611,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "B = μ₀ − H",
       "B = μ + μ₀H"
     ],
-    "a": "B = μ₀·μ·H"
+    "a": "B = μ₀·μ·H",
+    "hint": "💡 Magnit induksiyasi ($B$) va kuchlanganligi ($H$) muhitning magnit singdiruvchanligi ($\mu$) orqali bog'langan."
   },
   {
     "q": "Yarim o‘tkazgichning solishtirma qarshiligi temperaturaga qanday bog‘liq?",
@@ -8449,7 +8622,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Temperatura kvadratiga bog‘liq",
       "Temperatura ortishi bilan ortadi"
     ],
-    "a": "Temperatura ortishi bilan kamayadi"
+    "a": "Temperatura ortishi bilan kamayadi",
+    "hint": "💡 Metallardan farqli o'laroq, yarim o'tkazgichlar qiziganda ulardagi erkin zaryad tashuvchilar soni keskin ortadi, natijada qarshilik kamayadi."
   },
   {
     "q": "Amper qonunining ifodasini toping?",
@@ -8459,7 +8633,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "F = μ₀ I₁I₂ / 2πr",
       "F = qvB"
     ],
-    "a": "dF = I·dl × B"
+    "a": "dF = I·dl × B",
+    "hint": "💡 Amper kuchi magnit maydonining tokli o'tkazgichga ko'rsatadigan ta'sir kuchidir."
   },
   {
     "q": "Ikki parallel cheksiz to‘g‘ri toklar orasidagi o‘zaro ta’sir kuchi formulasi qaysi?",
@@ -8469,7 +8644,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "F = k q₁ q₂ / r²",
       "F = qvB"
     ],
-    "a": "F = μ₀ I₁ I₂ / 2πr"
+    "a": "F = μ₀ I₁ I₂ / 2πr",
+    "hint": "💡 Agar ikki simdan bir xil yo'nalishda tok o'tsa, ular bir-birini tortadi, qarama-qarshi yo'nalishda bo'lsa — itaradi."
   },
   {
     "q": "Atom yadrosi qanday zarrachalardan tuzilgan?",
@@ -8479,8 +8655,10 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Neytronlar va elektronlardan",
       "Faqat protonlardan"
     ],
-    "a": "Protonlar va neytronlardan"
+    "a": "Protonlar va neytronlardan",
+    "hint": "💡 Atomning markazida yadro joylashgan bo'lib, u musbat zaryadli protonlar va zaryadsiz neytronlardan (birgalikda nuklonlar deb ataladi) tashkil topgan. Elektronlar esa yadro atrofida aylanadi."
   },
+  
   {
     "q": "β-zarralar qanday xossaga ega?",
     "options": [
@@ -8489,7 +8667,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Manfiy zaryadlangan elektronlar",
       "Zaryadsiz neytronlar"
     ],
-    "a": "Manfiy zaryadlangan elektronlar"
+    "a": "Manfiy zaryadlangan elektronlar",
+    "hint": "💡 Beta-nurlanish — bu yadrodan juda katta tezlikda uchib chiqadigan elektronlar oqimidir. Ular manfiy zaryadga ega bo'lgani uchun elektr va magnit maydonlarida og'adi."
   },
   {
     "q": "O‘rtacha tezlik formulasini ko‘rsating?",
@@ -8499,7 +8678,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "v = at",
       "v = lim a/t"
     ],
-    "a": "v̄ = Δr / Δt"
+    "a": "v̄ = Δr / Δt",
+    "hint": "💡 O'rtacha tezlik jismning ma'lum vaqt oralig'idagi (Δt) umumiy ko'chishining (Δr) shu vaqtga nisbatiga teng."
   },
   {
     "q": "Markazga intilma (normal) tezlanish formulasi qaysi?",
@@ -8509,8 +8689,10 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "a = v/t",
       "a = R/v²"
     ],
-    "a": "aₙ = v² / R"
+    "a": "aₙ = v² / R",
+    "hint": "💡 Jism aylana bo'ylab harakatlanganda, uning tezlik yo'nalishini o'zgartiruvchi tezlanish markazga yo'nalgan bo'ladi. U tezlik kvadratining aylana radiusiga nisbatiga teng."
   },
+  
   {
     "q": "Bosib o‘tilgan yo‘l deb nimaga aytiladi?",
     "options": [
@@ -8519,7 +8701,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Boshlang‘ich va oxirgi nuqta orasidagi masofa",
       "Tezlikning vaqtga ko‘paytmasi"
     ],
-    "a": "Traektoriyaning uzunligi"
+    "a": "Traektoriyaning uzunligi",
+    "hint": "💡 Yo'l — bu skalyar kattalik bo'lib, u jism harakati davomida chizgan trayektoriyasining umumiy uzunligini ifodalaydi. Uni ko'chish (to'g'ri chiziq) bilan adashtirmang."
   },
   {
     "q": "Tezlik qanday kattalik?",
@@ -8529,7 +8712,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Vektor kattalik",
       "Faqat modulga ega kattalik"
     ],
-    "a": "Vektor kattalik"
+    "a": "Vektor kattalik",
+    "hint": "💡 Tezlik nafaqat son qiymatga, balki yo'nalishga ham ega bo'lgan kattalikdir, shuning uchun u vektor kattalik hisoblanadi."
   },
   {
     "q": "Markazga intilma kuch formulasini ko‘rsating?",
@@ -8539,7 +8723,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "F = mg",
       "F = kx"
     ],
-    "a": "F = mv² / R"
+    "a": "F = mv² / R",
+    "hint": "💡 Jismni aylana bo'ylab harakatlanishga majbur qiluvchi kuch markazga intilma kuchdir. U Nyutonning ikkinchi qonuniga ko'ra $F = m \cdot a_n$ ko'rinishida topiladi."
   },
   {
     "q": "Jismning impulsi formulasini ko‘rsating?",
@@ -8549,7 +8734,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "p = Ft",
       "p = m/v"
     ],
-    "a": "p = mv"
+    "a": "p = mv",
+    "hint": "💡 Jismning impulsi (harakat miqdori) uning massasi va tezligi ko'paytmasiga teng vektor kattalikdir."
   },
   {
     "q": "Gravitatsiya doimiysining qiymati va o‘lchov birligini ko‘rsating?",
@@ -8559,7 +8745,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "G = 1,6·10⁻¹⁹ C",
       "G = 3·10⁸ m/s"
     ],
-    "a": "G = 6,67·10⁻¹¹ N·m²/kg²"
+    "a": "G = 6,67·10⁻¹¹ N·m²/kg²",
+    "hint": "💡 Butun olam tortishish qonunidagi bu o'zgarmas qiymat ikki dona 1 kg massali jismlarning 1 metr masofadagi tortishish kuchini ifodalaydi."
   },
   {
     "q": "Ishning asosiy o‘lchov birligi — joul (J) ga to‘g‘ri ta’rif qaysi?",
@@ -8569,7 +8756,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "1 J = 1 V·A",
       "1 J = 1 W·s"
     ],
-    "a": "1 J = 1 kg·m²/s²"
+    "a": "1 J = 1 kg·m²/s²",
+    "hint": "💡 Ish kuchi va ko'chish ko'paytmasiga teng ($A = F \cdot s$). Nyutonni metrga ko'paytirib, birliklar tarkibini yozsak, aynan $kg \cdot m^2/s^2$ hosil bo'ladi."
   },
   {
     "q": "Kinetik energiyaga berilgan to‘g‘ri ta’rifni ko‘rsating?",
@@ -8579,12 +8767,9 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Jismning balandlikka bog‘liq energiyasi",
       "Zaryadlar orasidagi energiya"
     ],
-    "a": "Jism massasining tezlik kvadratiga ko‘paytmasining yarmiga teng energiya"
+    "a": "Jism massasining tezlik kvadratiga ko‘paytmasining yarmiga teng energiya",
+    "hint": "💡 Kinetik energiya — jismning harakati natijasida yuzaga keladigan energiya turi. Formulasi: $E_k = mv^2 / 2$."
   },
-
-
-
-
         ]
   },
   english: {
@@ -10654,23 +10839,39 @@ bot.action('buy_vip', (ctx) => {
 // Admin "Tasdiqlash" tugmasini bosganda
 bot.action(/^approve_(\d+)$/, async (ctx) => {
     const targetId = parseInt(ctx.match[1]);
-    
-    // VIP qilingani
-    if (!vipUsers.includes(targetId)) {
+    const db = getDb(); // Asosiy bazani olamiz
+
+    // 1. Asosiy bazada (db.json) VIP statusini yoqamiz
+    if (db.users[targetId]) {
+        db.users[targetId].isVip = true;
+        saveDb(db); // Bazani faylga saqlaymiz
+    }
+
+    // 2. VIP ro'yxatiga (alohida fayl bo'lsa) qo'shish
+    if (typeof vipUsers !== 'undefined' && !vipUsers.includes(targetId)) {
         vipUsers.push(targetId);
         fs.writeFileSync(VIP_FILE, JSON.stringify(vipUsers));
     }
     
-    // MUSOBAQA ro'yxatiga ham qo'shamiz
-    if (!tournament.participants.includes(targetId)) {
+    // 3. MUSOBAQA ro'yxatiga qo'shish
+    if (typeof tournament !== 'undefined' && !tournament.participants.includes(targetId)) {
         tournament.participants.push(targetId);
         fs.writeFileSync(TOURNAMENT_FILE, JSON.stringify(tournament));
     }
     
-    await ctx.telegram.sendMessage(targetId, "🎉 To'lovingiz tasdiqlandi! Endi barcha testlar va 🏆 Musobaqada qatnashishingiz mumkin.");
-    return ctx.editMessageCaption("✅ Tasdiqlandi: VIP va Musobaqaga qo'shildi.");
-});
+    // 4. Foydalanuvchiga bildirishnoma yuborish
+    try {
+        await ctx.telegram.sendMessage(targetId, 
+            "🎉 <b>Xushxabar!</b>\n\nTo'lovingiz tasdiqlandi! Endi barcha testlarning 💡 <b>tushuntirishlarini</b> ko'rishingiz va 🏆 <b>Musobaqada</b> qatnashishingiz mumkin.", 
+            { parse_mode: 'HTML' }
+        );
+    } catch (e) {
+        console.log("Foydalanuvchiga xabar yuborishda xatolik.");
+    }
 
+    // 5. Admin xabarini yangilash
+    return ctx.editMessageCaption("✅ <b>Tasdiqlandi:</b> Foydalanuvchi VIP bo'ldi va Musobaqaga qo'shildi.", { parse_mode: 'HTML' });
+});
 // Admin "Rad etish" tugmasini bosganda
 bot.action(/^reject_(\d+)$/, async (ctx) => {
     const targetId = parseInt(ctx.match[1]);
