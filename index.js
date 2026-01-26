@@ -9511,17 +9511,23 @@ bot.use(async (ctx, next) => {
 
 // --- ADMIN KOMANDALARI ---
 bot.command('admin', (ctx) => {
-    if (ctx.from.id === ADMIN_ID) {
+    if (ctx.from.id === Number(ADMIN_ID)) {
         const db = getDb();
-        const statusEmoji = db.settings?.isMaintenance ? "🟢 Botni Yoqish" : "🛑 Botni To'xtatish";
-        const turboEmoji = db.settings?.turboMode ? "🚀 Turbo (O'chirish)" : "🚀 Turbo (Yoqish)";
+        if (!db.settings) db.settings = {}; // Settings bo'lmasa yaratib qo'yamiz
+
+        const statusEmoji = db.settings.isMaintenance ? "🟢 Botni Yoqish" : "🛑 Botni To'xtatish";
+        const turboEmoji = db.settings.turboMode ? "🚀 Turbo (O'chirish)" : "🚀 Turbo (Yoqish)";
+        
+        // 1. Tushuntirish tekin rejimi tugmasi
+        const hintFreeEmoji = db.settings.isHintFree ? "🔓 Hint: TEKIN (Yopish)" : "🔒 Hint: VIP (Ochish)";
         
         return ctx.reply(`🛠 **Admin Panel**`, 
             Markup.keyboard([
                 ['💰 Pullik versiya', '🆓 Bepul versiya'],
                 [statusEmoji, turboEmoji],
-                ['🏆 Musobaqa boshqarish', '📊 Statistika'],
-                ['🗑 Foydalanuvchini o\'chirish', '🧹 Reytingni tozalash'], // Yangi tugma
+                [hintFreeEmoji], // Alohida qatorda tushuntirish rejimi
+                ['🌟 VIP user qo\'shish', '📊 Statistika'], // VIP qo'shish tugmasi
+                ['🧹 Reytingni tozalash', '🗑 Foydalanuvchini o\'chirish'],
                 ['📣 Xabar tarqatish', '⬅️ Orqaga (Fanlar)']
             ]).resize());
     }
@@ -9575,13 +9581,16 @@ bot.action("show_explanation", async (ctx) => {
     const userId = ctx.from.id;
     const db = getDb();
     
+    // Sozlamalarni tekshirish
+    const isHintFree = db.settings?.isHintFree; 
     const user = db.users[userId] || {};
     const isUserVip = user.isVip;
     const isUserAdmin = (userId === Number(ADMIN_ID));
 
-    // 1. VIP tekshiruvi
-    if (!isUserVip && !isUserAdmin) {
-        await ctx.answerCbQuery("🔒 Faqat VIP a'zolar uchun!", { show_alert: true });
+    // 1. VIP yoki TEKIN REJIM tekshiruvi
+    // Agar tekin rejim YOQILMAGAN bo'lsa VA user VIP ham, Admin ham bo'lmasa - ruxsat bermaymiz
+    if (!isHintFree && !isUserVip && !isUserAdmin) {
+        await ctx.answerCbQuery("🔒 Tushuntirishlar faqat VIP a'zolar uchun!", { show_alert: true });
         return ctx.replyWithHTML(
             `⭐ <b>DIQQAT: Tushuntirishlar faqat VIP a'zolar uchun!</b>\n\n` +
             `Yechimlarni ko'rish uchun VIP statusini sotib oling.`,
@@ -9593,9 +9602,9 @@ bot.action("show_explanation", async (ctx) => {
     const qData = s.activeList && s.activeList[s.index];
     if (!qData) return ctx.answerCbQuery("Xatolik: Savol topilmadi.");
 
-    // 3. Tushuntirish borligini tekshirish
+    // 3. Tushuntirish (hint) borligini tekshirish
     if (qData.hint && qData.hint.trim() !== "") {
-        await ctx.answerCbQuery("🔍 Tushuntirish qo'shildi");
+        await ctx.answerCbQuery("💡 Tushuntirish qo'shildi");
 
         const progress = getProgressBar(s.index + 1, s.activeList.length);
         const safeQuestion = escapeHTML(qData.q);
@@ -9608,7 +9617,6 @@ bot.action("show_explanation", async (ctx) => {
                           `💡 <b>TUSHUNTIRISH:</b>\n${escapeHTML(qData.hint)}\n` +
                           `━━━━━━━━━━━━━━\n\n`;
 
-        // Agar test rejimida bo'lsa variantlarni ham qayta yozamiz
         if (!s.isTurbo) {
             const labels = ['A', 'B', 'C', 'D'];
             const options = s.currentOptions || [];
@@ -9616,23 +9624,20 @@ bot.action("show_explanation", async (ctx) => {
                 updatedText += `<b>${labels[i]})</b> ${escapeHTML(opt)}\n\n`;
             });
         } else {
-            // Turbo rejimda to'g'ri javobni ko'rsatamiz
             updatedText += `✅ <b>TO'G'RI JAVOB:</b>\n<code>${escapeHTML(qData.a)}</code>\n`;
         }
 
-        // Tugmalarni o'zgarishsiz qoldirish uchun xabardan olamiz
         const keyboard = ctx.callbackQuery.message.reply_markup;
 
         try {
-            // Agar rasm bo'lsa editMessageCaption, matn bo'lsa editMessageText ishlatiladi
+            // Rasmli yoki matnli xabarlarni tahrirlash
             if (ctx.callbackQuery.message.photo) {
                 await ctx.editMessageCaption(updatedText, { parse_mode: 'HTML', reply_markup: keyboard });
             } else {
                 await ctx.editMessageText(updatedText, { parse_mode: 'HTML', reply_markup: keyboard });
             }
         } catch (e) {
-            // Agar foydalanuvchi tugmani 2 marta bossa va matn o'zgarmasa xato bermasligi uchun
-            console.log("Xabarni tahrirlashda xatolik yoki matn o'zgarmagan.");
+            console.log("Xabarni tahrirlashda xatolik.");
         }
     } else {
         return ctx.answerCbQuery("⚠️ Bu savolga tushuntirish hali qo'shilmagan.", { show_alert: true });
@@ -9859,6 +9864,61 @@ bot.hears("🧹 Reytingni tozalash", (ctx) => {
             [Markup.button.callback("❌ Yo'q, bekor qilish", "cancel_clear")]
         ]));
 });
+
+bot.hears(/^(🔓|🔒) Hint:/, (ctx) => {
+    if (ctx.from.id !== Number(ADMIN_ID)) return;
+    const db = getDb();
+    if (!db.settings) db.settings = {};
+
+    db.settings.isHintFree = !db.settings.isHintFree;
+    saveDb(db);
+
+    const msg = db.settings.isHintFree 
+        ? "✅ Tushuntirishlar hamma uchun TEKIN bo'ldi!" 
+        : "✅ Tushuntirishlar yana faqat VIP foydalanuvchilar uchun.";
+    
+    return ctx.reply(msg);
+});
+
+// 1. Tugma bosilganda
+bot.hears("🌟 VIP user qo'shish", (ctx) => {
+    if (ctx.from.id !== Number(ADMIN_ID)) return;
+    ctx.session.adminStep = 'wait_vip_input';
+    return ctx.reply("🌟 VIP qilmoqchi bo'lgan foydalanuvchining ID raqamini yoki @nikini yuboring:");
+});
+
+// 2. ID yoki Nik kelganda (Asosiy bot.on('text') blokining ichida)
+if (ctx.session.adminStep === 'wait_vip_input') {
+    const input = ctx.message.text.trim();
+    const db = getDb();
+    let targetId = null;
+
+    // Nikni tekshirish
+    if (input.startsWith('@') || isNaN(input)) {
+        const searchNik = input.replace('@', '').toLowerCase();
+        targetId = Object.keys(db.users).find(id => 
+            db.users[id].username && db.users[id].username.replace('@', '').toLowerCase() === searchNik
+        );
+    } else {
+        targetId = input;
+    }
+
+    if (targetId && db.users[targetId]) {
+        db.users[targetId].isVip = true;
+        saveDb(db);
+        ctx.session.adminStep = null;
+
+        await ctx.reply(`✅ Muvaffaqiyatli! ${db.users[targetId].name} endi VIP a'zo.`);
+        
+        // Foydalanuvchiga xabar yuborish
+        try {
+            await ctx.telegram.sendMessage(targetId, "🌟 <b>Xushxabar!</b>\n\nAdmin sizga <b>VIP</b> statusini taqdim etdi. Endi barcha testlarning tushuntirishlarini ko'rishingiz mumkin!", { parse_mode: 'HTML' });
+        } catch (e) { console.log("User botni bloklagan bo'lishi mumkin."); }
+        return;
+    } else {
+        return ctx.reply("❌ Bunday foydalanuvchi bazadan topilmadi. ID yoki Nikni to'g'ri yozganingizga ishonch hosil qiling:");
+    }
+}
 
 bot.action("cancel_clear", (ctx) => ctx.deleteMessage());
 
