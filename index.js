@@ -9917,7 +9917,7 @@ async function sendQuestion(ctx, isNew = false) {
             updateGlobalScore(userId, s.userName, ctx.from.username, s.score);
         }
         
-        // Asosiy natija sarlavhasi
+        // Natija sarlavhasi
         let resultMsg = s.isTurbo 
             ? `🏁 <b>Turbo yodlash yakunlandi!</b>`
             : `🏁 <b>Test yakunlandi, ${s.userName}!</b>\n\n` +
@@ -9926,30 +9926,43 @@ async function sendQuestion(ctx, isNew = false) {
               `📊 Natija: <b>${((s.score / s.activeList.length) * 100).toFixed(1)}%</b>\n` +
               `_________________________\n\n`;
 
-        // 📝 XATOLAR TAHLILINI QO'SHAMIZ
+        // Xatolar tahlili
         if (s.wrongs.length > 0 && !s.isTurbo) {
             resultMsg += `⚠️ <b>Xatolar tahlili:</b>\n\n`;
             
             s.wrongs.forEach((xato, i) => {
-                 resultMsg += `<b>${i + 1}.</b> ${escapeHTML(xato.q)}\n` +
-                 `❌ Siz tanladingiz: <s>${escapeHTML(xato.userAnswer || "Vaqt tugadi")}</s>\n` +
-                 `✅ To'g'ri javob: <u>${escapeHTML(xato.a)}</u>\n` +
-                 `_________________________\n\n`;
-});
+                // Har bir savol blokini vaqtinchalik o'zgaruvchiga olamiz
+                let errorBlock = `<b>${i + 1}.</b> ${escapeHTML(xato.q)}\n` +
+                                 `❌ Siz tanladingiz: <s>${escapeHTML(xato.userAnswer || "Vaqt tugadi")}</s>\n` +
+                                 `✅ To'g'ri javob: <u>${escapeHTML(xato.a)}</u>\n` +
+                                 `_________________________\n\n`;
+                
+                // Telegram limiti 4096 belgi, shuning uchun xabar to'lib qolmasligini tekshiramiz
+                if ((resultMsg + errorBlock).length < 3900) {
+                    resultMsg += errorBlock;
+                }
+            });
+
+            if (resultMsg.length >= 3900) {
+                resultMsg += `\n...(Xatolar juda ko'p, barchasi sig'madi)`;
+            }
         } else if (!s.isTurbo) {
             resultMsg += `🌟 <b>Ajoyib! Hech qanday xato qilmadingiz!</b>\n`;
         }
 
-        // Telegram xabari limiti (4096 belgi) oshib ketmasligi uchun tekshiruv
-        if (resultMsg.length > 4000) {
-            resultMsg = resultMsg.substring(0, 3950) + "\n\n...(Xatolar ko'p, hammasi sig'madi)";
-        }
-
         s.isTurbo = false;
-        return ctx.replyWithHTML(resultMsg, Markup.keyboard([
-            ["⚡️ Blitz (25)", "📝 To'liq test"], 
-            ["⬅️ Orqaga (Fanlar)"]
-        ]).resize());
+
+        // HTML parse xatosini oldini olish uchun try-catch
+        try {
+            return await ctx.replyWithHTML(resultMsg, Markup.keyboard([
+                ["⚡️ Blitz (25)", "📝 To'liq test"], 
+                ["⬅️ Orqaga (Fanlar)"]
+            ]).resize());
+        } catch (e) {
+            console.error("HTML yuborishda xato:", e);
+            // Agar HTML xatosi bo'lsa, oddiy matn yuboramiz
+            return ctx.reply(`🏁 Test yakunlandi, ${s.userName}!\n✅ To'g'ri: ${s.score}\n❌ Xato: ${s.wrongs.length}\nNatija: ${((s.score / s.activeList.length) * 100).toFixed(1)}%`);
+        }
     }
 
     // 🛑 XATOLIKDAN HIMOYA
@@ -9965,7 +9978,7 @@ async function sendQuestion(ctx, isNew = false) {
     const hasImage = imagePath && fs.existsSync(imagePath);
 
     // ==========================================
-    // 🚀 TURBO YODLASH REJIMI
+    // 🚀 2. TURBO YODLASH REJIMI
     // ==========================================
     if (s.isTurbo) {
         let turboText = `🚀 <b>TURBO YODLASH</b>\n📊 [${progress}]\n🔢 Savol: <b>${s.index + 1} / ${s.activeList.length}</b>\n` +
@@ -9990,7 +10003,7 @@ async function sendQuestion(ctx, isNew = false) {
     }
 
     // ==========================================
-    // 📝 ODDIY TEST REJIMI
+    // 📝 3. ODDIY TEST REJIMI
     // ==========================================
     const currentTimeLimit = s.userTimeLimit || botSettings.timeLimit || 30;
     s.currentOptions = shuffle([...qData.options]);
@@ -10018,10 +10031,9 @@ async function sendQuestion(ctx, isNew = false) {
         }
     }
 
-    // Taymer
+    // Taymerni o'rnatish
     timers[userId] = setTimeout(async () => {
         if (ctx.session && ctx.session.index === s.index && !ctx.session.isTurbo) {
-            // Vaqt tugaganda xatolarga qo'shish
             ctx.session.wrongs.push({ ...qData, userAnswer: "Vaqt tugadi ⏰" });
             ctx.session.index++; 
             await ctx.replyWithHTML(`⏰ <b>VAQT TUGADI!</b>`);
@@ -10385,19 +10397,33 @@ bot.hears('➕ Yangi fan qoshish', (ctx) => {
 });
 
 // Statistika tugmasini eshitish (Admin uchun)
-bot.hears('📊 Statistika', (ctx) => {
-  const db = getDb();
+bot.hears('📊 Statistika', async (ctx) => {
+    const db = getDb();
     if (ctx.from.id !== ADMIN_ID) return;
 
-    const users = Object.values(db.users || {});
-    const totalUsers = users.length;
-    const totalTests = users.reduce((sum, u) => sum + (u.totalTests || 0), 0);
+    const usersEntries = Object.entries(db.users || {});
+    const totalUsers = usersEntries.length;
     
-    let report = `📊 **BOT STATISTIKASI**\n\n`;
-    report += `👥 Jami foydalanuvchilar: ${totalUsers} ta\n`;
-    report += `📝 Jami topshirilgan testlar: ${totalTests} ta\n`;
-    
-    return ctx.reply(report);
+    let report = `📊 <b>BOT STATISTIKASI</b>\n\n`;
+    report += `👥 Jami foydalanuvchilar: <b>${totalUsers} ta</b>\n\n`;
+    report += `🆔 <b>Foydalanuvchilar ro'yxati:</b>\n`;
+
+    usersEntries.forEach(([id, data], index) => {
+        // ID raqamni nusxa olishga qulay qilib chiqaramiz
+        let userLine = `${index + 1}. 👤 ${data.name || 'Ismsiz'} | ID: <code>${id}</code>\n`;
+        
+        // Telegram xabari limiti (4096 belgi) oshib ketmasligini tekshiramiz
+        if ((report + userLine).length < 4000) {
+            report += userLine;
+        }
+    });
+
+    const adminKeyboard = Markup.keyboard([
+        ["🗑 Foydalanuvchini o'chirish"],
+        ["⬅️ Orqaga"]
+    ]).resize();
+
+    return ctx.replyWithHTML(report, adminKeyboard);
 });
 // Musobaqa menyusidan Admin paneliga qaytish
 bot.hears('⬅️ Orqaga (Admin)', (ctx) => {
@@ -10436,7 +10462,7 @@ bot.hears('🆓 Bepul versiya', (ctx) => {
 bot.hears("🗑 Foydalanuvchini o'chirish", (ctx) => {
     if (ctx.from.id !== ADMIN_ID) return;
     ctx.session.adminStep = 'wait_delete_id';
-    return ctx.reply("🗑 O'chirmoqchi bo'lgan foydalanuvchining ID raqamini kiriting (yoki profilidan nusxa olib tashlang):");
+    return ctx.reply("🗑 O'chirmoqchi bo'lgan foydalanuvchining ID raqamini kiriting:");
 });
 
 
@@ -10461,43 +10487,56 @@ bot.on('text', async (ctx, next) => {
         const db = getDb();
         let targetId = null;
 
-        // 1. Agar username kiritilgan bo'lsa (@ belgi bilan yoki belgisiz)
+        // 1. Username yoki ID ekanligini aniqlash
         if (input.startsWith('@') || isNaN(input)) {
             const searchName = input.replace('@', '').toLowerCase();
             
-            // Bazadan shu usernameli odamni qidiramiz
+            // Username bo'yicha qidiruv
             targetId = Object.keys(db.users).find(id => {
                 const user = db.users[id];
                 return user.username && user.username.toLowerCase() === searchName;
             });
         } else {
-            // 2. Agar to'g'ridan-to'g'ri ID kiritilgan bo'lsa
-            targetId = input;
+            // ID kiritilganda uni bazadagi formatga moslash
+            targetId = Object.keys(db.users).find(id => String(id) === String(input));
         }
 
-        // O'chirish jarayoni
+        // 2. O'chirish jarayoni
         if (targetId && db.users[targetId]) {
-            const userName = db.users[targetId].name || "Noma'lum";
-            const userTag = db.users[targetId].username ? `@${db.users[targetId].username}` : "Nik yo'q";
+            const userData = db.users[targetId];
+            const userName = userData.name || "Noma'lum";
+            const userTag = userData.username ? `@${userData.username}` : "Nik yo'q";
 
-            // Asosiy bazadan o'chirish
+            // Foydalanuvchini asosiy ro'yxatdan o'chirish
             delete db.users[targetId];
             
-            // Reytingdan o'chirish
-            if (db.scores) {
+            // Reyting (scores) ro'yxatidan ham tozalash
+            if (db.scores && Array.isArray(db.scores)) {
                 db.scores = db.scores.filter(u => String(u.id) !== String(targetId));
             }
 
+            // O'zgarishlarni bazaga yozish
             saveDb(db);
+            
+            // Admin holatini tozalash
             s.adminStep = null;
 
-            return ctx.reply(`✅ Foydalanuvchi topildi va o'chirildi:\n👤 Ism: ${userName}\nℹ️ Nik: ${userTag}\n🆔 ID: ${targetId}`);
+            return ctx.replyWithHTML(
+                `✅ <b>Foydalanuvchi muvaffaqiyatli o'chirildi:</b>\n\n` +
+                `👤 <b>Ism:</b> ${userName}\n` +
+                `ℹ️ <b>Nik:</b> ${userTag}\n` +
+                `🆔 <b>ID:</b> <code>${targetId}</code>\n\n` +
+                `<i>Barcha reyting ballari va ma'lumotlar tozalandi.</i>`
+            );
         } else {
-            return ctx.reply("❌ Bunday foydalanuvchi topilmadi.\n\nEslatma: Foydalanuvchi botni kamida bir marta ishlatgan va bazaga tushgan bo'lishi kerak.");
+            // Qadamni yopish (agar admin adashgan bo'lsa ham qaytadan boshlashi uchun)
+            s.adminStep = null; 
+            return ctx.reply("❌ Bunday foydalanuvchi topilmadi.\n\nID yoki Username to'g'ri kiritilganini tekshiring.");
         }
     }
     return next();
 });
+
 bot.on(['text', 'photo', 'video', 'animation', 'document'], async (ctx, next) => {
     // Agar matn bo'lsa matnni, rasm ostida yozilgan bo'lsa captionni oladi
     const text = ctx.message.text || ctx.message.caption; 
