@@ -5376,7 +5376,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Ma’lumotlar bazasi",
       "Faqat dasturlash tilida yozilgan kod"
     ],
-    "a": "Muayyan masalani yechish uchun chekli qadamlar ketma-ketligi"
+    "a": "Muayyan masalani yechish uchun chekli qadamlar ketma-ketligi",
+    "hint": "💡 Algoritm qurilma yoki dastur emas. U — masalani yechish uchun bosqichma-bosqich bajariladigan aniq ko‘rsatmalar ketma-ketligidir."
   },
   {
     "q": "“Algoritm” so‘zi qanday ma’noni anglatadi?",
@@ -5386,7 +5387,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Dasturlash muhiti ma’noni anglatadi",
       "Dedikim Al-Xorazmiy degan ma’noni anglatadi"
     ],
-    "a": "Hisoblash yoki masalani yechishda cheksiz amal qilinadigan qoidalari ma’noni anglatadi"
+    "a": "Hisoblash yoki masalani yechishda cheksiz amal qilinadigan qoidalari ma’noni anglatadi",
+    "hint": "💡 “Algoritm” atamasi Al-Xorazmiy nomidan kelib chiqqan bo‘lib, hisoblash qoidalari degan ma’noni bildiradi."
   },
   {
     "q": "Algoritm cheklanganlik xossasi nimani bildiradi?",
@@ -5396,7 +5398,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Algoritm doimiy ishlashi kerak",
       "Algoritm cheksiz qadamdan keyin to‘xtaydi"
     ],
-    "a": "Algoritm chekli qadam va ma’lum vaqtdan keyin to‘xtashi kerak"
+    "a": "Algoritm chekli qadam va ma’lum vaqtdan keyin to‘xtashi kerak",
+    "hint": "💡 Har qanday to‘g‘ri algoritm oxir-oqibat yakunlanishi kerak. Cheksiz davom etsa — bu noto‘g‘ri algoritm hisoblanadi."
   },
   {
     "q": "Algoritm kamida nechta natija berishi kerak?",
@@ -5406,7 +5409,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Kamida bitta",
       "Hech qachon natija bermaydi"
     ],
-    "a": "Kamida bitta"
+    "a": "Kamida bitta",
+    "hint": "💡 Algoritmning maqsadi natija olish. Hech bo‘lmasa bitta chiqish natijasi bo‘lishi shart."
   },
   {
     "q": "Algoritm dasturlash tiliga bog‘liq bo‘lmasligi nimani anglatadi?",
@@ -5416,7 +5420,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Har qanday dasturlash tilida amalga oshirilishi mumkin",
       "Faqat diagramma ko‘rinishida bo‘ladi"
     ],
-    "a": "Har qanday dasturlash tilida amalga oshirilishi mumkin"
+    "a": "Har qanday dasturlash tilida amalga oshirilishi mumkin",
+    "hint": "💡 Algoritm — bu g‘oya va qadamlar ketma-ketligi. Uni Python, C++, Java yoki boshqa tilda yozish mumkin."
   },
   {
     "q": "Algoritm murakkabligi qaysi omillar bilan belgilanadi?",
@@ -5426,7 +5431,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Vaqt va xotira sarfi bilan",
       "Faqat dasturlash tili bilan"
     ],
-    "a": "Vaqt va xotira sarfi bilan"
+    "a": "Vaqt va xotira sarfi bilan",
+    "hint": "💡 Algoritm qanchalik tez ishlashi (vaqt) va qancha xotira ishlatishi bilan baholanadi."
   },
   {
     "q": "Algoritmni ishlab chiqishda birinchi navbatda nima aniqlanadi?",
@@ -5436,7 +5442,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Hal qilinishi kerak bo‘lgan muammo",
       "Dasturlash tili"
     ],
-    "a": "Hal qilinishi kerak bo‘lgan muammo"
+    "a": "Hal qilinishi kerak bo‘lgan muammo",
+    "hint": "💡 Avval masala nima ekanini tushunmasdan algoritm yozib bo‘lmaydi."
   },
   {
     "q": "Chiziqli algoritmning asosiy xususiyati qaysi?",
@@ -5446,7 +5453,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Shartga bog‘liq holda bajariladi",
       "Amallar cheksiz marta takrorlanadi"
     ],
-    "a": "Buyruqlar qat’iy ketma-ketlikda bir marta bajariladi"
+    "a": "Buyruqlar qat’iy ketma-ketlikda bir marta bajariladi",
+    "hint": "💡 Chiziqli algoritmda shart ham, takror ham yo‘q — buyruqlar birin-ketin bajariladi."
   },
   {
     "q": "Tarmoqlanuvchi algoritm qachon qo‘llaniladi?",
@@ -5456,7 +5464,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Shartga qarab turli yo‘nalishlardan biri tanlanganda",
       "Barcha buyruqlar ketma-ket bajarilganda"
     ],
-    "a": "Shartga qarab turli yo‘nalishlardan biri tanlanganda"
+    "a": "Shartga qarab turli yo‘nalishlardan biri tanlanganda",
+    "hint": "💡 Agar natija shartga bog‘liq bo‘lsa (masalan, son musbatmi yoki manfiy), algoritm tarmoqlanadi."
   },
   {
     "q": "Takrorlanuvchi algoritmga qaysi misol to‘g‘ri?",
@@ -5466,27 +5475,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Uchta sonni qo‘shish",
       "Shartsiz bajarish"
     ],
-    "a": "Shart bajarilguncha bir amalni qayta-qayta bajarish"
-  },
-  {
-    "q": "Tarmoqlanuvchi algoritmlarda asosan qaysi konstruksiya ishlatiladi?",
-    "options": [
-      "for operatori",
-      "ketma-ket operatorlar",
-      "if–else shart operatori",
-      "while operatori"
-    ],
-    "a": "if–else shart operatori"
-  },
-  {
-    "q": "Takrorlanuvchi algoritmning asosiy vazifasi nimadan iborat?",
-    "options": [
-      "Ma’lumotlarni saqlash",
-      "Bir xil amallarni bir necha marta bajarish",
-      "Faqat bitta natija chiqarish",
-      "Shartlarsiz bajarish"
-    ],
-    "a": "Bir xil amallarni bir necha marta bajarish"
+    "a": "Shart bajarilguncha bir amalni qayta-qayta bajarish",
+    "hint": "💡 Bir xil amal bir necha marta bajarilsa — bu sikl (loop) hisoblanadi."
   },
   {
     "q": "Python’da o‘zgaruvchi nima?",
@@ -5496,57 +5486,44 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Ma’lumotni saqlash uchun ajratilgan operator",
       "Ma’lumotni saqlash uchun ajratilgan funksiya"
     ],
-    "a": "Ma’lumotni saqlash uchun ajratilgan nom"
-  },
-  {
-    "q": "Python’da butun sonlar qaysi turga mansub?",
-    "options": [
-      "float",
-      "bool",
-      "int",
-      "str"
-    ],
-    "a": "int"
+    "a": "Ma’lumotni saqlash uchun ajratilgan nom",
+    "hint": "💡 O‘zgaruvchi — bu qiymatni saqlash uchun ishlatiladigan nom (masalan: x = 5)."
   },
   {
     "q": "Haqiqiy (o‘nli) sonlar qaysi turda saqlanadi?",
-    "options": [
-      "int",
-      "bool",
-      "float",
-      "str"
-    ],
-    "a": "float"
+    "options": ["int", "bool", "float", "str"],
+    "a": "float",
+    "hint": "💡 Kasrli sonlar (masalan 3.14) Python’da float turida saqlanadi."
   },
   {
     "q": "Quyidagilardan qaysi biri o‘zgaruvchi nomi bo‘la oladi?",
     "options": ["2son", "class", "my-var", "my_var"],
-    "a": "my_var"
-  },
-  {
-    "q": "Python’da butun sonlar qaysi turga mansub?",
-    "options": ["float", "str", "bool", "int"],
-    "a": "int"
+    "a": "my_var",
+    "hint": "💡 O‘zgaruvchi nomi raqam bilan boshlanmaydi va defis (-) ishlatilmaydi. Pastki chiziq (_) mumkin."
   },
   {
     "q": "Haqiqiy (o‘nli) sonlar qaysi turda saqlanadi?",
     "options": ["bool", "str", "int", "float"],
-    "a": "float"
+    "a": "float",
+    "hint": "💡 Kasrli yoki o‘nli sonlar (masalan 3.14, 0.5) Python’da float turida saqlanadi."
   },
   {
     "q": "Mantiqiy qiymatlar (True, False) qaysi turga tegishli?",
     "options": ["int", "str", "float", "bool"],
-    "a": "bool"
+    "a": "bool",
+    "hint": "💡 True va False qiymatlari mantiqiy (rost/yolg‘on) qiymatlar bo‘lib, ular bool turiga kiradi."
   },
   {
     "q": "Satr (matn) ma’lumotlar turi qaysi?",
     "options": ["float", "bool", "int", "str"],
-    "a": "str"
+    "a": "str",
+    "hint": "💡 Matnlar qo‘shtirnoq yoki bittirnoq ichida yoziladi va Python’da str (string) turida saqlanadi."
   },
   {
     "q": "Kompleks sonlar qaysi tur bilan ifodalanadi?",
     "options": ["float", "int", "str", "complex"],
-    "a": "complex"
+    "a": "complex",
+    "hint": "💡 Kompleks sonlar haqiqiy va mavhum qismdan iborat bo‘ladi (masalan: 2+3j) va complex turida saqlanadi."
   },
   {
     "q": "Python’da o‘zgaruvchi turi qachon aniqlanadi?",
@@ -5556,37 +5533,44 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Oldindan e’lon qilinganda",
       "Qiymat yuklanganda"
     ],
-    "a": "Qiymat yuklanganda"
+    "a": "Qiymat yuklanganda",
+    "hint": "💡 Python’da tur avtomatik aniqlanadi. O‘zgaruvchiga qiymat berilganda uning turi belgilanadi."
   },
   {
     "q": "Quyidagi ifodada x ning turi qanday?  x = 10",
     "options": ["float", "complex", "char", "int"],
-    "a": "int"
+    "a": "int",
+    "hint": "💡 10 butun son bo‘lgani uchun Python uni int turi deb qabul qiladi."
   },
   {
     "q": "Quyidagi ifodada y ning turi qanday?  y = \"Python\"",
     "options": ["float", "complex", "char", "str"],
-    "a": "str"
+    "a": "str",
+    "hint": "💡 Qo‘shtirnoq ichida yozilgan har qanday qiymat matn hisoblanadi va str turiga kiradi."
   },
   {
     "q": "Python’da foydalanuvchidan ma’lumot kiritish uchun qaysi funksiya ishlatiladi?",
     "options": ["print()", "len()", "type()", "input()"],
-    "a": "input()"
+    "a": "input()",
+    "hint": "💡 input() funksiyasi foydalanuvchidan klaviatura orqali ma’lumot qabul qilish uchun ishlatiladi."
   },
   {
     "q": "input() funksiyasi orqali kiritilgan ma’lumotning boshlang‘ich turi qanday bo‘ladi?",
     "options": ["float", "int", "char", "str"],
-    "a": "str"
+    "a": "str",
+    "hint": "💡 input() har doim ma’lumotni matn (str) ko‘rinishida qaytaradi, hatto son kiritilsa ham."
   },
   {
     "q": "Butun son kiritish uchun qaysi ko‘rinish to‘g‘ri?",
     "options": ["float(input())", "bool(input())", "complex(input())", "int(input())"],
-    "a": "int(input())"
+    "a": "int(input())",
+    "hint": "💡 input() natijasi matn bo‘ladi, shuning uchun uni butun songa aylantirish uchun int() ishlatiladi."
   },
   {
     "q": "Haqiqiy son (float) kiritish uchun qaysi usul ishlatiladi?",
     "options": ["int(input())", "bool(input())", "complex(input())", "float(input())"],
-    "a": "float(input())"
+    "a": "float(input())",
+    "hint": "💡 O‘nli son kiritish uchun input() natijasini float() yordamida haqiqiy songa aylantiramiz."
   },
   {
     "q": "Quyidagi kod nimani bildiradi? x, y = map(int, input().split())",
@@ -5596,7 +5580,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Ikki satrni bitta qatorda kiritishni",
       "Ikki butun sonni bitta qatorda kiritishni"
     ],
-    "a": "Ikki butun sonni bitta qatorda kiritishni"
+    "a": "Ikki butun sonni bitta qatorda kiritishni",
+    "hint": "💡 input().split() matnni bo‘laklarga ajratadi, map(int, ...) esa ularni butun songa aylantiradi — natijada ikkita int olinadi."
   },
   {
     "q": "map() funksiyasi formatli kiritishda nima uchun ishlatiladi?",
@@ -5606,7 +5591,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "O‘zgaruvchi yaratish uchun",
       "Kiritilgan qiymatlarni kerakli turga o‘girish uchun"
     ],
-    "a": "Kiritilgan qiymatlarni kerakli turga o‘girish uchun"
+    "a": "Kiritilgan qiymatlarni kerakli turga o‘girish uchun",
+    "hint": "💡 map() funksiyasi bir nechta qiymatlarni bir vaqtning o‘zida kerakli turga (masalan int yoki float) aylantirish uchun ishlatiladi."
   },
   {
     "q": "Quyidagi kiritish usuli qaysi holatda qo‘llaniladi? a, b, c = map(float, input().split())",
@@ -5616,7 +5602,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Uchta complex sonni bitta qatorda kiritishda",
       "Uchta haqiqiy sonni bitta qatorda kiritishda"
     ],
-    "a": "Uchta haqiqiy sonni bitta qatorda kiritishda"
+    "a": "Uchta haqiqiy sonni bitta qatorda kiritishda",
+    "hint": "💡 Bu usul bir qatorda kiritilgan 3 ta o‘nli sonni float turiga o‘girib, a, b, c o‘zgaruvchilariga joylaydi."
   },
   {
     "q": "Quyidagi kod nima vazifani bajaradi? x = int(input()) if x > 0: print(\"Musbat\") else: print(\"Manfiy yoki nol\")",
@@ -5626,7 +5613,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Kiritilgan son musbat yoki musbat emasligini aniqlaydi",
       "Kiritilgan butun son musbat yoki musbat emasligini aniqlaydi"
     ],
-    "a": "Kiritilgan butun son musbat yoki musbat emasligini aniqlaydi"
+    "a": "Kiritilgan butun son musbat yoki musbat emasligini aniqlaydi",
+    "hint": "💡 Dastur sonni tekshiradi: agar 0 dan katta bo‘lsa musbat, aks holda manfiy yoki nol deb chiqaradi."
   },
   {
     "q": "Quyidagi dasturda qachon \"True\" chiqadi? a = int(input()) if a % 2 == 0: print(\"True\") else: print(\"False\")",
@@ -5636,7 +5624,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Agar a son nol bo‘lsa",
       "Agar a son juft bo‘lsa"
     ],
-    "a": "Agar a son juft bo‘lsa"
+    "a": "Agar a son juft bo‘lsa",
+    "hint": "💡 a % 2 == 0 sharti son 2 ga qoldiqsiz bo‘linishini tekshiradi — bu juft son degani."
   },
   {
     "q": "Quyidagi kod nimani tekshiradi? n = int(input()) if n % 5 == 0: print(\"Bo‘linadi\") else: print(\"Bo‘linmaydi\")",
@@ -5646,12 +5635,14 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Sonning kattaligini",
       "Sonning 5 ga bo‘linishini"
     ],
-    "a": "Sonning 5 ga bo‘linishini"
+    "a": "Sonning 5 ga bo‘linishini",
+    "hint": "💡 n % 5 == 0 bo‘lsa, son 5 ga qoldiqsiz bo‘linadi degani."
   },
   {
     "q": "Ushbu dastur natijasini toping: a=1 b=2 c=3 a,b,c=b,c,a print(a,b,c)",
     "options": ["1 2 3", "2 1 3", "3 1 2", "2 3 1"],
-    "a": "2 3 1"
+    "a": "2 3 1",
+    "hint": "💡 a,b,c=b,c,a qiymatlarni aylantirib joylashtiradi: a→b(2), b→c(3), c→a(1)."
   },
   {
     "q": "Quyidagi kod nima bajaradi?\n i = 1\n while i <= 5:\n   print(i)\n   i += 1",
@@ -5661,7 +5652,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Faqat 5 ni chiqaradi",
       "1 dan 5 gacha bo‘lgan sonlarni chiqaradi"
     ],
-    "a": "1 dan 5 gacha bo‘lgan sonlarni chiqaradi"
+    "a": "1 dan 5 gacha bo‘lgan sonlarni chiqaradi",
+    "hint": "💡 i 1 dan boshlanib har aylanishda 1 ga oshadi va 5 gacha bo‘lgan qiymatlar chiqadi."
   },
   {
     "q": "Quyidagi kod natijasi nima bo‘ladi?\n i = 5\n while i > 0:\n   print(i)\n   i -= 1",
@@ -5671,7 +5663,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "1 dan 5 gacha bo‘lgan sonlarni chiqaradi",
       "5 dan 1 gacha bo‘lgan sonlarni chiqaradi"
     ],
-    "a": "5 dan 1 gacha bo‘lgan sonlarni chiqaradi"
+    "a": "5 dan 1 gacha bo‘lgan sonlarni chiqaradi",
+    "hint": "💡 i 5 dan boshlanib har safar 1 ga kamayadi va 1 gacha tushadi."
   },
   {
     "q": "Quyidagi dastur nimani hisoblaydi?\n n=int(input())\n s=0\n while n>0:\n   s+=n\n   n-=1\n print(s)",
@@ -5681,7 +5674,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "n gacha bo‘lgan sonlar ayirmasi",
       "n gacha bo‘lgan sonlar yig‘indisini"
     ],
-    "a": "n gacha bo‘lgan sonlar yig‘indisini"
+    "a": "n gacha bo‘lgan sonlar yig‘indisini",
+    "hint": "💡 s ga n, n-1, n-2 ... 1 qiymatlar qo‘shiladi — bu 1 dan n gacha yig‘indi."
   },
   {
     "q": "Quyidagi kod qachon to‘xtaydi?\n x = 10\n while x != 0:\n   x -= 2",
@@ -5691,7 +5685,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Hech qachon",
       "x nolga teng bo‘lganda"
     ],
-    "a": "x nolga teng bo‘lganda"
+    "a": "x nolga teng bo‘lganda",
+    "hint": "💡 x har safar 2 ga kamayadi: 10→8→6→4→2→0 va sikl tugaydi."
   },
   {
     "q": "Quyidagi dastur nimani tekshiradi?\n n=int(input())\n while n<0:\n   n=int(input())\n print(n)",
@@ -5701,7 +5696,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Sonni kvadratga oshiradi",
       "Manfiy bo‘lmagan son kiritilguncha so‘raydi"
     ],
-    "a": "Manfiy bo‘lmagan son kiritilguncha so‘raydi"
+    "a": "Manfiy bo‘lmagan son kiritilguncha so‘raydi",
+    "hint": "💡 Agar son manfiy bo‘lsa, foydalanuvchidan qayta kiritish talab qilinadi."
   },
   {
     "q": "Quyidagi kodda cheksiz sikl nima uchun yuzaga keladi?\n i=1\n while i<5:\n   print(i)",
@@ -5711,7 +5707,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "i 5 ga teng bo‘lgani uchun",
       "i o‘zgarmagani uchun"
     ],
-    "a": "i o‘zgarmagani uchun"
+    "a": "i o‘zgarmagani uchun",
+    "hint": "💡 i qiymati o‘zgarmaydi, shuning uchun shart doim rost bo‘lib qoladi."
   },
   {
     "q": "Quyidagi dastur natijasi nima?\n i=0\n while i<3:\n   print(\"Python\")\n   i+=1",
@@ -5721,277 +5718,188 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "\"Python\" so‘zini 3 marta chiqaradi",
       "\"Python\" so‘zini 1 marta chiqaradi"
     ],
-    "a": "\"Python\" so‘zini 3 marta chiqaradi"
+    "a": "\"Python\" so‘zini 3 marta chiqaradi",
+    "hint": "💡 i 0,1,2 bo‘lganda 3 marta sikl bajariladi."
   },
   {
     "q": "Quyidagi dastur natijasi nima?\n a=4\n b=3\n c=4\n t=(a+b>c) and (a+c>b) and (b+c>a)\n print(t)",
     "options": ["0", "1", "false", "True"],
-    "a": "True"
+    "a": "True",
+    "hint": "💡 Uchala shart ham rost: 7>4, 8>3, 7>4 — shuning uchun natija True."
   },
   {
     "q": "Quyidagi dastur natijasi nima?\n a=4\n b=3\n c=5\n t=(a*a+b*b==c*c) or (a*a+c*c==b*b) or (b*b+c*c==a*a)\n print(t)",
     "options": ["False", "0", "1", "True"],
-    "a": "True"
+    "a": "True",
+    "hint": "💡 4²+3²=16+9=25 va 5²=25 — Pifagor tengligi bajariladi."
   },
   {
     "q": "Quyidagi dastur natijasi nima?\n a=4\n b=3\n c=5\n t=(a==b and b!=c) or (c==a and b!=c) or (b==c and c!=a)\n print(t)",
     "options": ["True", "1", "0", "False"],
-    "a": "False"
+    "a": "False",
+    "hint": "💡 Hech bir juft teng emas (a≠b, b≠c, a≠c), shuning uchun natija False."
   },
   {
     "q": "Quyidagi dastur natijasi nima?\n a=4\n b=3\n c=4\n t=(a==b and b!=c) or (c==a and b!=c) or (b==c and c!=a)\n print(t)",
     "options": ["0", "False", "True", "1"],
-    "a": "True"
+    "a": "True",
+    "hint": "💡 c==a (4==4) va b!=c (3≠4) sharti rost — natija True."
   },
   {
     "q": "a=8, b=3\n print(a>5 and b<5)\n Dastur natijasini aniqlang",
     "options": ["0", "3", "False", "True"],
-    "a": "True"
+    "a": "True",
+    "hint": "💡 8>5 ham, 3<5 ham rost — and operatori True qaytaradi."
   },
   {
     "q": "x=10, y=0\n print(x and y)\n Dastur natijasini aniqlang",
     "options": ["true", "false", "10", "0"],
-    "a": "0"
+    "a": "0",
+    "hint": "💡 and operatori oxirgi tekshirilgan qiymatni qaytaradi; y=0 bo‘lgani uchun natija 0."
   },
   {
     "q": "a=4, b=9\n print(a>10 or b>=9)\n Dastur natijasini aniqlang",
     "options": ["9", "False", "1", "True"],
-    "a": "True"
+    "a": "True",
+    "hint": "💡 Birinchi shart yolg‘on, ikkinchisi rost (9≥9), or True beradi."
   },
   {
     "q": "x=5\n print(not (x>3 and x<10))\n Dastur natijasini aniqlang",
     "options": ["5", "False", "3", "True"],
-    "a": "False"
-  },
-  {
-    "q": "a = 6, b = 2\nprint(a == 6 and not b == 3)\nDastur natijasini aniqlang?",
-    "options": ["False", "6", "True", "2"],
-    "a": "True"
-  },
-  {
-    "q": "x = 0, y = 7\nprint(x or y)\nDastur natijasini aniqlang?",
-    "options": ["True", "0", "False", "7"],
-    "a": "7"
-  },
-  {
-    "q": "a = 5, b = 5\nprint(not (a != b))\nDastur natijasini aniqlang?",
-    "options": ["5", "None", "False", "True"],
-    "a": "True"
-  },
-  {
-    "q": "x = 4, y = 6\nprint(x > 2 and y < 5 or y == 6)\nDastur natijasini aniqlang?",
-    "options": ["4", "False", "6", "True"],
-    "a": "True"
-  },
-  {
-    "q": "a = 3\nprint(a and not a)\nDastur natijasini aniqlang?",
-    "options": ["True", "3", "None", "False"],
-    "a": "False"
-  },
-  {
-    "q": "x = 2, y = 8\nprint(not x > 5 or y < 10)\nDastur natijasini aniqlang?",
-    "options": ["2", "False", "8", "True"],
-    "a": "True"
-  },
-  {
-    "q": "Python’da bir qatorda bir nechta buyruq yozish uchun qaysi belgi ishlatiladi?",
-    "options": [";", ",", ":", "hech narsa"],
-    "a": ";"
-  },
-  {
-    "q": "Python’da katta-kichik harflar (case sensitivity) qanday ahamiyatga ega?",
-    "options": [
-      "Farqlanmaydi",
-      "Faqat o‘zgaruvchilarda farqlanmaydi",
-      "Katta-kichik harflar farqlanadi",
-      "Katta-kichik harflar funksiyada farqlanadi"
-    ],
-    "a": "Katta-kichik harflar farqlanadi"
+    "a": "False",
+    "hint": "💡 Ichki shart True (5>3 va 5<10), not True esa False bo‘ladi."
   },
   {
     "q": "print(1, 2, 3, sep=\"\") natijasi nima bo‘ladi?",
     "options": ["1,2,3", "123", "Error", "1  2  3"],
-    "a": "123"
+    "a": "123",
+    "hint": "💡 sep=\"\" bo‘lsa, print sonlar orasiga hech qanday belgi qo‘ymaydi — natija 123 bo‘ladi."
   },
   {
     "q": "range(5) qanday qiymatlar ketma-ketligini beradi?",
     "options": ["0 dan 5 gacha", "Faqat 5", "0,1,2,3,4,5", "0,1,2,3,4"],
-    "a": "0,1,2,3,4"
+    "a": "0,1,2,3,4",
+    "hint": "💡 range(5) 0 dan boshlanadi va 5 ga yetmasdan to‘xtaydi."
   },
   {
     "q": "s = 0\nfor i in range(5):\n  s += i\nprint(s)\nDastur nimani chiqaradi?",
     "options": ["5", "0", "15", "10"],
-    "a": "10"
+    "a": "10",
+    "hint": "💡 s = 0+1+2+3+4 = 10 bo‘ladi."
   },
   {
     "q": "range(2, 5) qaysi sonlarni o‘z ichiga oladi?",
     "options": ["2,3,4,5", "3,4,5", "2.5", "2,3,4"],
-    "a": "2,3,4"
+    "a": "2,3,4",
+    "hint": "💡 range(2,5) 2 dan boshlanib 5 ga yetmasdan tugaydi."
   },
   {
     "q": "Qaysi operator qoldiqni hisoblaydi?",
     "options": ["*", "/", "//", "%"],
-    "a": "%"
+    "a": "%",
+    "hint": "💡 % operatori bo‘lishdagi qoldiqni topadi."
   },
   {
     "q": "x sonning oxirgi raqamini aniqlash formulasi qaysi?",
     "options": ["x/10", "x//10", "x^10", "x % 10"],
-    "a": "x % 10"
+    "a": "x % 10",
+    "hint": "💡 10 ga bo‘lgandagi qoldiq sonning oxirgi raqamini beradi."
   },
   {
     "q": "Cheksiz sikldan chiqish uchun qaysi operator ishlatiladi?",
     "options": ["exit", "return", "stop", "break"],
-    "a": "break"
+    "a": "break",
+    "hint": "💡 break siklni majburan to‘xtatadi."
   },
   {
-    "q": "k = 0\nx = int(input())\nwhile x != 0:\n    if x > 0:\n        k += 1\n    x = int(input())\nprint(k)\nDastur nimani aniqlaydi?",
+    "q": "k = 0 ... Dastur nimani aniqlaydi?",
     "options": ["Manfiy sonlar sonini", "Eng katta sonni", "Barcha sonlar sonini", "Musbat sonlar sonini"],
-    "a": "Musbat sonlar sonini"
+    "a": "Musbat sonlar sonini",
+    "hint": "💡 0 kiritilmaguncha musbat sonlar sanaladi."
   },
   {
-    "q": "s = 0\nfor i in range(4):\n    s += i\nprint(s)\nDastur natijasini aniqlang?",
+    "q": "s = 0\nfor i in range(4): s += i\nprint(s)",
     "options": ["0", "6", "10", "4"],
-    "a": "6"
+    "a": "6",
+    "hint": "💡 0+1+2+3 = 6."
   },
   {
-    "q": "for i in range(2, 6):\n    print(i)\nDastur natijasini aniqlang?",
+    "q": "for i in range(2, 6): print(i)",
     "options": ["3 4 5", "2 3 4 5 6", "Xato", "2 3 4 5"],
-    "a": "2 3 4 5"
+    "a": "2 3 4 5",
+    "hint": "💡 6 kirmaydi, 2 dan 5 gacha chiqadi."
   },
   {
-    "q": "s = 1\nfor i in range(3):\n    s *= 2\nprint(s)\nDastur natijasini aniqlang?",
+    "q": "s = 1\nfor i in range(3): s *= 2\nprint(s)",
     "options": ["4", "6", "2", "8"],
-    "a": "8"
+    "a": "8",
+    "hint": "💡 1→2→4→8 (3 marta 2 ga ko‘payadi)."
   },
   {
-    "q": "for i in range(1, 6, 2):\n    print(i)\nDastur natijasini aniqlang?",
+    "q": "for i in range(1, 6, 2): print(i)",
     "options": ["1 3 5", "2 4 6", "1 2 3", "Xato"],
-    "a": "1 3 5"
+    "a": "1 3 5",
+    "hint": "💡 Qadam 2 bo‘lgani uchun 1,3,5 chiqadi."
   },
   {
-    "q": "s = 0\nfor i in range(1, 6):\n    s += i\nprint(s)\nDastur natijasini aniqlang?",
+    "q": "s = 0\nfor i in range(1, 6): s += i\nprint(s)",
     "options": ["10", "21", "5", "15"],
-    "a": "15"
+    "a": "15",
+    "hint": "💡 1+2+3+4+5 = 15."
   },
   {
-    "q": "for i in range(4, 7):\n    print(i)\nDastur natijasini aniqlang?",
+    "q": "for i in range(4, 7): print(i)",
     "options": ["5 6 7", "Xato", "4 5 6 7", "4 5 6"],
-    "a": "4 5 6"
+    "a": "4 5 6",
+    "hint": "💡 7 kirmaydi."
   },
   {
-    "q": "k = 0\nfor i in range(5):\n    k += 1\nprint(k)\nDastur natijasini aniqlang?",
+    "q": "k = 0\nfor i in range(5): k += 1\nprint(k)",
     "options": ["0", "4", "6", "5"],
-    "a": "5"
+    "a": "5",
+    "hint": "💡 Sikl 5 marta ishlaydi."
   },
   {
-    "q": "for i in range(3):\n    print(i + 1)\nDastur natijasini aniqlang?",
+    "q": "for i in range(3): print(i + 1)",
     "options": ["0 1 2", "1 2", "Xato", "1 2 3"],
-    "a": "1 2 3"
+    "a": "1 2 3",
+    "hint": "💡 i 0,1,2 bo‘ladi, ustiga 1 qo‘shiladi."
   },
   {
-    "q": "s = 0\nfor i in range(2, 5):\n    s += i\nprint(s)\nDastur natijasini aniqlang?",
+    "q": "s = 0\nfor i in range(2, 5): s += i\nprint(s)",
     "options": ["10", "9", "7", "5"],
-    "a": "9"
+    "a": "9",
+    "hint": "💡 2+3+4 = 9."
   },
   {
-    "q": "for i in range(5, 0, -1):\n    print(i)\nDastur natijasini aniqlang?",
+    "q": "for i in range(5, 0, -1): print(i)",
     "options": ["4 3 2 1", "5 4 3 2", "Xato", "5 4 3 2 1"],
-    "a": "5 4 3 2 1"
+    "a": "5 4 3 2 1",
+    "hint": "💡 5 dan 1 gacha kamayib boradi."
   },
   {
-    "q": "s = 10\nfor i in range(3):\n    s -= 2\nprint(s)\nDastur natijasini aniqlang?",
+    "q": "s = 10\nfor i in range(3): s -= 2\nprint(s)",
     "options": ["10", "8", "4", "6"],
-    "a": "4"
+    "a": "4",
+    "hint": "💡 10→8→6→4."
   },
   {
-    "q": "for i in range(0, 6, 3):\n    print(i)\nDastur natijasini aniqlang?",
+    "q": "for i in range(0, 6, 3): print(i)",
     "options": ["3 6", "0 3", "6", "Xato"],
-    "a": "0 3"
+    "a": "0 3",
+    "hint": "💡 0 dan boshlanib 3 qadam bilan: 0, 3."
   },
   {
-    "q": "s = 1\nfor i in range(4):\n    s += s\nprint(s)\nDastur natijasini aniqlang?",
+    "q": "s = 1\nfor i in range(4): s += s\nprint(s)",
     "options": ["8", "4", "32", "16"],
-    "a": "16"
+    "a": "16",
+    "hint": "💡 Har safar 2 baravar bo‘ladi: 1→2→4→8→16."
   },
   {
-    "q": "for i in range(1, 5):\n    if i % 2 == 0:\n        print(i)\nDastur natijasini aniqlang?",
+    "q": "for i in range(1, 5): if i % 2 == 0: print(i)",
     "options": ["1 3", "Hech narsa chiqmaydi", "2 4", "1 2 3 4"],
-    "a": "2 4"
-  },
-  {
-    "q": "k = 0\nfor i in range(1, 10):\n    if i % 3 == 0:\n        k += 1\nprint(k)\nDastur natijasini aniqlang?",
-    "options": ["6", "2", "3", "4"],
-    "a": "3"
-  },
-  {
-    "q": "s = 0\nfor i in range(1, 4):\n    s = s * 2 + i\nprint(s)\nDastur natijasini aniqlang?",
-    "options": ["9", "13", "11", "7"],
-    "a": "11"
-  },
-  {
-    "q": "for i in range(2, 8, 2):\n    print(i)\nDastur natijasini aniqlang?",
-    "options": ["4 6 8", "2 4 6", "Xato", "2 4 6 8"],
-    "a": "2 4 6"
-  },
-  {
-    "q": "def salom():\n    print(\"Salom\")\nsalom()\nDastur natijasini aniqlang?",
-    "options": ["None", "Xato", "Salom", "Hech narsa chiqmaydi"],
-    "a": "Salom"
-  },
-  {
-    "q": "def chiqar():\n    return 5\nprint(chiqar())\nDastur natijasini aniqlang?",
-    "options": ["None", "Xato", "chiqar", "5"],
-    "a": "5"
-  },
-  {
-    "q": "def kvadrat(x):\n    return x * x\nprint(kvadrat(4))\nDastur natijasini aniqlang?",
-    "options": ["8", "None", "4", "16"],
-    "a": "16"
-  },
-  {
-    "q": "def yigindi(a, b):\n    print(a - b)\nyigindi(3, 7)\nDastur natijasini aniqlang?",
-    "options": ["7", "3", "-4", "10"],
-    "a": "-4"
-  },
-  {
-    "q": "def yigindi(a, b):\n    print(a * b)\nyigindi(3, 7)\nDastur natijasini aniqlang?",
-    "options": ["10", "3", "7", "21"],
-    "a": "21"
-  },
-  {
-    "q": "def nol():\n    return 0\nprint(nol())\nDastur natijasini aniqlang?",
-    "options": ["Bo‘sh satr", "Xato", "None", "0"],
-    "a": "0"
-  },
-  {
-    "q": "def zero():\n    return -1\nprint(zero())\nDastur natijasini aniqlang?",
-    "options": ["1", "Xato", "None", "-1"],
-    "a": "-1"
-  },
-  {
-    "q": "def zero():\n    return\nprint(zero())\nDastur natijasini aniqlang?",
-    "options": ["0", "1", "None", "Xato"],
-    "a": "None"
-  },
-  {
-    "q": "def ikki_baravar(x):\n    return x * 2\nprint(ikki_baravar(5))\nDastur natijasini aniqlang?",
-    "options": ["25", "7", "2", "10"],
-    "a": "10"
-  },
-  {
-    "q": "def f(a, b=5):\n    return a + b\nprint(f(3))\nDastur natijasini aniqlang?",
-    "options": ["5", "3", "Xato", "8"],
-    "a": "8"
-  },
-  {
-    "q": "def f(a, b=5):\n    return a * b\nprint(f(2, 3))\nDastur natijasini aniqlang?",
-    "options": ["10", "Xato", "6", "15"],
-    "a": "6"
-  },
-  {
-    "q": "def salom(ism):\n    print(\"Salom\", ism)\nsalom(\"Ali\")\nDastur natijasini aniqlang?",
-    "options": ["Ali", "Salom", "Ali Salom", "Salom Ali"],
-    "a": "Salom Ali"
+    "a": "2 4",
+    "hint": "💡 Faqat juft sonlar chiqadi."
   },
   {
     "q": "Funksiya nima uchun ishlatiladi?",
@@ -6001,82 +5909,98 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Dastur tuzilishini yaxshilash",
       "Barchasi to‘g‘ri"
     ],
-    "a": "Barchasi to‘g‘ri"
+    "a": "Barchasi to‘g‘ri",
+    "hint": "💡 Funksiya kodni tartibli qiladi, takrorlanishni kamaytiradi va dasturni tushunarli tuzilishga keltiradi."
   },
   {
-    "q": "def f():\n    return 10\nprint(f())\nFunksiya natijasi nima?",
+    "q": "def f(): return 10 print(f()) Funksiya natijasi nima?",
     "options": ["None", "Xato", "0", "10"],
-    "a": "10"
+    "a": "10",
+    "hint": "💡 return 10 funksiyadan 10 qiymatini qaytaradi va print ekranga chiqaradi."
   },
   {
-    "q": "def add(a, b):\n    return a + b\nFunksiya qanday e’lon qilingan?",
+    "q": "def add(a, b): return a + b Funksiya qanday e’lon qilingan?",
     "options": ["Parametrsiz funksiya", "Rekursiv funksiya", "Lambda funksiya", "Parametrli funksiya"],
-    "a": "Parametrli funksiya"
+    "a": "Parametrli funksiya",
+    "hint": "💡 Funksiya qavs ichida a va b parametrlarini qabul qilmoqda."
   },
   {
-    "q": "def test():\n    return 5\nFunksiya chaqirish qaysi qatorda?",
+    "q": "def test(): return 5 Funksiya chaqirish qaysi qatorda?",
     "options": ["return test", "print test()", "def test()", "test()"],
-    "a": "test()"
+    "a": "test()",
+    "hint": "💡 Funksiyani ishga tushirish uchun uning nomi qavs bilan yoziladi: test()."
   },
   {
-    "q": "def f(a, b):\n    return a - b\nFunksiya nechta argument qabul qiladi?",
+    "q": "def f(a, b): return a - b Funksiya nechta argument qabul qiladi?",
     "options": ["1", "3", "0", "2"],
-    "a": "2"
+    "a": "2",
+    "hint": "💡 Funksiya e’lonida ikkita parametr (a va b) bor."
   },
   {
-    "q": "Quyidagi kod natijasi?\ndef f(x=4):\n    return x+1\nprint(f())",
+    "q": "def f(x=4): return x+1 print(f()) natija?",
     "options": ["4", "1", "0", "5"],
-    "a": "5"
+    "a": "5",
+    "hint": "💡 Standart qiymat x=4, unga 1 qo‘shilib 5 chiqadi."
   },
   {
-    "q": "Quyidagi funksiya nimani hisoblaydi?\ndef kv(x):\n    return x*x",
+    "q": "def kv(x): return x*x Funksiya nimani hisoblaydi?",
     "options": ["Son ildizini", "Son kubini", "Son kvadratini", "Son yig‘indisini"],
-    "a": "Son kvadratini"
+    "a": "Son kvadratini",
+    "hint": "💡 x*x — sonning kvadrati."
   },
   {
-    "q": "Quyidagi kod natijasi?\ndef f(a, b=4):\n    return a*b\nprint(f(2))",
+    "q": "def f(a, b=4): return a*b print(f(2)) natija?",
     "options": ["4", "6", "2", "8"],
-    "a": "8"
+    "a": "8",
+    "hint": "💡 b ning standart qiymati 4, 2*4=8."
   },
   {
     "q": "return operatori nima qiladi?",
     "options": ["Natijani ekranga chiqaradi", "Funktsiyani chaqiradi", "O‘zgaruvchi yaratadi", "Qiymat qaytaradi"],
-    "a": "Qiymat qaytaradi"
+    "a": "Qiymat qaytaradi",
+    "hint": "💡 return funksiyadan qiymatni tashqariga uzatadi."
   },
   {
     "q": "Funksiya ichida funksiya yozish mumkinmi?",
     "options": ["Yo‘q", "Faqat klassda", "Faqat modulda", "Ha"],
-    "a": "Ha"
+    "a": "Ha",
+    "hint": "💡 Python’da ichki (nested) funksiyalar yozish mumkin."
   },
   {
-    "q": "Quyidagi kod natijasi?\ndef f(a):\n    return a+2\nprint(f(1)+f(2))",
+    "q": "def f(a): return a+2 print(f(1)+f(2)) natija?",
     "options": ["3", "5", "7", "6"],
-    "a": "7"
+    "a": "7",
+    "hint": "💡 f(1)=3, f(2)=4, yig‘indisi 7."
   },
   {
-    "q": "Quyidagi funksiya qaysi turga kiradi?\ndef f():\n    print(\"Hello\")",
+    "q": "def f(): print(\"Hello\") Bu qanday funksiya?",
     "options": ["Lambda funksiya", "Parametrli funksiya", "Rekursiv funksiya", "Parametrsiz funksiya"],
-    "a": "Parametrsiz funksiya"
+    "a": "Parametrsiz funksiya",
+    "hint": "💡 Qavs ichida parametr yo‘q."
   },
   {
-    "q": "Quyidagi kod natijasi?\ndef f(x):\n    return x%2==0\nprint(f(4))",
+    "q": "def f(x): return x%2==0 print(f(4)) natija?",
     "options": ["0", "False", "1", "True"],
-    "a": "True"
+    "a": "True",
+    "hint": "💡 4 juft son, shuning uchun natija True."
   },
   {
     "q": "Funksiya parametri nima?",
     "options": ["Funksiya natijasi", "O‘zgaruvchi turi", "Operator", "Funksiyaga uzatiladigan qiymat"],
-    "a": "Funksiyaga uzatiladigan qiymat"
+    "a": "Funksiyaga uzatiladigan qiymat",
+    "hint": "💡 Parametr — funksiyaga beriladigan kirish ma’lumoti."
   },
   {
-    "q": "Quyidagi kod natijasi?\ndef f(a=1, b=2):\n    return a+b\nprint(f(3,4))",
+    "q": "def f(a=1, b=2): return a+b print(f(3,4)) natija?",
     "options": ["3", "2", "7", "1"],
-    "a": "7"
+    "a": "7",
+    "hint": "💡 Bu yerda standart qiymatlar emas, berilgan qiymatlar ishlatiladi: 3+4=7."
   },
   {
-    "q": "Quyidagi funksiya nima qaytaradi?\ndef f(x):\n    return x//2\nprint(f(9))",
+    "q": "def f(x): return x//2 print(f(9)) natija?",
     "options": ["Error", "Xato", "4", "5"],
-    "a": "4"
+    "a": "4",
+    "hint": "💡 // butun bo‘lish, 9//2 = 4."
   },
   {
     "q": "Funksiya nima uchun ishlatiladi?",
@@ -6086,7 +6010,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "O‘zgaruvchi saqlash uchun",
       "Kodni tartibli va qayta ishlatish uchun"
     ],
-    "a": "Kodni tartibli va qayta ishlatish uchun"
+    "a": "Kodni tartibli va qayta ishlatish uchun",
+    "hint": "💡 Funksiya kodni modulli va qayta foydalaniladigan qiladi."
   },
   {
     "q": "Python’da modul nima?",
@@ -6096,72 +6021,44 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Operator",
       "Alohida faylda yozilgan va qayta qo‘llaniladigan kodlar majmui"
     ],
-    "a": "Alohida faylda yozilgan va qayta qo‘llaniladigan kodlar majmui"
+    "a": "Alohida faylda yozilgan va qayta qo‘llaniladigan kodlar majmui",
+    "hint": "💡 Modul — boshqa dasturlarda ham ishlatish mumkin bo‘lgan .py fayl."
   },
   {
     "q": "Python modulining kengaytmasi qanday?",
     "options": [".txt", ".exe", ".docx", ".py"],
-    "a": ".py"
+    "a": ".py",
+    "hint": "💡 Python fayllari .py kengaytmasiga ega."
   },
   {
     "q": "Modulni dasturga ulash uchun qaysi kalit so‘z ishlatiladi?",
     "options": ["include", "using", "load", "import"],
-    "a": "import"
+    "a": "import",
+    "hint": "💡 import kalit so‘zi modulni ulaydi."
   },
   {
     "q": "metodlar.py modulidagi Sum() funksiyasini chaqirish qaysi ko‘rinishda bo‘ladi?",
     "options": ["Sum()", "call Sum()", "metodlar->Sum()", "metodlar.Sum()"],
-    "a": "metodlar.Sum()"
-  },
-  {
-    "q": "Modul funksiyalarini global nomlar maydoniga kiritish uchun qaysi buyruq ishlatiladi?",
-    "options": ["import modul_nomi", "load modul_nomi", "include modul_nomi", "from modul_nomi import funksiya"],
-    "a": "from modul_nomi import funksiya"
-  },
-  {
-    "q": "Barcha funksiyalarni moduldan birdaniga import qilish qaysi ko‘rinishda?",
-    "options": ["import *", "import all", "from * import modul_nomi", "from modul_nomi import *"],
-    "a": "from modul_nomi import *"
-  },
-  {
-    "q": "import * ishlatishning kamchiligi nimada?",
-    "options": ["Kod ishlamaydi", "Modul yuklanmaydi", "Xotira tejalmaydi", "Funksiya nomlari to‘qnashuvi yuz berishi mumkin"],
-    "a": "Funksiya nomlari to‘qnashuvi yuz berishi mumkin"
-  },
-  {
-    "q": "Python’da modul necha marta import qilinsa ham, u:",
-    "options": ["Har safar qayta yuklanadi", "Umuman yuklanmaydi", "Xato beradi", "Faqat bir marta yuklanadi"],
-    "a": "Faqat bir marta yuklanadi"
-  },
-  {
-    "q": "Quyidagi kodda xatolik nimada?\nfrom math import sqrt\nprint(sqrt(144))\nprint(pi)",
-    "options": ["sqrt noto‘g‘ri yozilgan", "math yo‘q", "Sintaksis xato", "pi import qilinmagan"],
-    "a": "pi import qilinmagan"
-  },
-  {
-    "q": "if __name__ == \"__main__\": sharti nima uchun ishlatiladi?",
-    "options": [
-      "Funksiya chaqirish uchun",
-      "Modul import qilish uchun",
-      "Xatolarni ushlash uchun",
-      "Modul to‘g‘ridan-to‘g‘ri ishga tushirilganda asosiy kodni bajarish uchun"
-    ],
-    "a": "Modul to‘g‘ridan-to‘g‘ri ishga tushirilganda asosiy kodni bajarish uchun"
+    "a": "metodlar.Sum()",
+    "hint": "💡 Modul nomi nuqta orqali funksiyaga murojaat qilinadi."
   },
   {
     "q": "Massiv nima?",
     "options": ["Faqat bitta o‘zgaruvchi", "Funksiya", "Operator", "Bir xil turdagi ma’lumotlar ketma-ketligi"],
-    "a": "Bir xil turdagi ma’lumotlar ketma-ketligi"
+    "a": "Bir xil turdagi ma’lumotlar ketma-ketligi",
+    "hint": "💡 Massiv — bir nechta qiymatni bitta tuzilmada saqlash usuli."
   },
   {
     "q": "Python’da 2D massiv qanday ifodalanadi?",
     "options": ["Faqat tuple yordamida", "Dictionary yordamida", "String yordamida", "Listlar ichidagi listlar yordamida"],
-    "a": "Listlar ichidagi listlar yordamida"
+    "a": "Listlar ichidagi listlar yordamida",
+    "hint": "💡 2D massiv — bu ichma-ich list."
   },
   {
-    "q": "Quyidagi kod nimani yaratadi?\nmatrix = [[1,2],[3,4]]",
+    "q": "matrix = [[1,2],[3,4]] nimani yaratadi?",
     "options": ["Bir o‘lchovli massiv", "Funksiya", "Klass", "Ikki o‘lchovli massiv"],
-    "a": "Ikki o‘lchovli massiv"
+    "a": "Ikki o‘lchovli massiv",
+    "hint": "💡 Bu 2 qator va 2 ustundan iborat jadval."
   },
   {
     "q": "matrix[0][1] nimani bildiradi?",
@@ -6171,47 +6068,56 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Butun qatorni",
       "1-qator, 2-ustun elementini"
     ],
-    "a": "1-qator, 2-ustun elementini"
+    "a": "1-qator, 2-ustun elementini",
+    "hint": "💡 Birinchi indeks qator, ikkinchisi ustunni bildiradi."
   },
   {
     "q": "2D massivda birinchi indeks nimani bildiradi?",
     "options": ["Ustunni", "Qiymatni", "Hajmni", "Qatorni"],
-    "a": "Qatorni"
+    "a": "Qatorni",
+    "hint": "💡 matrix[row][column] ko‘rinishida ishlaydi."
   },
   {
     "q": "Oxirgi qatorni olish uchun qaysi indeks ishlatiladi?",
     "options": ["1", "0", "n", "-1"],
-    "a": "-1"
+    "a": "-1",
+    "hint": "💡 Python’da -1 oxirgi elementni bildiradi."
   },
   {
     "q": "Massiv elementini o‘zgartirish qaysi ko‘rinishda?",
     "options": ["matrix(1,1)=10", "set(matrix)", "change matrix", "matrix[1][1] = 10"],
-    "a": "matrix[1][1] = 10"
+    "a": "matrix[1][1] = 10",
+    "hint": "💡 List yoki massiv elementiga murojaat qilish uchun kvadrat qavs ishlatiladi: [qator][ustun]."
   },
   {
     "q": "Yangi qator qo‘shish uchun qaysi metod ishlatiladi?",
     "options": ["add()", "insert()", "push()", "append()"],
-    "a": "append()"
+    "a": "append()",
+    "hint": "💡 append() list oxiriga yangi element yoki qator qo‘shadi."
   },
   {
     "q": "Qatorni o‘chirish qaysi buyruq bilan bajariladi?",
     "options": ["remove matrix", "erase matrix", "poprow()", "del matrix[0]"],
-    "a": "del matrix[0]"
+    "a": "del matrix[0]",
+    "hint": "💡 del operatori ko‘rsatilgan indeksdagi element yoki qatorni o‘chiradi."
   },
   {
     "q": "Massivni to‘liq o‘qish uchun nima ishlatiladi?",
     "options": ["if operatori", "while operatori", "break", "Ichma-ich for sikllar"],
-    "a": "Ichma-ich for sikllar"
+    "a": "Ichma-ich for sikllar",
+    "hint": "💡 2D massivda barcha elementlarni ko‘rish uchun tashqi va ichki for sikl ishlatiladi."
   },
   {
     "q": "len(matrix) nimani qaytaradi?",
     "options": ["Ustunlar sonini", "Elementlar yig‘indisini", "Oxirgi indeksni", "Qatorlar sonini"],
-    "a": "Qatorlar sonini"
+    "a": "Qatorlar sonini",
+    "hint": "💡 len() tashqi list uzunligini, ya’ni qatorlar sonini beradi."
   },
   {
     "q": "Bir o‘lchovli massivga misol qaysi?",
     "options": ["[[1,2],[3,4]]", "{1:2}", "(1,2,3)", "[1, 2, 3, 4]"],
-    "a": "[1, 2, 3, 4]"
+    "a": "[1, 2, 3, 4]",
+    "hint": "💡 Bu oddiy ro‘yxat (list) bo‘lib, bir o‘lchovli massiv hisoblanadi."
   },
   {
     "q": "NumPy kutubxonasi nima uchun ishlatiladi?",
@@ -6221,12 +6127,14 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Tarmoq uchun",
       "Massivlar va matematik amallar uchun"
     ],
-    "a": "Massivlar va matematik amallar uchun"
+    "a": "Massivlar va matematik amallar uchun",
+    "hint": "💡 NumPy tezkor massivlar va matematik hisoblashlar uchun ishlatiladi."
   },
   {
     "q": "NumPy asosiy obyekt nomi?",
     "options": ["arraylist", "matrix2d", "vector", "ndarray"],
-    "a": "ndarray"
+    "a": "ndarray",
+    "hint": "💡 NumPy massivlari ndarray (N-dimensional array) deb ataladi."
   },
   {
     "q": "Massivni transponirlash nimani bildiradi?",
@@ -6236,7 +6144,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Qiymatlarni yig‘ish",
       "Qator va ustunlarni almashtirish"
     ],
-    "a": "Qator va ustunlarni almashtirish"
+    "a": "Qator va ustunlarni almashtirish",
+    "hint": "💡 Transponirlashda satrlar ustunlarga, ustunlar satrlarga aylanadi."
   },
   {
     "q": "Matrisani ko‘paytirish nimani talab qiladi?",
@@ -6246,7 +6155,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Bir o‘lchovli massivni",
       "Qator va ustunlar mosligini"
     ],
-    "a": "Qator va ustunlar mosligini"
+    "a": "Qator va ustunlar mosligini",
+    "hint": "💡 Birinchi matritsa ustunlari soni ikkinchisining qatorlari soniga teng bo‘lishi kerak."
   },
   {
     "q": "SciPy kutubxonasi qaysi sohada ishlatiladi?",
@@ -6256,17 +6166,19 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Matn tahririda",
       "Ilmiy va matematik hisob-kitoblarda"
     ],
-    "a": "Ilmiy va matematik hisob-kitoblarda"
+    "a": "Ilmiy va matematik hisob-kitoblarda",
+    "hint": "💡 SciPy ilmiy hisoblash, optimizatsiya va statistikada ishlatiladi."
   },
   {
-    "q": "Quyidagi kod nimani hisoblaydi? np.mean(arr)",
+    "q": "np.mean(arr) nimani hisoblaydi?",
     "options": [
       "Maksimumni",
       "Minimumni",
       "Elementlar sonini",
       "O‘rta arifmetik qiymatni"
     ],
-    "a": "O‘rta arifmetik qiymatni"
+    "a": "O‘rta arifmetik qiymatni",
+    "hint": "💡 mean — massiv elementlarining o‘rtacha qiymatini hisoblaydi."
   },
   {
     "q": "arr[4] = mean_value nimani anglatadi?",
@@ -6276,12 +6188,14 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Element qo‘shish",
       "5-elementni o‘rta qiymatga almashtirish"
     ],
-    "a": "5-elementni o‘rta qiymatga almashtirish"
+    "a": "5-elementni o‘rta qiymatga almashtirish",
+    "hint": "💡 Indeks 4 — beshinchi element, unga yangi qiymat berilmoqda."
   },
   {
     "q": "Juft sonni aniqlash sharti qaysi?",
     "options": ["a[i] / 2 == 0", "a[i] == 2", "a[i] > 0", "a[i] % 2 == 0"],
-    "a": "a[i] % 2 == 0"
+    "a": "a[i] % 2 == 0",
+    "hint": "💡 Son 2 ga qoldiqsiz bo‘linsa, u juft hisoblanadi."
   },
   {
     "q": "for i in range(n): nimani bildiradi?",
@@ -6291,7 +6205,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Funksiya chaqirishni",
       "Qatorlar bo‘yicha yurishni"
     ],
-    "a": "Qatorlar bo‘yicha yurishni"
+    "a": "Qatorlar bo‘yicha yurishni",
+    "hint": "💡 Bu sikl indekslar bo‘yicha ketma-ket yurishni bildiradi."
   },
   {
     "q": "2D massivdagi elementlar yig‘indisi qanday topiladi?",
@@ -6301,7 +6216,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "append() bilan",
       "Ichma-ich sikllar yordamida"
     ],
-    "a": "Ichma-ich sikllar yordamida"
+    "a": "Ichma-ich sikllar yordamida",
+    "hint": "💡 Har bir qator va ustun bo‘ylab yurib, qiymatlar qo‘shiladi."
   },
   {
     "q": "NumPy va Pandas birgalikda nima beradi?",
@@ -6311,7 +6227,8 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Operatsion tizimni",
       "Kuchli ma’lumotlar tahlilini"
     ],
-    "a": "Kuchli ma’lumotlar tahlilini"
+    "a": "Kuchli ma’lumotlar tahlilini",
+    "hint": "💡 Bu kutubxonalar katta hajmdagi ma’lumotlarni tahlil qilishda ishlatiladi."
   },
   {
     "q": "NumPy nima?",
@@ -6321,17 +6238,20 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Operatsion tizim",
       "Ilmiy hisoblashlar uchun mo‘ljallangan Python kutubxonasi"
     ],
-    "a": "Ilmiy hisoblashlar uchun mo‘ljallangan Python kutubxonasi"
+    "a": "Ilmiy hisoblashlar uchun mo‘ljallangan Python kutubxonasi",
+    "hint": "💡 NumPy tezkor matematik va massiv hisoblashlar uchun ishlatiladi."
   },
   {
     "q": "NumPy kutubxonasini o‘rnatish buyrug‘i qaysi?",
     "options": ["install numpy", "python numpy", "add numpy", "pip install numpy"],
-    "a": "pip install numpy"
+    "a": "pip install numpy",
+    "hint": "💡 pip — Python paket menejeri, u orqali NumPy o‘rnatiladi."
   },
   {
     "q": "NumPy’ni dasturga import qilishning to‘g‘ri usuli qaysi?",
     "options": ["include numpy", "using numpy", "load numpy", "import numpy as np"],
-    "a": "import numpy as np"
+    "a": "import numpy as np",
+    "hint": "💡 Odatda numpy qisqa qilib np deb import qilinadi."
   },
   {
     "q": "NumPy massivlari Python listlaridan nimasi bilan farq qiladi?",
@@ -6341,37 +6261,43 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Faqat matn saqlaydi",
       "Bir xil turdagi ma’lumotlarni saqlaydi"
     ],
-    "a": "Bir xil turdagi ma’lumotlarni saqlaydi"
+    "a": "Bir xil turdagi ma’lumotlarni saqlaydi",
+    "hint": "💡 NumPy massivlari odatda bir xil tipdagi ma’lumotlardan iborat bo‘ladi va tez ishlaydi."
   },
   {
-    "q": "Quyidagi kod nimani yaratadi? np.array([1, 2, 3, 4])",
+    "q": "np.array([1, 2, 3, 4]) nimani yaratadi?",
     "options": [
       "Ikki o‘lchovli massiv",
       "Funksiya",
       "Klass",
       "Bir o‘lchovli massiv"
     ],
-    "a": "Bir o‘lchovli massiv"
+    "a": "Bir o‘lchovli massiv",
+    "hint": "💡 Bu bir o‘lchovli NumPy massivi."
   },
   {
-    "q": "Nollardan iborat 5 ta elementli massiv qaysi funksiya bilan yaratiladi?",
+    "q": "np.zeros(5) nima yaratadi?",
     "options": ["np.ones(5)", "np.empty(5)", "np.full(5)", "np.zeros(5)"],
-    "a": "np.zeros(5)"
+    "a": "np.zeros(5)",
+    "hint": "💡 5 ta elementdan iborat, hammasi 0 bo‘lgan massiv."
   },
   {
-    "q": "3×3 birlik (identity) matritsa qaysi funksiya bilan yaratiladi?",
+    "q": "np.eye(3) nima yaratadi?",
     "options": ["np.zeros(3)", "np.ones(3)", "np.identity(1)", "np.eye(3)"],
-    "a": "np.eye(3)"
+    "a": "np.eye(3)",
+    "hint": "💡 3x3 birlik (identity) matritsa hosil qiladi."
   },
   {
     "q": "Massiv o‘lchamini ko‘rsatuvchi xususiyat qaysi?",
     "options": ["size", "dtype", "ndim", "shape"],
-    "a": "shape"
+    "a": "shape",
+    "hint": "💡 shape massivning o‘lchamlarini (qator, ustun) ko‘rsatadi."
   },
   {
     "q": "Massivning o‘lchovlar sonini aniqlovchi xususiyat?",
     "options": ["shape", "size", "itemsize", "ndim"],
-    "a": "ndim"
+    "a": "ndim",
+    "hint": "💡 ndim massiv nechta o‘lchovga ega ekanini bildiradi."
   },
   {
     "q": "arr.size nimani bildiradi?",
@@ -6381,12 +6307,14 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Baytlar sonini",
       "Massivdagi elementlar sonini"
     ],
-    "a": "Massivdagi elementlar sonini"
+    "a": "Massivdagi elementlar sonini",
+    "hint": "💡 size barcha elementlar sonini beradi."
   },
   {
     "q": "Massiv elementiga murojaat qilishning to‘g‘ri ko‘rinishi qaysi?",
     "options": ["arr(0)", "arr{0}", "arr<0>", "arr[0]"],
-    "a": "arr[0]"
+    "a": "arr[0]",
+    "hint": "💡 Indeks orqali murojaat qilish kvadrat qavs bilan amalga oshiriladi."
   },
   {
     "q": "2D massivda elementga murojaat qilish qaysi ko‘rinishda?",
@@ -6396,17 +6324,19 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "matrix{1,2}",
       "matrix[1, 2]"
     ],
-    "a": "matrix[1, 2]"
+    "a": "matrix[1, 2]",
+    "hint": "💡 NumPy’da vergul bilan indekslash mumkin: [qator, ustun]."
   },
   {
-    "q": "Quyidagi kesma nimani qaytaradi? arr[2:5]",
+    "q": "arr[2:5] nimani qaytaradi?",
     "options": [
       "2-indeksdan 5-indeksgacha",
       "Faqat 2-indeksni",
       "Oxirgi elementlarni",
       "2-indeksdan 4-indeksgacha bo‘lgan elementlarni"
     ],
-    "a": "2-indeksdan 4-indeksgacha bo‘lgan elementlarni"
+    "a": "2-indeksdan 4-indeksgacha bo‘lgan elementlarni",
+    "hint": "💡 Python slicing oxirgi indeksni o‘z ichiga olmaydi."
   },
   {
     "q": "arr[::2] nimani bildiradi?",
@@ -6416,16 +6346,15 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Faqat toq indekslarni",
       "Har ikkinchi elementni olish"
     ],
-    "a": "Har ikkinchi elementni olish"
+    "a": "Har ikkinchi elementni olish",
+    "hint": "💡 Qadam 2 bo‘lgani uchun har ikkinchi element olinadi."
   },
   {
     "q": "np.arange(1, 5) natijasi qaysi?",
     "options": ["[1, 2, 3, 4, 5]", "[0, 1, 2, 3, 4]", "[5]", "[1, 2, 3, 4]"],
-    "a": "[1, 2, 3, 4]"
+    "a": "[1, 2, 3, 4]",
+    "hint": "💡 1 dan boshlanadi va 5 ga yetmasdan to‘xtaydi."
   },
-
-
-
 ]
 
   },
@@ -9403,6 +9332,16 @@ function showSubjectMenu(ctx) {
     return ctx.reply("Fanni tanlang:", Markup.keyboard(keyboard).resize());
 }
 
+function makeUserVip(userId) {
+    const db = getDb();
+    if (db.users[userId]) {
+        db.users[userId].isVip = true;
+        saveDb(db);
+        return true;
+    }
+    return false;
+}
+
 async function sendQuestion(ctx, isNew = false) {
     const s = ctx.session;
     const userId = ctx.from.id;
@@ -9467,10 +9406,17 @@ async function sendQuestion(ctx, isNew = false) {
 
     s.currentOptions.forEach((opt, i) => { text += `<b>${labels[i]})</b> ${escapeHTML(opt)}\n\n`; });
 
-    const inlineButtons = Markup.inlineKeyboard([
+   const inlineButtons = Markup.inlineKeyboard([
+        // A, B, C, D javoblar qatori
         s.currentOptions.map((_, i) => Markup.button.callback(labels[i], `ans_${i}`)),
+        
+        // Yangi qo'shilgan Tushuntirish tugmasi (Alohida qatorda)
+        [Markup.button.callback("💡 Tushuntirish", "show_explanation")], 
+        
+        // Testni to'xtatish qatori
         [Markup.button.callback("🛑 Testni to'xtatish", "stop_test")]
     ]);
+
 
     if (hasImage) {
         await ctx.replyWithPhoto({ source: imagePath }, { caption: text, parse_mode: 'HTML', ...inlineButtons });
@@ -9568,16 +9514,14 @@ bot.command('admin', (ctx) => {
     if (ctx.from.id === ADMIN_ID) {
         const db = getDb();
         const statusEmoji = db.settings?.isMaintenance ? "🟢 Botni Yoqish" : "🛑 Botni To'xtatish";
-        
-        // Turbo rejim statusini aniqlaymiz
         const turboEmoji = db.settings?.turboMode ? "🚀 Turbo (O'chirish)" : "🚀 Turbo (Yoqish)";
         
-        return ctx.reply(`🛠 **Admin Panel**\n⏱ Vaqt: ${botSettings.timeLimit}s\n🏆 Musobaqa: ${tournament.isActive ? '✅' : '❌'}`, 
+        return ctx.reply(`🛠 **Admin Panel**`, 
             Markup.keyboard([
                 ['💰 Pullik versiya', '🆓 Bepul versiya'],
                 [statusEmoji, turboEmoji],
                 ['🏆 Musobaqa boshqarish', '📊 Statistika'],
-                ['🗑 Foydalanuvchini o\'chirish', '⏱ Vaqtni o\'zgartirish'], // Yangi tugma shu yerga qo'shildi
+                ['🗑 Foydalanuvchini o\'chirish', '🧹 Reytingni tozalash'], // Yangi tugma
                 ['📣 Xabar tarqatish', '⬅️ Orqaga (Fanlar)']
             ]).resize());
     }
@@ -9626,7 +9570,80 @@ bot.action("next_turbo_q", async (ctx) => {
     await ctx.answerCbQuery();
 });
 
+bot.action("show_explanation", async (ctx) => {
+    const s = ctx.session;
+    const userId = ctx.from.id;
+    const db = getDb();
+    
+    // Foydalanuvchi ma'lumotlarini tekshirish (null bo'lmasligi uchun)
+    const user = db.users[userId] || {};
+    const isUserVip = user.isVip;
+    const isUserAdmin = (userId === Number(ADMIN_ID)); // ADMIN_ID raqam ekanligiga ishonch hosil qiling
 
+    // 1. VIP tekshiruvi
+    if (!isUserVip && !isUserAdmin) {
+        await ctx.answerCbQuery("🔒 Faqat VIP a'zolar uchun!");
+        
+        return ctx.replyWithHTML(
+            `⭐ <b>DIQQAT: Tushuntirishlar faqat VIP a'zolar uchun!</b>\n\n` +
+            `Har bir savolning batafsil yechimi va tushuntirishini ko'rish uchun VIP statusini sotib olishingiz kerak.\n\n` +
+            `💎 <b>VIP afzalliklari:</b>\n` +
+            `• Barcha testlar tushuntirishi bilan\n` +
+            `• Reklamasiz va cheklovsiz foydalanish\n` +
+            `• Maxsus yopiq guruhga a'zolik`,
+            Markup.inlineKeyboard([
+                [Markup.button.callback("💎 VIP sotib olish", "buy_vip")]
+            ])
+        );
+    }
+
+    // 2. Savolni sessiyadan olish
+    const qData = s.activeList && s.activeList[s.index];
+    if (!qData) return ctx.answerCbQuery("Xatolik: Savol topilmadi.", { show_alert: true });
+
+    // 3. Tushuntirish (hint) mavjudligini tekshirish
+    if (qData.hint && qData.hint.trim() !== "") {
+        await ctx.answerCbQuery("🔍 Yuklanmoqda...");
+        
+        return ctx.replyWithHTML(
+            `━━━━━━━━━━━━━━\n` +
+            `💡 <b>VIP TUSHUNTIRISH:</b>\n\n` +
+            `${qData.hint}\n` +
+            `━━━━━━━━━━━━━━`,
+            Markup.inlineKeyboard([
+                [Markup.button.callback("✅ Tushundim", "close_explanation")]
+            ])
+        );
+    } else {
+        // Agar tushuntirish matni yo'q bo'lsa
+        return ctx.answerCbQuery(
+            "⚠️ Ushbu savol uchun tushuntirish hali yuklanmagan.\nTez orada adminlar tomonidan qo'shiladi!", 
+            { show_alert: true }
+        );
+    }
+});
+
+// Tushuntirish xabarini o'chirish uchun (ixtiyoriy)
+bot.action("close_explanation", (ctx) => ctx.deleteMessage());
+
+bot.action("confirm_clear_rank", async (ctx) => {
+    if (ctx.from.id !== ADMIN_ID) return ctx.answerCbQuery("Ruxsat yo'q!");
+    
+    const db = getDb();
+    
+    // Foydalanuvchilarning ballarini 0 qilish
+    Object.keys(db.users).forEach(userId => {
+        db.users[userId].score = 0;
+    });
+
+    // Agar alohida scores massivi bo'lsa uni bo'shatish
+    if (db.scores) db.scores = [];
+
+    saveDb(db);
+    
+    await ctx.editMessageText("✅ Reyting va barcha foydalanuvchilar ballari muvaffaqiyatli tozalandi.");
+    return ctx.answerCbQuery();
+});
 
 bot.use(async (ctx, next) => {
     const db = getDb();
@@ -9698,6 +9715,7 @@ bot.hears(["🛑 Botni To'xtatish", "🟢 Botni Yoqish"], async (ctx) => {
         ['⬅️ Orqaga (Fanlar)']
     ]).resize());
 });
+
 
 
 
@@ -9814,6 +9832,19 @@ bot.hears("🗑 Foydalanuvchini o'chirish", (ctx) => {
     ctx.session.adminStep = 'wait_delete_id';
     return ctx.reply("🗑 O'chirmoqchi bo'lgan foydalanuvchining ID raqamini kiriting (yoki profilidan nusxa olib tashlang):");
 });
+
+
+// 1. Tugma bosilganda so'rash
+bot.hears("🧹 Reytingni tozalash", (ctx) => {
+    if (ctx.from.id !== ADMIN_ID) return;
+    return ctx.reply("⚠️ Siz rostdan ham barcha foydalanuvchilar ballarini va reytingni butunlay tozalamoqchimisiz?", 
+        Markup.inlineKeyboard([
+            [Markup.button.callback("✅ Ha, tozalash", "confirm_clear_rank")],
+            [Markup.button.callback("❌ Yo'q, bekor qilish", "cancel_clear")]
+        ]));
+});
+
+bot.action("cancel_clear", (ctx) => ctx.deleteMessage());
 
 // 2. ID raqami yozilganda ishlaydigan logika
 bot.on('text', async (ctx, next) => {
@@ -9953,23 +9984,42 @@ bot.on(['text', 'photo', 'video', 'animation', 'document'], async (ctx, next) =>
         }
     }
 
-    // 6. FOYDALANUVCHI: Ism kiritish
+    
+    // 6. FOYDALANUVCHI: Ism kiritish (TO'G'IRLANGAN VARIANT)
     if (ctx.session.waitingForName) {
-        if (!text || text.length < 3) return ctx.reply("❌ Ism juda qisqa! To'liqroq yozing:");
-        ctx.session.userName = text;
+        const input = text.trim();
+
+        // Ism o'rniga menyu tugmalarini bosishdan himoya
+        const menuButtons = [
+            "📝 Akademik yozuv", "📜 Tarix", "➕ Matematika", 
+            "💻 Dasturlash 1", "🧲 Fizika", "🇬🇧 English",
+            "📊 Reyting", "👤 Profil", "🚀 TURBO YODLASH (16:30)"
+        ];
+
+        if (menuButtons.includes(input)) {
+            return ctx.reply("⚠️ Iltimos, ism o'rniga fan tugmalarini bosmang!\nAvval ismingizni yozib yuboring:");
+        }
+
+        if (!input || input.length < 3) {
+            return ctx.reply("❌ Ism juda qisqa! Kamida 3 ta harfdan iborat ism yozing:");
+        }
+
+        ctx.session.userName = input;
         ctx.session.waitingForName = false;
         
         let db = getDb();
         if(!db.users) db.users = {};
+
+        // Foydalanuvchi ma'lumotlarini yangilaymiz (eski ma'lumotlarni ochirmasdan)
         db.users[userId] = { 
-            name: text, 
+            ...db.users[userId], // Eskidan bor ma'lumotlar (score, isVip va h.k.)
+            name: input, 
             username: username !== "Lichka yopiq" ? `@${username}` : username,
-            score: db.users[userId]?.score || 0,
-            totalTests: db.users[userId]?.totalTests || 0,
             date: new Date().toISOString() 
         };
-        fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2));
-        await ctx.reply(`✅ Rahmat, ${text}! Endi testni boshlashingiz mumkin.`);
+
+        saveDb(db); // Bazaga saqlaymiz
+        await ctx.reply(`✅ Rahmat, ${input}! Ismingiz muvaffaqiyatli saqlandi.`);
         return showSubjectMenu(ctx);
     }
 
@@ -9977,50 +10027,50 @@ bot.on(['text', 'photo', 'video', 'animation', 'document'], async (ctx, next) =>
 });
 
 
-bot.on('text', async (ctx, next) => {
-    const s = ctx.session;
-    const db = getDb();
-    const userId = ctx.from.id;
-    const user = db.users[userId];
+// bot.on('text', async (ctx, next) => {
+//     const s = ctx.session;
+//     const db = getDb();
+//     const userId = ctx.from.id;
+//     const user = db.users[userId];
 
-    // 1. AGAR BOT ISM KUTAYOTGAN BO'LSA VA FOYDALANUVCHI ISM YOZSA
-    if (s.waitingForName) {
-        const inputName = ctx.message.text.trim();
+//     // 1. AGAR BOT ISM KUTAYOTGAN BO'LSA VA FOYDALANUVCHI ISM YOZSA
+//     if (s.waitingForName) {
+//         const inputName = ctx.message.text.trim();
         
-        if (inputName.length < 3) {
-            return ctx.reply("Ism juda qisqa. Iltimos, ismingizni kiriting:");
-        }
+//         if (inputName.length < 3) {
+//             return ctx.reply("Ism juda qisqa. Iltimos, ismingizni kiriting:");
+//         }
 
-        // Bazada foydalanuvchi bormi?
-        if (db.users[userId]) {
-            db.users[userId].name = inputName; // Faqat ismni yangilaymiz
-        } else {
-            db.users[userId] = { 
-                id: userId, 
-                name: inputName, 
-                score: 0, 
-                isVip: false 
-            };
-        }
+//         // Bazada foydalanuvchi bormi?
+//         if (db.users[userId]) {
+//             db.users[userId].name = inputName; // Faqat ismni yangilaymiz
+//         } else {
+//             db.users[userId] = { 
+//                 id: userId, 
+//                 name: inputName, 
+//                 score: 0, 
+//                 isVip: false 
+//             };
+//         }
 
-        saveDb(db); // Faylga saqlaymiz
-        s.waitingForName = false; // Ism kutishni to'xtatamiz
-        s.userName = inputName;
+//         saveDb(db); // Faylga saqlaymiz
+//         s.waitingForName = false; // Ism kutishni to'xtatamiz
+//         s.userName = inputName;
 
-        await ctx.reply(`Rahmat, ${inputName}! Endi testlarni yechishingiz mumkin. ✅`);
-        return showSubjectMenu(ctx);
-    }
+//         await ctx.reply(`Rahmat, ${inputName}! Endi testlarni yechishingiz mumkin. ✅`);
+//         return showSubjectMenu(ctx);
+//     }
 
-    // 2. MUHIM QISMI: AGAR FOYDALANUVCHI ISMI BAZADA BO'LSA, UNGA TUGMALARNI ISHLATISHGA RUXSAT BERISH
-    if (user && user.name) {
-        s.waitingForName = false; // Xavfsizlik uchun sessiyani ham to'g'irlab qo'yamiz
-        return next(); // Keyingi tugma buyruqlariga o'tkazib yuboramiz
-    }
+//     // 2. MUHIM QISMI: AGAR FOYDALANUVCHI ISMI BAZADA BO'LSA, UNGA TUGMALARNI ISHLATISHGA RUXSAT BERISH
+//     if (user && user.name) {
+//         s.waitingForName = false; // Xavfsizlik uchun sessiyani ham to'g'irlab qo'yamiz
+//         return next(); // Keyingi tugma buyruqlariga o'tkazib yuboramiz
+//     }
 
-    // 3. AGAR ISMI YO'Q BO'LSA, FAQAT SHUNDA ISM SO'RAYMIZ
-    s.waitingForName = true;
-    return ctx.reply("Davom etish uchun avval ismingizni kiriting:");
-});
+//     // 3. AGAR ISMI YO'Q BO'LSA, FAQAT SHUNDA ISM SO'RAYMIZ
+//     s.waitingForName = true;
+//     return ctx.reply("Davom etish uchun avval ismingizni kiriting:");
+// });
 
 
 
