@@ -9511,23 +9511,17 @@ bot.use(async (ctx, next) => {
 
 // --- ADMIN KOMANDALARI ---
 bot.command('admin', (ctx) => {
-    if (ctx.from.id === Number(ADMIN_ID)) {
+    if (ctx.from.id === ADMIN_ID) {
         const db = getDb();
-        if (!db.settings) db.settings = {}; // Settings bo'lmasa yaratib qo'yamiz
-
-        const statusEmoji = db.settings.isMaintenance ? "🟢 Botni Yoqish" : "🛑 Botni To'xtatish";
-        const turboEmoji = db.settings.turboMode ? "🚀 Turbo (O'chirish)" : "🚀 Turbo (Yoqish)";
-        
-        // 1. Tushuntirish tekin rejimi tugmasi
-        const hintFreeEmoji = db.settings.isHintFree ? "🔓 Hint: TEKIN (Yopish)" : "🔒 Hint: VIP (Ochish)";
+        const statusEmoji = db.settings?.isMaintenance ? "🟢 Botni Yoqish" : "🛑 Botni To'xtatish";
+        const turboEmoji = db.settings?.turboMode ? "🚀 Turbo (O'chirish)" : "🚀 Turbo (Yoqish)";
         
         return ctx.reply(`🛠 **Admin Panel**`, 
             Markup.keyboard([
                 ['💰 Pullik versiya', '🆓 Bepul versiya'],
                 [statusEmoji, turboEmoji],
-                [hintFreeEmoji], // Alohida qatorda tushuntirish rejimi
-                ['🌟 VIP user qo\'shish', '📊 Statistika'], // VIP qo'shish tugmasi
-                ['🧹 Reytingni tozalash', '🗑 Foydalanuvchini o\'chirish'],
+                ['🏆 Musobaqa boshqarish', '📊 Statistika'],
+                ['🗑 Foydalanuvchini o\'chirish', '🧹 Reytingni tozalash'], // Yangi tugma
                 ['📣 Xabar tarqatish', '⬅️ Orqaga (Fanlar)']
             ]).resize());
     }
@@ -9581,16 +9575,13 @@ bot.action("show_explanation", async (ctx) => {
     const userId = ctx.from.id;
     const db = getDb();
     
-    // Sozlamalarni tekshirish
-    const isHintFree = db.settings?.isHintFree; 
     const user = db.users[userId] || {};
     const isUserVip = user.isVip;
     const isUserAdmin = (userId === Number(ADMIN_ID));
 
-    // 1. VIP yoki TEKIN REJIM tekshiruvi
-    // Agar tekin rejim YOQILMAGAN bo'lsa VA user VIP ham, Admin ham bo'lmasa - ruxsat bermaymiz
-    if (!isHintFree && !isUserVip && !isUserAdmin) {
-        await ctx.answerCbQuery("🔒 Tushuntirishlar faqat VIP a'zolar uchun!", { show_alert: true });
+    // 1. VIP tekshiruvi
+    if (!isUserVip && !isUserAdmin) {
+        await ctx.answerCbQuery("🔒 Faqat VIP a'zolar uchun!", { show_alert: true });
         return ctx.replyWithHTML(
             `⭐ <b>DIQQAT: Tushuntirishlar faqat VIP a'zolar uchun!</b>\n\n` +
             `Yechimlarni ko'rish uchun VIP statusini sotib oling.`,
@@ -9602,9 +9593,9 @@ bot.action("show_explanation", async (ctx) => {
     const qData = s.activeList && s.activeList[s.index];
     if (!qData) return ctx.answerCbQuery("Xatolik: Savol topilmadi.");
 
-    // 3. Tushuntirish (hint) borligini tekshirish
+    // 3. Tushuntirish borligini tekshirish
     if (qData.hint && qData.hint.trim() !== "") {
-        await ctx.answerCbQuery("💡 Tushuntirish qo'shildi");
+        await ctx.answerCbQuery("🔍 Tushuntirish qo'shildi");
 
         const progress = getProgressBar(s.index + 1, s.activeList.length);
         const safeQuestion = escapeHTML(qData.q);
@@ -9617,6 +9608,7 @@ bot.action("show_explanation", async (ctx) => {
                           `💡 <b>TUSHUNTIRISH:</b>\n${escapeHTML(qData.hint)}\n` +
                           `━━━━━━━━━━━━━━\n\n`;
 
+        // Agar test rejimida bo'lsa variantlarni ham qayta yozamiz
         if (!s.isTurbo) {
             const labels = ['A', 'B', 'C', 'D'];
             const options = s.currentOptions || [];
@@ -9624,20 +9616,23 @@ bot.action("show_explanation", async (ctx) => {
                 updatedText += `<b>${labels[i]})</b> ${escapeHTML(opt)}\n\n`;
             });
         } else {
+            // Turbo rejimda to'g'ri javobni ko'rsatamiz
             updatedText += `✅ <b>TO'G'RI JAVOB:</b>\n<code>${escapeHTML(qData.a)}</code>\n`;
         }
 
+        // Tugmalarni o'zgarishsiz qoldirish uchun xabardan olamiz
         const keyboard = ctx.callbackQuery.message.reply_markup;
 
         try {
-            // Rasmli yoki matnli xabarlarni tahrirlash
+            // Agar rasm bo'lsa editMessageCaption, matn bo'lsa editMessageText ishlatiladi
             if (ctx.callbackQuery.message.photo) {
                 await ctx.editMessageCaption(updatedText, { parse_mode: 'HTML', reply_markup: keyboard });
             } else {
                 await ctx.editMessageText(updatedText, { parse_mode: 'HTML', reply_markup: keyboard });
             }
         } catch (e) {
-            console.log("Xabarni tahrirlashda xatolik.");
+            // Agar foydalanuvchi tugmani 2 marta bossa va matn o'zgarmasa xato bermasligi uchun
+            console.log("Xabarni tahrirlashda xatolik yoki matn o'zgarmagan.");
         }
     } else {
         return ctx.answerCbQuery("⚠️ Bu savolga tushuntirish hali qo'shilmagan.", { show_alert: true });
@@ -9865,167 +9860,182 @@ bot.hears("🧹 Reytingni tozalash", (ctx) => {
         ]));
 });
 
-bot.hears(/^(🔓|🔒) Hint:/, (ctx) => {
-    if (ctx.from.id !== Number(ADMIN_ID)) return;
-    const db = getDb();
-    if (!db.settings) db.settings = {};
-
-    db.settings.isHintFree = !db.settings.isHintFree;
-    saveDb(db);
-
-    const msg = db.settings.isHintFree 
-        ? "✅ Tushuntirishlar hamma uchun TEKIN bo'ldi!" 
-        : "✅ Tushuntirishlar yana faqat VIP foydalanuvchilar uchun.";
-    
-    return ctx.reply(msg);
-});
-
-// 1. Tugma bosilganda
-bot.hears("🌟 VIP user qo'shish", (ctx) => {
-    if (ctx.from.id !== Number(ADMIN_ID)) return;
-    ctx.session.adminStep = 'wait_vip_input';
-    return ctx.reply("🌟 VIP qilmoqchi bo'lgan foydalanuvchining ID raqamini yoki @nikini yuboring:");
-});
-
-// 2. ID yoki Nik kelganda (Asosiy bot.on('text') blokining ichida)
-if (ctx.session.adminStep === 'wait_vip_input') {
-    const input = ctx.message.text.trim();
-    const db = getDb();
-    let targetId = null;
-
-    // Nikni tekshirish
-    if (input.startsWith('@') || isNaN(input)) {
-        const searchNik = input.replace('@', '').toLowerCase();
-        targetId = Object.keys(db.users).find(id => 
-            db.users[id].username && db.users[id].username.replace('@', '').toLowerCase() === searchNik
-        );
-    } else {
-        targetId = input;
-    }
-
-    if (targetId && db.users[targetId]) {
-        db.users[targetId].isVip = true;
-        saveDb(db);
-        ctx.session.adminStep = null;
-
-        await ctx.reply(`✅ Muvaffaqiyatli! ${db.users[targetId].name} endi VIP a'zo.`);
-        
-        // Foydalanuvchiga xabar yuborish
-        try {
-            await ctx.telegram.sendMessage(targetId, "🌟 <b>Xushxabar!</b>\n\nAdmin sizga <b>VIP</b> statusini taqdim etdi. Endi barcha testlarning tushuntirishlarini ko'rishingiz mumkin!", { parse_mode: 'HTML' });
-        } catch (e) { console.log("User botni bloklagan bo'lishi mumkin."); }
-        return;
-    } else {
-        return ctx.reply("❌ Bunday foydalanuvchi bazadan topilmadi. ID yoki Nikni to'g'ri yozganingizga ishonch hosil qiling:");
-    }
-}
-
 bot.action("cancel_clear", (ctx) => ctx.deleteMessage());
 
 // 2. ID raqami yozilganda ishlaydigan logika
-// --- 1. ADMIN: FOYDALANUVCHINI O'CHIRISH (ALOHIDA BLOK) ---
 bot.on('text', async (ctx, next) => {
     const s = ctx.session;
-    // ADMIN_ID ni Number() bilan tekshirish xavfsizroq
-    if (Number(ctx.from.id) === Number(ADMIN_ID) && s.adminStep === 'wait_delete_id') {
+    
+    if (ctx.from.id === ADMIN_ID && s.adminStep === 'wait_delete_id') {
         let input = ctx.message.text.trim();
         const db = getDb();
         let targetId = null;
 
+        // 1. Agar username kiritilgan bo'lsa (@ belgi bilan yoki belgisiz)
         if (input.startsWith('@') || isNaN(input)) {
             const searchName = input.replace('@', '').toLowerCase();
-            targetId = Object.keys(db.users).find(id => 
-                db.users[id].username && db.users[id].username.toLowerCase() === searchName
-            );
+            
+            // Bazadan shu usernameli odamni qidiramiz
+            targetId = Object.keys(db.users).find(id => {
+                const user = db.users[id];
+                return user.username && user.username.toLowerCase() === searchName;
+            });
         } else {
+            // 2. Agar to'g'ridan-to'g'ri ID kiritilgan bo'lsa
             targetId = input;
         }
 
+        // O'chirish jarayoni
         if (targetId && db.users[targetId]) {
-            const userName = db.users[targetId].name;
+            const userName = db.users[targetId].name || "Noma'lum";
+            const userTag = db.users[targetId].username ? `@${db.users[targetId].username}` : "Nik yo'q";
+
+            // Asosiy bazadan o'chirish
             delete db.users[targetId];
-            if (db.scores) db.scores = db.scores.filter(u => String(u.id) !== String(targetId));
+            
+            // Reytingdan o'chirish
+            if (db.scores) {
+                db.scores = db.scores.filter(u => String(u.id) !== String(targetId));
+            }
+
             saveDb(db);
             s.adminStep = null;
-            return ctx.reply(`✅ Foydalanuvchi ${userName} o'chirildi.`);
+
+            return ctx.reply(`✅ Foydalanuvchi topildi va o'chirildi:\n👤 Ism: ${userName}\nℹ️ Nik: ${userTag}\n🆔 ID: ${targetId}`);
         } else {
-            return ctx.reply("❌ Topilmadi. ID yoki Nikni qayta yuboring:");
+            return ctx.reply("❌ Bunday foydalanuvchi topilmadi.\n\nEslatma: Foydalanuvchi botni kamida bir marta ishlatgan va bazaga tushgan bo'lishi kerak.");
         }
     }
-    return next(); // Keyingi bot.on ga o'tkazish
+    return next();
 });
-
-// --- 2. ASOSIY ADMIN VA FOYDALANUVCHI BLOKI ---
 bot.on(['text', 'photo', 'video', 'animation', 'document'], async (ctx, next) => {
+    // Agar matn bo'lsa matnni, rasm ostida yozilgan bo'lsa captionni oladi
     const text = ctx.message.text || ctx.message.caption; 
     const userId = ctx.from.id;
-    const s = ctx.session;
+    const username = ctx.from.username || "Lichka yopiq";
 
+    // Komandalar bo'lsa o'tkazib yuboramiz
     if (text && text.startsWith('/')) return next();
 
-    // BEKOR QILISH
+    // 1. HAR QANDAY HOLATDA BEKOR QILISH (ENG TEPADA TURISHI SHART)
     if (text === '🚫 Bekor qilish') {
-        s.waitingForForward = false;
-        s.waitingForTime = false;
-        s.waitingForSubjectName = false;
-        s.waitingForSubjectQuestions = false;
-        s.waitingForName = false;
-        s.adminStep = null;
+        ctx.session.waitingForForward = false;
+        ctx.session.waitingForTime = false;
+        ctx.session.waitingForSubjectName = false;
+        ctx.session.waitingForSubjectQuestions = false;
+        ctx.session.waitingForName = false;
         return showSubjectMenu(ctx);
     }
 
-    // VIP USER QO'SHISH (ADMIN UCHUN)
-    if (Number(userId) === Number(ADMIN_ID) && s.adminStep === 'wait_vip_input') {
-        const input = text.trim();
+    
+    if (ctx.session.waitingForReceipt && ctx.message.photo) {
+        ctx.session.waitingForReceipt = false;
+        const userId = ctx.from.id;
+        
+        await ctx.telegram.sendPhoto(ADMIN_ID, ctx.message.photo[0].file_id, {
+            caption: `🔔 <b>Yangi to'lov!</b>\n👤 Foydalanuvchi: ${ctx.from.first_name}\n🆔 ID: <code>${userId}</code>`,
+            parse_mode: 'HTML',
+            ...Markup.inlineKeyboard([
+                [Markup.button.callback("✅ Tasdiqlash", `approve_${userId}`)],
+                [Markup.button.callback("❌ Rad etish", `reject_${userId}`)]
+            ])
+        });
+        return ctx.reply("✅ Chekingiz adminga yuborildi. Tasdiqlangach sizga xabar boradi.");
+    }
+
+    // 2. ADMIN: Xabar tarqatish (Media va Matn uchun)
+    if (userId === ADMIN_ID && ctx.session.waitingForForward) {
+        ctx.session.waitingForForward = false;
         const db = getDb();
-        let targetId = null;
+        const users = Object.keys(db.users || {});
+        let successCount = 0;
 
-        if (input.startsWith('@') || isNaN(input)) {
-            const searchNik = input.replace('@', '').toLowerCase();
-            targetId = Object.keys(db.users).find(id => 
-                db.users[id].username && db.users[id].username.replace('@', '').toLowerCase() === searchNik
-            );
-        } else {
-            targetId = input;
-        }
+        await ctx.reply(`📣 Xabar ${users.length} kishiga yuborilmoqda...`);
 
-        if (targetId && db.users[targetId]) {
-            db.users[targetId].isVip = true;
-            saveDb(db);
-            s.adminStep = null;
-            await ctx.reply(`✅ ${db.users[targetId].name} endi VIP a'zo.`);
+        for (const uId of users) {
             try {
-                await ctx.telegram.sendMessage(targetId, "🌟 Tabriklaymiz! Sizga VIP statusi berildi!");
-            } catch (e) { console.log("User botni bloklagan."); }
+                // copyMessage — har qanday formatni (rasm, video, text) aslidek yuboradi
+                await ctx.telegram.copyMessage(uId, ctx.chat.id, ctx.message.message_id);
+                successCount++;
+                if (successCount % 25 === 0) await new Promise(r => setTimeout(r, 500)); 
+            } catch (e) {
+                console.log(`Bloklangan foydalanuvchi: ${uId}`);
+            }
+        }
+        await ctx.reply(`✅ Xabar yakunlandi!\n\nJami: ${users.length}\nYuborildi: ${successCount}`);
+        return showSubjectMenu(ctx);
+    }
+
+    // 3. ADMIN: Vaqtni o'zgartirish
+    if (userId === ADMIN_ID && ctx.session.waitingForTime) {
+        const newTime = parseInt(text);
+        if (isNaN(newTime) || newTime < 5) return ctx.reply("❌ Xato raqam! Kamida 5 kiriting:");
+        botSettings.timeLimit = newTime;
+        fs.writeFileSync(SETTINGS_FILE, JSON.stringify(botSettings));
+        ctx.session.waitingForTime = false;
+        await ctx.reply(`✅ Savol vaqti ${newTime} soniyaga yangilandi.`);
+        return showSubjectMenu(ctx);
+    }
+
+    // 4. ADMIN: Yangi fan qo'shish (Ismi)
+    if (userId === ADMIN_ID && ctx.session.waitingForSubjectName) {
+        ctx.session.newSubName = text;
+        ctx.session.waitingForSubjectName = false;
+        ctx.session.waitingForSubjectQuestions = true;
+        return ctx.reply(`"${text}" fani uchun savollarni JSON formatida yuboring:`, 
+            Markup.keyboard([['🚫 Bekor qilish']]).resize());
+    }
+
+    // 5. ADMIN: Fan savollari (JSON)
+    if (userId === ADMIN_ID && ctx.session.waitingForSubjectQuestions) {
+        try {
+            const qs = JSON.parse(text);
+            const key = ctx.session.newSubName.toLowerCase().replace(/ /g, '_');
+            SUBJECTS[key] = { title: ctx.session.newSubName, questions: qs };
+            ctx.session.waitingForSubjectQuestions = false;
+            await ctx.reply("✅ Yangi fan muvaffaqiyatli qo'shildi!");
             return showSubjectMenu(ctx);
-        } else {
-            return ctx.reply("❌ Topilmadi. Qayta yuboring:");
+        } catch (e) {
+            return ctx.reply("❌ JSON xatosi! Formatni tekshirib qaytadan yuboring:");
         }
     }
 
-    // 6. FOYDALANUVCHI: ISM KIRITISH (FILTR BILAN)
-    if (s.waitingForName) {
+    
+    // 6. FOYDALANUVCHI: Ism kiritish (TO'G'IRLANGAN VARIANT)
+    if (ctx.session.waitingForName) {
         const input = text.trim();
-        const menuButtons = ["📝 Akademik yozuv", "📜 Tarix", "➕ Matematika", "📊 Reyting", "👤 Profil"];
-        
+
+        // Ism o'rniga menyu tugmalarini bosishdan himoya
+        const menuButtons = [
+            "📝 Akademik yozuv", "📜 Tarix", "➕ Matematika", 
+            "💻 Dasturlash 1", "🧲 Fizika", "🇬🇧 English",
+            "📊 Reyting", "👤 Profil", "🚀 TURBO YODLASH (16:30)"
+        ];
+
         if (menuButtons.includes(input)) {
-            return ctx.reply("⚠️ Ism o'rniga tugmalarni bosmang! Avval ismingizni yozing:");
+            return ctx.reply("⚠️ Iltimos, ism o'rniga fan tugmalarini bosmang!\nAvval ismingizni yozib yuboring:");
         }
 
-        if (input.length < 3) return ctx.reply("❌ Ism juda qisqa!");
+        if (!input || input.length < 3) {
+            return ctx.reply("❌ Ism juda qisqa! Kamida 3 ta harfdan iborat ism yozing:");
+        }
 
-        s.userName = input;
-        s.waitingForName = false;
+        ctx.session.userName = input;
+        ctx.session.waitingForName = false;
         
         let db = getDb();
+        if(!db.users) db.users = {};
+
+        // Foydalanuvchi ma'lumotlarini yangilaymiz (eski ma'lumotlarni ochirmasdan)
         db.users[userId] = { 
-            ...db.users[userId], 
+            ...db.users[userId], // Eskidan bor ma'lumotlar (score, isVip va h.k.)
             name: input, 
-            username: ctx.from.username ? `@${ctx.from.username}` : "Nik yo'q",
+            username: username !== "Lichka yopiq" ? `@${username}` : username,
             date: new Date().toISOString() 
         };
-        saveDb(db);
-        await ctx.reply(`✅ Rahmat, ${input}! Saqlandi.`);
+
+        saveDb(db); // Bazaga saqlaymiz
+        await ctx.reply(`✅ Rahmat, ${input}! Ismingiz muvaffaqiyatli saqlandi.`);
         return showSubjectMenu(ctx);
     }
 
@@ -10033,6 +10043,50 @@ bot.on(['text', 'photo', 'video', 'animation', 'document'], async (ctx, next) =>
 });
 
 
+// bot.on('text', async (ctx, next) => {
+//     const s = ctx.session;
+//     const db = getDb();
+//     const userId = ctx.from.id;
+//     const user = db.users[userId];
+
+//     // 1. AGAR BOT ISM KUTAYOTGAN BO'LSA VA FOYDALANUVCHI ISM YOZSA
+//     if (s.waitingForName) {
+//         const inputName = ctx.message.text.trim();
+        
+//         if (inputName.length < 3) {
+//             return ctx.reply("Ism juda qisqa. Iltimos, ismingizni kiriting:");
+//         }
+
+//         // Bazada foydalanuvchi bormi?
+//         if (db.users[userId]) {
+//             db.users[userId].name = inputName; // Faqat ismni yangilaymiz
+//         } else {
+//             db.users[userId] = { 
+//                 id: userId, 
+//                 name: inputName, 
+//                 score: 0, 
+//                 isVip: false 
+//             };
+//         }
+
+//         saveDb(db); // Faylga saqlaymiz
+//         s.waitingForName = false; // Ism kutishni to'xtatamiz
+//         s.userName = inputName;
+
+//         await ctx.reply(`Rahmat, ${inputName}! Endi testlarni yechishingiz mumkin. ✅`);
+//         return showSubjectMenu(ctx);
+//     }
+
+//     // 2. MUHIM QISMI: AGAR FOYDALANUVCHI ISMI BAZADA BO'LSA, UNGA TUGMALARNI ISHLATISHGA RUXSAT BERISH
+//     if (user && user.name) {
+//         s.waitingForName = false; // Xavfsizlik uchun sessiyani ham to'g'irlab qo'yamiz
+//         return next(); // Keyingi tugma buyruqlariga o'tkazib yuboramiz
+//     }
+
+//     // 3. AGAR ISMI YO'Q BO'LSA, FAQAT SHUNDA ISM SO'RAYMIZ
+//     s.waitingForName = true;
+//     return ctx.reply("Davom etish uchun avval ismingizni kiriting:");
+// });
 
 
 
