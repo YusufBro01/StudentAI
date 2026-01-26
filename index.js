@@ -5377,7 +5377,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Faqat dasturlash tilida yozilgan kod"
     ],
     "a": "Muayyan masalani yechish uchun chekli qadamlar ketma-ketligi",
-    "hint": "💡 Algoritm qurilma yoki dastur emas. U — masalani yechish uchun bosqichma-bosqich bajariladigan aniq ko‘rsatmalar ketma-ketligidir."
+    "hint": "💡 Algoritm — bu qo'yilgan maqsadga erishish yoki masalani yechish uchun bajarilishi kerak bo'lgan aniq va chekli amallar ketma-ketligidir."
   },
   {
     "q": "“Algoritm” so‘zi qanday ma’noni anglatadi?",
@@ -5388,7 +5388,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Dedikim Al-Xorazmiy degan ma’noni anglatadi"
     ],
     "a": "Hisoblash yoki masalani yechishda cheksiz amal qilinadigan qoidalari ma’noni anglatadi",
-    "hint": "💡 “Algoritm” atamasi Al-Xorazmiy nomidan kelib chiqqan bo‘lib, hisoblash qoidalari degan ma’noni bildiradi."
+    "hint": "💡 Algoritm atamasi buyuk matematik Muhammad al-Xorazmiy nomining lotinchalashtirilgan (Algorithmi) shaklidan kelib chiqqan bo'lib, hisoblash qoidalarini bildiradi."
   },
   {
     "q": "Algoritm cheklanganlik xossasi nimani bildiradi?",
@@ -5399,7 +5399,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Algoritm cheksiz qadamdan keyin to‘xtaydi"
     ],
     "a": "Algoritm chekli qadam va ma’lum vaqtdan keyin to‘xtashi kerak",
-    "hint": "💡 Har qanday to‘g‘ri algoritm oxir-oqibat yakunlanishi kerak. Cheksiz davom etsa — bu noto‘g‘ri algoritm hisoblanadi."
+    "hint": "💡 Cheklanganlik xossasi algoritmning cheksiz davom etmasligini, ya'ni ma'lum bir qadamlardan so'ng albatta natijaga erishib, to'xtashini anglatadi."
   },
   {
     "q": "Algoritm kamida nechta natija berishi kerak?",
@@ -5410,7 +5410,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Hech qachon natija bermaydi"
     ],
     "a": "Kamida bitta",
-    "hint": "💡 Algoritmning maqsadi natija olish. Hech bo‘lmasa bitta chiqish natijasi bo‘lishi shart."
+    "hint": "💡 Algoritm natijaviylik xossasiga ko'ra, bajarilgan ish oxirida kamida bitta aniq natija (chiqish ma'lumoti) taqdim etishi shart."
   },
   {
     "q": "Algoritm dasturlash tiliga bog‘liq bo‘lmasligi nimani anglatadi?",
@@ -5421,7 +5421,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Faqat diagramma ko‘rinishida bo‘ladi"
     ],
     "a": "Har qanday dasturlash tilida amalga oshirilishi mumkin",
-    "hint": "💡 Algoritm — bu g‘oya va qadamlar ketma-ketligi. Uni Python, C++, Java yoki boshqa tilda yozish mumkin."
+    "hint": "💡 Algoritm bu mantiqiy ketma-ketlikdir. Uni xohlagan tilda (Python, C++, Java) yoki oddiy so'zlar bilan ham ifodalash mumkin."
   },
   {
     "q": "Algoritm murakkabligi qaysi omillar bilan belgilanadi?",
@@ -5432,7 +5432,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Faqat dasturlash tili bilan"
     ],
     "a": "Vaqt va xotira sarfi bilan",
-    "hint": "💡 Algoritm qanchalik tez ishlashi (vaqt) va qancha xotira ishlatishi bilan baholanadi."
+    "hint": "💡 Algoritmning samaradorligi u qancha vaqtda bajarilishi (Time Complexity) va kompyuter xotirasidan qancha joy olishi (Space Complexity) bilan o'lchanadi."
   },
   {
     "q": "Algoritmni ishlab chiqishda birinchi navbatda nima aniqlanadi?",
@@ -5443,7 +5443,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Dasturlash tili"
     ],
     "a": "Hal qilinishi kerak bo‘lgan muammo",
-    "hint": "💡 Avval masala nima ekanini tushunmasdan algoritm yozib bo‘lmaydi."
+    "hint": "💡 Har qanday algoritm ma'lum bir muammoni hal qilish uchun yaratiladi, shuning uchun birinchi navbatda aynan muammoning mohiyati tushunib olinadi."
   },
   {
     "q": "Chiziqli algoritmning asosiy xususiyati qaysi?",
@@ -5454,7 +5454,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Amallar cheksiz marta takrorlanadi"
     ],
     "a": "Buyruqlar qat’iy ketma-ketlikda bir marta bajariladi",
-    "hint": "💡 Chiziqli algoritmda shart ham, takror ham yo‘q — buyruqlar birin-ketin bajariladi."
+    "hint": "💡 Chiziqli algoritmlarda hech qanday shart yoki takrorlanish bo'lmaydi, amallar xuddi bir to'g'ri chiziq kabi yuqoridan pastga qarab bajariladi."
   },
   {
     "q": "Tarmoqlanuvchi algoritm qachon qo‘llaniladi?",
@@ -5465,7 +5465,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Barcha buyruqlar ketma-ket bajarilganda"
     ],
     "a": "Shartga qarab turli yo‘nalishlardan biri tanlanganda",
-    "hint": "💡 Agar natija shartga bog‘liq bo‘lsa (masalan, son musbatmi yoki manfiy), algoritm tarmoqlanadi."
+    "hint": "💡 Agar masalani yechishda biron bir shartga ko'ra (masalan, agar son musbat bo'lsa...) yo'nalish o'zgarsa, bu tarmoqlanuvchi algoritm deyiladi."
   },
   {
     "q": "Takrorlanuvchi algoritmga qaysi misol to‘g‘ri?",
@@ -5476,7 +5476,29 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Shartsiz bajarish"
     ],
     "a": "Shart bajarilguncha bir amalni qayta-qayta bajarish",
-    "hint": "💡 Bir xil amal bir necha marta bajarilsa — bu sikl (loop) hisoblanadi."
+    "hint": "💡 Takrorlanuvchi (siklik) algoritmlar ma'lum bir amalni bir necha marta (masalan, 1 dan 100 gacha sonlarni chiqarish) bajarish uchun ishlatiladi."
+  },
+  {
+    "q": "Tarmoqlanuvchi algoritmlarda asosan qaysi konstruksiya ishlatiladi?",
+    "options": [
+      "for operatori",
+      "ketma-ket operatorlar",
+      "if–else shart operatori",
+      "while operatori"
+    ],
+    "a": "if–else shart operatori",
+    "hint": "💡 Dasturlashda shartlarni tekshirish uchun 'if' (agar) va 'else' (aks holda) operatorlaridan foydalaniladi."
+  },
+  {
+    "q": "Takrorlanuvchi algoritmning asosiy vazifasi nimadan iborat?",
+    "options": [
+      "Ma’lumotlarni saqlash",
+      "Bir xil amallarni bir necha marta bajarish",
+      "Faqat bitta natija chiqarish",
+      "Shartlarsiz bajarish"
+    ],
+    "a": "Bir xil amallarni bir necha marta bajarish",
+    "hint": "💡 Takrorlanish operatorlari (for, while) yordamida bir xil turdagi ishlarni qayta-qayta yozmasdan, botga avtomatlashtirilgan holda bajartirish mumkin."
   },
   {
     "q": "Python’da o‘zgaruvchi nima?",
@@ -5487,43 +5509,64 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Ma’lumotni saqlash uchun ajratilgan funksiya"
     ],
     "a": "Ma’lumotni saqlash uchun ajratilgan nom",
-    "hint": "💡 O‘zgaruvchi — bu qiymatni saqlash uchun ishlatiladigan nom (masalan: x = 5)."
+    "hint": "💡 O'zgaruvchi — bu xotiradagi ma'lum bir qiymatga murojaat qilish uchun ishlatiladigan 'yorliq' yoki nomdir."
+  },
+  {
+    "q": "Python’da butun sonlar qaysi turga mansub?",
+    "options": [
+      "float",
+      "bool",
+      "int",
+      "str"
+    ],
+    "a": "int",
+    "hint": "💡 Python'da 'integer' (butun son) so'zining qisqartmasi sifatida 'int' turi ishlatiladi. Masalan: 5, -10, 100."
   },
   {
     "q": "Haqiqiy (o‘nli) sonlar qaysi turda saqlanadi?",
-    "options": ["int", "bool", "float", "str"],
+    "options": [
+      "int",
+      "bool",
+      "float",
+      "str"
+    ],
     "a": "float",
-    "hint": "💡 Kasrli sonlar (masalan 3.14) Python’da float turida saqlanadi."
+    "hint": "💡 Vergul (nuqta) bilan yoziladigan o'nli sonlar 'floating point' (suzuvchi nuqtali sonlar), ya'ni 'float' turi deb ataladi. Masalan: 3.14."
   },
   {
     "q": "Quyidagilardan qaysi biri o‘zgaruvchi nomi bo‘la oladi?",
-    "options": ["2son", "class", "my-var", "my_var"],
+    "options": [
+      "2son",
+      "class",
+      "my-var",
+      "my_var"
+    ],
     "a": "my_var",
-    "hint": "💡 O‘zgaruvchi nomi raqam bilan boshlanmaydi va defis (-) ishlatilmaydi. Pastki chiziq (_) mumkin."
+    "hint": "💡 Python'da o'zgaruvchi nomi raqam bilan boshlanishi, chiziqcha (-) ishlatilishi yoki xizmatchi so'zlar (class) bo'lishi mumkin emas. Pastki chiziq (_) esa ruxsat etilgan."
   },
   {
     "q": "Haqiqiy (o‘nli) sonlar qaysi turda saqlanadi?",
     "options": ["bool", "str", "int", "float"],
     "a": "float",
-    "hint": "💡 Kasrli yoki o‘nli sonlar (masalan 3.14, 0.5) Python’da float turida saqlanadi."
+    "hint": "💡 Ingliz tilidagi 'floating point' (suzuvchi nuqta) so'zidan olingan bo'lib, o'nli kasr sonlarni ifodalash uchun ishlatiladi."
   },
   {
     "q": "Mantiqiy qiymatlar (True, False) qaysi turga tegishli?",
     "options": ["int", "str", "float", "bool"],
     "a": "bool",
-    "hint": "💡 True va False qiymatlari mantiqiy (rost/yolg‘on) qiymatlar bo‘lib, ular bool turiga kiradi."
+    "hint": "💡 Bu tur matematik Jorj Bul nomi bilan atalgan (Boolean). U faqat ikkita qiymatni: True (rost) yoki False (yolg'on) qabul qiladi."
   },
   {
     "q": "Satr (matn) ma’lumotlar turi qaysi?",
     "options": ["float", "bool", "int", "str"],
     "a": "str",
-    "hint": "💡 Matnlar qo‘shtirnoq yoki bittirnoq ichida yoziladi va Python’da str (string) turida saqlanadi."
+    "hint": "💡 'String' (satr) so'zining qisqartmasi. Qo'shtirnoq yoki bir tirnoq ichiga olingan har qanday belgi yoki matn shu turga kiradi."
   },
   {
     "q": "Kompleks sonlar qaysi tur bilan ifodalanadi?",
     "options": ["float", "int", "str", "complex"],
     "a": "complex",
-    "hint": "💡 Kompleks sonlar haqiqiy va mavhum qismdan iborat bo‘ladi (masalan: 2+3j) va complex turida saqlanadi."
+    "hint": "💡 Haqiqiy va mavhum qismdan iborat sonlar (masalan, 3 + 5j) Python'da 'complex' turi orqali ifodalanadi."
   },
   {
     "q": "Python’da o‘zgaruvchi turi qachon aniqlanadi?",
@@ -5534,43 +5577,43 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Qiymat yuklanganda"
     ],
     "a": "Qiymat yuklanganda",
-    "hint": "💡 Python’da tur avtomatik aniqlanadi. O‘zgaruvchiga qiymat berilganda uning turi belgilanadi."
+    "hint": "💡 Python - dinamik tiplashuvchi til. Ya'ni o'zgaruvchining turi u yaratilganda emas, unga biron qiymat (son, matn) berilgan vaqtda aniqlanadi."
   },
   {
     "q": "Quyidagi ifodada x ning turi qanday?  x = 10",
     "options": ["float", "complex", "char", "int"],
     "a": "int",
-    "hint": "💡 10 butun son bo‘lgani uchun Python uni int turi deb qabul qiladi."
+    "hint": "💡 10 - bu butun son. Python'da butun sonlar (nuqtasiz sonlar) 'integer' ya'ni 'int' deb ataladi."
   },
   {
     "q": "Quyidagi ifodada y ning turi qanday?  y = \"Python\"",
     "options": ["float", "complex", "char", "str"],
     "a": "str",
-    "hint": "💡 Qo‘shtirnoq ichida yozilgan har qanday qiymat matn hisoblanadi va str turiga kiradi."
+    "hint": "💡 Qo'shtirnoq ichidagi har qanday ma'lumot (so'z, gap yoki belgi) satr turi, ya'ni 'string' (str) hisoblanadi."
   },
   {
     "q": "Python’da foydalanuvchidan ma’lumot kiritish uchun qaysi funksiya ishlatiladi?",
     "options": ["print()", "len()", "type()", "input()"],
     "a": "input()",
-    "hint": "💡 input() funksiyasi foydalanuvchidan klaviatura orqali ma’lumot qabul qilish uchun ishlatiladi."
+    "hint": "💡 'Input' so'zi inglizchadan 'kiritish' deb tarjima qilinadi. Bu funksiya dastur ishini to'xtatib, foydalanuvchi biror narsa yozishini kutadi."
   },
   {
     "q": "input() funksiyasi orqali kiritilgan ma’lumotning boshlang‘ich turi qanday bo‘ladi?",
     "options": ["float", "int", "char", "str"],
     "a": "str",
-    "hint": "💡 input() har doim ma’lumotni matn (str) ko‘rinishida qaytaradi, hatto son kiritilsa ham."
+    "hint": "💡 Juda muhim! Foydalanuvchi raqam kiritsa ham, input() funksiyasi uni matn (str) sifatida qabul qiladi. Uni son qilish uchun int() yoki float() funksiyalari kerak."
   },
   {
     "q": "Butun son kiritish uchun qaysi ko‘rinish to‘g‘ri?",
     "options": ["float(input())", "bool(input())", "complex(input())", "int(input())"],
     "a": "int(input())",
-    "hint": "💡 input() natijasi matn bo‘ladi, shuning uchun uni butun songa aylantirish uchun int() ishlatiladi."
+    "hint": "💡 Avval foydalanuvchi matn kiritadi, so'ngra int() funksiyasi o'sha matnni butun songa aylantiradi."
   },
   {
     "q": "Haqiqiy son (float) kiritish uchun qaysi usul ishlatiladi?",
     "options": ["int(input())", "bool(input())", "complex(input())", "float(input())"],
     "a": "float(input())",
-    "hint": "💡 O‘nli son kiritish uchun input() natijasini float() yordamida haqiqiy songa aylantiramiz."
+    "hint": "💡 Nuqtali yoki o'nli kasr sonlarni kiritish uchun input() funksiyasini float() qobig'iga olish kerak."
   },
   {
     "q": "Quyidagi kod nimani bildiradi? x, y = map(int, input().split())",
@@ -5581,7 +5624,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Ikki butun sonni bitta qatorda kiritishni"
     ],
     "a": "Ikki butun sonni bitta qatorda kiritishni",
-    "hint": "💡 input().split() matnni bo‘laklarga ajratadi, map(int, ...) esa ularni butun songa aylantiradi — natijada ikkita int olinadi."
+    "hint": "💡 .split() matnni bo'laklarga ajratadi, map(int, ...) esa har bir bo'lakni songa aylantirib, x va y o'zgaruvchilariga yuklaydi."
   },
   {
     "q": "map() funksiyasi formatli kiritishda nima uchun ishlatiladi?",
@@ -5592,7 +5635,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Kiritilgan qiymatlarni kerakli turga o‘girish uchun"
     ],
     "a": "Kiritilgan qiymatlarni kerakli turga o‘girish uchun",
-    "hint": "💡 map() funksiyasi bir nechta qiymatlarni bir vaqtning o‘zida kerakli turga (masalan int yoki float) aylantirish uchun ishlatiladi."
+    "hint": "💡 'Map' xaritaga o'xshatish yoki 'qo'llash' ma'nosida keladi. U barcha kiritilgan elementlarga bir vaqtda funksiyani (masalan, int) qo'llaydi."
   },
   {
     "q": "Quyidagi kiritish usuli qaysi holatda qo‘llaniladi? a, b, c = map(float, input().split())",
@@ -5603,7 +5646,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Uchta haqiqiy sonni bitta qatorda kiritishda"
     ],
     "a": "Uchta haqiqiy sonni bitta qatorda kiritishda",
-    "hint": "💡 Bu usul bir qatorda kiritilgan 3 ta o‘nli sonni float turiga o‘girib, a, b, c o‘zgaruvchilariga joylaydi."
+    "hint": "💡 float - bu o'nli kasr (haqiqiy) son. Bu kod bitta qatorda probel bilan ajratilgan uchta kasr sonni o'qib olish imkonini beradi."
   },
   {
     "q": "Quyidagi kod nima vazifani bajaradi? x = int(input()) if x > 0: print(\"Musbat\") else: print(\"Manfiy yoki nol\")",
@@ -5614,7 +5657,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Kiritilgan butun son musbat yoki musbat emasligini aniqlaydi"
     ],
     "a": "Kiritilgan butun son musbat yoki musbat emasligini aniqlaydi",
-    "hint": "💡 Dastur sonni tekshiradi: agar 0 dan katta bo‘lsa musbat, aks holda manfiy yoki nol deb chiqaradi."
+    "hint": "💡 if (agar) sharti sonning noldan kattaligini tekshiradi. Agar shart bajarilsa 'Musbat', aks holda (else) ikkinchi xabar chiqadi."
   },
   {
     "q": "Quyidagi dasturda qachon \"True\" chiqadi? a = int(input()) if a % 2 == 0: print(\"True\") else: print(\"False\")",
@@ -5625,7 +5668,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Agar a son juft bo‘lsa"
     ],
     "a": "Agar a son juft bo‘lsa",
-    "hint": "💡 a % 2 == 0 sharti son 2 ga qoldiqsiz bo‘linishini tekshiradi — bu juft son degani."
+    "hint": "💡 Python'da '%' belgisi qoldiqli bo'lishni bildiradi. Agar sonni 2 ga bo'lgandagi qoldiq 0 bo'lsa, demak u juft son."
   },
   {
     "q": "Quyidagi kod nimani tekshiradi? n = int(input()) if n % 5 == 0: print(\"Bo‘linadi\") else: print(\"Bo‘linmaydi\")",
@@ -5636,13 +5679,13 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Sonning 5 ga bo‘linishini"
     ],
     "a": "Sonning 5 ga bo‘linishini",
-    "hint": "💡 n % 5 == 0 bo‘lsa, son 5 ga qoldiqsiz bo‘linadi degani."
+    "hint": "💡 n % 5 == 0 sharti sonni 5 ga bo'lganda qoldiq qolmasligini (ya'ni qoldiq nol ekanligini) tekshiradi."
   },
   {
     "q": "Ushbu dastur natijasini toping: a=1 b=2 c=3 a,b,c=b,c,a print(a,b,c)",
     "options": ["1 2 3", "2 1 3", "3 1 2", "2 3 1"],
     "a": "2 3 1",
-    "hint": "💡 a,b,c=b,c,a qiymatlarni aylantirib joylashtiradi: a→b(2), b→c(3), c→a(1)."
+    "hint": "💡 Python'da o'zgaruvchilar qiymatini bitta qatorda almashtirish (multiple assignment) mumkin. Bunda a=b(2), b=c(3) va c=a(1) bo'lib qoladi."
   },
   {
     "q": "Quyidagi kod nima bajaradi?\n i = 1\n while i <= 5:\n   print(i)\n   i += 1",
@@ -5653,7 +5696,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "1 dan 5 gacha bo‘lgan sonlarni chiqaradi"
     ],
     "a": "1 dan 5 gacha bo‘lgan sonlarni chiqaradi",
-    "hint": "💡 i 1 dan boshlanib har aylanishda 1 ga oshadi va 5 gacha bo‘lgan qiymatlar chiqadi."
+    "hint": "💡 'while' sikli i ning qiymati 5 dan kichik yoki teng bo'lguncha ishlaydi. Har safar i ga 1 qo'shilgani uchun 1, 2, 3, 4, 5 sonlari ekranga chiqadi."
   },
   {
     "q": "Quyidagi kod natijasi nima bo‘ladi?\n i = 5\n while i > 0:\n   print(i)\n   i -= 1",
@@ -5664,7 +5707,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "5 dan 1 gacha bo‘lgan sonlarni chiqaradi"
     ],
     "a": "5 dan 1 gacha bo‘lgan sonlarni chiqaradi",
-    "hint": "💡 i 5 dan boshlanib har safar 1 ga kamayadi va 1 gacha tushadi."
+    "hint": "💡 Bu yerda sikl teskari tartibda ishlaydi. i har safar 1 taga kamayadi va 0 dan katta bo'lguncha davom etadi."
   },
   {
     "q": "Quyidagi dastur nimani hisoblaydi?\n n=int(input())\n s=0\n while n>0:\n   s+=n\n   n-=1\n print(s)",
@@ -5675,7 +5718,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "n gacha bo‘lgan sonlar yig‘indisini"
     ],
     "a": "n gacha bo‘lgan sonlar yig‘indisini",
-    "hint": "💡 s ga n, n-1, n-2 ... 1 qiymatlar qo‘shiladi — bu 1 dan n gacha yig‘indi."
+    "hint": "💡 Sikl davomida 's' o'zgaruvchisiga n dan boshlab 1 gacha bo'lgan barcha sonlar qo'shib boriladi (s = s + n)."
   },
   {
     "q": "Quyidagi kod qachon to‘xtaydi?\n x = 10\n while x != 0:\n   x -= 2",
@@ -5686,7 +5729,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "x nolga teng bo‘lganda"
     ],
     "a": "x nolga teng bo‘lganda",
-    "hint": "💡 x har safar 2 ga kamayadi: 10→8→6→4→2→0 va sikl tugaydi."
+    "hint": "💡 'while x != 0' sharti x nolga teng bo'lmaguncha ishla degani. x har safar 2 taga kamayib borsa (10, 8, 6, 4, 2, 0), x=0 bo'lganda sikl to'xtaydi."
   },
   {
     "q": "Quyidagi dastur nimani tekshiradi?\n n=int(input())\n while n<0:\n   n=int(input())\n print(n)",
@@ -5697,7 +5740,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Manfiy bo‘lmagan son kiritilguncha so‘raydi"
     ],
     "a": "Manfiy bo‘lmagan son kiritilguncha so‘raydi",
-    "hint": "💡 Agar son manfiy bo‘lsa, foydalanuvchidan qayta kiritish talab qilinadi."
+    "hint": "💡 Bu kod kiritilgan son manfiy bo'lsa (n < 0), qaytadan son so'rayveradi. Musbat son kiritilsa, shart buziladi va sikldan chiqadi."
   },
   {
     "q": "Quyidagi kodda cheksiz sikl nima uchun yuzaga keladi?\n i=1\n while i<5:\n   print(i)",
@@ -5708,7 +5751,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "i o‘zgarmagani uchun"
     ],
     "a": "i o‘zgarmagani uchun",
-    "hint": "💡 i qiymati o‘zgarmaydi, shuning uchun shart doim rost bo‘lib qoladi."
+    "hint": "💡 Diqqat qiling! Sikl ichida i ning qiymati oshirilmagan (i += 1 yo'q). Shuning uchun i har doim 1 bo'lib qolaveradi va shart doim True bo'ladi."
   },
   {
     "q": "Quyidagi dastur natijasi nima?\n i=0\n while i<3:\n   print(\"Python\")\n   i+=1",
@@ -5719,187 +5762,330 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "\"Python\" so‘zini 1 marta chiqaradi"
     ],
     "a": "\"Python\" so‘zini 3 marta chiqaradi",
-    "hint": "💡 i 0,1,2 bo‘lganda 3 marta sikl bajariladi."
+    "hint": "💡 i o'zgaruvchisi 0 dan boshlab 3 gacha (0, 1, 2) o'zgaradi. Har bir qadamda so'z ekranga chiqadi."
   },
   {
     "q": "Quyidagi dastur natijasi nima?\n a=4\n b=3\n c=4\n t=(a+b>c) and (a+c>b) and (b+c>a)\n print(t)",
     "options": ["0", "1", "false", "True"],
     "a": "True",
-    "hint": "💡 Uchala shart ham rost: 7>4, 8>3, 7>4 — shuning uchun natija True."
+    "hint": "💡 Bu uchburchak mavjudlik sharti. Agar barcha mantiqiy and shartlari True bo'lsa (7>4, 8>3, 7>4), yakuniy natija True chiqadi."
   },
   {
     "q": "Quyidagi dastur natijasi nima?\n a=4\n b=3\n c=5\n t=(a*a+b*b==c*c) or (a*a+c*c==b*b) or (b*b+c*c==a*a)\n print(t)",
     "options": ["False", "0", "1", "True"],
     "a": "True",
-    "hint": "💡 4²+3²=16+9=25 va 5²=25 — Pifagor tengligi bajariladi."
+    "hint": "💡 Bu Pifagor teoremasi (to'g'ri burchakli uchburchak). 'or' amali ishlatilgani uchun hech bo'lmaganda bitta shart bajarilsa (16+9==25), natija True bo'ladi."
   },
   {
     "q": "Quyidagi dastur natijasi nima?\n a=4\n b=3\n c=5\n t=(a==b and b!=c) or (c==a and b!=c) or (b==c and c!=a)\n print(t)",
     "options": ["True", "1", "0", "False"],
     "a": "False",
-    "hint": "💡 Hech bir juft teng emas (a≠b, b≠c, a≠c), shuning uchun natija False."
+    "hint": "💡 Bu kod uchburchakning teng yonli ekanligini tekshiradi. 4, 3, 5 sonlari ichida bir-biriga tengi yo'q, shuning uchun natija False."
   },
   {
     "q": "Quyidagi dastur natijasi nima?\n a=4\n b=3\n c=4\n t=(a==b and b!=c) or (c==a and b!=c) or (b==c and c!=a)\n print(t)",
     "options": ["0", "False", "True", "1"],
     "a": "True",
-    "hint": "💡 c==a (4==4) va b!=c (3≠4) sharti rost — natija True."
+    "hint": "💡 Bu yerda a=4 va c=4 teng, shuning uchun (c==a and b!=c) sharti True bo'ladi. 'or' operatori tufayli umumiy natija True chiqadi."
   },
   {
     "q": "a=8, b=3\n print(a>5 and b<5)\n Dastur natijasini aniqlang",
     "options": ["0", "3", "False", "True"],
     "a": "True",
-    "hint": "💡 8>5 ham, 3<5 ham rost — and operatori True qaytaradi."
+    "hint": "💡 8 > 5 (True) va 3 < 5 (True). 'and' amali ikkala tomon rost bo'lganda rost (True) natija beradi."
   },
   {
     "q": "x=10, y=0\n print(x and y)\n Dastur natijasini aniqlang",
     "options": ["true", "false", "10", "0"],
     "a": "0",
-    "hint": "💡 and operatori oxirgi tekshirilgan qiymatni qaytaradi; y=0 bo‘lgani uchun natija 0."
+    "hint": "💡 Python'da 'and' operatori agar birinchi qiymat True (nol emas) bo'lsa, ikkinchi qiymatni qaytaradi. Bu yerda y=0 bo'lgani uchun 0 chiqadi."
   },
   {
     "q": "a=4, b=9\n print(a>10 or b>=9)\n Dastur natijasini aniqlang",
     "options": ["9", "False", "1", "True"],
     "a": "True",
-    "hint": "💡 Birinchi shart yolg‘on, ikkinchisi rost (9≥9), or True beradi."
+    "hint": "💡 4 > 10 (False) bo'lsa ham, 9 >= 9 (True) rost. 'or' amali uchun bitta rost qiymat kifoya."
   },
   {
     "q": "x=5\n print(not (x>3 and x<10))\n Dastur natijasini aniqlang",
     "options": ["5", "False", "3", "True"],
     "a": "False",
-    "hint": "💡 Ichki shart True (5>3 va 5<10), not True esa False bo‘ladi."
+    "hint": "💡 Qavs ichi: (5>3 and 5<10) ya'ni True. 'not' amali bu natijani teskarisiga o'zgartiradi: not True = False."
+  },
+  {
+    "q": "a = 6, b = 2\nprint(a == 6 and not b == 3)\nDastur natijasini aniqlang?",
+    "options": ["False", "6", "True", "2"],
+    "a": "True",
+    "hint": "💡 a == 6 (True) va not (2 == 3) ya'ni not False (True). Ikkala tomon rost bo'lgani uchun True chiqadi."
+  },
+  {
+    "q": "x = 0, y = 7\nprint(x or y)\nDastur natijasini aniqlang?",
+    "options": ["True", "0", "False", "7"],
+    "a": "7",
+    "hint": "💡 'or' operatori birinchi rost (nolga teng bo'lmagan) qiymatni qaytaradi. 0 False hisoblanadi, shuning uchun 7 qaytariladi."
+  },
+  {
+    "q": "a = 5, b = 5\nprint(not (a != b))\nDastur natijasini aniqlang?",
+    "options": ["5", "None", "False", "True"],
+    "a": "True",
+    "hint": "💡 a != b ya'ni 5 != 5 (False). 'not False' esa rost (True) natijasini beradi."
+  },
+  {
+    "q": "x = 4, y = 6\nprint(x > 2 and y < 5 or y == 6)\nDastur natijasini aniqlang?",
+    "options": ["4", "False", "6", "True"],
+    "a": "True",
+    "hint": "💡 Amallar tartibi: oldin 'and', keyin 'or'. (True and False) bo'ladi False. Keyin (False or True) bo'lib, yakuniy natija True chiqadi."
+  },
+  {
+    "q": "a = 3\nprint(a and not a)\nDastur natijasini aniqlang?",
+    "options": ["True", "3", "None", "False"],
+    "a": "False",
+    "hint": "💡 Qiymat va uning teskarisini 'and' bilan bog'lash doim False beradi. 3 (True) and not 3 (False) = False."
+  },
+  {
+    "q": "x = 2, y = 8\nprint(not x > 5 or y < 10)\nDastur natijasini aniqlang?",
+    "options": ["2", "False", "8", "True"],
+    "a": "True",
+    "hint": "💡 not (2 > 5) ya'ni not False (True). 'or' amalida birinchi tomon rost bo'lsa, ikkinchi tomonni tekshirmasdan True qaytaradi."
+  },
+  {
+    "q": "Python’da bir qatorda bir nechta buyruq yozish uchun qaysi belgi ishlatiladi?",
+    "options": [";", ",", ":", "hech narsa"],
+    "a": ";",
+    "hint": "💡 Python'da odatda har bir buyruq yangi qatordan yoziladi. Lekin bitta qatorda yozish kerak bo'lsa, nuqtali vergul (;) dan foydalaniladi."
+  },
+  {
+    "q": "Python’da katta-kichik harflar (case sensitivity) qanday ahamiyatga ega?",
+    "options": [
+      "Farqlanmaydi",
+      "Faqat o‘zgaruvchilarda farqlanmaydi",
+      "Katta-kichik harflar farqlanadi",
+      "Katta-kichik harflar funksiyada farqlanadi"
+    ],
+    "a": "Katta-kichik harflar farqlanadi",
+    "hint": "💡 Python Case-Sensitive til. Masalan: 'ism', 'Ism' va 'ISM' uchtasi uch xil o'zgaruvchi hisoblanadi."
   },
   {
     "q": "print(1, 2, 3, sep=\"\") natijasi nima bo‘ladi?",
     "options": ["1,2,3", "123", "Error", "1  2  3"],
     "a": "123",
-    "hint": "💡 sep=\"\" bo‘lsa, print sonlar orasiga hech qanday belgi qo‘ymaydi — natija 123 bo‘ladi."
+    "hint": "💡 'sep' (separator) parametri print ichidagi qiymatlar orasiga nima qo'yishni belgilaydi. sep=\"\" bo'sh joy qoldirmasdan hammasini yopishtirib chiqaradi."
   },
   {
     "q": "range(5) qanday qiymatlar ketma-ketligini beradi?",
     "options": ["0 dan 5 gacha", "Faqat 5", "0,1,2,3,4,5", "0,1,2,3,4"],
     "a": "0,1,2,3,4",
-    "hint": "💡 range(5) 0 dan boshlanadi va 5 ga yetmasdan to‘xtaydi."
+    "hint": "💡 range(n) funksiyasi doimo 0 dan boshlanadi va n gacha davom etadi, lekin n ning o'zi ketma-ketlikka kirmaydi."
   },
   {
     "q": "s = 0\nfor i in range(5):\n  s += i\nprint(s)\nDastur nimani chiqaradi?",
     "options": ["5", "0", "15", "10"],
     "a": "10",
-    "hint": "💡 s = 0+1+2+3+4 = 10 bo‘ladi."
+    "hint": "💡 i o'zgaruvchisi 0, 1, 2, 3, 4 qiymatlarini oladi. Ularning yig'indisi: 0+1+2+3+4 = 10."
   },
   {
     "q": "range(2, 5) qaysi sonlarni o‘z ichiga oladi?",
     "options": ["2,3,4,5", "3,4,5", "2.5", "2,3,4"],
     "a": "2,3,4",
-    "hint": "💡 range(2,5) 2 dan boshlanib 5 ga yetmasdan tugaydi."
+    "hint": "💡 range(start, stop) shaklida start (2) kiradi, lekin stop (5) kirmaydi."
   },
   {
     "q": "Qaysi operator qoldiqni hisoblaydi?",
     "options": ["*", "/", "//", "%"],
     "a": "%",
-    "hint": "💡 % operatori bo‘lishdagi qoldiqni topadi."
+    "hint": "💡 % belgisi matematikada modulli bo'lish deyiladi va bo'lishdan qolgan qoldiqni qaytaradi."
   },
   {
     "q": "x sonning oxirgi raqamini aniqlash formulasi qaysi?",
     "options": ["x/10", "x//10", "x^10", "x % 10"],
     "a": "x % 10",
-    "hint": "💡 10 ga bo‘lgandagi qoldiq sonning oxirgi raqamini beradi."
+    "hint": "💡 Har qanday sonni 10 ga bo'lgandagi qoldiq (%) o'sha sonning oxirgi raqamiga teng bo'ladi."
   },
   {
     "q": "Cheksiz sikldan chiqish uchun qaysi operator ishlatiladi?",
     "options": ["exit", "return", "stop", "break"],
     "a": "break",
-    "hint": "💡 break siklni majburan to‘xtatadi."
+    "hint": "💡 'break' buyrug'i siklning sharti hali bajarilmayotgan bo'lsa ham, siklni darhol to'xtatish uchun ishlatiladi."
   },
   {
-    "q": "k = 0 ... Dastur nimani aniqlaydi?",
+    "q": "k = 0\nx = int(input())\nwhile x != 0:\n    if x > 0:\n        k += 1\n    x = int(input())\nprint(k)\nDastur nimani aniqlaydi?",
     "options": ["Manfiy sonlar sonini", "Eng katta sonni", "Barcha sonlar sonini", "Musbat sonlar sonini"],
     "a": "Musbat sonlar sonini",
-    "hint": "💡 0 kiritilmaguncha musbat sonlar sanaladi."
+    "hint": "💡 x > 0 sharti kiritilgan son musbat bo'lgandagina k (hisoblagich)ni 1 taga oshiradi. 0 kiritilganda dastur to'xtaydi."
   },
   {
-    "q": "s = 0\nfor i in range(4): s += i\nprint(s)",
+    "q": "s = 0\nfor i in range(4):\n    s += i\nprint(s)\nDastur natijasini aniqlang?",
     "options": ["0", "6", "10", "4"],
     "a": "6",
-    "hint": "💡 0+1+2+3 = 6."
+    "hint": "💡 range(4) orqali i: 0, 1, 2, 3 qiymatlarini oladi. Yig'indisi: 0+1+2+3 = 6."
   },
   {
-    "q": "for i in range(2, 6): print(i)",
+    "q": "for i in range(2, 6):\n    print(i)\nDastur natijasini aniqlang?",
     "options": ["3 4 5", "2 3 4 5 6", "Xato", "2 3 4 5"],
     "a": "2 3 4 5",
-    "hint": "💡 6 kirmaydi, 2 dan 5 gacha chiqadi."
+    "hint": "💡 range(2, 6) sonlari 2 dan boshlanib 6 gacha (6 kirmaydi) davom etadi."
   },
   {
-    "q": "s = 1\nfor i in range(3): s *= 2\nprint(s)",
+    "q": "s = 1\nfor i in range(3):\n    s *= 2\nprint(s)\nDastur natijasini aniqlang?",
     "options": ["4", "6", "2", "8"],
     "a": "8",
-    "hint": "💡 1→2→4→8 (3 marta 2 ga ko‘payadi)."
+    "hint": "💡 Tsikl 3 marta aylanadi va har safar s ni 2 ga ko'paytiradi. 1 * 2 * 2 * 2 = 8."
   },
   {
-    "q": "for i in range(1, 6, 2): print(i)",
+    "q": "for i in range(1, 6, 2):\n    print(i)\nDastur natijasini aniqlang?",
     "options": ["1 3 5", "2 4 6", "1 2 3", "Xato"],
     "a": "1 3 5",
-    "hint": "💡 Qadam 2 bo‘lgani uchun 1,3,5 chiqadi."
+    "hint": "💡 range(1, 6, 2) da uchinchi son (2) qadamni bildiradi. 1 dan boshlab 2 tadan sakrab yuradi: 1, 3, 5."
   },
   {
-    "q": "s = 0\nfor i in range(1, 6): s += i\nprint(s)",
+    "q": "s = 0\nfor i in range(1, 6):\n    s += i\nprint(s)\nDastur natijasini aniqlang?",
     "options": ["10", "21", "5", "15"],
     "a": "15",
-    "hint": "💡 1+2+3+4+5 = 15."
+    "hint": "💡 1 dan 5 gacha (6 kirmaydi) bo'lgan sonlar yig'indisi: 1+2+3+4+5 = 15."
   },
   {
-    "q": "for i in range(4, 7): print(i)",
+    "q": "for i in range(4, 7):\n    print(i)\nDastur natijasini aniqlang?",
     "options": ["5 6 7", "Xato", "4 5 6 7", "4 5 6"],
     "a": "4 5 6",
-    "hint": "💡 7 kirmaydi."
+    "hint": "💡 range(4, 7) ketma-ketligi 4 dan 6 gacha bo'lgan butun sonlarni qaytaradi."
   },
   {
-    "q": "k = 0\nfor i in range(5): k += 1\nprint(k)",
+    "q": "k = 0\nfor i in range(5):\n    k += 1\nprint(k)\nDastur natijasini aniqlang?",
     "options": ["0", "4", "6", "5"],
     "a": "5",
-    "hint": "💡 Sikl 5 marta ishlaydi."
+    "hint": "💡 range(5) tsikl 5 marta aylanishini ta'minlaydi. Har bir aylanishda k (0) bir taga oshsa, natija 5 bo'ladi."
   },
   {
-    "q": "for i in range(3): print(i + 1)",
+    "q": "for i in range(3):\n    print(i + 1)\nDastur natijasini aniqlang?",
     "options": ["0 1 2", "1 2", "Xato", "1 2 3"],
     "a": "1 2 3",
-    "hint": "💡 i 0,1,2 bo‘ladi, ustiga 1 qo‘shiladi."
+    "hint": "💡 i o'zgaruvchisi 0, 1, 2 qiymatlarini oladi. print(i + 1) esa ularga birni qo'shib chiqaradi: 1, 2, 3."
   },
   {
-    "q": "s = 0\nfor i in range(2, 5): s += i\nprint(s)",
+    "q": "s = 0\nfor i in range(2, 5):\n    s += i\nprint(s)\nDastur natijasini aniqlang?",
     "options": ["10", "9", "7", "5"],
     "a": "9",
-    "hint": "💡 2+3+4 = 9."
+    "hint": "💡 range(2, 5) dagi i qiymatlari: 2, 3, 4. Yig'indi: 2+3+4 = 9."
   },
   {
-    "q": "for i in range(5, 0, -1): print(i)",
+    "q": "for i in range(5, 0, -1):\n    print(i)\nDastur natijasini aniqlang?",
     "options": ["4 3 2 1", "5 4 3 2", "Xato", "5 4 3 2 1"],
     "a": "5 4 3 2 1",
-    "hint": "💡 5 dan 1 gacha kamayib boradi."
+    "hint": "💡 range uchinchi parametri manfiy bo'lsa (-1), ketma-ketlik kamayish tartibida bo'ladi. 5 dan 1 gacha (0 kirmaydi)."
   },
   {
-    "q": "s = 10\nfor i in range(3): s -= 2\nprint(s)",
+    "q": "s = 10\nfor i in range(3):\n    s -= 2\nprint(s)\nDastur natijasini aniqlang?",
     "options": ["10", "8", "4", "6"],
     "a": "4",
-    "hint": "💡 10→8→6→4."
+    "hint": "💡 Tsikl 3 marta aylanadi va har safar s (10) dan 2 ni ayiradi: 10 - 2 - 2 - 2 = 4."
   },
   {
-    "q": "for i in range(0, 6, 3): print(i)",
+    "q": "for i in range(0, 6, 3):\n    print(i)\nDastur natijasini aniqlang?",
     "options": ["3 6", "0 3", "6", "Xato"],
     "a": "0 3",
-    "hint": "💡 0 dan boshlanib 3 qadam bilan: 0, 3."
+    "hint": "💡 0 dan boshlanib 6 gacha 3 qadam bilan yuradi: 0, 3 (keyingisi 6 bo'lishi kerak edi, lekin 6 kirmaydi)."
   },
   {
-    "q": "s = 1\nfor i in range(4): s += s\nprint(s)",
+    "q": "s = 1\nfor i in range(4):\n    s += s\nprint(s)\nDastur natijasini aniqlang?",
     "options": ["8", "4", "32", "16"],
     "a": "16",
-    "hint": "💡 Har safar 2 baravar bo‘ladi: 1→2→4→8→16."
+    "hint": "💡 s += s bu sonni ikki baravar oshirish demakdir. 1 -> 2 -> 4 -> 8 -> 16."
   },
   {
-    "q": "for i in range(1, 5): if i % 2 == 0: print(i)",
+    "q": "for i in range(1, 5):\n    if i % 2 == 0:\n        print(i)\nDastur natijasini aniqlang?",
     "options": ["1 3", "Hech narsa chiqmaydi", "2 4", "1 2 3 4"],
     "a": "2 4",
-    "hint": "💡 Faqat juft sonlar chiqadi."
+    "hint": "💡 i % 2 == 0 sharti sonning juftligini tekshiradi. 1 dan 4 gacha bo'lgan juft sonlar: 2, 4."
+  },
+  {
+    "q": "k = 0\nfor i in range(1, 10):\n    if i % 3 == 0:\n        k += 1\nprint(k)\nDastur natijasini aniqlang?",
+    "options": ["6", "2", "3", "4"],
+    "a": "3",
+    "hint": "💡 1 dan 9 gacha bo'lgan sonlar ichida 3 ga bo'linadiganlari: 3, 6, 9. Ularning soni jami 3 ta."
+  },
+  {
+    "q": "s = 0\nfor i in range(1, 4):\n    s = s * 2 + i\nprint(s)\nDastur natijasini aniqlang?",
+    "options": ["9", "13", "11", "7"],
+    "a": "11",
+    "hint": "💡 Qadamma-qadam: 1) s=0*2+1=1. 2) s=1*2+2=4. 3) s=4*2+3=11."
+  },
+  {
+    "q": "for i in range(2, 8, 2):\n    print(i)\nDastur natijasini aniqlang?",
+    "options": ["4 6 8", "2 4 6", "Xato", "2 4 6 8"],
+    "a": "2 4 6",
+    "hint": "💡 2 dan boshlab 2 qadam bilan 8 gacha yuradi: 2, 4, 6 (8 kirmaydi)."
+  },
+  {
+    "q": "def salom():\n    print(\"Salom\")\nsalom()\nDastur natijasini aniqlang?",
+    "options": ["None", "Xato", "Salom", "Hech narsa chiqmaydi"],
+    "a": "Salom",
+    "hint": "💡 Funksiya e'lon qilingandan so'ng (def), uni nomi bilan chaqirish kerak. salom() funksiya ichidagi matnni ekranga chiqaradi."
+  },
+  {
+    "q": "def chiqar():\n    return 5\nprint(chiqar())\nDastur natijasini aniqlang?",
+    "options": ["None", "Xato", "chiqar", "5"],
+    "a": "5",
+    "hint": "💡 'return' funksiyadan qiymatni qaytaradi. print esa shu qaytgan qiymatni (5) konsolga chiqaradi."
+  },
+  {
+    "q": "def kvadrat(x):\n    return x * x\nprint(kvadrat(4))\nDastur natijasini aniqlang?",
+    "options": ["8", "None", "4", "16"],
+    "a": "16",
+    "hint": "💡 x o'rniga 4 keladi va funksiya 4 * 4, ya'ni 16 qiymatini qaytaradi."
+  },
+  {
+    "q": "def yigindi(a, b):\n    print(a - b)\nyigindi(3, 7)\nDastur natijasini aniqlang?",
+    "options": ["7", "3", "-4", "10"],
+    "a": "-4",
+    "hint": "💡 Funksiya chaqirilganda a=3 va b=7 bo'ladi. print(3 - 7) natijasi esa -4."
+  },
+  {
+    "q": "def yigindi(a, b):\n    print(a * b)\nyigindi(3, 7)\nDastur natijasini aniqlang?",
+    "options": ["10", "3", "7", "21"],
+    "a": "21",
+    "hint": "💡 a=3 va b=7 qiymatlari ko'paytiriladi: 3 * 7 = 21."
+  },
+  {
+    "q": "def nol():\n    return 0\nprint(nol())\nDastur natijasini aniqlang?",
+    "options": ["Bo‘sh satr", "Xato", "None", "0"],
+    "a": "0",
+    "hint": "💡 Funksiya aniq 0 qiymatini qaytaryapti."
+  },
+  {
+    "q": "def zero():\n    return -1\nprint(zero())\nDastur natijasini aniqlang?",
+    "options": ["1", "Xato", "None", "-1"],
+    "a": "-1",
+    "hint": "💡 Funksiya aniq -1 qiymatini qaytaryapti."
+  },
+  {
+    "q": "def zero():\n    return\nprint(zero())\nDastur natijasini aniqlang?",
+    "options": ["0", "1", "None", "Xato"],
+    "a": "None",
+    "hint": "💡 Python'da agar 'return' hech narsasiz yozilsa yoki umuman yozilmasa, funksiya 'None' (hech narsa) qiymatini qaytaradi."
+  },
+  {
+    "q": "def ikki_baravar(x):\n    return x * 2\nprint(ikki_baravar(5))\nDastur natijasini aniqlang?",
+    "options": ["25", "7", "2", "10"],
+    "a": "10",
+    "hint": "💡 Funksiya unga berilgan argumentni (5) ikkiga ko'paytiradi."
+  },
+  {
+    "q": "def f(a, b=5):\n    return a + b\nprint(f(3))\nDastur natijasini aniqlang?",
+    "options": ["5", "3", "Xato", "8"],
+    "a": "8",
+    "hint": "💡 Bu yerda b ning standart qiymati (default value) 5 ga teng. f(3) chaqirilganda a=3 bo'ladi va b o'zining 5 qiymatini ishlatadi. 3 + 5 = 8."
+  },
+  {
+    "q": "def f(a, b=5):\n    return a * b\nprint(f(2, 3))\nDastur natijasini aniqlang?",
+    "options": ["10", "Xato", "6", "15"],
+    "a": "6",
+    "hint": "💡 Agar funksiya chaqirilganda b uchun qiymat berilsa (3), standart qiymat (5) ishlatilmaydi. 2 * 3 = 6."
+  },
+  {
+    "q": "def salom(ism):\n    print(\"Salom\", ism)\nsalom(\"Ali\")\nDastur natijasini aniqlang?",
+    "options": ["Ali", "Salom", "Ali Salom", "Salom Ali"],
+    "a": "Salom Ali",
+    "hint": "💡 print funksiyasi bir nechta qiymatlarni vergul bilan chiqarsa, ular orasida avtomatik bo'sh joy qo'yiladi: 'Salom' + ' ' + 'Ali'."
   },
   {
     "q": "Funksiya nima uchun ishlatiladi?",
@@ -5910,97 +6096,97 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Barchasi to‘g‘ri"
     ],
     "a": "Barchasi to‘g‘ri",
-    "hint": "💡 Funksiya kodni tartibli qiladi, takrorlanishni kamaytiradi va dasturni tushunarli tuzilishga keltiradi."
+    "hint": "💡 Funksiya — bu ma'lum bir vazifani bajaruvchi kod bo'lagi bo'lib, u dasturni tartibli qilishga va bir xil kodni qayta-qayta yozmaslikka yordam beradi."
   },
   {
-    "q": "def f(): return 10 print(f()) Funksiya natijasi nima?",
+    "q": "def f():\n    return 10\nprint(f())\nFunksiya natijasi nima?",
     "options": ["None", "Xato", "0", "10"],
     "a": "10",
-    "hint": "💡 return 10 funksiyadan 10 qiymatini qaytaradi va print ekranga chiqaradi."
+    "hint": "💡 Funksiya ichidagi 'return 10' buyrug'i funksiya chaqirilganda uning o'rniga 10 qiymatini qaytarib beradi."
   },
   {
-    "q": "def add(a, b): return a + b Funksiya qanday e’lon qilingan?",
+    "q": "def add(a, b):\n    return a + b\nFunksiya qanday e’lon qilingan?",
     "options": ["Parametrsiz funksiya", "Rekursiv funksiya", "Lambda funksiya", "Parametrli funksiya"],
     "a": "Parametrli funksiya",
-    "hint": "💡 Funksiya qavs ichida a va b parametrlarini qabul qilmoqda."
+    "hint": "💡 Funksiya nomidan keyingi qavs ichida (a, b) kabi o'zgaruvchilar bo'lsa, bu parametrli funksiya deyiladi. Ular tashqaridan qiymat qabul qiladi."
   },
   {
-    "q": "def test(): return 5 Funksiya chaqirish qaysi qatorda?",
+    "q": "def test():\n    return 5\nFunksiya chaqirish qaysi qatorda?",
     "options": ["return test", "print test()", "def test()", "test()"],
     "a": "test()",
-    "hint": "💡 Funksiyani ishga tushirish uchun uning nomi qavs bilan yoziladi: test()."
+    "hint": "💡 Funksiyani ishga tushirish (chaqirish) uchun uning nomidan keyin qavslarni yozish kerak: nomi()."
   },
   {
-    "q": "def f(a, b): return a - b Funksiya nechta argument qabul qiladi?",
+    "q": "def f(a, b):\n    return a - b\nFunksiya nechta argument qabul qiladi?",
     "options": ["1", "3", "0", "2"],
     "a": "2",
-    "hint": "💡 Funksiya e’lonida ikkita parametr (a va b) bor."
+    "hint": "💡 Qavs ichidagi parametrlar soniga qarab (a va b), funksiya chaqirilayotganda ham aynan 2 ta qiymat yuborilishi kerak."
   },
   {
-    "q": "def f(x=4): return x+1 print(f()) natija?",
+    "q": "Quyidagi kod natijasi?\ndef f(x=4):\n    return x+1\nprint(f())",
     "options": ["4", "1", "0", "5"],
     "a": "5",
-    "hint": "💡 Standart qiymat x=4, unga 1 qo‘shilib 5 chiqadi."
+    "hint": "💡 Bu yerda x uchun 'default' (standart) qiymat 4 qilib belgilangan. f() chaqirilganda hech qanday qiymat berilmagani uchun 4 ishlatiladi: 4 + 1 = 5."
   },
   {
-    "q": "def kv(x): return x*x Funksiya nimani hisoblaydi?",
+    "q": "Quyidagi funksiya nimani hisoblaydi?\ndef kv(x):\n    return x*x",
     "options": ["Son ildizini", "Son kubini", "Son kvadratini", "Son yig‘indisini"],
     "a": "Son kvadratini",
-    "hint": "💡 x*x — sonning kvadrati."
+    "hint": "💡 Sonni o'zini o'ziga ko'paytirish (x * x) uning kvadratini hisoblash demakdir."
   },
   {
-    "q": "def f(a, b=4): return a*b print(f(2)) natija?",
+    "q": "Quyidagi kod natijasi?\ndef f(a, b=4):\n    return a*b\nprint(f(2))",
     "options": ["4", "6", "2", "8"],
     "a": "8",
-    "hint": "💡 b ning standart qiymati 4, 2*4=8."
+    "hint": "💡 Chaqirilayotgan f(2) da a=2 bo'ladi. b berilmagani uchun standart 4 qiymatini oladi: 2 * 4 = 8."
   },
   {
     "q": "return operatori nima qiladi?",
     "options": ["Natijani ekranga chiqaradi", "Funktsiyani chaqiradi", "O‘zgaruvchi yaratadi", "Qiymat qaytaradi"],
     "a": "Qiymat qaytaradi",
-    "hint": "💡 return funksiyadan qiymatni tashqariga uzatadi."
+    "hint": "💡 'return' funksiyaning yakuniy natijasini u chaqirilgan joyga yuboradi. U 'print' kabi ekranga chiqarmaydi, shunchaki qiymatni qaytaradi."
   },
   {
     "q": "Funksiya ichida funksiya yozish mumkinmi?",
     "options": ["Yo‘q", "Faqat klassda", "Faqat modulda", "Ha"],
     "a": "Ha",
-    "hint": "💡 Python’da ichki (nested) funksiyalar yozish mumkin."
+    "hint": "💡 Python'da 'nested functions' (ichma-ich funksiyalar) yaratish mumkin. Tashqi funksiya ichida yangi funksiya e'lon qilishingiz mumkin."
   },
   {
-    "q": "def f(a): return a+2 print(f(1)+f(2)) natija?",
+    "q": "Quyidagi kod natijasi?\ndef f(a):\n    return a+2\nprint(f(1)+f(2))",
     "options": ["3", "5", "7", "6"],
     "a": "7",
-    "hint": "💡 f(1)=3, f(2)=4, yig‘indisi 7."
+    "hint": "💡 Qadam-baqadam: f(1) = 1+2=3. f(2) = 2+2=4. Natija: 3 + 4 = 7."
   },
   {
-    "q": "def f(): print(\"Hello\") Bu qanday funksiya?",
+    "q": "Quyidagi funksiya qaysi turga kiradi?\ndef f():\n    print(\"Hello\")",
     "options": ["Lambda funksiya", "Parametrli funksiya", "Rekursiv funksiya", "Parametrsiz funksiya"],
     "a": "Parametrsiz funksiya",
-    "hint": "💡 Qavs ichida parametr yo‘q."
+    "hint": "💡 Qavs ichi bo'sh bo'lganligi sababli, bu funksiya tashqaridan hech qanday ma'lumot qabul qilmaydi."
   },
   {
-    "q": "def f(x): return x%2==0 print(f(4)) natija?",
+    "q": "Quyidagi kod natijasi?\ndef f(x):\n    return x%2==0\nprint(f(4))",
     "options": ["0", "False", "1", "True"],
     "a": "True",
-    "hint": "💡 4 juft son, shuning uchun natija True."
+    "hint": "💡 4 % 2 == 0 sharti True (Rost) qiymat qaytaradi, chunki 4 juft son va qoldiq nolga teng."
   },
   {
     "q": "Funksiya parametri nima?",
     "options": ["Funksiya natijasi", "O‘zgaruvchi turi", "Operator", "Funksiyaga uzatiladigan qiymat"],
     "a": "Funksiyaga uzatiladigan qiymat",
-    "hint": "💡 Parametr — funksiyaga beriladigan kirish ma’lumoti."
+    "hint": "💡 Parametr — bu funksiya ishlashi uchun zarur bo'lgan xomashyo (ma'lumot) hisoblanadi."
   },
   {
-    "q": "def f(a=1, b=2): return a+b print(f(3,4)) natija?",
+    "q": "Quyidagi kod natijasi?\ndef f(a=1, b=2):\n    return a+b\nprint(f(3,4))",
     "options": ["3", "2", "7", "1"],
     "a": "7",
-    "hint": "💡 Bu yerda standart qiymatlar emas, berilgan qiymatlar ishlatiladi: 3+4=7."
+    "hint": "💡 Garchi standart qiymatlar (1 va 2) bo'lsa-da, chaqirilayotganda yangi qiymatlar (3 va 4) berilgan. 3 + 4 = 7."
   },
   {
-    "q": "def f(x): return x//2 print(f(9)) natija?",
+    "q": "Quyidagi funksiya nima qaytaradi?\ndef f(x):\n    return x//2\nprint(f(9))",
     "options": ["Error", "Xato", "4", "5"],
     "a": "4",
-    "hint": "💡 // butun bo‘lish, 9//2 = 4."
+    "hint": "💡 '//' belgisi butun sonli bo'lishni anglatadi. 9 ni 2 ga bo'lganda butun qismi 4 ga teng."
   },
   {
     "q": "Funksiya nima uchun ishlatiladi?",
@@ -6011,7 +6197,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Kodni tartibli va qayta ishlatish uchun"
     ],
     "a": "Kodni tartibli va qayta ishlatish uchun",
-    "hint": "💡 Funksiya kodni modulli va qayta foydalaniladigan qiladi."
+    "hint": "💡 Funksiyalar kodni modullarga bo'lish, tushunarli qilish va bir marta yozilgan kodni ko'p marta ishlatish imkonini beradi."
   },
   {
     "q": "Python’da modul nima?",
@@ -6022,43 +6208,84 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Alohida faylda yozilgan va qayta qo‘llaniladigan kodlar majmui"
     ],
     "a": "Alohida faylda yozilgan va qayta qo‘llaniladigan kodlar majmui",
-    "hint": "💡 Modul — boshqa dasturlarda ham ishlatish mumkin bo‘lgan .py fayl."
+    "hint": "💡 Har qanday .py kengaytmali fayl modul bo'lishi mumkin. Uning ichida funksiyalar, o'zgaruvchilar va klasslar bo'ladi."
   },
   {
     "q": "Python modulining kengaytmasi qanday?",
     "options": [".txt", ".exe", ".docx", ".py"],
     "a": ".py",
-    "hint": "💡 Python fayllari .py kengaytmasiga ega."
+    "hint": "💡 Python dasturiy fayllari har doim .py (Python source code) kengaytmasi bilan saqlanadi."
   },
   {
     "q": "Modulni dasturga ulash uchun qaysi kalit so‘z ishlatiladi?",
     "options": ["include", "using", "load", "import"],
     "a": "import",
-    "hint": "💡 import kalit so‘zi modulni ulaydi."
+    "hint": "💡 Boshqa fayldagi (moduldagi) kodlardan foydalanish uchun 'import' (olib kirish) buyrug'i beriladi."
   },
   {
     "q": "metodlar.py modulidagi Sum() funksiyasini chaqirish qaysi ko‘rinishda bo‘ladi?",
     "options": ["Sum()", "call Sum()", "metodlar->Sum()", "metodlar.Sum()"],
     "a": "metodlar.Sum()",
-    "hint": "💡 Modul nomi nuqta orqali funksiyaga murojaat qilinadi."
+    "hint": "💡 Nuqta operatori moduldagi biror funksiyaga murojaat qilish uchun ishlatiladi: modul_nomi.funksiya_nomi."
+  },
+  {
+    "q": "Modul funksiyalarini global nomlar maydoniga kiritish uchun qaysi buyruq ishlatiladi?",
+    "options": ["import modul_nomi", "load modul_nomi", "include modul_nomi", "from modul_nomi import funksiya"],
+    "a": "from modul_nomi import funksiya",
+    "hint": "💡 'from ... import ...' shakli funksiyani to'g'ridan-to'g'ri chaqirish imkonini beradi (modul nomini yozmasdan)."
+  },
+  {
+    "q": "Barcha funksiyalarni moduldan birdaniga import qilish qaysi ko‘rinishda?",
+    "options": ["import *", "import all", "from * import modul_nomi", "from modul_nomi import *"],
+    "a": "from modul_nomi import *",
+    "hint": "💡 Yulduzcha (*) belgisi 'hamma narsani' degan ma'noni bildiradi."
+  },
+  {
+    "q": "import * ishlatishning kamchiligi nimada?",
+    "options": ["Kod ishlamaydi", "Modul yuklanmaydi", "Xotira tejalmaydi", "Funksiya nomlari to‘qnashuvi yuz berishi mumkin"],
+    "a": "Funksiya nomlari to‘qnashuvi yuz berishi mumkin",
+    "hint": "💡 Agar sizning dasturingizda ham, modulda ham bir xil nomli funksiya bo'lsa, xatolik kelib chiqadi."
+  },
+  {
+    "q": "Python’da modul necha marta import qilinsa ham, u:",
+    "options": ["Har safar qayta yuklanadi", "Umuman yuklanmaydi", "Xato beradi", "Faqat bir marta yuklanadi"],
+    "a": "Faqat bir marta yuklanadi",
+    "hint": "💡 Dastur samaradorligini oshirish uchun Python modulni birinchi marta import qilinganda xotiraga yuklaydi va keyingi chaqiriqlarda qayta yuklamaydi."
+  },
+  {
+    "q": "Quyidagi kodda xatolik nimada?\nfrom math import sqrt\nprint(sqrt(144))\nprint(pi)",
+    "options": ["sqrt noto‘g‘ri yozilgan", "math yo‘q", "Sintaksis xato", "pi import qilinmagan"],
+    "a": "pi import qilinmagan",
+    "hint": "💡 Biz faqat 'sqrt' funksiyasini import qildik. 'pi' o'zgaruvchisidan foydalanish uchun uni ham import qilish yoki 'import math' qilish kerak edi."
+  },
+  {
+    "q": "if __name__ == \"__main__\": sharti nima uchun ishlatiladi?",
+    "options": [
+      "Funksiya chaqirish uchun",
+      "Modul import qilish uchun",
+      "Xatolarni ushlash uchun",
+      "Modul to‘g‘ridan-to‘g‘ri ishga tushirilganda asosiy kodni bajarish uchun"
+    ],
+    "a": "Modul to‘g‘ridan-to‘g‘ri ishga tushirilganda asosiy kodni bajarish uchun",
+    "hint": "💡 Bu shart modul boshqa faylga import qilinganda uning ichidagi test kodlari o'z-o'zidan ishlab ketmasligi uchun kerak."
   },
   {
     "q": "Massiv nima?",
     "options": ["Faqat bitta o‘zgaruvchi", "Funksiya", "Operator", "Bir xil turdagi ma’lumotlar ketma-ketligi"],
     "a": "Bir xil turdagi ma’lumotlar ketma-ketligi",
-    "hint": "💡 Massiv — bir nechta qiymatni bitta tuzilmada saqlash usuli."
+    "hint": "💡 Massiv (yoki Python'da list) — ko'plab ma'lumotlarni tartibli tartibda bitta nom ostida saqlash imkonini beruvchi konteynerdir."
   },
   {
     "q": "Python’da 2D massiv qanday ifodalanadi?",
     "options": ["Faqat tuple yordamida", "Dictionary yordamida", "String yordamida", "Listlar ichidagi listlar yordamida"],
     "a": "Listlar ichidagi listlar yordamida",
-    "hint": "💡 2D massiv — bu ichma-ich list."
+    "hint": "💡 Ikki o'lchovli massivni jadval deb tasavvur qilsangiz, har bir qator o'zi bitta alohida listdir."
   },
   {
-    "q": "matrix = [[1,2],[3,4]] nimani yaratadi?",
+    "q": "Quyidagi kod nimani yaratadi?\nmatrix = [[1,2],[3,4]]",
     "options": ["Bir o‘lchovli massiv", "Funksiya", "Klass", "Ikki o‘lchovli massiv"],
     "a": "Ikki o‘lchovli massiv",
-    "hint": "💡 Bu 2 qator va 2 ustundan iborat jadval."
+    "hint": "💡 Tashqi list ichida ikkita ichki list bor, bu jadval ko'rinishidagi tuzilmani anglatadi."
   },
   {
     "q": "matrix[0][1] nimani bildiradi?",
@@ -6069,55 +6296,55 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "1-qator, 2-ustun elementini"
     ],
     "a": "1-qator, 2-ustun elementini",
-    "hint": "💡 Birinchi indeks qator, ikkinchisi ustunni bildiradi."
+    "hint": "💡 Indekslash 0 dan boshlanadi. matrix[0] — birinchi qator, [1] — shu qatordagi ikkinchi element."
   },
   {
     "q": "2D massivda birinchi indeks nimani bildiradi?",
     "options": ["Ustunni", "Qiymatni", "Hajmni", "Qatorni"],
     "a": "Qatorni",
-    "hint": "💡 matrix[row][column] ko‘rinishida ishlaydi."
+    "hint": "💡 matrix[i][j] formatida 'i' har doim qator raqamini, 'j' esa ustun raqamini bildiradi."
   },
   {
     "q": "Oxirgi qatorni olish uchun qaysi indeks ishlatiladi?",
     "options": ["1", "0", "n", "-1"],
     "a": "-1",
-    "hint": "💡 Python’da -1 oxirgi elementni bildiradi."
+    "hint": "💡 Python'da manfiy indekslash orqadan boshlanadi. -1 indeksi har doim ro'yxatning eng oxirgi elementini (qatorini) qaytaradi."
   },
   {
     "q": "Massiv elementini o‘zgartirish qaysi ko‘rinishda?",
     "options": ["matrix(1,1)=10", "set(matrix)", "change matrix", "matrix[1][1] = 10"],
     "a": "matrix[1][1] = 10",
-    "hint": "💡 List yoki massiv elementiga murojaat qilish uchun kvadrat qavs ishlatiladi: [qator][ustun]."
+    "hint": "💡 Massiv elementini o'zgartirish uchun uning manzili (indeksi) ko'rsatiladi va yangi qiymat o'zlashtiriladi."
   },
   {
     "q": "Yangi qator qo‘shish uchun qaysi metod ishlatiladi?",
     "options": ["add()", "insert()", "push()", "append()"],
     "a": "append()",
-    "hint": "💡 append() list oxiriga yangi element yoki qator qo‘shadi."
+    "hint": "💡 'Append' so'zi inglizchadan 'oxiriga qo'shish' deb tarjima qilinadi. U massivning oxiriga yangi qator yoki element qo'shadi."
   },
   {
     "q": "Qatorni o‘chirish qaysi buyruq bilan bajariladi?",
     "options": ["remove matrix", "erase matrix", "poprow()", "del matrix[0]"],
     "a": "del matrix[0]",
-    "hint": "💡 del operatori ko‘rsatilgan indeksdagi element yoki qatorni o‘chiradi."
+    "hint": "💡 'del' (delete) operatori massivdagi ma'lum bir indeksda turgan elementni yoki butun bir qatorni butunlay o'chirib tashlaydi."
   },
   {
     "q": "Massivni to‘liq o‘qish uchun nima ishlatiladi?",
     "options": ["if operatori", "while operatori", "break", "Ichma-ich for sikllar"],
     "a": "Ichma-ich for sikllar",
-    "hint": "💡 2D massivda barcha elementlarni ko‘rish uchun tashqi va ichki for sikl ishlatiladi."
+    "hint": "💡 Ikki o'lchovli massivda (jadvalda) birinchi 'for' qatorlarni, ikkinchi 'for' esa o'sha qatordagi ustunlarni (elementlarni) bittalab o'qib chiqadi."
   },
   {
     "q": "len(matrix) nimani qaytaradi?",
     "options": ["Ustunlar sonini", "Elementlar yig‘indisini", "Oxirgi indeksni", "Qatorlar sonini"],
     "a": "Qatorlar sonini",
-    "hint": "💡 len() tashqi list uzunligini, ya’ni qatorlar sonini beradi."
+    "hint": "💡 Python'da 2D massivga len() funksiyasi qo'llanilsa, u ichki listlar sonini, ya'ni jadvalning qancha qatori borligini ko'rsatadi."
   },
   {
     "q": "Bir o‘lchovli massivga misol qaysi?",
     "options": ["[[1,2],[3,4]]", "{1:2}", "(1,2,3)", "[1, 2, 3, 4]"],
     "a": "[1, 2, 3, 4]",
-    "hint": "💡 Bu oddiy ro‘yxat (list) bo‘lib, bir o‘lchovli massiv hisoblanadi."
+    "hint": "💡 Bir o'lchovli massiv (vektor) — bu faqat bitta qatordan iborat bo'lgan oddiy ro'yxatdir."
   },
   {
     "q": "NumPy kutubxonasi nima uchun ishlatiladi?",
@@ -6128,13 +6355,13 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Massivlar va matematik amallar uchun"
     ],
     "a": "Massivlar va matematik amallar uchun",
-    "hint": "💡 NumPy tezkor massivlar va matematik hisoblashlar uchun ishlatiladi."
+    "hint": "💡 NumPy (Numerical Python) — katta hajmdagi massivlar bilan tezkor matematik hisob-kitoblarni bajaruvchi eng mashhur kutubxonadir."
   },
   {
     "q": "NumPy asosiy obyekt nomi?",
     "options": ["arraylist", "matrix2d", "vector", "ndarray"],
     "a": "ndarray",
-    "hint": "💡 NumPy massivlari ndarray (N-dimensional array) deb ataladi."
+    "hint": "💡 'ndarray' — bu 'n-dimensional array' (n-o'lchovli massiv) so'zining qisqartmasi bo'lib, NumPy'ning asosiy ma'lumot tuzilmasi hisoblanadi."
   },
   {
     "q": "Massivni transponirlash nimani bildiradi?",
@@ -6145,7 +6372,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Qator va ustunlarni almashtirish"
     ],
     "a": "Qator va ustunlarni almashtirish",
-    "hint": "💡 Transponirlashda satrlar ustunlarga, ustunlar satrlarga aylanadi."
+    "hint": "💡 Matritsani transponirlashda uning qatorlari ustun bo'lib, ustunlari esa qator bo'lib qoladi."
   },
   {
     "q": "Matrisani ko‘paytirish nimani talab qiladi?",
@@ -6156,7 +6383,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Qator va ustunlar mosligini"
     ],
     "a": "Qator va ustunlar mosligini",
-    "hint": "💡 Birinchi matritsa ustunlari soni ikkinchisining qatorlari soniga teng bo‘lishi kerak."
+    "hint": "💡 Ikki matritsani ko'paytirish uchun birinchi matritsaning ustunlar soni ikkinchi matritsaning qatorlar soniga teng bo'lishi shart."
   },
   {
     "q": "SciPy kutubxonasi qaysi sohada ishlatiladi?",
@@ -6167,10 +6394,10 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Ilmiy va matematik hisob-kitoblarda"
     ],
     "a": "Ilmiy va matematik hisob-kitoblarda",
-    "hint": "💡 SciPy ilmiy hisoblash, optimizatsiya va statistikada ishlatiladi."
+    "hint": "💡 SciPy (Scientific Python) NumPy ustiga qurilgan bo'lib, optimallashtirish, integrallash va statistika kabi murakkab ilmiy masalalar uchun ishlatiladi."
   },
   {
-    "q": "np.mean(arr) nimani hisoblaydi?",
+    "q": "Quyidagi kod nimani hisoblaydi? np.mean(arr)",
     "options": [
       "Maksimumni",
       "Minimumni",
@@ -6178,7 +6405,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "O‘rta arifmetik qiymatni"
     ],
     "a": "O‘rta arifmetik qiymatni",
-    "hint": "💡 mean — massiv elementlarining o‘rtacha qiymatini hisoblaydi."
+    "hint": "💡 'Mean' inglizchadan 'o'rtacha' degan ma'noni anglatadi. U barcha elementlar yig'indisini ularning soniga bo'lib beradi."
   },
   {
     "q": "arr[4] = mean_value nimani anglatadi?",
@@ -6189,13 +6416,13 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "5-elementni o‘rta qiymatga almashtirish"
     ],
     "a": "5-elementni o‘rta qiymatga almashtirish",
-    "hint": "💡 Indeks 4 — beshinchi element, unga yangi qiymat berilmoqda."
+    "hint": "💡 Indeks 0 dan boshlangani uchun arr[4] massivning 5-elementini bildiradi. Unga yangi qiymat o'zlashtirilmoqda."
   },
   {
     "q": "Juft sonni aniqlash sharti qaysi?",
     "options": ["a[i] / 2 == 0", "a[i] == 2", "a[i] > 0", "a[i] % 2 == 0"],
     "a": "a[i] % 2 == 0",
-    "hint": "💡 Son 2 ga qoldiqsiz bo‘linsa, u juft hisoblanadi."
+    "hint": "💡 Sonni 2 ga bo'lgandagi qoldiq (%) 0 bo'lsa, bu son albatta juft son hisoblanadi."
   },
   {
     "q": "for i in range(n): nimani bildiradi?",
@@ -6206,7 +6433,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Qatorlar bo‘yicha yurishni"
     ],
     "a": "Qatorlar bo‘yicha yurishni",
-    "hint": "💡 Bu sikl indekslar bo‘yicha ketma-ket yurishni bildiradi."
+    "hint": "💡 range(n) sikli odatda 2D massivlarda qatorlar indeksi bo'ylab tartib bilan harakatlanish uchun ishlatiladi."
   },
   {
     "q": "2D massivdagi elementlar yig‘indisi qanday topiladi?",
@@ -6217,7 +6444,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Ichma-ich sikllar yordamida"
     ],
     "a": "Ichma-ich sikllar yordamida",
-    "hint": "💡 Har bir qator va ustun bo‘ylab yurib, qiymatlar qo‘shiladi."
+    "hint": "💡 Barcha elementlarni qo'shib chiqish uchun jadvalning har bir qatoriga kirib, undagi har bir sonni bittalab yig'ish kerak."
   },
   {
     "q": "NumPy va Pandas birgalikda nima beradi?",
@@ -6228,7 +6455,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Kuchli ma’lumotlar tahlilini"
     ],
     "a": "Kuchli ma’lumotlar tahlilini",
-    "hint": "💡 Bu kutubxonalar katta hajmdagi ma’lumotlarni tahlil qilishda ishlatiladi."
+    "hint": "💡 NumPy matematik asosni, Pandas esa ma'lumotlarni jadvallar (DataFrame) shaklida tahlil qilish imkonini beradi."
   },
   {
     "q": "NumPy nima?",
@@ -6239,19 +6466,19 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Ilmiy hisoblashlar uchun mo‘ljallangan Python kutubxonasi"
     ],
     "a": "Ilmiy hisoblashlar uchun mo‘ljallangan Python kutubxonasi",
-    "hint": "💡 NumPy tezkor matematik va massiv hisoblashlar uchun ishlatiladi."
+    "hint": "💡 NumPy — bu Python'da vektor va matritsalar bilan yuqori tezlikda ishlash imkonini beruvchi eng fundamental kutubxonadir."
   },
   {
     "q": "NumPy kutubxonasini o‘rnatish buyrug‘i qaysi?",
     "options": ["install numpy", "python numpy", "add numpy", "pip install numpy"],
     "a": "pip install numpy",
-    "hint": "💡 pip — Python paket menejeri, u orqali NumPy o‘rnatiladi."
+    "hint": "💡 Python'da kutubxonalarni o'rnatish uchun standart 'pip' paket menejeridan foydalaniladi."
   },
   {
     "q": "NumPy’ni dasturga import qilishning to‘g‘ri usuli qaysi?",
     "options": ["include numpy", "using numpy", "load numpy", "import numpy as np"],
     "a": "import numpy as np",
-    "hint": "💡 Odatda numpy qisqa qilib np deb import qilinadi."
+    "hint": "💡 'as np' qismi NumPy'ni qisqa nom bilan chaqirish imkonini beradi, bu esa kod yozishni tezlashtiradi."
   },
   {
     "q": "NumPy massivlari Python listlaridan nimasi bilan farq qiladi?",
@@ -6262,10 +6489,10 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Bir xil turdagi ma’lumotlarni saqlaydi"
     ],
     "a": "Bir xil turdagi ma’lumotlarni saqlaydi",
-    "hint": "💡 NumPy massivlari odatda bir xil tipdagi ma’lumotlardan iborat bo‘ladi va tez ishlaydi."
+    "hint": "💡 NumPy massivlari bir xil tipdagi ma'lumotlarni saqlagani uchun xotiradan kam joy oladi va Python listlariga qaraganda ancha tez ishlaydi."
   },
   {
-    "q": "np.array([1, 2, 3, 4]) nimani yaratadi?",
+    "q": "Quyidagi kod nimani yaratadi? np.array([1, 2, 3, 4])",
     "options": [
       "Ikki o‘lchovli massiv",
       "Funksiya",
@@ -6273,31 +6500,31 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Bir o‘lchovli massiv"
     ],
     "a": "Bir o‘lchovli massiv",
-    "hint": "💡 Bu bir o‘lchovli NumPy massivi."
+    "hint": "💡 Bu yerda faqat bitta list uzatilmoqda, demak natija bir o'lchovli vektor bo'ladi."
   },
   {
-    "q": "np.zeros(5) nima yaratadi?",
+    "q": "Nollardan iborat 5 ta elementli massiv qaysi funksiya bilan yaratiladi?",
     "options": ["np.ones(5)", "np.empty(5)", "np.full(5)", "np.zeros(5)"],
     "a": "np.zeros(5)",
-    "hint": "💡 5 ta elementdan iborat, hammasi 0 bo‘lgan massiv."
+    "hint": "💡 'Zeros' so'zi inglizchadan 'nollar' degan ma'noni anglatadi. U ko'rsatilgan miqdorda nollardan iborat massiv yaratadi."
   },
   {
-    "q": "np.eye(3) nima yaratadi?",
+    "q": "3×3 birlik (identity) matritsa qaysi funksiya bilan yaratiladi?",
     "options": ["np.zeros(3)", "np.ones(3)", "np.identity(1)", "np.eye(3)"],
     "a": "np.eye(3)",
-    "hint": "💡 3x3 birlik (identity) matritsa hosil qiladi."
+    "hint": "💡 np.eye() funksiyasi diagonal bo'ylab 1 sonlari, qolgan joylari esa 0 bo'lgan kvadrat matritsa yaratadi."
   },
   {
     "q": "Massiv o‘lchamini ko‘rsatuvchi xususiyat qaysi?",
     "options": ["size", "dtype", "ndim", "shape"],
     "a": "shape",
-    "hint": "💡 shape massivning o‘lchamlarini (qator, ustun) ko‘rsatadi."
+    "hint": "💡 'Shape' massivda nechta qator va nechta ustun borligini ko'rsatuvchi kortej (tuple) qaytaradi."
   },
   {
     "q": "Massivning o‘lchovlar sonini aniqlovchi xususiyat?",
     "options": ["shape", "size", "itemsize", "ndim"],
     "a": "ndim",
-    "hint": "💡 ndim massiv nechta o‘lchovga ega ekanini bildiradi."
+    "hint": "💡 'ndim' (number of dimensions) massivning necha o'lchovli (1D, 2D yoki 3D) ekanligini raqam ko'rinishida ko'rsatadi."
   },
   {
     "q": "arr.size nimani bildiradi?",
@@ -6308,13 +6535,13 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Massivdagi elementlar sonini"
     ],
     "a": "Massivdagi elementlar sonini",
-    "hint": "💡 size barcha elementlar sonini beradi."
+    "hint": "💡 'Size' massivning shaklidan qat'i nazar, uning ichidagi barcha elementlarning umumiy sonini hisoblab beradi."
   },
   {
     "q": "Massiv elementiga murojaat qilishning to‘g‘ri ko‘rinishi qaysi?",
     "options": ["arr(0)", "arr{0}", "arr<0>", "arr[0]"],
     "a": "arr[0]",
-    "hint": "💡 Indeks orqali murojaat qilish kvadrat qavs bilan amalga oshiriladi."
+    "hint": "💡 Python va NumPy'da elementlarga murojaat qilish uchun har doim to'rtburchak qavslardan [] foydalaniladi."
   },
   {
     "q": "2D massivda elementga murojaat qilish qaysi ko‘rinishda?",
@@ -6325,10 +6552,10 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "matrix[1, 2]"
     ],
     "a": "matrix[1, 2]",
-    "hint": "💡 NumPy’da vergul bilan indekslash mumkin: [qator, ustun]."
+    "hint": "💡 NumPy'da 2D massiv elementini olish uchun qator va ustun indekslari vergul bilan ajratilgan holda bitta qavs ichida yozilishi mumkin."
   },
   {
-    "q": "arr[2:5] nimani qaytaradi?",
+    "q": "Quyidagi kesma nimani qaytaradi? arr[2:5]",
     "options": [
       "2-indeksdan 5-indeksgacha",
       "Faqat 2-indeksni",
@@ -6336,7 +6563,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "2-indeksdan 4-indeksgacha bo‘lgan elementlarni"
     ],
     "a": "2-indeksdan 4-indeksgacha bo‘lgan elementlarni",
-    "hint": "💡 Python slicing oxirgi indeksni o‘z ichiga olmaydi."
+    "hint": "💡 Kesishda (slicing) birinchi indeks kiradi, lekin oxirgi indeks (5) natijaga kirmaydi."
   },
   {
     "q": "arr[::2] nimani bildiradi?",
@@ -6347,15 +6574,165 @@ if (fs.existsSync(SUBJECTS_FILE)) {
       "Har ikkinchi elementni olish"
     ],
     "a": "Har ikkinchi elementni olish",
-    "hint": "💡 Qadam 2 bo‘lgani uchun har ikkinchi element olinadi."
+    "hint": "💡 'start:stop:step' formatida uchinchi raqam qadamni bildiradi. 2 qadami har ikkinchi elementni tanlab olishni anglatadi."
   },
   {
     "q": "np.arange(1, 5) natijasi qaysi?",
     "options": ["[1, 2, 3, 4, 5]", "[0, 1, 2, 3, 4]", "[5]", "[1, 2, 3, 4]"],
     "a": "[1, 2, 3, 4]",
-    "hint": "💡 1 dan boshlanadi va 5 ga yetmasdan to‘xtaydi."
+    "hint": "💡 np.arange() funksiyasi range() kabi ishlaydi: boshlang'ich qiymat (1) kiradi, lekin oxirgi qiymat (5) natijaga kirmaydi."
   },
-]
+  {
+    "q": "Python’da o‘zgaruvchi nomi nimadan boshlanishi mumkin?",
+    "options": [
+      "Raqamdan",
+      "Maxsus belgidan (#, @, !)",
+      "Harf yoki pastki chiziq (_) dan",
+      "Bo‘sh joydan"
+    ],
+    "a": "Harf yoki pastki chiziq (_) dan",
+    "hint": "💡 Python’da o‘zgaruvchi nomi harf (a–z, A–Z) yoki pastki chiziq (_) bilan boshlanishi mumkin. Raqam bilan boshlash mumkin emas."
+  },
+  {
+    "q": "Quyidagi dastur natijasini toping:\na = 1\nb = 2\nc = 3\ntemp = a\na = b\nb = c\nc = temp\nprint(a, b, c)",
+    "options": [
+      "1 2 3",
+      "3 2 1",
+      "2 3 1",
+      "2 1 3"
+    ],
+    "a": "2 3 1",
+    "hint": "💡 Bu yerda qiymatlar vaqtinchalik 'temp' o‘zgaruvchisi orqali aylantirilmoqda: a→b, b→c, c→a."
+  },
+  {
+    "q": "Chiziqli algoritm qanday algoritm hisoblanadi?",
+    "options": [
+      "Shart asosida turli yo‘nalishga bo‘linadigan algoritm",
+      "Buyruqlari faqat bir marta va ketma-ket bajariladigan algoritm",
+      "Bir amal ko‘p marta takrorlanadigan algoritm",
+      "Faqat matematik hisob-kitob qiladigan algoritm"
+    ],
+    "a": "Buyruqlari faqat bir marta va ketma-ket bajariladigan algoritm",
+    "hint": "💡 Chiziqli algoritmda barcha amallar boshidan oxirigacha hech qanday shartsiz va takrorlanishsiz ketma-ket bajariladi."
+  },
+  {
+    "q": "Tarmoqlanuvchi algoritmning asosiy belgisi nima?",
+    "options": [
+      "Buyruqlar doim bir xil tartibda bajariladi",
+      "Amallar cheksiz davom etadi",
+      "Shartga bog‘liq holda bajarilish yo‘li tanlanadi",
+      "Faqat sonlar bilan ishlaydi"
+    ],
+    "a": "Shartga bog‘liq holda bajarilish yo‘li tanlanadi",
+    "hint": "💡 Tarmoqlanish degani — masala yechimi davomida 'agar shunday bo‘lsa — bunday, aks holda — boshqacha' yo‘l tanlanishi."
+  },
+  {
+    "q": "Takrorlanuvchi algoritm qaysi holatda ishlatiladi?",
+    "options": [
+      "Faqat bitta amal bajarish kerak bo‘lsa",
+      "Shart bajarilguncha bir xil amallar qayta-qayta bajarilganda",
+      "Hech qanday shart bo‘lmaganda",
+      "Faqat natijani chiqarishda"
+    ],
+    "a": "Shart bajarilguncha bir xil amallar qayta-qayta bajarilganda",
+    "hint": "💡 Takrorlanuvchi (siklik) algoritmlar bir xil turdagi ishlarni ko‘p marta bajarish kerak bo‘lganda ishlatiladi. Masalan: 1 dan 100 gacha sonlarni chiqarish."
+  },
+  {
+    "q": "Python’da izoh (kommentariya) yozish uchun qaysi belgi ishlatiladi?",
+    "options": ["//", "/* */", "#", "--"],
+    "a": "#",
+    "hint": "💡 # belgidan keyin yozilgan matn Python tomonidan bajarilmaydi, faqat tushuntirish uchun xizmat qiladi."
+  },
+  {
+    "q": "Quyidagi ifoda natijasi nima? print(2 ** 3)",
+    "options": ["6", "8", "9", "5"],
+    "a": "8",
+    "hint": "💡 ** operatori darajaga oshirishni bildiradi. 2 ning 3-darajasi = 2×2×2 = 8."
+  },
+  {
+    "q": "Quyidagi ifoda natijasi nima? print(7 // 2)",
+    "options": ["3.5", "3", "4", "2"],
+    "a": "3",
+    "hint": "💡 // butun bo‘lish operatori. 7 ni 2 ga bo‘lganda butun qismi 3 bo‘ladi."
+  },
+  {
+    "q": "Quyidagi ifoda natijasi nima? print(7 % 2)",
+    "options": ["3", "1", "2", "0"],
+    "a": "1",
+    "hint": "💡 % operatori qoldiqni beradi. 7 ni 2 ga bo‘lganda qoldiq 1."
+  },
+  {
+    "q": "list(range(3)) natijasi nima bo‘ladi?",
+    "options": ["[1,2,3]", "[0,1,2]", "[0,1,2,3]", "[3]"],
+    "a": "[0,1,2]",
+    "hint": "💡 range(3) 0 dan boshlanadi va 3 gacha boradi, lekin 3 ning o‘zi kirmaydi."
+  },
+  {
+    "q": "Quyidagilardan qaysi biri ro‘yxat (list) hisoblanadi?",
+    "options": ["{1,2,3}", "(1,2,3)", "[1,2,3]", "<1,2,3>"],
+    "a": "[1,2,3]",
+    "hint": "💡 Python’da listlar kvadrat qavslar [ ] bilan yoziladi."
+  },
+  {
+    "q": "len([1,2,3,4]) natijasi nima?",
+    "options": ["3", "4", "5", "1"],
+    "a": "4",
+    "hint": "💡 len() funksiyasi ro‘yxat ichidagi elementlar sonini qaytaradi."
+  },
+  {
+    "q": "Quyidagi kod natijasi nima? a = [1,2,3]; a.append(4); print(a)",
+    "options": ["[1,2,3]", "[1,2,3,4]", "[4,1,2,3]", "Error"],
+    "a": "[1,2,3,4]",
+    "hint": "💡 append() ro‘yxat oxiriga yangi element qo‘shadi."
+  },
+  {
+    "q": "Quyidagi kod natijasi nima? a = [1,2,3]; a.pop(); print(a)",
+    "options": ["[1,2]", "[1,2,3]", "[2,3]", "Error"],
+    "a": "[1,2]",
+    "hint": "💡 pop() oxirgi elementni o‘chiradi. 3 olib tashlanadi."
+  },
+  {
+    "q": "Quyidagi shart qachon True bo‘ladi? len(s) == 0",
+    "options": [
+      "s son bo‘lsa",
+      "s bo‘sh satr bo‘lsa",
+      "s ro‘yxat bo‘lsa",
+      "s musbat bo‘lsa"
+    ],
+    "a": "s bo‘sh satr bo‘lsa",
+    "hint": "💡 Uzunligi 0 bo‘lgan satr yoki ro‘yxat — bo‘sh (empty) hisoblanadi."
+  },
+  {
+    "q": "Quyidagi kod natijasi nima? print(type(5.0))",
+    "options": ["int", "float", "str", "bool"],
+    "a": "float",
+    "hint": "💡 5.0 nuqtali son bo‘lgani uchun float turiga kiradi."
+  },
+  {
+    "q": "Quyidagi kod natijasi nima? print(type(\"5\"))",
+    "options": ["int", "float", "str", "char"],
+    "a": "str",
+    "hint": "💡 Qo‘shtirnoq ichidagi har qanday narsa matn (string) hisoblanadi."
+  },
+  {
+    "q": "Quyidagi kod natijasi nima? print(bool(0))",
+    "options": ["True", "False", "0", "Error"],
+    "a": "False",
+    "hint": "💡 Python’da 0 qiymati mantiqiy jihatdan False deb qabul qilinadi."
+  },
+  {
+    "q": "Quyidagi kod natijasi nima? print(bool(5))",
+    "options": ["True", "False", "5", "Error"],
+    "a": "True",
+    "hint": "💡 Nolga teng bo‘lmagan har qanday son True deb baholanadi."
+  },
+  {
+    "q": "Quyidagi kod natijasi nima? a = \"Salom\"; print(a[0])",
+    "options": ["S", "a", "Salom", "Error"],
+    "a": "S",
+    "hint": "💡 Indekslar 0 dan boshlanadi. a[0] satrning birinchi harfini beradi."
+  },
+     ]
 
   },
   physics: {
