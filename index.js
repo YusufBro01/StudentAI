@@ -5364,7 +5364,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
 
 
     ]
-  },
+    },
   dasturlash: { 
     name: "💻 Dasturlash 1", 
     questions: [
@@ -9923,11 +9923,17 @@ async function sendQuestion(ctx, isNew = false) {
         return ctx.replyWithHTML(finishMsg, Markup.keyboard([["⚡️ Blitz (25)", "📝 To'liq test"], ["⬅️ Orqaga (Fanlar)"]]).resize());
     }
 
+    // 🛑 XATOLIKNI OLDINI OLISH (LOGDAGI XATO UCHUN):
     const qData = s.activeList[s.index];
+    if (!qData || !qData.q) {
+        console.error(`Xato: Savol topilmadi! Index: ${s.index}`);
+        s.index++; // Keyingi savolga o'tkazib yuboramiz
+        return sendQuestion(ctx, true);
+    }
+
     const safeQuestion = escapeHTML(qData.q);
     const progress = getProgressBar(s.index + 1, s.activeList.length);
     
-    // Rasm yo'lini tekshirish (images papkasida bo'lishi kerak)
     const imagePath = qData.image ? `./images/${qData.image}` : null;
     const hasImage = imagePath && fs.existsSync(imagePath);
 
@@ -9960,25 +9966,23 @@ async function sendQuestion(ctx, isNew = false) {
     // ==========================================
     // 📝 ODDIY TEST REJIMI
     // ==========================================
+    
+    // ⏱ VAQTNI SOZLASH: Har bir userning shaxsiy vaqtini olamiz (yoki botSettings)
+    const currentTimeLimit = s.userTimeLimit || botSettings.timeLimit || 30;
+
     s.currentOptions = shuffle([...qData.options]);
     const labels = ['A', 'B', 'C', 'D'];
 
     let text = `📊 Progress: [${progress}]\n🔢 Savol: <b>${s.index + 1} / ${s.activeList.length}</b>\n` +
-               `⏱ <b>VAQT: ${botSettings.timeLimit}s</b>\n\n❓ <b>${safeQuestion}</b>\n\n`;
+               `⏱ <b>VAQT: ${currentTimeLimit}s</b>\n\n❓ <b>${safeQuestion}</b>\n\n`;
 
     s.currentOptions.forEach((opt, i) => { text += `<b>${labels[i]})</b> ${escapeHTML(opt)}\n\n`; });
 
    const inlineButtons = Markup.inlineKeyboard([
-        // A, B, C, D javoblar qatori
         s.currentOptions.map((_, i) => Markup.button.callback(labels[i], `ans_${i}`)),
-        
-        // Yangi qo'shilgan Tushuntirish tugmasi (Alohida qatorda)
         [Markup.button.callback("💡 Tushuntirish", "show_explanation")], 
-        
-        // Testni to'xtatish qatori
         [Markup.button.callback("🛑 Testni to'xtatish", "stop_test")]
     ]);
-
 
     if (hasImage) {
         await ctx.replyWithPhoto({ source: imagePath }, { caption: text, parse_mode: 'HTML', ...inlineButtons });
@@ -9999,7 +10003,7 @@ async function sendQuestion(ctx, isNew = false) {
             await ctx.replyWithHTML(`⏰ <b>VAQT TUGADI!</b>`);
             sendQuestion(ctx, true);
         }
-    }, botSettings.timeLimit * 1000);
+    }, currentTimeLimit * 1000); // 👈 Bu yerda ham currentTimeLimit ishlatiladi
 }
 
 async function checkSubscription(ctx) {
