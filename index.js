@@ -9575,51 +9575,67 @@ bot.action("show_explanation", async (ctx) => {
     const userId = ctx.from.id;
     const db = getDb();
     
-    // Foydalanuvchi ma'lumotlarini tekshirish (null bo'lmasligi uchun)
     const user = db.users[userId] || {};
     const isUserVip = user.isVip;
-    const isUserAdmin = (userId === Number(ADMIN_ID)); // ADMIN_ID raqam ekanligiga ishonch hosil qiling
+    const isUserAdmin = (userId === Number(ADMIN_ID));
 
     // 1. VIP tekshiruvi
     if (!isUserVip && !isUserAdmin) {
-        await ctx.answerCbQuery("🔒 Faqat VIP a'zolar uchun!");
-        
+        await ctx.answerCbQuery("🔒 Faqat VIP a'zolar uchun!", { show_alert: true });
         return ctx.replyWithHTML(
             `⭐ <b>DIQQAT: Tushuntirishlar faqat VIP a'zolar uchun!</b>\n\n` +
-            `Har bir savolning batafsil yechimi va tushuntirishini ko'rish uchun VIP statusini sotib olishingiz kerak.\n\n` +
-            `💎 <b>VIP afzalliklari:</b>\n` +
-            `• Barcha testlar tushuntirishi bilan\n` +
-            `• Reklamasiz va cheklovsiz foydalanish\n` +
-            `• Maxsus yopiq guruhga a'zolik`,
-            Markup.inlineKeyboard([
-                [Markup.button.callback("💎 VIP sotib olish", "buy_vip")]
-            ])
+            `Yechimlarni ko'rish uchun VIP statusini sotib oling.`,
+            Markup.inlineKeyboard([[Markup.button.callback("💎 VIP sotib olish", "buy_vip")]])
         );
     }
 
-    // 2. Savolni sessiyadan olish
+    // 2. Savolni olish
     const qData = s.activeList && s.activeList[s.index];
-    if (!qData) return ctx.answerCbQuery("Xatolik: Savol topilmadi.", { show_alert: true });
+    if (!qData) return ctx.answerCbQuery("Xatolik: Savol topilmadi.");
 
-    // 3. Tushuntirish (hint) mavjudligini tekshirish
+    // 3. Tushuntirish borligini tekshirish
     if (qData.hint && qData.hint.trim() !== "") {
-        await ctx.answerCbQuery("🔍 Yuklanmoqda...");
+        await ctx.answerCbQuery("🔍 Tushuntirish qo'shildi");
+
+        const progress = getProgressBar(s.index + 1, s.activeList.length);
+        const safeQuestion = escapeHTML(qData.q);
         
-        return ctx.replyWithHTML(
-            `━━━━━━━━━━━━━━\n` +
-            `💡 <b>VIP TUSHUNTIRISH:</b>\n\n` +
-            `${qData.hint}\n` +
-            `━━━━━━━━━━━━━━`,
-            Markup.inlineKeyboard([
-                [Markup.button.callback("✅ Tushundim", "close_explanation")]
-            ])
-        );
+        // Asosiy matnni yig'amiz
+        let updatedText = `📊 Progress: [${progress}]\n` +
+                          `🔢 Savol: <b>${s.index + 1} / ${s.activeList.length}</b>\n\n` +
+                          `❓ <b>${safeQuestion}</b>\n\n` +
+                          `━━━━━━━━━━━━━━\n` +
+                          `💡 <b>TUSHUNTIRISH:</b>\n${escapeHTML(qData.hint)}\n` +
+                          `━━━━━━━━━━━━━━\n\n`;
+
+        // Agar test rejimida bo'lsa variantlarni ham qayta yozamiz
+        if (!s.isTurbo) {
+            const labels = ['A', 'B', 'C', 'D'];
+            const options = s.currentOptions || [];
+            options.forEach((opt, i) => {
+                updatedText += `<b>${labels[i]})</b> ${escapeHTML(opt)}\n\n`;
+            });
+        } else {
+            // Turbo rejimda to'g'ri javobni ko'rsatamiz
+            updatedText += `✅ <b>TO'G'RI JAVOB:</b>\n<code>${escapeHTML(qData.a)}</code>\n`;
+        }
+
+        // Tugmalarni o'zgarishsiz qoldirish uchun xabardan olamiz
+        const keyboard = ctx.callbackQuery.message.reply_markup;
+
+        try {
+            // Agar rasm bo'lsa editMessageCaption, matn bo'lsa editMessageText ishlatiladi
+            if (ctx.callbackQuery.message.photo) {
+                await ctx.editMessageCaption(updatedText, { parse_mode: 'HTML', reply_markup: keyboard });
+            } else {
+                await ctx.editMessageText(updatedText, { parse_mode: 'HTML', reply_markup: keyboard });
+            }
+        } catch (e) {
+            // Agar foydalanuvchi tugmani 2 marta bossa va matn o'zgarmasa xato bermasligi uchun
+            console.log("Xabarni tahrirlashda xatolik yoki matn o'zgarmagan.");
+        }
     } else {
-        // Agar tushuntirish matni yo'q bo'lsa
-        return ctx.answerCbQuery(
-            "⚠️ Ushbu savol uchun tushuntirish hali yuklanmagan.\nTez orada adminlar tomonidan qo'shiladi!", 
-            { show_alert: true }
-        );
+        return ctx.answerCbQuery("⚠️ Bu savolga tushuntirish hali qo'shilmagan.", { show_alert: true });
     }
 });
 
@@ -10251,7 +10267,7 @@ bot.action('buy_vip', (ctx) => {
         `💎 <b>VIP STATUS SOTIB OLISH</b>\n\n` +
         `💳 Karta: <code>4073420058363577</code>\n` +
         `👤 Egasi: M.M\n` +
-        `💰 Summa: 5,000 so'm\n\n` +
+        `💰 Summa: 3,199 so'm\n\n` +
         `📸 To'lovni amalga oshirgach, <b>chekni (rasm ko'rinishida)</b> shu yerga yuboring.`
     );
 });
