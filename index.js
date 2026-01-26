@@ -9909,31 +9909,58 @@ async function sendQuestion(ctx, isNew = false) {
     const userId = ctx.from.id;
     if (timers[userId]) clearTimeout(timers[userId]);
 
-    // 1. Test yoki Yodlash tugashi
+    // ==========================================
+    // 🏁 1. TEST YAKUNLANISHI VA TAHLIL QISMI
+    // ==========================================
     if (s.index >= s.activeList.length) {
         if (!s.isTurbo) {
             updateGlobalScore(userId, s.userName, ctx.from.username, s.score);
         }
         
-        let finishMsg = s.isTurbo 
-            ? `🏁 <b>Turbo yodlash yakunlandi!</b>\n\nBarcha savollarni ko'rib chiqdingiz.`
-            : `🏁 <b>Test yakunlandi, ${s.userName}!</b>\n\n✅ Natija: <b>${s.score.toFixed(1)} ball</b>`;
+        // Asosiy natija sarlavhasi
+        let resultMsg = s.isTurbo 
+            ? `🏁 <b>Turbo yodlash yakunlandi!</b>`
+            : `🏁 <b>Test yakunlandi, ${s.userName}!</b>\n\n` +
+              `✅ To'g'ri javob: <b>${s.score} ta</b>\n` +
+              `❌ Xato javob: <b>${s.wrongs.length} ta</b>\n` +
+              `📊 Natija: <b>${((s.score / s.activeList.length) * 100).toFixed(1)}%</b>\n` +
+              `_________________________\n\n`;
+
+        // 📝 XATOLAR TAHLILINI QO'SHAMIZ
+        if (s.wrongs.length > 0 && !s.isTurbo) {
+            resultMsg += `⚠️ <b>Xatolar tahlili:</b>\n\n`;
+            
+            s.wrongs.forEach((xato, i) => {
+                 resultMsg += `<b>${i + 1}.</b> ${escapeHTML(xato.q)}\n` +
+                 `❌ Siz tanladingiz: <s>${escapeHTML(xato.userAnswer || "Vaqt tugadi")}</s>\n` +
+                 `✅ To'g'ri javob: <u>${escapeHTML(xato.a)}</u>\n` +
+                 `_________________________\n\n`;
+});
+        } else if (!s.isTurbo) {
+            resultMsg += `🌟 <b>Ajoyib! Hech qanday xato qilmadingiz!</b>\n`;
+        }
+
+        // Telegram xabari limiti (4096 belgi) oshib ketmasligi uchun tekshiruv
+        if (resultMsg.length > 4000) {
+            resultMsg = resultMsg.substring(0, 3950) + "\n\n...(Xatolar ko'p, hammasi sig'madi)";
+        }
 
         s.isTurbo = false;
-        return ctx.replyWithHTML(finishMsg, Markup.keyboard([["⚡️ Blitz (25)", "📝 To'liq test"], ["⬅️ Orqaga (Fanlar)"]]).resize());
+        return ctx.replyWithHTML(resultMsg, Markup.keyboard([
+            ["⚡️ Blitz (25)", "📝 To'liq test"], 
+            ["⬅️ Orqaga (Fanlar)"]
+        ]).resize());
     }
 
-    // 🛑 XATOLIKNI OLDINI OLISH (LOGDAGI XATO UCHUN):
+    // 🛑 XATOLIKDAN HIMOYA
     const qData = s.activeList[s.index];
     if (!qData || !qData.q) {
-        console.error(`Xato: Savol topilmadi! Index: ${s.index}`);
-        s.index++; // Keyingi savolga o'tkazib yuboramiz
+        s.index++;
         return sendQuestion(ctx, true);
     }
 
     const safeQuestion = escapeHTML(qData.q);
     const progress = getProgressBar(s.index + 1, s.activeList.length);
-    
     const imagePath = qData.image ? `./images/${qData.image}` : null;
     const hasImage = imagePath && fs.existsSync(imagePath);
 
@@ -9954,7 +9981,6 @@ async function sendQuestion(ctx, isNew = false) {
         if (hasImage) {
             return await ctx.replyWithPhoto({ source: imagePath }, { caption: turboText, parse_mode: 'HTML', ...turboButtons });
         }
-
         try {
             if (isNew) return await ctx.replyWithHTML(turboText, turboButtons);
             return await ctx.editMessageText(turboText, { parse_mode: 'HTML', ...turboButtons });
@@ -9966,10 +9992,7 @@ async function sendQuestion(ctx, isNew = false) {
     // ==========================================
     // 📝 ODDIY TEST REJIMI
     // ==========================================
-    
-    // ⏱ VAQTNI SOZLASH: Har bir userning shaxsiy vaqtini olamiz (yoki botSettings)
     const currentTimeLimit = s.userTimeLimit || botSettings.timeLimit || 30;
-
     s.currentOptions = shuffle([...qData.options]);
     const labels = ['A', 'B', 'C', 'D'];
 
@@ -9978,7 +10001,7 @@ async function sendQuestion(ctx, isNew = false) {
 
     s.currentOptions.forEach((opt, i) => { text += `<b>${labels[i]})</b> ${escapeHTML(opt)}\n\n`; });
 
-   const inlineButtons = Markup.inlineKeyboard([
+    const inlineButtons = Markup.inlineKeyboard([
         s.currentOptions.map((_, i) => Markup.button.callback(labels[i], `ans_${i}`)),
         [Markup.button.callback("💡 Tushuntirish", "show_explanation")], 
         [Markup.button.callback("🛑 Testni to'xtatish", "stop_test")]
@@ -9995,15 +10018,16 @@ async function sendQuestion(ctx, isNew = false) {
         }
     }
 
-    // Taymerni o'rnatish
+    // Taymer
     timers[userId] = setTimeout(async () => {
         if (ctx.session && ctx.session.index === s.index && !ctx.session.isTurbo) {
-            ctx.session.wrongs.push(qData);
+            // Vaqt tugaganda xatolarga qo'shish
+            ctx.session.wrongs.push({ ...qData, userAnswer: "Vaqt tugadi ⏰" });
             ctx.session.index++; 
             await ctx.replyWithHTML(`⏰ <b>VAQT TUGADI!</b>`);
             sendQuestion(ctx, true);
         }
-    }, currentTimeLimit * 1000); // 👈 Bu yerda ham currentTimeLimit ishlatiladi
+    }, currentTimeLimit * 1000);
 }
 
 async function checkSubscription(ctx) {
@@ -10792,26 +10816,30 @@ bot.action(/^ans_(\d+)$/, async (ctx) => {
 
     const selIdx = parseInt(ctx.match[1]);
     const currentQ = s.activeList[s.index];
-    const labels = ['A', 'B', 'C', 'D']; // Harflarni aniqlash uchun
+    const labels = ['A', 'B', 'C', 'D']; 
 
     try {
-        if (s.currentOptions[selIdx] === currentQ.a) {
+        const userAnswer = s.currentOptions[selIdx]; // User tanlagan variant matni
+
+        if (userAnswer === currentQ.a) {
             s.score++;
             await ctx.answerCbQuery("✅ To'g'ri!");
         } else {
-            s.wrongs.push(currentQ);
+            // ❌ Xatolar massiviga user tanlagan javobni ham qo'shib saqlaymiz
+            s.wrongs.push({
+                ...currentQ,
+                userAnswer: userAnswer // Tahlil uchun kerak
+            });
             
-            // To'g'ri javob qaysi harf ostida ekanligini topamiz
             const correctIdx = s.currentOptions.indexOf(currentQ.a);
             const correctLetter = labels[correctIdx] || "";
 
-            // Foydalanuvchiga harf va matnni birga ko'rsatamiz
             await ctx.answerCbQuery(`❌ Noto'g'ri!\nTo'g'ri javob: ${correctLetter}) ${currentQ.a}`, { show_alert: true });
         }
 
         s.index++;
         
-        // Agar savollar tugasa, natijani chiqarish funksiyasini chaqiring (masalan finishTest yoki sendQuestion ichidagi logika)
+        // Keyingi savolga yoki natijaga o'tish
         return sendQuestion(ctx, false);
 
     } catch (error) {
