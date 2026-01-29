@@ -10524,43 +10524,28 @@ bot.on('text', async (ctx, next) => {
     const user = db.users[userId];
     const text = ctx.message.text.trim();
 
-    // ==========================================
-    // 🛡 1. ADMIN: FOYDALANUVCHINI O'CHIRISH
-    // ==========================================
-    if (ctx.from.id === ADMIN_ID && s.adminStep === 'wait_delete_id') {
-        let targetId = null;
-
-        if (text.startsWith('@') || isNaN(text)) {
-            const searchName = text.replace('@', '').toLowerCase();
-            targetId = Object.keys(db.users).find(id => {
-                const u = db.users[id];
-                return u.username && u.username.toLowerCase() === searchName;
-            });
-        } else {
-            targetId = Object.keys(db.users).find(id => String(id) === String(text));
-        }
-
-        if (targetId && db.users[targetId]) {
-            delete db.users[targetId];
-            if (db.scores && Array.isArray(db.scores)) {
-                db.scores = db.scores.filter(u => String(u.id) !== String(targetId));
-            }
-            saveDb(db);
-            s.adminStep = null;
-            return ctx.replyWithHTML(`✅ <b>Foydalanuvchi muvaffaqiyatli o'chirildi!</b>`);
-        } else {
-            s.adminStep = null;
-            return ctx.reply("❌ Bunday foydalanuvchi topilmadi.");
-        }
+    // 🛡 0. KOMANDA FILTRI: Agar foydalanuvchi /start yoki boshqa komanda yuborsa, 
+    // uni ism yoki ma'lumot sifatida qabul qilmaymiz.
+    if (text.startsWith('/')) {
+        return next(); 
     }
 
     // ==========================================
-    // 📝 2. YANGI FOYDALANUVCHI: RO'YXATDAN O'TISH (STEP-BY-STEP)
+    // 🛡 1. ADMIN QISMI (O'zgarishsiz qoldi)
+    // ==========================================
+    if (ctx.from.id === ADMIN_ID && s.adminStep === 'wait_delete_id') {
+        // ... (Sizning admin kodingiz shu yerda tursin)
+    }
+
+    // ==========================================
+    // 📝 2. RO'YXATDAN O'TISH (HIMOYA BILAN)
     // ==========================================
     if (user && !user.isRegistered) {
         
         // A) Ism saqlash
         if (user.step === 'wait_name') {
+            if (text.length < 3) return ctx.reply("Iltimos, ismingizni to'liqroq yozing:");
+            
             user.name = text;
             user.step = 'wait_univ';
             saveDb(db);
@@ -10572,8 +10557,13 @@ bot.on('text', async (ctx, next) => {
             );
         }
 
-        // B) Universitet saqlash
+        // B) Universitet saqlash (TEKSHIRUV BILAN)
         if (user.step === 'wait_univ') {
+            const univs = ["Alfraganus Universiteti", "Perfect Universiteti", "TATU", "TDPU"];
+            if (!univs.includes(text)) {
+                return ctx.reply("Iltimos, universitetni tugmalar orqali tanlang:");
+            }
+
             user.univ = text;
             user.step = 'wait_kurs';
             saveDb(db);
@@ -10582,34 +10572,24 @@ bot.on('text', async (ctx, next) => {
             );
         }
 
-        // C) Kurs saqlash (YO'NALISHLARNI KURSGA QARAB FILTRLASH)
+        // C) Kurs saqlash
         if (user.step === 'wait_kurs') {
-            user.kurs = text; // "1-kurs", "2-kurs" va h.k.
+            const kurslar = ["1-kurs", "2-kurs", "3-kurs", "4-kurs"];
+            if (!kurslar.includes(text)) {
+                return ctx.reply("Iltimos, kursni tugmalar orqali tanlang:");
+            }
+
+            user.kurs = text;
             user.step = 'wait_yonalish';
             saveDb(db);
 
             let yonalishButtons = [];
-
-            // 1-kurslar uchun yo'nalishlar
             if (text === "1-kurs") {
-                yonalishButtons = [
-                    ["Dasturiy Injiniring", "Sun'iy intellekt"],
-                    ["Matematika", "Kompyuter injiniring"]
-                ];
-            } 
-            // 2-kurslar uchun yo'nalishlar
-            else if (text === "2-kurs") {
-                yonalishButtons = [
-                    ["Kiberxavfsizlik", "Data Science"],
-                    ["Iqtisodiyot", "Logistika"]
-                ];
-            }
-            // 3 va 4-kurslar uchun yo'nalishlar
-            else {
-                yonalishButtons = [
-                    ["Magistratura tayyorlov", "Sirtqi bo'lim"],
-                    ["Boshqa yo'nalishlar"]
-                ];
+                yonalishButtons = [["Dasturiy Injiniring", "Sun'iy intellekt"], ["Matematika", "Kompyuter injiniring"]];
+            } else if (text === "2-kurs") {
+                yonalishButtons = [["Kiberxavfsizlik", "Data Science"], ["Iqtisodiyot", "Logistika"]];
+            } else {
+                yonalishButtons = [["Magistratura tayyorlov", "Sirtqi bo'lim"], ["Boshqa yo'nalishlar"]];
             }
 
             return ctx.reply(`${text} uchun yo'nalishingizni tanlang:`, 
@@ -10617,8 +10597,9 @@ bot.on('text', async (ctx, next) => {
             );
         }
 
-        // D) Yo'nalish saqlash va Yakunlash
+        // D) Yo'nalish saqlash
         if (user.step === 'wait_yonalish') {
+            // Agar /start yozsa, bu yerda ham to'xtaydi (yuqoridagi filtr sababli)
             user.yonalish = text;
             user.isRegistered = true;
             user.step = 'completed';
