@@ -1409,12 +1409,21 @@ bot.action(/^reject_(\d+)$/, async (ctx) => {
     return ctx.editMessageCaption("❌ To'lov rad etildi.");
 });
 
-bot.launch().then(() => console.log("Bot running..."));
-
-// Portni Railway talab qilgani uchun ochamiz
 const PORT = process.env.PORT || 3000;
-http.createServer((req, res) => { res.end('Bot is running'); }).listen(PORT);
+http.createServer((req, res) => {
+    res.writeHead(200);
+    res.end('Bot is running...');
+}).listen(PORT, '0.0.0.0', () => {
+    console.log(`Server is listening on port ${PORT}`);
+});
 
+bot.launch()
+    .then(() => console.log("✅ Bot successfully started in Telegram!"))
+    .catch((err) => console.error("❌ Bot launch error:", err));
+
+    // Botni to'g'ri to'xtatish uchun (Graceful stop)
+process.once('SIGINT', () => bot.stop('SIGINT'));
+process.once('SIGTERM', () => bot.stop('SIGTERM'));
 
 function escapeHTML(str) {
     if (!str) return "";
