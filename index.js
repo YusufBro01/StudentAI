@@ -230,8 +230,8 @@ function showSubjectMenu(ctx) {
         keyboard.push(["🏆 Musobaqada qatnashish"]);
     }
 // showSubjectMenu ichida:
-keyboard.push(["📊 Reyting", "👤 Profil", "⚙️ Sozlamalar"]);
-
+keyboard.push(["📊 Reyting", "👤 Profil"]); // Birinchi qator
+keyboard.push(["⚙️ Sozlamalar"]);
     const welcomeText = `👤 <b>Foydalanuvchi:</b> ${user.name}\n` +
                         `🏛 <b>OTM:</b> ${user.univ}\n` +
                         `🎓 <b>Yo'nalish:</b> ${user.yonalish}\n\n` +
