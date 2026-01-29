@@ -1,29 +1,29 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "experimentalDecorators": true,
-    "useDefineForClassFields": false,
     "module": "ESNext",
-    "lib": [
-      "ES2022",
-      "DOM",
-      "DOM.Iterable"
-    ],
-    "skipLibCheck": true,
-    "types": [
-      "node"
-    ],
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "moduleResolution": "bundler",
-    "isolatedModules": true,
     "moduleDetection": "force",
-    "allowJs": true,
     "jsx": "react-jsx",
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    },
+
+    /* Xavfsizlik va Strict sozlamalar */
+    "strict": true,
+    "noImplicitAny": false, 
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+
+    /* Bundler uchun maxsus */
     "allowImportingTsExtensions": true,
-    "noEmit": true
-  }
+    "allowJs": true,
+    "isolatedModules": true,
+    "noEmit": true,
+
+    /* Path (Yo'llar) */
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
+  "exclude": ["node_modules"]
 }
