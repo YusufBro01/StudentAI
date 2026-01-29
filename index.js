@@ -1267,8 +1267,22 @@ bot.hears("⬅️ Orqaga (Fanlar)", (ctx) => showSubjectMenu(ctx));
 bot.start(async (ctx) => {
     const db = getDb();
     const userId = ctx.from.id;
+    const user = db.users[userId];
 
-    // Ma'lumotlarni to'liq nollaymiz (Restart)
+    // 1. Agar foydalanuvchi allaqachon ro'yxatdan o'tgan bo'lsa, uni menyuga yuboramiz
+    if (user && user.isRegistered) {
+        await ctx.reply(`Xush kelibsiz, ${user.name}! 😊`);
+        return showSubjectMenu(ctx); // Ma'lumotlarni o'chirmasdan menyuni ko'rsatamiz
+    }
+
+    // 2. Agar foydalanuvchi boshlagan bo'lsa-yu, oxirigacha yetmagan bo'lsa
+    if (user && !user.isRegistered) {
+        user.step = 'wait_name'; 
+        saveDb(db);
+        return ctx.reply("Siz ro'yxatdan o'tishni boshlagan ekansiz. Davom etish uchun ismingizni kiriting:");
+    }
+
+    // 3. Agar mutlaqo yangi foydalanuvchi bo'lsa, birinchi marta yaratamiz
     db.users[userId] = {
         id: userId,
         username: ctx.from.username || "Noma'lum",
@@ -1279,11 +1293,11 @@ bot.start(async (ctx) => {
         score: 0, 
         totalTests: 0,
         step: 'wait_name',
-        isRegistered: false // Bu false bo'lsa, bot hech qanday menyuni ko'rsatmaydi
+        isRegistered: false
     };
     saveDb(db);
 
-    return ctx.reply("👋 Botimiz yangilandi!\n\nIltimos, qaytadan ro'yxatdan o'ting.\n\nIsmingiz va familiyangizni kiriting:");
+    return ctx.reply("👋 Assalomu alaykum! Botga xush kelibsiz.\n\nRo'yxatdan o'tish uchun ismingiz va familiyangizni kiriting:");
 });
 // --- CALLBACKLAR ---
 bot.action(/^ans_(\d+)$/, async (ctx) => {
