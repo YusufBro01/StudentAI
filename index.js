@@ -9869,29 +9869,67 @@ function getLeaderboard(ctx) {
 }
 
 function showSubjectMenu(ctx) {
-    const db = getDb(); // Bazani o'qiymiz
-    
-    // Tugmalarni English (Ingliz tili) qo'shilgan holati
-    let keyboard = [
-        ["📝 Akademik yozuv", "📜 Tarix"],
-        ["➕ Matematika", "🧲 Fizika"],
-        ["💻 Dasturlash 1", "🇬🇧 Perfect English"] // Dasturlashning yoniga qo'shildi
-    ];
+    const db = getDb();
+    const user = db.users[ctx.from.id];
 
-    // AGAR ADMIN TURBO REJIMNI YOQQAN BO'LSA
+    // Xavfsizlik: foydalanuvchi ro'yxatdan o'tmagan bo'lsa
+    if (!user || !user.isRegistered) {
+        return ctx.reply("⚠️ Iltimos, avval /start buyrug'ini bosing va ro'yxatdan o'ting.");
+    }
+
+    let keyboard = [];
+
+    // ==========================================
+    // 🎭 YO'NALISHLARGA QARAB TUGMALARNI SARALASH
+    // ==========================================
+    if (user.yonalish === "Dasturiy Injiniring") {
+        keyboard = [
+            ["📝 Akademik yozuv", "📜 Tarix"],
+            ["➕ Matematika", "🧲 Fizika"],
+            ["💻 Dasturlash 1", "🇬🇧 Perfect English"]
+        ];
+    } else if (user.yonalish === "Sun'iy intelekt") {
+        keyboard = [
+            ["🧠 Python AI", "➕ Oliy Matematika"],
+            ["📈 Ehtimollar nazariyasi", "📜 Tarix"],
+            ["🇬🇧 Perfect English"]
+        ];
+    } else if (user.yonalish === "Matematika") {
+        keyboard = [
+            ["➕ Matematika", "📐 Geometriya"],
+            ["📜 Tarix", "🇬🇧 Perfect English"]
+        ];
+    } else {
+        // Agar boshqa biror yo'nalish bo'lsa (Standart menyu)
+        keyboard = [
+            ["📝 Akademik yozuv", "📜 Tarix"],
+            ["➕ Matematika", "🧲 Fizika"]
+        ];
+    }
+
+    // ==========================================
+    // ⚙️ QO'SHIMCHA SOZLAMALAR (Turbo, Musobaqa va h.k)
+    // ==========================================
+    
+    // Turbo rejim
     if (db.settings?.turboMode) {
         keyboard.unshift(["🚀 TURBO YODLASH (16:30)"]);
     }
 
     // Musobaqa holati
-    if (tournament.isActive) {
+    if (typeof tournament !== 'undefined' && tournament.isActive) {
         keyboard.push(["🏆 Musobaqada qatnashish"]);
     }
 
-    // Pastki menyu
+    // Pastki menyu (Hamma uchun bir xil)
     keyboard.push(["📊 Reyting", "👤 Profil"]);
 
-    return ctx.reply("Fanni tanlang:", Markup.keyboard(keyboard).resize());
+    const welcomeText = `👤 <b>Foydalanuvchi:</b> ${user.name}\n` +
+                        `🏛 <b>OTM:</b> ${user.univ}\n` +
+                        `🎓 <b>Yo'nalish:</b> ${user.yonalish}\n\n` +
+                        `Fanni tanlang:`;
+
+    return ctx.replyWithHTML(welcomeText, Markup.keyboard(keyboard).resize());
 }
 
 function makeUserVip(userId) {
@@ -10481,59 +10519,116 @@ bot.action("cancel_clear", (ctx) => ctx.deleteMessage());
 // 2. ID raqami yozilganda ishlaydigan logika
 bot.on('text', async (ctx, next) => {
     const s = ctx.session;
-    
+    const db = getDb();
+    const userId = ctx.from.id;
+    const user = db.users[userId];
+    const text = ctx.message.text.trim();
+
+    // ==========================================
+    // 🛡 1. ADMIN: FOYDALANUVCHINI O'CHIRISH
+    // ==========================================
     if (ctx.from.id === ADMIN_ID && s.adminStep === 'wait_delete_id') {
-        let input = ctx.message.text.trim();
-        const db = getDb();
         let targetId = null;
 
-        // 1. Username yoki ID ekanligini aniqlash
-        if (input.startsWith('@') || isNaN(input)) {
-            const searchName = input.replace('@', '').toLowerCase();
-            
-            // Username bo'yicha qidiruv
+        if (text.startsWith('@') || isNaN(text)) {
+            const searchName = text.replace('@', '').toLowerCase();
             targetId = Object.keys(db.users).find(id => {
-                const user = db.users[id];
-                return user.username && user.username.toLowerCase() === searchName;
+                const u = db.users[id];
+                return u.username && u.username.toLowerCase() === searchName;
             });
         } else {
-            // ID kiritilganda uni bazadagi formatga moslash
-            targetId = Object.keys(db.users).find(id => String(id) === String(input));
+            targetId = Object.keys(db.users).find(id => String(id) === String(text));
         }
 
-        // 2. O'chirish jarayoni
         if (targetId && db.users[targetId]) {
-            const userData = db.users[targetId];
-            const userName = userData.name || "Noma'lum";
-            const userTag = userData.username ? `@${userData.username}` : "Nik yo'q";
-
-            // Foydalanuvchini asosiy ro'yxatdan o'chirish
             delete db.users[targetId];
-            
-            // Reyting (scores) ro'yxatidan ham tozalash
             if (db.scores && Array.isArray(db.scores)) {
                 db.scores = db.scores.filter(u => String(u.id) !== String(targetId));
             }
-
-            // O'zgarishlarni bazaga yozish
             saveDb(db);
-            
-            // Admin holatini tozalash
             s.adminStep = null;
-
-            return ctx.replyWithHTML(
-                `✅ <b>Foydalanuvchi muvaffaqiyatli o'chirildi:</b>\n\n` +
-                `👤 <b>Ism:</b> ${userName}\n` +
-                `ℹ️ <b>Nik:</b> ${userTag}\n` +
-                `🆔 <b>ID:</b> <code>${targetId}</code>\n\n` +
-                `<i>Barcha reyting ballari va ma'lumotlar tozalandi.</i>`
-            );
+            return ctx.replyWithHTML(`✅ <b>Foydalanuvchi muvaffaqiyatli o'chirildi!</b>`);
         } else {
-            // Qadamni yopish (agar admin adashgan bo'lsa ham qaytadan boshlashi uchun)
-            s.adminStep = null; 
-            return ctx.reply("❌ Bunday foydalanuvchi topilmadi.\n\nID yoki Username to'g'ri kiritilganini tekshiring.");
+            s.adminStep = null;
+            return ctx.reply("❌ Bunday foydalanuvchi topilmadi.");
         }
     }
+
+    // ==========================================
+    // 📝 2. YANGI FOYDALANUVCHI: RO'YXATDAN O'TISH (STEP-BY-STEP)
+    // ==========================================
+    if (user && !user.isRegistered) {
+        
+        // A) Ism saqlash
+        if (user.step === 'wait_name') {
+            user.name = text;
+            user.step = 'wait_univ';
+            saveDb(db);
+            return ctx.reply(`Assalomu alaykum, ${text}!\n\nO'qish joyingizni tanlang:`, 
+                Markup.keyboard([
+                    ["Alfraganus Universiteti", "Perfect Universiteti"],
+                    ["TATU", "TDPU"]
+                ]).oneTime().resize()
+            );
+        }
+
+        // B) Universitet saqlash
+        if (user.step === 'wait_univ') {
+            user.univ = text;
+            user.step = 'wait_kurs';
+            saveDb(db);
+            return ctx.reply("Nechanchi kursda o'qiysiz?", 
+                Markup.keyboard([["1-kurs", "2-kurs"], ["3-kurs", "4-kurs"]]).oneTime().resize()
+            );
+        }
+
+        // C) Kurs saqlash (YO'NALISHLARNI KURSGA QARAB FILTRLASH)
+        if (user.step === 'wait_kurs') {
+            user.kurs = text; // "1-kurs", "2-kurs" va h.k.
+            user.step = 'wait_yonalish';
+            saveDb(db);
+
+            let yonalishButtons = [];
+
+            // 1-kurslar uchun yo'nalishlar
+            if (text === "1-kurs") {
+                yonalishButtons = [
+                    ["Dasturiy Injiniring", "Sun'iy intellekt"],
+                    ["Matematika", "Kompyuter injiniring"]
+                ];
+            } 
+            // 2-kurslar uchun yo'nalishlar
+            else if (text === "2-kurs") {
+                yonalishButtons = [
+                    ["Kiberxavfsizlik", "Data Science"],
+                    ["Iqtisodiyot", "Logistika"]
+                ];
+            }
+            // 3 va 4-kurslar uchun yo'nalishlar
+            else {
+                yonalishButtons = [
+                    ["Magistratura tayyorlov", "Sirtqi bo'lim"],
+                    ["Boshqa yo'nalishlar"]
+                ];
+            }
+
+            return ctx.reply(`${text} uchun yo'nalishingizni tanlang:`, 
+                Markup.keyboard(yonalishButtons).oneTime().resize()
+            );
+        }
+
+        // D) Yo'nalish saqlash va Yakunlash
+        if (user.step === 'wait_yonalish') {
+            user.yonalish = text;
+            user.isRegistered = true;
+            user.step = 'completed';
+            saveDb(db);
+
+            await ctx.reply(`✅ Tabriklaymiz! Ro'yxatdan muvaffaqiyatli o'tdingiz.\n\n👤 ${user.name}\n🏛 ${user.univ}\n🎓 ${user.kurs}\n📑 ${user.yonalish}`);
+            return showSubjectMenu(ctx); 
+        }
+    }
+
     return next();
 });
 
@@ -10823,23 +10918,27 @@ bot.hears("📊 Reyting", async (ctx) => {
 });
 bot.hears("⬅️ Orqaga (Fanlar)", (ctx) => showSubjectMenu(ctx));
 
-bot.start((ctx) => {
+bot.start(async (ctx) => {
     const db = getDb();
     const userId = ctx.from.id;
-    const user = db.users[userId];
 
-    // 1. Agar foydalanuvchi bazada bo'lsa VA ismi bo'lsa - UNI O'TKAZIB YUBORAMIZ
-    if (user && user.name) {
-        ctx.session.waitingForName = false; // Ism so'rashni to'xtatamiz
-        ctx.session.userName = user.name;
-        return showSubjectMenu(ctx); // Fanlar menyusini ko'rsatamiz
-    }
+    // Yangi foydalanuvchi ob'ektini yaratamiz va eski ballarni nolga tushiramiz
+    db.users[userId] = {
+        id: userId,
+        username: ctx.from.username || "Noma'lum",
+        name: "",
+        univ: "",
+        kurs: "",
+        yonalish: "",
+        score: 0,           // Reytingni tozalash
+        totalTests: 0,      // Testlarni tozalash
+        step: 'wait_name',  // Birinchi qadam
+        isRegistered: false // Ro'yxatdan o'tmaganlik belgisi
+    };
+    saveDb(db);
 
-    // 2. Agar ismi bo'lmasa - FAQAT SHUNDA ISM SO'RAYMIZ
-    ctx.session.waitingForName = true;
-    return ctx.reply("Assalomu alaykum! Botimiz yangilandi.\n\nReytingda ballaringiz saqlanib qolishi uchun, iltimos, ismingizni kiriting:");
+    return ctx.reply("👋 Assalomu alaykum! Botimiz butunlay yangilandi.\n\nIltimos, ismingiz va familiyangizni kiriting:");
 });
-
 // --- CALLBACKLAR ---
 bot.action(/^ans_(\d+)$/, async (ctx) => {
     const s = ctx.session;
