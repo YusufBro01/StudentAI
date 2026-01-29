@@ -10922,7 +10922,14 @@ bot.start(async (ctx) => {
     const db = getDb();
     const userId = ctx.from.id;
 
-    // Yangi foydalanuvchi ob'ektini yaratamiz va eski ballarni nolga tushiramiz
+    // 1. TEKSHIRUV: Foydalanuvchi allaqachon ro'yxatdan o'tganmi?
+    if (db.users[userId] && db.users[userId].isRegistered) {
+        return ctx.reply(`Xush kelibsiz, ${db.users[userId].name}! 🌟\nSiz ro'yxatdan o'tgansiz.`, 
+            showSubjectMenu(ctx) // Bu yerda asosiy menyuni chiqaramiz
+        );
+    }
+
+    // 2. Agar yangi bo'lsa, ma'lumotlarini yaratamiz
     db.users[userId] = {
         id: userId,
         username: ctx.from.username || "Noma'lum",
@@ -10930,10 +10937,10 @@ bot.start(async (ctx) => {
         univ: "",
         kurs: "",
         yonalish: "",
-        score: 0,           // Reytingni tozalash
-        totalTests: 0,      // Testlarni tozalash
-        step: 'wait_name',  // Birinchi qadam
-        isRegistered: false // Ro'yxatdan o'tmaganlik belgisi
+        score: 0,
+        totalTests: 0,
+        step: 'wait_name',
+        isRegistered: false
     };
     saveDb(db);
 
