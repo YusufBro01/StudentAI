@@ -8,6 +8,14 @@ export default defineConfig(({ mode }) => {
       server: {
         port: 3000,
         host: '0.0.0.0',
+        // SHU QATORNI QO'SHING
+        allowedHosts: ['studentai-production.up.railway.app']
+      },
+      preview: {
+        port: 3000,
+        host: '0.0.0.0',
+        // SHU QATORNI HAM QO'SHING (Railway preview rejimida ishlaydi)
+        allowedHosts: ['studentai-production.up.railway.app']
       },
       plugins: [react()],
       define: {
