@@ -174,70 +174,85 @@ function getLeaderboard(ctx) {
 }
 
 function showSubjectMenu(ctx) {
-    const db = getDb();
-    const user = db.users[ctx.from.id];
+    try {
+        const db = getDb();
+        const userId = ctx.from.id;
 
-    if (!user || !user.isRegistered) {
-        return ctx.reply("⚠️ Iltimos, avval /start buyrug'ini bosing va ro'yxatdan o'ting.");
+        // 1. Bazada users obyekti borligini tekshirish
+        if (!db || !db.users) {
+            return ctx.reply("❌ Ma'lumotlar bazasi topilmadi. Iltimos, /start bosing.");
+        }
+
+        const user = db.users[userId];
+
+        // 2. Foydalanuvchi ro'yxatdan o'tganini tekshirish
+        if (!user || !user.isRegistered) {
+            return ctx.reply("⚠️ Iltimos, avval /start buyrug'ini bosing va ro'yxatdan o'ting.");
+        }
+
+        let keyboard = [];
+
+        // ==========================================
+        // 🎭 YO'NALISHLARGA QARAB TUGMALARNI SARALASH
+        // ==========================================
+        const yonalish = user.yonalish;
+
+        if (yonalish === "Dasturiy Injiniring") {
+            keyboard = [
+                ["📝 Akademik yozuv", "📜 Tarix"],
+                ["➕ Matematika", "🧲 Fizika"],
+                ["💻 Dasturlash 1", "🇬🇧 Perfect English"]
+            ];
+        } else if (yonalish === "Kiberxavfsizlik") {
+            keyboard = [
+                ["🔐 Kriptografiya", "🛡 Tarmoq xavfsizligi"],
+                ["💻 Dasturlash 1", "📜 Tarix"],
+                ["➕ Matematika", "🇬🇧 Perfect English"]
+            ];
+        } else if (yonalish === "Sun'iy intelekt") {
+            keyboard = [
+                ["🧠 Python AI", "➕ Oliy Matematika"],
+                ["📈 Ehtimollar nazariyasi", "📜 Tarix"],
+                ["🇬🇧 Perfect English"]
+            ];
+        } else if (yonalish === "Matematika") {
+            keyboard = [
+                ["➕ Matematika", "📐 Geometriya"],
+                ["📜 Tarix", "🇬🇧 Perfect English"]
+            ];
+        } else {
+            keyboard = [
+                ["📝 Akademik yozuv", "📜 Tarix"],
+                ["➕ Matematika", "🧲 Fizika"]
+            ];
+        }
+
+        // ==========================================
+        // ⚙️ QO'SHIMCHA SOZLAMALAR
+        // ==========================================
+        if (db.settings?.turboMode) {
+            keyboard.unshift(["🚀 TURBO YODLASH (16:30)"]);
+        }
+
+        if (typeof tournament !== 'undefined' && tournament.isActive) {
+            keyboard.push(["🏆 Musobaqada qatnashish"]);
+        }
+
+        // Tizim menyusi
+        keyboard.push(["📊 Reyting", "👤 Profil"]);
+        keyboard.push(["⚙️ Sozlamalar"]);
+
+        const welcomeText = `👤 <b>Foydalanuvchi:</b> ${user.name || "Talaba"}\n` +
+                            `🏛 <b>OTM:</b> ${user.univ || "Noma'lum"}\n` +
+                            `🎓 <b>Yo'nalish:</b> ${yonalish}\n\n` +
+                            `Fanni tanlang:`;
+
+        return ctx.replyWithHTML(welcomeText, Markup.keyboard(keyboard).resize());
+
+    } catch (error) {
+        console.error("CRITICAL ERROR in showSubjectMenu:", error);
+        return ctx.reply("❌ Menyuni yuklashda xatolik yuz berdi. Qayta urinib ko'ring yoki /start bosing.");
     }
-
-    let keyboard = [];
-
-    // ==========================================
-    // 🎭 YO'NALISHLARGA QARAB TUGMALARNI SARALASH
-    // ==========================================
-    if (user.yonalish === "Dasturiy Injiniring") {
-        keyboard = [
-            ["📝 Akademik yozuv", "📜 Tarix"],
-            ["➕ Matematika", "🧲 Fizika"],
-            ["💻 Dasturlash 1", "🇬🇧 Perfect English"]
-        ];
-    } 
-    // 🛡 YANGI QO'SHILGAN QISM: KIBERXAVFSIZLIK
-    else if (user.yonalish === "Kiberxavfsizlik") {
-        keyboard = [
-            ["🔐 Kriptografiya", "🛡 Tarmoq xavfsizligi"],
-            ["💻 Dasturlash 1", "📜 Tarix"],
-            ["➕ Matematika", "🇬🇧 Perfect English"]
-        ];
-    }
-    else if (user.yonalish === "Sun'iy intelekt") {
-        keyboard = [
-            ["🧠 Python AI", "➕ Oliy Matematika"],
-            ["📈 Ehtimollar nazariyasi", "📜 Tarix"],
-            ["🇬🇧 Perfect English"]
-        ];
-    } else if (user.yonalish === "Matematika") {
-        keyboard = [
-            ["➕ Matematika", "📐 Geometriya"],
-            ["📜 Tarix", "🇬🇧 Perfect English"]
-        ];
-    } else {
-        keyboard = [
-            ["📝 Akademik yozuv", "📜 Tarix"],
-            ["➕ Matematika", "🧲 Fizika"]
-        ];
-    }
-
-    // ==========================================
-    // ⚙️ QO'SHIMCHA SOZLAMALAR (O'zgarishsiz qoladi)
-    // ==========================================
-    if (db.settings?.turboMode) {
-        keyboard.unshift(["🚀 TURBO YODLASH (16:30)"]);
-    }
-
-    if (typeof tournament !== 'undefined' && tournament.isActive) {
-        keyboard.push(["🏆 Musobaqada qatnashish"]);
-    }
-// showSubjectMenu ichida:
-keyboard.push(["📊 Reyting", "👤 Profil"]); // Birinchi qator
-keyboard.push(["⚙️ Sozlamalar"]);
-    const welcomeText = `👤 <b>Foydalanuvchi:</b> ${user.name}\n` +
-                        `🏛 <b>OTM:</b> ${user.univ}\n` +
-                        `🎓 <b>Yo'nalish:</b> ${user.yonalish}\n\n` +
-                        `Fanni tanlang:`;
-
-    return ctx.replyWithHTML(welcomeText, Markup.keyboard(keyboard).resize());
 }
 
 function makeUserVip(userId) {
