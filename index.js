@@ -492,23 +492,34 @@ bot.command('admin', (ctx) => {
 
 
 bot.use(async (ctx, next) => {
-    // Agar bu start komandasi bo'lsa, o'tkazib yuboramiz (ism kiritish uchun)
-    if (ctx.message && ctx.message.text === '/start') return next();
-    
-    // Obunani tekshiramiz
-    const isSubscribed = await checkSubscription(ctx);
-    
-    if (!isSubscribed) {
-        return ctx.reply(
-            "⚠️ Botdan foydalanish uchun rasmiy kanalimizga obuna bo'lishingiz shart!",
-            Markup.inlineKeyboard([
-                [Markup.button.url("📢 Kanalga o'tish", `https://t.me/${REQUIRED_CHANNEL.replace('@', '')}`)],
-                [Markup.button.callback("✅ Tekshirish", "check_sub")]
-            ])
-        );
+    try {
+        // 1. Agar bu start komandasi yoki tugma bosilishi (callback) bo'lsa, o'tkazib yuboramiz
+        if (ctx.message && ctx.message.text === '/start') return next();
+        if (ctx.callbackQuery) return next();
+
+        // 2. Obunani tekshiramiz
+        const isSubscribed = await checkSubscription(ctx);
+        
+        if (!isSubscribed) {
+            // 3. Xabarni yuborishda bloklanganligini try-catch orqali tekshiramiz
+            return await ctx.reply(
+                "⚠️ Botdan foydalanish uchun rasmiy kanalimizga obuna bo'lishingiz shart!",
+                Markup.inlineKeyboard([
+                    [Markup.button.url("📢 Kanalga o'tish", `https://t.me/${REQUIRED_CHANNEL.replace('@', '')}`)],
+                    [Markup.button.callback("✅ Tekshirish", "check_sub")]
+                ])
+            ).catch(e => {
+                if (e.response?.error_code === 403) {
+                    console.log(`🚫 User ${ctx.from.id} botni bloklagani uchun obuna xabari yuborilmadi.`);
+                }
+            });
+        }
+        
+        return next(); 
+    } catch (error) {
+        console.error("🔴 Middleware error (Subscription check):", error.message);
+        return next(); // Xatolik bo'lsa ham bot to'xtab qolmasin
     }
-    
-    return next(); // Obuna bo'lgan bo'lsa, keyingi ishlarga o'tadi
 });
 
 // "✅ Tekshirish" tugmasi bosilganda
@@ -1430,6 +1441,19 @@ http.createServer((req, res) => {
     res.end('Bot is running...');
 }).listen(PORT, '0.0.0.0', () => {
     console.log(`Server is listening on port ${PORT}`);
+});
+
+bot.catch((err, ctx) => {
+    const errorCode = err.response?.error_code;
+    const description = err.response?.description;
+
+    // Agar foydalanuvchi botni bloklagan bo'lsa, logda ko'rsatib, o'tkazib yuboramiz
+    if (errorCode === 403) {
+        console.log(`🚫 Foydalanuvchi (${ctx.from?.id}) botni bloklagan. Xabar yuborilmadi.`);
+        return; 
+    }
+
+    console.error(`🔴 Kutilmagan xatolik:`, err);
 });
 
 bot.launch()
