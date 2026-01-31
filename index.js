@@ -205,9 +205,9 @@ function showSubjectMenu(ctx) {
             ];
         } else if (yonalish === "Kiberxavfsizlik") {
             keyboard = [
-                ["🔐 Kriptografiya", "🛡 Tarmoq xavfsizligi"],
-                ["💻 Dasturlash 1", "📜 Tarix"],
-                ["➕ Matematika", "🇬🇧 Perfect English"]
+                ["🧲 Fizika", "📜 Tarix"],
+                ["📝 Akademik yozuv", "➕ Matematika"],
+                ["🇬🇧 English", "💻 Dasturlash 1"]
             ];
         } else if (yonalish === "Sun'iy intelekt") {
             keyboard = [
