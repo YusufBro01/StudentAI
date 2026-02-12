@@ -43,7 +43,6 @@ app.get('/api/questions/:key', (req, res) => {
 });
 
 // Portni Railway yoki Local uchun sozlash
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`API server ishladi: ${PORT}`);
 });
@@ -1491,24 +1490,16 @@ bot.action(/^reject_(\d+)$/, async (ctx) => {
     await ctx.telegram.sendMessage(targetId, "❌ Kechirasiz, siz yuborgan chek tasdiqlanmadi. Muammo bo'lsa adminga yozing.");
     return ctx.editMessageCaption("❌ To'lov rad etildi.");
 });
+// 1. ESKI http.createServer QISMINI O'CHIRIB, O'RNIGA BUNI QO'YING:
+const PORT = process.env.PORT || 8080;
 
-http.createServer((req, res) => {
-    res.writeHead(200);
-    res.end('Bot is running...');
-}).listen(PORT, '0.0.0.0', () => {
-    console.log(`Server is listening on port ${PORT}`);
-});
-
+// Botni ishga tushirish (xatoliklar bilan)
 bot.catch((err, ctx) => {
     const errorCode = err.response?.error_code;
-    const description = err.response?.description;
-
-    // Agar foydalanuvchi botni bloklagan bo'lsa, logda ko'rsatib, o'tkazib yuboramiz
     if (errorCode === 403) {
-        console.log(`🚫 Foydalanuvchi (${ctx.from?.id}) botni bloklagan. Xabar yuborilmadi.`);
+        console.log(`🚫 Foydalanuvchi (${ctx.from?.id}) botni bloklagan.`);
         return; 
     }
-
     console.error(`🔴 Kutilmagan xatolik:`, err);
 });
 
@@ -1516,10 +1507,19 @@ bot.launch()
     .then(() => console.log("✅ Bot successfully started in Telegram!"))
     .catch((err) => console.error("❌ Bot launch error:", err));
 
-    // Botni to'g'ri to'xtatish uchun (Graceful stop)
+// 2. EXPRESS SERVERNI ISHGA TUSHIRISH
+// Bu ham botni "tirik" saqlaydi, ham Web App uchun API vazifasini bajaradi
+app.get('/', (req, res) => res.send('Bot is running with API...'));
+
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`🚀 Server va API ${PORT}-portda muvaffaqiyatli ishga tushdi`);
+});
+
+// Botni to'g'ri to'xtatish (Graceful stop)
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
 
+// escapeHTML funksiyasi kodingiz oxirida qolaversin
 function escapeHTML(str) {
     if (!str) return "";
     return str.replace(/[&<>"']/g, function(m) {
@@ -1532,4 +1532,3 @@ function escapeHTML(str) {
         }[m];
     });
 }
-
