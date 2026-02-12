@@ -92,6 +92,7 @@ if (fs.existsSync(SUBJECTS_FILE)) {
     console.log("⚠️ subjects.json fayli topilmadi!");
 }
 
+
 let tournament = {
     isActive: false,       // Musobaqa ochiqmi?
     participants: [],      // To'lov qilgan foydalanuvchilar ID-lari
