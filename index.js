@@ -9,6 +9,8 @@ const express = require('express'); // Expressni chaqiramiz
 const cors = require('cors'); // Brauzer xavfsizligi (CORS) uchun
 const app = express();
 
+const PORT = process.env.PORT || 8080;
+
 // 1. O'zgaruvchilarni tartib bilan e'lon qilish
 const ADMIN_ID = parseInt(process.env.ADMIN_ID); 
 const bot = new Telegraf(process.env.BOT_TOKEN);
@@ -1490,8 +1492,6 @@ bot.action(/^reject_(\d+)$/, async (ctx) => {
     await ctx.telegram.sendMessage(targetId, "❌ Kechirasiz, siz yuborgan chek tasdiqlanmadi. Muammo bo'lsa adminga yozing.");
     return ctx.editMessageCaption("❌ To'lov rad etildi.");
 });
-// 1. ESKI http.createServer QISMINI O'CHIRIB, O'RNIGA BUNI QO'YING:
-const PORT = process.env.PORT || 8080;
 
 // Botni ishga tushirish (xatoliklar bilan)
 bot.catch((err, ctx) => {
