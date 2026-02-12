@@ -5,11 +5,6 @@ const path = require('path');
 const XLSX = require('xlsx');
 const http = require('http');
 
-const express = require('express'); // Expressni chaqiramiz
-const cors = require('cors'); // Brauzer xavfsizligi (CORS) uchun
-const app = express();
-
-const PORT = process.env.PORT || 8080;
 
 // 1. O'zgaruvchilarni tartib bilan e'lon qilish
 const ADMIN_ID = parseInt(process.env.ADMIN_ID); 
@@ -27,27 +22,6 @@ if (!fs.existsSync(DATA_DIR)) {
         console.log("LocalStorage rejimi faollashdi");
     }
 }
-
-
-
-app.use(cors()); // Web App boshqa domendan so'rov yubora olishi uchun
-app.use(express.json());
-
-// API: Web App savollarni shu manzildan oladi
-app.get('/api/questions/:key', (req, res) => {
-    const key = req.params.key;
-    // subjects.json dagi ma'lumotni qidiramiz
-    if (SUBJECTS[key]) {
-        res.json(SUBJECTS[key]);
-    } else {
-        res.status(404).json({ error: "Savollar topilmadi" });
-    }
-});
-
-// Portni Railway yoki Local uchun sozlash
-app.listen(PORT, () => {
-    console.log(`API server ishladi: ${PORT}`);
-});
 
 // Fayl manzillari
 const DB_FILE = path.join(DATA_DIR, 'ranking_db.json');
@@ -1493,13 +1467,24 @@ bot.action(/^reject_(\d+)$/, async (ctx) => {
     return ctx.editMessageCaption("❌ To'lov rad etildi.");
 });
 
-// Botni ishga tushirish (xatoliklar bilan)
+const PORT = process.env.PORT || 3000;
+http.createServer((req, res) => {
+    res.writeHead(200);
+    res.end('Bot is running...');
+}).listen(PORT, '0.0.0.0', () => {
+    console.log(`Server is listening on port ${PORT}`);
+});
+
 bot.catch((err, ctx) => {
     const errorCode = err.response?.error_code;
+    const description = err.response?.description;
+
+    // Agar foydalanuvchi botni bloklagan bo'lsa, logda ko'rsatib, o'tkazib yuboramiz
     if (errorCode === 403) {
-        console.log(`🚫 Foydalanuvchi (${ctx.from?.id}) botni bloklagan.`);
+        console.log(`🚫 Foydalanuvchi (${ctx.from?.id}) botni bloklagan. Xabar yuborilmadi.`);
         return; 
     }
+
     console.error(`🔴 Kutilmagan xatolik:`, err);
 });
 
@@ -1507,19 +1492,10 @@ bot.launch()
     .then(() => console.log("✅ Bot successfully started in Telegram!"))
     .catch((err) => console.error("❌ Bot launch error:", err));
 
-// 2. EXPRESS SERVERNI ISHGA TUSHIRISH
-// Bu ham botni "tirik" saqlaydi, ham Web App uchun API vazifasini bajaradi
-app.get('/', (req, res) => res.send('Bot is running with API...'));
-
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`🚀 Server va API ${PORT}-portda muvaffaqiyatli ishga tushdi`);
-});
-
-// Botni to'g'ri to'xtatish (Graceful stop)
+    // Botni to'g'ri to'xtatish uchun (Graceful stop)
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
 
-// escapeHTML funksiyasi kodingiz oxirida qolaversin
 function escapeHTML(str) {
     if (!str) return "";
     return str.replace(/[&<>"']/g, function(m) {
@@ -1532,3 +1508,4 @@ function escapeHTML(str) {
         }[m];
     });
 }
+
