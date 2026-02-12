@@ -212,9 +212,9 @@ function showSubjectMenu(ctx) {
             ];
         } else if (yonalish === "Sun'iy intelekt") {
             keyboard = [
-                ["🧠 Python AI", "➕ Oliy Matematika"],
-                ["📈 Ehtimollar nazariyasi", "📜 Tarix"],
-                ["🇬🇧 Perfect English"]
+                ["🧲 Fizika", "📜 Tarix"],
+                ["📝 Akademik yozuv", "➕ Matematika"],
+                ["🇬🇧 English", "💻 Dasturlash 1"]
             ];
         } else if (yonalish === "Matematika") {
             keyboard = [
@@ -959,27 +959,52 @@ bot.on('text', async (ctx, next) => {
                 Markup.keyboard([["1-kurs", "2-kurs"], ["3-kurs", "4-kurs"]]).oneTime().resize());
         }
 
-        // Kurs saqlash
-        if (currentUser.step === 'wait_kurs') {
-            const kurslar = ["1-kurs", "2-kurs", "3-kurs", "4-kurs"];
-            if (!kurslar.includes(text)) return ctx.reply("⚠️ Kursni tugma orqali tanlang:");
-            currentUser.kurs = text;
-            currentUser.step = 'wait_yonalish';
-            saveDb(db);
-            
-            let buttons = text === "1-kurs" ? [["Dasturiy Injiniring", "Kiberxavfsizlik"]] : [["Magistratura", "Boshqa"]];
-            return ctx.reply(`Yo'nalishingizni tanlang:`, Markup.keyboard(buttons).oneTime().resize());
-        }
+        // 1. Kurs saqlash (O'zgarishsiz qoladi, faqat Sun'iy intelekt tugmasi qo'shilgan)
+if (currentUser.step === 'wait_kurs') {
+    const kurslar = ["1-kurs", "2-kurs", "3-kurs", "4-kurs"];
+    if (!kurslar.includes(text)) return ctx.reply("⚠️ Kursni tugma orqali tanlang:");
+    
+    currentUser.kurs = text;
+    currentUser.step = 'wait_yonalish';
+    saveDb(db);
+    
+    let buttons = text === "1-kurs" 
+        ? [["Dasturiy Injiniring", "Kiberxavfsizlik"], ["Sun'iy intelekt"]] 
+        : [["Magistratura", "Boshqa"]];
+        
+    return ctx.reply(`Yo'nalishingizni tanlang:`, Markup.keyboard(buttons).oneTime().resize());
+}
 
-        // Yo'nalish saqlash va Yakunlash
-        if (currentUser.step === 'wait_yonalish') {
-            currentUser.yonalish = text;
-            currentUser.isRegistered = true;
-            currentUser.step = 'completed';
-            saveDb(db);
-            await ctx.reply(`✅ Ma'lumotlar saqlandi!`);
-            return showSubjectMenu(ctx);
-        }
+// 2. Yo'nalish saqlash va SEMESTR SO'RASH (O'zgartirilgan qismi)
+if (currentUser.step === 'wait_yonalish') {
+    currentUser.yonalish = text;
+    currentUser.step = 'wait_semester'; // Darhol tugatmaymiz, keyingi stepga o'tamiz
+    saveDb(db);
+    
+    return ctx.reply("Endi o'qiyotgan semestringizni tanlang:", 
+        Markup.keyboard([["1-semestr", "2-semestr"]]).oneTime().resize());
+}
+
+// 3. Semestrni tekshirish va Yakunlash (YANGI QO'SHILGAN QISMI)
+if (currentUser.step === 'wait_semester') {
+    if (text === "2-semestr") {
+        // Foydalanuvchini to'xtatib, faqat 1-semestrga yo'naltiramiz
+        return ctx.reply("❌ Hali 2-semestr darslari yakunlanmadi. Iltimos, hozircha faqat 1-semestr testlaridan foydalanib turing!", 
+            Markup.keyboard([["1-semestr", "2-semestr"]]).oneTime().resize());
+    }
+
+    if (text === "1-semestr") {
+        currentUser.semester = text;
+        currentUser.isRegistered = true;
+        currentUser.step = 'completed'; // Endi ro'yxatdan o'tish tugadi
+        saveDb(db);
+        
+        await ctx.reply(`✅ Ma'lumotlar saqlandi! \nYo'nalish: ${currentUser.yonalish}\nSemestr: ${text}`);
+        return showSubjectMenu(ctx);
+    }
+
+    return ctx.reply("⚠️ Iltimos, semestrni tugma orqali tanlang:");
+}
         return ctx.reply("Iltimos, ro'yxatdan o'tishni yakunlang.");
     }
 
