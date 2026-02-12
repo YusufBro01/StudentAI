@@ -5,6 +5,10 @@ const path = require('path');
 const XLSX = require('xlsx');
 const http = require('http');
 
+const express = require('express'); // Expressni chaqiramiz
+const cors = require('cors'); // Brauzer xavfsizligi (CORS) uchun
+const app = express();
+
 // 1. O'zgaruvchilarni tartib bilan e'lon qilish
 const ADMIN_ID = parseInt(process.env.ADMIN_ID); 
 const bot = new Telegraf(process.env.BOT_TOKEN);
@@ -21,6 +25,28 @@ if (!fs.existsSync(DATA_DIR)) {
         console.log("LocalStorage rejimi faollashdi");
     }
 }
+
+
+
+app.use(cors()); // Web App boshqa domendan so'rov yubora olishi uchun
+app.use(express.json());
+
+// API: Web App savollarni shu manzildan oladi
+app.get('/api/questions/:key', (req, res) => {
+    const key = req.params.key;
+    // subjects.json dagi ma'lumotni qidiramiz
+    if (SUBJECTS[key]) {
+        res.json(SUBJECTS[key]);
+    } else {
+        res.status(404).json({ error: "Savollar topilmadi" });
+    }
+});
+
+// Portni Railway yoki Local uchun sozlash
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`API server ishladi: ${PORT}`);
+});
 
 // Fayl manzillari
 const DB_FILE = path.join(DATA_DIR, 'ranking_db.json');
@@ -1224,7 +1250,7 @@ let yonalishKey = user.yonalish
         .replace(/'/g, '')  // "Sun'iy" -> "suniy" bo'ladi
         .replace(/ /g, '_');
 
-        
+
     // 3. Fan qismini aniqlash
     let subjectPart = "";
     if (text.includes("Akademik")) subjectPart = "academic";
@@ -1466,7 +1492,6 @@ bot.action(/^reject_(\d+)$/, async (ctx) => {
     return ctx.editMessageCaption("❌ To'lov rad etildi.");
 });
 
-const PORT = process.env.PORT || 3000;
 http.createServer((req, res) => {
     res.writeHead(200);
     res.end('Bot is running...');
