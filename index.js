@@ -1218,8 +1218,13 @@ bot.hears(["📝 Akademik yozuv", "📜 Tarix", "➕ Matematika", "💻 Dasturla
     }
 
     // 2. Yo'nalish kalitini yasash (Dasturiy Injiniring -> dasturiy_injiniring)
-    const yonalishKey = user.yonalish.toLowerCase().trim().replace(/ /g, '_');
+let yonalishKey = user.yonalish
+        .toLowerCase()
+        .trim()
+        .replace(/'/g, '')  // "Sun'iy" -> "suniy" bo'ladi
+        .replace(/ /g, '_');
 
+        
     // 3. Fan qismini aniqlash
     let subjectPart = "";
     if (text.includes("Akademik")) subjectPart = "academic";
