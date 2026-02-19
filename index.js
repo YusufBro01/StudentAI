@@ -209,7 +209,7 @@ function showSubjectMenu(ctx) {
             keyboard = [
                 ["🧲 Fizika", "📜 Tarix"],
                 ["📝 Akademik yozuv", "➕ Matematika"],
-                ["🇬🇧 English", "💻 Dasturlash 1"]
+                ["🇬🇧 Perfect English", "💻 Dasturlash 1"]
             ];
         } else if (yonalish === "Sun'iy intelekt") {
             keyboard = [
