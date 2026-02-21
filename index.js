@@ -6,6 +6,7 @@ const XLSX = require('xlsx');
 const http = require('http');
 
 
+
 // 1. O'zgaruvchilarni tartib bilan e'lon qilish
 const ADMIN_ID = parseInt(process.env.ADMIN_ID); 
 const bot = new Telegraf(process.env.BOT_TOKEN);
@@ -1117,7 +1118,7 @@ bot.on(['text', 'photo', 'video', 'animation', 'document'], async (ctx, next) =>
         ];
 
         if (menuButtons.includes(input)) {
-            return ctx.reply("⚠️ Iltimos, ism o'rniga fan tugmalarini bosmang!\nAvval ismingizni yozib yuboring:");
+            return ctx.reply("⚠️ Iltimoss, ism o'rniga fan tugmalarini bosmang!\nAvval ismingizni yozib yuboring:");
         }
 
         if (!input || input.length < 3) {
