@@ -651,11 +651,11 @@ bot.use(async (ctx, next) => {
 });
 
 
-bot.hears("🗑 Foydalanuvchini o'chirish", (ctx) => {
-    if (ctx.from.id !== ADMIN_ID) return;
-    ctx.session.adminStep = 'wait_delete_id';
-    return ctx.reply("🗑 O'chirmoqchi bo'lgan foydalanuvchining ID raqamini kiriting (yoki profilidan nusxa olib tashlang):");
-});
+// bot.hears("🗑 Foydalanuvchini o'chirish", (ctx) => {
+//     if (ctx.from.id !== ADMIN_ID) return;
+//     ctx.session.adminStep = 'wait_delete_id';
+//     return ctx.reply("🗑 O'chirmoqchi bo'lgan foydalanuvchining ID raqamini kiriting (yoki profilidan nusxa olib tashlang):");
+// });
 
 
 bot.hears(["🚀 Turbo (Yoqish)", "🚀 Turbo (O'chirish)"], async (ctx) => {
