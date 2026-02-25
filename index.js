@@ -811,30 +811,35 @@ bot.hears('📊 Statistika', async (ctx) => {
     const usersEntries = Object.entries(db.users || {});
     const totalUsers = usersEntries.length;
     
-    let report = `📊 <b>BOT STATISTIKASI</b>\n\n`;
-    report += `👥 Jami foydalanuvchilar: <b>${totalUsers} ta</b>\n\n`;
-    report += `🆔 <b>Foydalanuvchilar ro'yxati:</b>\n`;
+    await ctx.replyWithHTML(`📊 <b>BOT STATISTIKASI</b>\n\n👥 Jami foydalanuvchilar: <b>${totalUsers} ta</b>`);
 
-    usersEntries.forEach(([id, data], index) => {
-        // ID raqamni nusxa olishga qulay qilib chiqaramiz
-        let userLine = `${index + 1}. 👤 ${data.name || 'Ismsiz'} | ID: <code>${id}</code>\n`;
+    let report = `🆔 <b>Foydalanuvchilar ro'yxati:</b>\n`;
+    
+    for (let i = 0; i < usersEntries.length; i++) {
+        const [id, data] = usersEntries[i];
+        let userLine = `${i + 1}. 👤 ${data.name || 'Ismsiz'} | ID: <code>${id}</code>\n`;
         
-        // Telegram xabari limiti (4096 belgi) oshib ketmasligini tekshiramiz
-        if ((report + userLine).length < 4000) {
-            report += userLine;
+        // Agar bitta xabar limiti (4000 belgi) to'lib qolsa, uni yuboramiz va yangisini boshlaymiz
+        if ((report + userLine).length > 4000) {
+            await ctx.replyWithHTML(report);
+            report = ""; // Yangi xabar uchun bo'shatamiz
         }
-    });
+        report += userLine;
+    }
 
+    // Oxirgi qolgan xabarni yuboramiz
     const adminKeyboard = Markup.keyboard([
         ["🗑 Foydalanuvchini o'chirish"],
-        ["⬅️ Orqaga"]
+        ["⬅️ Orqaga"] // Bu orqaga tugmasi 'bot.hears' bilan tutib olinishi kerak
     ]).resize();
 
     return ctx.replyWithHTML(report, adminKeyboard);
 });
 // Musobaqa menyusidan Admin paneliga qaytish
-bot.hears('⬅️ Orqaga (Admin)', (ctx) => {
+// Ikkala turdagi "Orqaga" tugmasini ham taniydigan qilamiz
+bot.hears(['⬅️ Orqaga (Admin)', '⬅️ Orqaga'], (ctx) => {
     if (ctx.from.id !== ADMIN_ID) return;
+    
     return ctx.reply("Admin paneli:", Markup.keyboard([
         ['💰 Pullik versiya', '🆓 Bepul versiya'],
         ['🏆 Musobaqa boshqarish', '➕ Yangi fan qoshish'],
