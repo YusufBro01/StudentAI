@@ -1423,7 +1423,7 @@ bot.action('buy_vip', (ctx) => {
         `💎 <b>VIP STATUS SOTIB OLISH</b>\n\n` +
         `💳 Kart"a": <code>4073420058363577</code>\n` +
         `👤 Egasi: M.M\n` +
-        `💰 Summ"a": 5,999 so'm\n\n` +
+        `💰 Summ"a": 6,000 so'm\n\n` +
         `📸 To'lovni amalga oshirgach, <b>chekni (rasm ko'rinishida)</b> shu yerga yuboring.`
     );
 });
