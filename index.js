@@ -163,7 +163,7 @@ function getLeaderboard(ctx) {
     let res = "🏆 <b>TOP 10 REYTING</b>\n\n";
     sorted.forEach((u, i) => {
         const medal = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : "🔹";
-        const name = u.name || "Noma'lum";
+        const name = u.name || "Nomalum";
         
         // NIK (username) FAQAT ADMIN UCHUN SHAKLLANTIRILADI
         let userLink = "";
