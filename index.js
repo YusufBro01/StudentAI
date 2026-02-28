@@ -183,7 +183,7 @@ function showSubjectMenu(ctx) {
 
         // 1. Bazada users obyekti borligini tekshirish
         if (!db || !db.users) {
-            return ctx.reply("❌ Malumotlar bazasi topilmadi. Iltimos, /start bosing.");
+            return ctx.reply("❌ Malumotlar bazasi topilmadiku umuman. Iltimos, /start bosing.");
         }
 
         const user = db.users[userId];
