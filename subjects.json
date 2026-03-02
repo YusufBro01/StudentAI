@@ -17435,13 +17435,1007 @@
   "kiberxavfsizlik_english": {
     "name": "🇬🇧 English (Kiber)",
     "questions": [
-      {
-        "q": "Choose the correct word: A person who enters a computer system illegally is a ___.",
-        "options": ["User", "Developer", "Hacker", "Manager"],
-        "a": "Hacker",
-        "hint": "This term is widely used in cybersecurity."
-      }
-    ]
+  {
+    "q": "What does manufacturing mean?",
+    "options": [
+      "Selling products",
+      "Transporting goods",
+      "Making products in factories",
+      "Advertising products"
+    ],
+    "a": "Making products in factories"
+  },
+  {
+    "q": "Which business activity is connected with hospitals and doctors?",
+    "options": [
+      "Agriculture",
+      "Health care",
+      "Transport",
+      "Software"
+    ],
+    "a": "Health care"
+  },
+  {
+    "q": "Software developers usually work in the:",
+    "options": [
+      "Manufacturing sector",
+      "Mining sector",
+      "IT / software sector",
+      "Agriculture sector"
+    ],
+    "a": "IT / software sector"
+  },
+  {
+    "q": "Factories are most closely connected with:",
+    "options": [
+      "Advertising",
+      "Transport",
+      "Manufacturing",
+      "Agriculture"
+    ],
+    "a": "Manufacturing"
+  },
+  {
+    "q": "Which collocation is correct?",
+    "options": [
+      "buy from a customer",
+      "buy from a profit",
+      "buy from a supplier",
+      "buy from a market"
+    ],
+    "a": "buy from a supplier"
+  },
+  {
+    "q": "Choose the correct collocation:",
+    "options": [
+      "make a market",
+      "make services",
+      "make goods",
+      "make a supplier"
+    ],
+    "a": "make goods"
+  },
+  {
+    "q": "What can a company face?",
+    "options": [
+      "goods",
+      "value",
+      "competition",
+      "a customer"
+    ],
+    "a": "competition"
+  },
+  {
+    "q": "Which phrase is correct?",
+    "options": [
+      "sell a profit",
+      "make a market",
+      "make a profit",
+      "provide a profit"
+    ],
+    "a": "make a profit"
+  },
+  {
+    "q": "What do most employers think is the most important information in a CV?",
+    "options": [
+      "Grades",
+      "School or university",
+      "Work experience and skills",
+      "Degree subject"
+    ],
+    "a": "Work experience and skills"
+  },
+  {
+    "q": "Why do many students choose internships in China?",
+    "options": [
+      "It is cheaper than Europe",
+      "Employers only accept Chinese experience",
+      "China offers many opportunities and experience",
+      "It is easy to find a job"
+    ],
+    "a": "China offers many opportunities and experience"
+  },
+  {
+    "q": "What skills can students develop during internships in China?",
+    "options": [
+      "Only technical skills",
+      "Sports skills",
+      "Intercultural and working skills",
+      "Only language skills"
+    ],
+    "a": "Intercultural and working skills"
+  },
+  {
+    "q": "How did Shaun Duggan feel after his year in China?",
+    "options": [
+      "Tired of working",
+      "Less confident",
+      "More independent and confident",
+      "More stressed"
+    ],
+    "a": "More independent and confident"
+  },
+  {
+    "q": "What happened when Shaun returned to London?",
+    "options": [
+      "He continued studying",
+      "He found one interview",
+      "He changed his profession",
+      "He was offered three jobs"
+    ],
+    "a": "He was offered three jobs"
+  },
+  {
+    "q": "What is the first essential skill for working across cultures?",
+    "options": [
+      "Managing people",
+      "Speaking many languages",
+      "Intercultural sensitivity",
+      "Making fast decisions"
+    ],
+    "a": "Intercultural sensitivity"
+  },
+  {
+    "q": "What do Asians usually prefer when making decisions, according to the text?",
+    "options": [
+      "Making quick decisions",
+      "Letting the boss decide",
+      "Taking more time to avoid mistakes",
+      "Avoiding decisions"
+    ],
+    "a": "Taking more time to avoid mistakes"
+  },
+  {
+    "q": "What is important in Chinese organizations?",
+    "options": [
+      "Working alone",
+      "Equality in all positions",
+      "Informal communication",
+      "Respecting hierarchy and the boss"
+    ],
+    "a": "Respecting hierarchy and the boss"
+  },
+  {
+    "q": "What comes next when you count in twos? 2, 4, 6, 8, …",
+    "options": [
+      "11",
+      "12",
+      "10",
+      "9"
+    ],
+    "a": "10"
+  },
+  {
+    "q": "Which number is correct for “one thousand five hundred”?",
+    "options": [
+      "150",
+      "1,500",
+      "105",
+      "15,000"
+    ],
+    "a": "1,500"
+  },
+  {
+    "q": "How do we say 7,777?",
+    "options": [
+      "seven hundred seventy-seven",
+      "seven thousand seven hundred",
+      "seven million seven hundred",
+      "seven thousand seven hundred and seventy-seven"
+    ],
+    "a": "seven thousand seven hundred and seventy-seven"
+  },
+  {
+    "q": "What does 2.5bn mean?",
+    "options": [
+      "two thousand five hundred",
+      "two point five million",
+      "two point five billion",
+      "twenty-five billion"
+    ],
+    "a": "two point five billion"
+  },
+  {
+    "q": "How do we read €15.99?",
+    "options": [
+      "fifteen euros ninety",
+      "fifteen euro nine nine",
+      "fifteen point ninety-nine euros",
+      "fifteen euros ninety-nine"
+    ],
+    "a": "fifteen euros ninety-nine"
+  },
+  {
+    "q": "What is the correct name of this symbol: @ ?",
+    "options": [
+      "hash",
+      "dot",
+      "slash",
+      "at"
+    ],
+    "a": "at"
+  },
+  {
+    "q": "Which symbol is called hash?",
+    "options": [
+      "@",
+      "/",
+      "#",
+      "\\"
+    ],
+    "a": "#"
+  },
+  {
+    "q": "What does 20.15 mean?",
+    "options": [
+      "quarter to eight in the evening",
+      "eight o’clock in the morning",
+      "quarter past two in the afternoon",
+      "quarter past eight in the evening"
+    ],
+    "a": "quarter past eight in the evening"
+  },
+  {
+    "q": "What is the digital form of half past two in the afternoon?",
+    "options": [
+      "02.30",
+      "12.30",
+      "14.00",
+      "14.30"
+    ],
+    "a": "14.30"
+  },
+  {
+    "q": "What does eleven o’clock at night mean in digital time?",
+    "options": [
+      "21.00",
+      "11.00",
+      "00.00",
+      "23.00"
+    ],
+    "a": "23.00"
+  },
+  {
+    "q": "Which expression means 08:00 exactly?",
+    "options": [
+      "about eight o’clock",
+      "eight o’clock at night",
+      "eight o’clock sharp",
+      "half past eight"
+    ],
+    "a": "eight o’clock sharp"
+  },
+  {
+    "q": "What time is twenty-five to one?",
+    "options": [
+      "12.15",
+      "12.45",
+      "01.25",
+      "12.35"
+    ],
+    "a": "12.35"
+  },
+  {
+    "q": "Which one is an analogue time expression?",
+    "options": [
+      "13.45",
+      "20.15",
+      "11.01",
+      "quarter past eight in the evening"
+    ],
+    "a": "quarter past eight in the evening"
+  },
+  {
+    "q": "What does oh eight hundred hours mean?",
+    "options": [
+      "18.00",
+      "midnight",
+      "8 p.m.",
+      "8 a.m."
+    ],
+    "a": "8 a.m."
+  },
+  {
+    "q": "Do the British really love drinking tea?",
+    "options": [
+      "Sometimes",
+      "Only in the evening",
+      "Yes, they do",
+      "No, they don’t"
+    ],
+    "a": "Yes, they do"
+  },
+  {
+    "q": "Germans ___ big fast cars.",
+    "options": [
+      "driving",
+      "drives",
+      "drove",
+      "drive"
+    ],
+    "a": "drive"
+  },
+  {
+    "q": "___ Italians talk with their hands?",
+    "options": [
+      "Does",
+      "Is",
+      "Are",
+      "Do"
+    ],
+    "a": "Do"
+  },
+  {
+    "q": "___ a German call his boss by his first name?",
+    "options": [
+      "Do",
+      "Is",
+      "Are",
+      "Does"
+    ],
+    "a": "Does"
+  },
+  {
+    "q": "Choose the correct negative sentence.",
+    "options": [
+      "Americans doesn’t eat burgers every day.",
+      "Americans aren’t eat burgers every day.",
+      "Americans don’t eats burgers every day.",
+      "Americans don’t eat burgers every day."
+    ],
+    "a": "Americans don’t eat burgers every day."
+  },
+  {
+    "q": "Choose the correct rule. In Indonesia, you should use your ___.",
+    "options": [
+      "left hand",
+      "both hands",
+      "finger",
+      "right hand / thumb"
+    ],
+    "a": "right hand / thumb"
+  },
+  {
+    "q": "Where ___ you staying?",
+    "options": [
+      "do",
+      "does",
+      "is",
+      "are"
+    ],
+    "a": "are"
+  },
+  {
+    "q": "What ___ you do?",
+    "options": [
+      "does",
+      "is",
+      "are",
+      "do"
+    ],
+    "a": "do"
+  },
+  {
+    "q": "___ you religious?",
+    "options": [
+      "Do",
+      "Does",
+      "Is",
+      "Are"
+    ],
+    "a": "Are"
+  },
+  {
+    "q": "___ this your first visit to Serbia?",
+    "options": [
+      "Do",
+      "Does",
+      "Are",
+      "Is"
+    ],
+    "a": "Is"
+  },
+  {
+    "q": "Cross out the one incorrect option. Hello, my name’s Felipe Conti.",
+    "options": [
+      "Pleased to meet you.",
+      "Nice to meet you.",
+      "Good to meet you.",
+      "How are you doing?"
+    ],
+    "a": "How are you doing?"
+  },
+  {
+    "q": "Cross out the one incorrect option. Sorry to keep you waiting.",
+    "options": [
+      "That’s all right.",
+      "No problem.",
+      "It’s OK.",
+      "Please."
+    ],
+    "a": "Please."
+  },
+  {
+    "q": "Cross out the one incorrect option. Can I see your ticket?",
+    "options": [
+      "I have an online booking.",
+      "I booked online.",
+      "I booked on my computer.",
+      "I like travelling."
+    ],
+    "a": "I like travelling."
+  },
+  {
+    "q": "Choose the correct response. Is this your first visit to Greece?",
+    "options": [
+      "I stay at a hotel.",
+      "Yes, I work here.",
+      "I’m from Ireland.",
+      "No, I live here. On one of the islands, actually."
+    ],
+    "a": "No, I live here. On one of the islands, actually."
+  },
+  {
+    "q": "Choose the correct response. Oh, really? Lucky you! What do you do?",
+    "options": [
+      "I live on an island.",
+      "I’m staying here.",
+      "I’m a hotel manager.",
+      "I have two children."
+    ],
+    "a": "I’m a hotel manager."
+  },
+  {
+    "q": "Choose the correct response. What sector do you work in?",
+    "options": [
+      "I work in London.",
+      "I’m from Greece.",
+      "I stay at a hotel.",
+      "I’m in the holiday business. I’m a travel agent."
+    ],
+    "a": "I’m in the holiday business. I’m a travel agent."
+  },
+  {
+    "q": "Choose the correct response. Can you recommend a good restaurant in town?",
+    "options": [
+      "I don’t like food.",
+      "I work here.",
+      "Sure. If you like fish, the Marina is very good.",
+      "I have children."
+    ],
+    "a": "Sure. If you like fish, the Marina is very good."
+  },
+  {
+    "q": "Which greeting is best for a close friend or family member?",
+    "options": [
+      "Dear Mr Jackson,",
+      "Hello Mr Jackson,",
+      "Dear Sir or Madam,",
+      "Hi John,"
+    ],
+    "a": "Hi John,"
+  },
+  {
+    "q": "Which greeting is appropriate for a teacher or work colleague you know?",
+    "options": [
+      "Hi!",
+      "Love,",
+      "John,",
+      "Dear Sam,"
+    ],
+    "a": "Dear Sam,"
+  },
+  {
+    "q": "Which greeting is best for a manager or customer you don’t know?",
+    "options": [
+      "Hi Sam,",
+      "Hello John,",
+      "Hi,",
+      "Dear Mr Jackson,"
+    ],
+    "a": "Dear Mr Jackson,"
+  },
+  {
+    "q": "Which ending is appropriate for a formal or semi-formal email?",
+    "options": [
+      "Thanks!",
+      "Love,",
+      "See you soon,",
+      "Kind regards,"
+    ],
+    "a": "Kind regards,"
+  },
+  {
+    "q": "Which ending is best for an email to a close friend?",
+    "options": [
+      "Best regards,",
+      "Kind regards,",
+      "Regards,",
+      "Love,"
+    ],
+    "a": "Love,"
+  },
+  {
+    "q": "Which ending is suitable for a work email to a colleague you know?",
+    "options": [
+      "Yours faithfully,",
+      "Dear,",
+      "Love,",
+      "All the best,"
+    ],
+    "a": "All the best,"
+  },
+  {
+    "q": "Which greeting is NOT appropriate for a professional email?",
+    "options": [
+      "Hello Sam,",
+      "Hi Sam,",
+      "Dear Sam,",
+      "John,"
+    ],
+    "a": "John,"
+  },
+  {
+    "q": "Which ending is NOT appropriate for an email to a customer?",
+    "options": [
+      "Best regards,",
+      "Kind regards,",
+      "Regards,",
+      "Love,"
+    ],
+    "a": "Love,"
+  },
+  {
+    "q": "What do customers want today, besides a good product?",
+    "options": [
+      "Only advertising",
+      "Good customer support and service",
+      "Only low prices",
+      "More competitors"
+    ],
+    "a": "Good customer support and service"
+  },
+  {
+    "q": "Why is customer support important for a company?",
+    "options": [
+      "It replaces marketing",
+      "It makes products cheaper",
+      "It helps keep customers and save money",
+      "It stops complaints"
+    ],
+    "a": "It helps keep customers and save money"
+  },
+  {
+    "q": "What should a company do first to understand its customers?",
+    "options": [
+      "Advertise more",
+      "Change staff",
+      "Listen carefully to customers",
+      "Increase prices"
+    ],
+    "a": "Listen carefully to customers"
+  },
+  {
+    "q": "How should companies talk to customers?",
+    "options": [
+      "Only by phone",
+      "Only face to face",
+      "In the way customers like best",
+      "Only by email"
+    ],
+    "a": "In the way customers like best"
+  },
+  {
+    "q": "What does “Give customers what they want, when they want it” include?",
+    "options": [
+      "Advertising campaigns",
+      "Right product, right place, right time, right price",
+      "Free products",
+      "Long explanations"
+    ],
+    "a": "Right product, right place, right time, right price"
+  },
+  {
+    "q": "Why do people prefer to buy from people they like?",
+    "options": [
+      "Because it is cheaper",
+      "Because of rules",
+      "Because people trust people like themselves",
+      "Because it is faster"
+    ],
+    "a": "Because people trust people like themselves"
+  },
+  {
+    "q": "What is good customer service mainly about?",
+    "options": [
+      "Selling more products",
+      "Working faster",
+      "Understanding and respecting customers",
+      "Giving discounts"
+    ],
+    "a": "Understanding and respecting customers"
+  },
+  {
+    "q": "What is important to agree on that fits the customer's schedule?",
+    "options": [
+      "repeat business",
+      "customer referral",
+      "delivery date",
+      "deal with complaints"
+    ],
+    "a": "delivery date"
+  },
+  {
+    "q": "If there are delivery problems, what must the company do?",
+    "options": [
+      "repeat business",
+      "customer referral",
+      "returning customers",
+      "deal with complaints"
+    ],
+    "a": "deal with complaints"
+  },
+  {
+    "q": "How should complaints be handled if necessary?",
+    "options": [
+      "secretly",
+      "politely",
+      "aggressively",
+      "impolitely"
+    ],
+    "a": "politely"
+  },
+  {
+    "q": "What does “put you in contact with another person” mean?",
+    "options": [
+      "leave a message",
+      "connect",
+      "call back",
+      "hang up"
+    ],
+    "a": "connect"
+  },
+  {
+    "q": "What does “press the right keys to contact someone by telephone” mean?",
+    "options": [
+      "listen",
+      "greet",
+      "dial",
+      "prepare"
+    ],
+    "a": "dial"
+  },
+  {
+    "q": "What does “agree to speak on the telephone” mean?",
+    "options": [
+      "wait",
+      "answer",
+      "record",
+      "smile"
+    ],
+    "a": "answer"
+  },
+  {
+    "q": "What does “reach the person you want to speak to” mean?",
+    "options": [
+      "hang up",
+      "put on hold",
+      "call back",
+      "get through"
+    ],
+    "a": "get through"
+  },
+  {
+    "q": "What does “contact someone again with more information” mean?",
+    "options": [
+      "connect",
+      "leave a message",
+      "prepare",
+      "call back"
+    ],
+    "a": "call back"
+  },
+  {
+    "q": "What does “respond to a message from someone who wants to speak to you” mean?",
+    "options": [
+      "dial",
+      "greet",
+      "record",
+      "answer"
+    ],
+    "a": "answer"
+  },
+  {
+    "q": "What does “finish a telephone call” mean?",
+    "options": [
+      "call back",
+      "put on hold",
+      "get through",
+      "hang up"
+    ],
+    "a": "hang up"
+  },
+  {
+    "q": "What does “try again to reach the person you want to speak to” mean?",
+    "options": [
+      "dial",
+      "smile",
+      "leave a message",
+      "call back"
+    ],
+    "a": "call back"
+  },
+  {
+    "q": "What does “record details of what your call is about” mean?",
+    "options": [
+      "smile",
+      "greet",
+      "put on hold",
+      "make a checklist"
+    ],
+    "a": "make a checklist"
+  },
+  {
+    "q": "What does “make someone wait and listen to music” mean?",
+    "options": [
+      "dial",
+      "answer",
+      "hang up",
+      "put on hold"
+    ],
+    "a": "put on hold"
+  },
+  {
+    "q": "Which request matches “confirm/my order/by email”?",
+    "options": [
+      "Could you please check my order via Internet?",
+      "Could I use your phone?",
+      "I’m afraid I’m waiting for an important call.",
+      "Can you help me with the email?"
+    ],
+    "a": "Could you please check my order via Internet?"
+  },
+  {
+    "q": "Which request matches “speak to/salesperson”?",
+    "options": [
+      "I’m afraid I’m writing an urgent report.",
+      "Can you help me with this email?",
+      "Could I speak to the salesperson, please?",
+      "I need to ask your colleague."
+    ],
+    "a": "Could I speak to the salesperson, please?"
+  },
+  {
+    "q": "Which request matches “ask you/new software”?",
+    "options": [
+      "Can I use your phone?",
+      "Could you show me the new software?",
+      "Could you confirm my order?",
+      "I’m sorry, but I’m writing an urgent report."
+    ],
+    "a": "Could you show me the new software?"
+  },
+  {
+    "q": "Which request matches “call my customer back”?",
+    "options": [
+      "I need to speak to the salesperson.",
+      "Can you help me with this email?",
+      "I’m afraid I can’t call now.",
+      "Could you call my customer back?"
+    ],
+    "a": "Could you call my customer back?"
+  },
+  {
+    "q": "Which request matches “talk to you/at 5 o’clock”?",
+    "options": [
+      "Could you confirm my order?",
+      "I’m writing an urgent report.",
+      "Could I use your phone?",
+      "Can we talk at 5 o’clock?"
+    ],
+    "a": "Can we talk at 5 o’clock?"
+  },
+  {
+    "q": "Which request matches “come in/early/tomorrow morning”?",
+    "options": [
+      "Sorry, I can’t fly to Colombia.",
+      "Can you come in early tomorrow morning?",
+      "I’m afraid I’m waiting for an important call.",
+      "Could you confirm my order?"
+    ],
+    "a": "Can you come in early tomorrow morning?"
+  },
+  {
+    "q": "Choose the correct sentence (Present Continuous):",
+    "options": [
+      "She goes to the shop now.",
+      "She is going to the shop now.",
+      "She is go to the shop now.",
+      "She going to the shop now."
+    ],
+    "a": "She is going to the shop now."
+  },
+  {
+    "q": "Which question is correct (Present Continuous)?",
+    "options": [
+      "You are reading a book at the moment?",
+      "Are you read a book at the moment?",
+      "Are you reading a book at the moment?",
+      "Do you reading a book at the moment?"
+    ],
+    "a": "Are you reading a book at the moment?"
+  },
+  {
+    "q": "Complete the sentence: “Look! The children _______ in the garden.”",
+    "options": [
+      "play",
+      "plays",
+      "are playing",
+      "is playing"
+    ],
+    "a": "are playing"
+  },
+  {
+    "q": "Choose the correct negative form (Present Continuous):",
+    "options": [
+      "He not listening to music.",
+      "He are not listening to music.",
+      "He not is listening to music.",
+      "He is not listening to music."
+    ],
+    "a": "He is not listening to music."
+  },
+  {
+    "q": "Complete the sentence: “I _______ my homework right now.”",
+    "options": [
+      "do",
+      "are doing",
+      "am doing",
+      "doing"
+    ],
+    "a": "am doing"
+  },
+  {
+    "q": "Which sentence shows a temporary action?",
+    "options": [
+      "She lived in London last year.",
+      "She lives in London.",
+      "She will live in London next year.",
+      "She is living with her parents for a few weeks."
+    ],
+    "a": "She is living with her parents for a few weeks."
+  },
+  {
+    "q": "Complete the question: “What _______ you _______ at the moment?”",
+    "options": [
+      "do / do",
+      "are / do",
+      "is / doing",
+      "are / doing"
+    ],
+    "a": "are / doing"
+  },
+  {
+    "q": "Choose the correct sentence:",
+    "options": [
+      "They is watching TV now.",
+      "They watching TV now.",
+      "They watch TV now.",
+      "They are watching TV now."
+    ],
+    "a": "They are watching TV now."
+  },
+  {
+    "q": "Which sentence is an offer of help?",
+    "options": [
+      "I leave a message.",
+      "Can you leave a message?",
+      "Would you like to leave a message?",
+      "Do you want to leave a message?"
+    ],
+    "a": "Would you like to leave a message?"
+  },
+  {
+    "q": "Which sentence is an invitation?",
+    "options": [
+      "I write down the message.",
+      "Would you like me to take a message?",
+      "I can take a message.",
+      "Will I take a message?"
+    ],
+    "a": "Would you like me to take a message?"
+  },
+  {
+    "q": "How would you politely ask someone to call back later?",
+    "options": [
+      "Call me back.",
+      "Call later.",
+      "Can you call me later?",
+      "Could you call you back later?"
+    ],
+    "a": "Can you call me later?"
+  },
+  {
+    "q": "Which is a correct way to offer to send something by post?",
+    "options": [
+      "I send it to you.",
+      "Post it to you?",
+      "Can I post it to you today?",
+      "Can you post it?"
+    ],
+    "a": "Can I post it to you today?"
+  },
+  {
+    "q": "How do you politely offer to connect someone to another person?",
+    "options": [
+      "I connect you now.",
+      "Connect you to the manager?",
+      "You go to sales manager.",
+      "Shall I connect you to the sales manager?"
+    ],
+    "a": "Shall I connect you to the sales manager?"
+  },
+  {
+    "q": "Which sentence is a polite way to suggest thinking before deciding?",
+    "options": [
+      "Think before.",
+      "Can you think?",
+      "Think about that before you decide.",
+      "Shall I think about that before you decide?"
+    ],
+    "a": "Think about that before you decide."
+  },
+  {
+    "q": "How can you offer to confirm information by email?",
+    "options": [
+      "I confirm by email.",
+      "Confirm email.",
+      "Can email?",
+      "Shall I confirm that for you by email?"
+    ],
+    "a": "Shall I confirm that for you by email?"
+  },
+  {
+    "q": "Which is a correct way to invite someone to speak tomorrow?",
+    "options": [
+      "Speak to me tomorrow about that?",
+      "Can you speak to me tomorrow?",
+      "Shall we speak to me tomorrow about that?",
+      "Shall I speak to you tomorrow about that?"
+    ],
+    "a": "Shall I speak to you tomorrow about that?"
+  },
+  {
+    "q": "How do you say this email address in English? Email: info@myworld.biz/news",
+    "options": [
+      "info my world at dot biz news",
+      "info at my world slash biz dot news",
+      "info dot my world at biz slash news",
+      "info at my world dot biz slash news"
+    ],
+    "a": "info at my world dot biz slash news"
+  },
+  {
+    "q": "How do you say this email address in English? Email: maria@bt.com",
+    "options": [
+      "maria b t at dot com",
+      "maria at b t slash com",
+      "maria at b t dot com",
+      "maria dot b t at com"
+    ],
+    "a": "maria at b t dot com"
+  },
+  {
+    "q": "How do you say this date in English? Date: 4 June 2004",
+    "options": [
+      "Four June, two hundred four",
+      "Fourteenth of June, two thousand and four",
+      "June four, two thousand six",
+      "June fourth, two thousand four"
+    ],
+    "a": "June fourth, two thousand four"
+  }
+        ]
   },
 
 
